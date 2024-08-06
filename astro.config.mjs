@@ -12,7 +12,9 @@ export default defineConfig({
   integrations: [
     tailwind(),
     icon(),
-    image(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
     sitemap(),
     partytown({
       config: {
