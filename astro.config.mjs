@@ -9,12 +9,14 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://astro-theme-one.vercel.app/",
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/noop",
+    },
+  },
   integrations: [
     tailwind(),
     icon(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
     sitemap(),
     partytown({
       config: {
