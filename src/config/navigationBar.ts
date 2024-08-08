@@ -33,9 +33,9 @@ export interface NavData {
 
 export const navigationBarData: NavData = {
 	logo: {
-		src: '/wood2.png',
-		alt: 'The tailwind astro theme',
-		text: 'Foxi.'
+		src: '/logoGreenCrown.png',
+		alt: 'GREENCROWN',
+		text: 'GREENCROWN'
 	},
 	navItems: [
 		{ name: 'Home', link: '/' },

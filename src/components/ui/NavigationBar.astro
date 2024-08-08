@@ -19,7 +19,9 @@ import Switcher from './ModeSwitcher.astro'
 
 // Data
 import { navigationBarData } from '../../config/navigationBar'
+import { Image } from 'astro:assets'
 const { logo, navItems, navActions } = navigationBarData
+import Logosrc from '../../assets/logoGreenCrown.png'
 
 // Determine current path
 const path = new URL(Astro.request.url).pathname
@@ -40,8 +42,11 @@ const savedNavActions = navActions.map((action) => ({
 		<nav aria-label="main navigation" role="navigation" class="header__nav">
 			<!-- Logo -->
 			<a href="/" class="header__logo">
-				<img src={logo.src} alt={logo.alt} width="48" height="48" />
-				<span>{logo.text}</span>
+				<Image src={Logosrc} alt={logo.alt} width="90" />
+				<div class="ml-4 hidden lg:block">
+					<div class="text-3xl"><span class="text-primary-500">GREEN</span>CROWN</div>
+					<div class="text-xs font-medium">ЛЕЧЕНИЕ РАСТЕНИЙ и БЕРЕЖНЫЙ УХОД</div>
+				</div>
 			</a>
 
 			<!-- Menu toggle -->
