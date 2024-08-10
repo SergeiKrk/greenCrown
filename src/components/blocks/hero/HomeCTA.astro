@@ -1,26 +1,17 @@
 ---
-// Home page CTA Section
-// ------------
-// Description: A centered call to action section that contains: a title, text, a user review snippet, a button and a image.
-
-// Components
-// - Layout
+import { Image } from 'astro:assets'
 import Section from '../../ui/Section.astro'
 import Row from '../../ui/Row.astro'
 import Col from '../../ui/Col.astro'
-// - UI
 import ChipNotification from '../../ui/ChipNotification.astro'
-import { Image } from 'astro:assets'
 import Button from '../../ui/Button.astro'
 import AvatarGroup from '../../ui/AvatarGroup.astro'
 
-// Content
-// - Hero Image
 import heroImage from '../../../assets/hero-01.png'
-// - Avatars
 import user1 from '../../../assets/avatars/avatar-01.webp'
 import user2 from '../../../assets/avatars/avatar-02.webp'
 import user3 from '../../../assets/avatars/avatar-03.webp'
+
 const avatars = [
 	{ image: { src: user1.src, alt: 'user name' }, link: '/' },
 	{ image: { src: user2.src, alt: 'user name' }, link: '/' },
@@ -32,11 +23,10 @@ const avatars = [
 	<Row>
 		<Col span="7" align="center">
 			<ChipNotification radius="rounded-full" classes="mb-6">
-				<strong>30K+</strong> satisfied customers
+				<strong>300+</strong> довольных клиентов
 				<AvatarGroup avatars={avatars} radius="rounded-full" slot="button" />
 			</ChipNotification>
 			<h1>Enhance team <strong>performance</strong> with seamless integration</h1>
-
 			<p class="pb-0 text-lg">Work smarter, not harder, with our innovative platform</p>
 			<Button size="lg" link="/">Get started for free</Button>
 		</Col>
@@ -44,9 +34,51 @@ const avatars = [
 			<Image
 				src={heroImage}
 				alt="Foxi. The tailwind astro theme"
-				class="translate-y-8 shadow-2xl shadow-neutral-200 dark:shadow-neutral-950"
+				class="shadow-2xl shadow-neutral-200 transition-all duration-1000 ease-in-out dark:shadow-neutral-950"
 				format="webp"
-			/></Col
-		>
+			/>
+		</Col>
 	</Row>
 </Section>
+
+<script>
+	// Функция дебаунсинга
+	function debounce(func, wait) {
+		let timeout
+		return function (...args) {
+			clearTimeout(timeout)
+			timeout = setTimeout(() => func.apply(this, args), wait)
+		}
+	}
+
+	// Основная функция обработки прокрутки
+	const handleScroll = debounce(function () {
+		let scrollTop = window.scrollY || document.documentElement.scrollTop
+		console.log('Прокрутка:', scrollTop)
+	}, 100)
+
+	// Функция, которая следит за видимостью элемента
+	function handleIntersection(entries) {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				// Если элемент виден, добавляем обработчик прокрутки
+				window.addEventListener('scroll', handleScroll)
+			} else {
+				// Если элемент не виден, удаляем обработчик прокрутки
+				window.removeEventListener('scroll', handleScroll)
+			}
+		})
+	}
+
+	// Создаем наблюдателя за видимостью элемента
+	const observer = new IntersectionObserver(handleIntersection, {
+		root: null, // отслеживаем относительно видимой области
+		threshold: 0 // элемент считается видимым, если хотя бы частично попадает в зону видимости
+	})
+
+	// Находим элемент и начинаем за ним следить
+	const target = document.querySelector('.section__bg')
+	if (target) {
+		observer.observe(target)
+	}
+</script>

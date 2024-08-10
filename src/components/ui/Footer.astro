@@ -25,7 +25,9 @@ const { footerAbout, footerColumns, subFooter } = footerNavigationData
 				<div class="footer__col">
 					<a aria-label="webiste logo" aria-current="page" class="footer__main-brand" href="/">
 						<Image src={Logosrc} alt={footerAbout.logo.alt} width="60" />
-						{footerAbout.logo.text}
+						<div class="ml-2 hidden lg:block">
+							<div class="text-2xl"><span class="text-primary-500">GREEN</span>CROWN</div>
+						</div>
 					</a>
 					<p>
 						{footerAbout.aboutText}
