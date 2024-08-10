@@ -19,9 +19,9 @@ const avatars = [
 ]
 ---
 
-<Section id="intro" padding="top" classes="bg-neutral-50 dark:bg-neutral-900">
+<Section id="intro" classes="bg-neutral-50 dark:bg-neutral-900 h-screen grid content-center">
 	<Row>
-		<Col span="7" align="center">
+		<Col span="6" align="center">
 			<ChipNotification radius="rounded-full" classes="mb-6">
 				<strong>300+</strong> довольных клиентов
 				<AvatarGroup avatars={avatars} radius="rounded-full" slot="button" />
@@ -30,13 +30,13 @@ const avatars = [
 			<p class="pb-0 text-lg">Work smarter, not harder, with our innovative platform</p>
 			<Button size="lg" link="/">Get started for free</Button>
 		</Col>
-		<Col span="5">
+		<Col span="6">
 			<Image
 				src={heroImage}
 				alt="Foxi. The tailwind astro theme"
 				class="shadow-2xl shadow-neutral-200 dark:shadow-neutral-950"
 				format="webp"
-				style="transition-duration: 1s;transition-property: all;transform: translateY(-55);"
+				style="transition-duration: 0.7s;transition-property: all;transform: translateY(50);"
 				id="hero-image"
 			/>
 		</Col>
@@ -64,7 +64,7 @@ const avatars = [
 			// Изменяем значение translateY пропорционально десятой части scrollTop
 			heroImage.style.transform = `translateY(${scrollTop * 0.2}px)`
 		}
-	}, 150)
+	}, 50)
 
 	// Функция, которая следит за видимостью элемента
 	function handleIntersection(entries: IntersectionObserverEntry[]) {

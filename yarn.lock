@@ -140,10 +140,10 @@
   dependencies:
     prismjs "^1.29.0"
 
-"@astrojs/react@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-3.6.1.tgz#c2f7f61b8681a386dc9d7a369a248ea317e2114a"
-  integrity sha512-Mpgu+GYTba1TEzLMshojeLxi7y/FqrTNtpGTCvI366bRbnCkqtvznRj/xPQOTybwXnYXSgxsELyUvqD51iFeiw==
+"@astrojs/react@^3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-3.6.2.tgz#615d4ab94f8a8700c593ca4812a5c4efb11ff7cb"
+  integrity sha512-fK29lYI7zK/KG4ZBy956x4dmauZcZ18osFkuyGa8r3gmmCQa2NZ9XNu9WaVYEUm0j89f4Gii4tbxLoyM8nk2MA==
   dependencies:
     "@vitejs/plugin-react" "^4.3.1"
     ultrahtml "^1.5.3"
