@@ -34,8 +34,10 @@ const avatars = [
 			<Image
 				src={heroImage}
 				alt="Foxi. The tailwind astro theme"
-				class="shadow-2xl shadow-neutral-200 transition-all duration-1000 ease-in-out dark:shadow-neutral-950"
+				class="shadow-2xl shadow-neutral-200 dark:shadow-neutral-950"
 				format="webp"
+				style="transition-duration: 1s;transition-property: all;transform: translateY(-55);"
+				id="hero-image"
 			/>
 		</Col>
 	</Row>
@@ -55,7 +57,14 @@ const avatars = [
 	const handleScroll = debounce(function () {
 		let scrollTop = window.scrollY || document.documentElement.scrollTop
 		console.log('Прокрутка:', scrollTop)
-	}, 100)
+
+		// Находим элемент изображения
+		const heroImage = document.getElementById('hero-image')
+		if (heroImage) {
+			// Изменяем значение translateY пропорционально десятой части scrollTop
+			heroImage.style.transform = `translateY(${scrollTop * 0.2}px)`
+		}
+	}, 150)
 
 	// Функция, которая следит за видимостью элемента
 	function handleIntersection(entries: IntersectionObserverEntry[]) {
@@ -77,7 +86,7 @@ const avatars = [
 	})
 
 	// Находим элемент и начинаем за ним следить
-	const target = document.querySelector('.section__bg')
+	const target = document.getElementById('intro')
 	if (target) {
 		observer.observe(target)
 	}
