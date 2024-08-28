@@ -11,7 +11,7 @@ import lugdoroga from '../../../assets/lugdoroga.webp'
 import moskvasiti from '../../../assets/moskvasiti.webp'
 import derevolev from '../../../assets/derevolev.webp'
 import derevopr from '../../../assets/derevopr.webp'
-import Obrabotchiki from '../../../assets/holodnyj-tuman.webp'
+import obrabotchiki from '../../../assets/holodnyj-tuman.webp'
 import user1 from '../../../assets/avatars/avatar-01.webp'
 import user2 from '../../../assets/avatars/avatar-02.webp'
 import user3 from '../../../assets/avatars/avatar-03.webp'
@@ -36,44 +36,14 @@ const avatars = [
 			<Button size="lg" link="/">Get started for free</Button>
 		</Col>
 		<Col span="6">
-			<!-- <Image
-				src={lugdoroga}
-				alt="GreenCrown - Уход за зелеными насаждениями"
-				class="absolute bottom-0 left-0 z-20 w-full translate-y-10 object-cover transition-all"
-				style="transition-duration: 0.8s;"
-				id="hero-image"
+			<HeroDynamicScroll
+				lugdoroga={lugdoroga}
+				moskvasiti={moskvasiti}
+				derevolev={derevolev}
+				derevopr={derevopr}
+				obrabotchiki={obrabotchiki}
+				client:load
 			/>
-			<Image
-				src={moskvasiti}
-				alt="GreenCrown - Уход за зелеными насаждениями"
-				class="absolute left-0 z-10 ml-[10%] w-[70%] object-cover 2xl:bottom-[40%]"
-				style="transition-duration: 0.7s;transition-property: all;transform: translateY(50);"
-				id="hero-image"
-			/>
-			<Image
-				src={derevolev}
-				alt="GreenCrown - Уход за зелеными насаждениями"
-				width="200"
-				class="invisible absolute left-0 z-30 2xl:visible 2xl:bottom-[50%] 2xl:-ml-[10%]"
-				style="transition-duration: 0.7s;transition-property: all;transform: translateY(50);"
-				id="hero-image"
-			/>
-			<Image
-				src={derevopr}
-				alt="GreenCrown - Уход за зелеными насаждениями"
-				class="absolute right-0 z-30 -mr-[2%] w-[40%] 2xl:bottom-[35%]"
-				style="transition-duration: 0.7s;transition-property: all;transform: translateY(50);"
-				id="hero-image"
-			/>
-			<Image
-				src={Obrabotchiki}
-				width={200}
-				alt="GreenCrown - Уход за зелеными насаждениями"
-				class="absolute right-0 z-30 mr-[20%] 2xl:bottom-[5%]"
-				style="transition-duration: 0.7s;transition-property: all;transform: translateY(50);"
-				id="hero-image"
-			/> -->
-			<HeroDynamicScroll lugdoroga={lugdoroga} moskvasiti={moskvasiti} client:load />
 		</Col>
 	</Row>
 </Section>
