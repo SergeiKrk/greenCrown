@@ -86,10 +86,10 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 
 	// Обновление положения картинки на основе движения мыши и прокрутки
 	useEffect(() => {
-		if (moskvasitiRef.current) {
-			const offsetX = (mousePosition.x - window.innerWidth / 2) * 0.05
+		if (obrabotchikiRef.current) {
+			const offsetX = (mousePosition.x - window.innerWidth / 2) * 0.07
 			const offsetY = (mousePosition.y - window.innerHeight / 2) * 0.05
-			moskvasitiRef.current.style.transform = `translate(${offsetX}px, ${scrollPosition * 0.42 + offsetY}px)`
+			obrabotchikiRef.current.style.transform = `translate(${offsetX}px, ${scrollPosition * 0.42 + offsetY}px)`
 		}
 	}, [mousePosition, scrollPosition])
 
@@ -105,7 +105,7 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 				ref={moskvasitiRef}
 				src={moskvasiti.src}
 				alt="GreenCrown - Уход за зелеными насаждениями"
-				className="absolute left-0 z-10 ml-[10%] w-[70%] translate-y-10 object-cover transition-all duration-[0.5s] 2xl:bottom-[40%]"
+				className="absolute left-0 z-10 ml-[15%] w-[70%] translate-y-10 object-cover transition-all duration-[0.5s] 2xl:bottom-[40%]"
 			/>
 			<img
 				ref={derevolevRef}
