@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
 import partytown from "@astrojs/partytown";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
@@ -18,6 +19,7 @@ export default defineConfig({
     tailwind(),
     icon(),
     sitemap(),
+    react(),
     partytown({
       config: {
         forward: ["dataLayer.push"],
