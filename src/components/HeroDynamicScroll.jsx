@@ -2,27 +2,20 @@ import React, { useEffect, useRef, useState } from 'react'
 
 const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabotchiki }) => {
 	const [scrollPosition, setScrollPosition] = useState(0)
+	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 	const lugdorogaRef = useRef(null)
 	const moskvasitiRef = useRef(null)
 	const derevolevRef = useRef(null)
 	const derevoprRef = useRef(null)
 	const obrabotchikiRef = useRef(null)
+	const sectionBgRef = useRef(null)
 
+	// Обработчик прокрутки
 	useEffect(() => {
-		// Функция дебаунсинга
-		const debounce = (func, wait) => {
-			let timeout
-			return function (...args) {
-				clearTimeout(timeout)
-				timeout = setTimeout(() => func.apply(this, args), wait)
-			}
-		}
-
-		// Обработчик прокрутки
-		const handleScroll = debounce(() => {
+		const handleScroll = () => {
 			const scrollTop = window.scrollY || document.documentElement.scrollTop
 			setScrollPosition(scrollTop)
-		}, 50)
+		}
 
 		const handleIntersection = (entries) => {
 			entries.forEach((entry) => {
@@ -51,6 +44,7 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 		}
 	}, [])
 
+	// Обновление позиции изображений на основе прокрутки
 	useEffect(() => {
 		if (lugdorogaRef.current) {
 			lugdorogaRef.current.style.transform = `translateY(${scrollPosition * 0.3}px)`
@@ -69,8 +63,38 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 		}
 	}, [scrollPosition])
 
+	// Обработчик движения мыши
+	useEffect(() => {
+		const handleMouseMove = (event) => {
+			const rect = sectionBgRef.current.getBoundingClientRect()
+			const x = event.clientX - rect.left
+			const y = event.clientY - rect.top
+			setMousePosition({ x, y })
+		}
+
+		const sectionBg = sectionBgRef.current
+		if (sectionBg) {
+			sectionBg.addEventListener('mousemove', handleMouseMove)
+		}
+
+		return () => {
+			if (sectionBg) {
+				sectionBg.removeEventListener('mousemove', handleMouseMove)
+			}
+		}
+	}, [])
+
+	// Обновление положения картинки на основе движения мыши и прокрутки
+	useEffect(() => {
+		if (moskvasitiRef.current) {
+			const offsetX = (mousePosition.x - window.innerWidth / 2) * 0.05
+			const offsetY = (mousePosition.y - window.innerHeight / 2) * 0.05
+			moskvasitiRef.current.style.transform = `translate(${offsetX}px, ${scrollPosition * 0.42 + offsetY}px)`
+		}
+	}, [mousePosition, scrollPosition])
+
 	return (
-		<div className="relative h-full w-full">
+		<div ref={sectionBgRef} className="section__bg relative h-full w-full">
 			<img
 				ref={lugdorogaRef}
 				src={lugdoroga.src}
