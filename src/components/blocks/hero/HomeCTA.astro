@@ -1,10 +1,8 @@
 ---
-import { Image } from 'astro:assets'
 import Section from '../../ui/Section.astro'
 import Row from '../../ui/Row.astro'
 import Col from '../../ui/Col.astro'
 import ChipNotification from '../../ui/ChipNotification.astro'
-import Button from '../../ui/Button.astro'
 import AvatarGroup from '../../ui/AvatarGroup.astro'
 
 import lugdoroga from '../../../assets/lugdoroga.webp'
@@ -33,7 +31,33 @@ const avatars = [
 			</ChipNotification>
 			<h1><strong>Служба</strong> ухода за зелеными насаждениями</h1>
 			<p class="pb-0 text-lg">Лечение деревьев, защита от вредителей, озеленение и уход</p>
-			<Button size="lg" link="/">Get started for free</Button>
+
+			<!-- Open the modal using ID.showModal() method -->
+			<button class="btn bg-primary-500 text-white" onclick="my_modal_2.showModal()"
+				>Заказать консультацию</button
+			>
+			<dialog id="my_modal_2" class="modal">
+				<div class="modal-box">
+					<h3 class="text-lg font-bold">Hello!</h3>
+					<div class="join">
+						<input
+							class="input input-bordered input-accent join-item w-44 border-primary-500"
+							placeholder="Имя"
+						/>
+						<input
+							class="input input-bordered input-accent join-item w-44 border-primary-500"
+							placeholder="Телефон"
+						/>
+						<button
+							class="btn join-item rounded-r-full border-primary-500 bg-primary-500 text-white"
+							>Subscribe</button
+						>
+					</div>
+				</div>
+				<form method="dialog" class="modal-backdrop">
+					<button>закрыть</button>
+				</form>
+			</dialog>
 		</Col>
 		<Col span="6">
 			<HeroDynamicScroll
