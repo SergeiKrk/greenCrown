@@ -46,6 +46,8 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 
 	// Обновление позиции изображений на основе прокрутки
 	useEffect(() => {
+		const scaleValuePlus = 1 + scrollPosition * 0.0005 // Определяем коэффициент масштаба
+		const scaleValueMinus = 1 - scrollPosition * 0.0005 // Определяем коэффициент масштаба
 		if (lugdorogaRef.current) {
 			lugdorogaRef.current.style.transform = `translateY(${scrollPosition * 0.3}px)`
 		}
@@ -53,10 +55,10 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 			moskvasitiRef.current.style.transform = `translateY(${scrollPosition * 0.42}px)`
 		}
 		if (derevolevRef.current) {
-			derevolevRef.current.style.transform = `translateY(${scrollPosition * 0.27}px)`
+			derevolevRef.current.style.transform = `translateY(${scrollPosition * 0.27}px) scale(${scaleValueMinus})`
 		}
 		if (derevoprRef.current) {
-			derevoprRef.current.style.transform = `translateY(${scrollPosition * 0.27}px)`
+			derevoprRef.current.style.transform = `translateY(${scrollPosition * 0.27}px) scale(${scaleValuePlus})`
 		}
 		if (obrabotchikiRef.current) {
 			obrabotchikiRef.current.style.transform = `translateY(${scrollPosition * 0.35}px)`
