@@ -46,8 +46,8 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 
 	// Обновление позиции изображений на основе прокрутки
 	useEffect(() => {
-		const scaleValuePlus = 1 + scrollPosition * 0.0005 // Определяем коэффициент масштаба
-		const scaleValueMinus = 1 - scrollPosition * 0.0005 // Определяем коэффициент масштаба
+		const scaleValuePlus = 1 + scrollPosition * 0.0005
+		const scaleValueMinus = 1 - scrollPosition * 0.0005
 		if (lugdorogaRef.current) {
 			lugdorogaRef.current.style.transform = `translateY(${scrollPosition * 0.3}px)`
 		}

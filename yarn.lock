@@ -577,6 +577,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource-variable/outfit/-/outfit-5.0.13.tgz#c9ceb74ad88ab4277a20e08f7d5377476a12c619"
   integrity sha512-y5yl8YcLqoQghwLfPaM420PKxG0DMKmobryGptXmv7Q5CX8F1vg8h714qEptXdtyoS9rHIMwLl/hJYLzZgSE4w==
 
+"@glidejs/glide@^3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.6.2.tgz#7d6a3610d2bfae4b5d1ea0294334f3dabc69edce"
+  integrity sha512-oXw7In0IZV69PC0PChQakY+yh+UnqIb5+zfVuEIzub6Kkfl1foo7TAhr2PZXPzihOG9YS57t8wvdzBFEZ0aPVA==
+
 "@iconify/tools@^3.0.1":
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/@iconify/tools/-/tools-3.0.7.tgz#73e9a9e5f4fe395aae7ea575aa5930d1f91d820c"

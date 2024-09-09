@@ -1,48 +1,48 @@
 [
 	{
-		"title": "Real-Time Analytics",
+		"title": "Своя бригада",
 		"icon": "chart-pie",
 		"description": "Gain valuable insights instantly with Foxi's real-time analytics. Track performance metrics, user behavior, and campaign effectiveness effortlessly.",
 		"category": "Analytics"
 	},
 	{
-		"title": "Customizable Dashboards",
+		"title": "Пользуемся своим качественным инструментом",
 		"icon": "squares-plus",
 		"description": "Tailor your workspace with personalized dashboards that suit your workflow. Stay organized and focused on what matters most to your business.",
 		"category": "Analytics"
 	},
 	{
-		"title": "Task Management",
+		"title": "Предварительное согласование",
 		"icon": "cliboard-document-check",
-		"description": "Efficiently manage tasks and projects with Foxi's intuitive task management tools. Assign, track progress, and collaborate seamlessly.",
+		"description": "Перед началом работ, мы оговариваем все позиции и подписываем договор.",
 		"category": "Productivity"
 	},
 	{
-		"title": "Third-Party Apps",
+		"title": "Фотоотчеты (опционально)",
 		"icon": "rocket",
 		"description": "Connect Foxi with your favorite tools and apps effortlessly. Streamline workflows and enhance productivity with seamless integrations.",
 		"category": "Productivity"
 	},
 	{
-		"title": "Mobile Accessibility",
+		"title": "Рекомендации по доп.работам",
 		"icon": "device-phone-mobile",
 		"description": "Stay productive on the go with Foxi's mobile app. Access key features, collaborate with your team, and manage tasks anytime, anywhere.",
 		"category": "Support"
 	},
 	{
-		"title": "Dedicated Customer Support",
+		"title": "Доставка необходимых материалов",
 		"icon": "trophy",
 		"description": "Receive exceptional customer support whenever you need it. Our dedicated team is here 24/7 to assist you with any questions or issues.",
 		"category": "Support"
 	},
 	{
-		"title": "Robust Data Security",
+		"title": "Дендролог в штате",
 		"icon": "shield-check",
 		"description": "Rest assured knowing your data is safe with Foxi's robust security measures. We employ industry-standard protocols to protect your information.",
 		"category": "Security"
 	},
 	{
-		"title": "Scalability",
+		"title": "Оговариваем время приезда",
 		"icon": "arrow-treding-up",
 		"description": "Grow your business with confidence using Foxi's scalable platform. Whether you're a startup or a large enterprise, our solution adapts to your needs.",
 		"category": "Security"

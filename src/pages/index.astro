@@ -10,6 +10,8 @@ import HighlightBlocks from '../components/blocks/highlights/HightlightRows.astr
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 
 import testimonialBackground from '../assets/CEOspeech.webp'
+import Feature from '../components/blocks/features/FeatureList.astro'
+import CarouselTestimonial from '../components/blocks/CarouselTestimonial'
 // - SEO
 const SEO = {
 	title: 'Уход за зелеными насаждениями: Защита и обработка деревьев',
@@ -22,6 +24,8 @@ const SEO = {
 	<Hero />
 	<Features />
 	<Testimonial bg={testimonialBackground} bgPosition="right" />
+	<Feature />
 	<HighlightBlocks />
+	<!-- <CarouselTestimonial /> -->
 	<CTA />
 </Layout>
