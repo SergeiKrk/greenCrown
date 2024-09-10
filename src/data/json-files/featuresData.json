@@ -1,13 +1,13 @@
 [
 	{
 		"title": "Своя бригада",
-		"icon": "chart-pie",
+		"icon": "user-group",
 		"description": "Gain valuable insights instantly with Foxi's real-time analytics. Track performance metrics, user behavior, and campaign effectiveness effortlessly.",
 		"category": "Analytics"
 	},
 	{
-		"title": "Пользуемся своим качественным инструментом",
-		"icon": "squares-plus",
+		"title": "Пользуемся качественным инструментом",
+		"icon": "saw",
 		"description": "Tailor your workspace with personalized dashboards that suit your workflow. Stay organized and focused on what matters most to your business.",
 		"category": "Analytics"
 	},
@@ -19,31 +19,31 @@
 	},
 	{
 		"title": "Фотоотчеты (опционально)",
-		"icon": "rocket",
+		"icon": "mobile",
 		"description": "Connect Foxi with your favorite tools and apps effortlessly. Streamline workflows and enhance productivity with seamless integrations.",
 		"category": "Productivity"
 	},
 	{
 		"title": "Рекомендации по доп.работам",
-		"icon": "device-phone-mobile",
+		"icon": "clipboard-document-list",
 		"description": "Stay productive on the go with Foxi's mobile app. Access key features, collaborate with your team, and manage tasks anytime, anywhere.",
 		"category": "Support"
 	},
 	{
 		"title": "Доставка необходимых материалов",
-		"icon": "trophy",
+		"icon": "dump",
 		"description": "Receive exceptional customer support whenever you need it. Our dedicated team is here 24/7 to assist you with any questions or issues.",
 		"category": "Support"
 	},
 	{
 		"title": "Дендролог в штате",
-		"icon": "shield-check",
+		"icon": "tree",
 		"description": "Rest assured knowing your data is safe with Foxi's robust security measures. We employ industry-standard protocols to protect your information.",
 		"category": "Security"
 	},
 	{
 		"title": "Оговариваем время приезда",
-		"icon": "arrow-treding-up",
+		"icon": "meeting-time",
 		"description": "Grow your business with confidence using Foxi's scalable platform. Whether you're a startup or a large enterprise, our solution adapts to your needs.",
 		"category": "Security"
 	},
