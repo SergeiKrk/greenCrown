@@ -2,13 +2,13 @@
 	{
 		"title": "Своя бригада",
 		"icon": "user-group",
-		"description": "Gain valuable insights instantly with Foxi's real-time analytics. Track performance metrics, user behavior, and campaign effectiveness effortlessly.",
+		"description": "Работа слаженной команды профессионалов сводит к минимуму допущение возможных ошибок.",
 		"category": "Analytics"
 	},
 	{
 		"title": "Пользуемся качественным инструментом",
 		"icon": "saw",
-		"description": "Tailor your workspace with personalized dashboards that suit your workflow. Stay organized and focused on what matters most to your business.",
+		"description": "Хороший инструмент позволяет выполнять работы быстро, безопасно и аккуратно.",
 		"category": "Analytics"
 	},
 	{
@@ -20,7 +20,7 @@
 	{
 		"title": "Фотоотчеты (опционально)",
 		"icon": "mobile",
-		"description": "Connect Foxi with your favorite tools and apps effortlessly. Streamline workflows and enhance productivity with seamless integrations.",
+		"description": "При необходимости, мы предоставляем фотоотчеты, что помагает Вам контролировать проводимые нами мероприятия.",
 		"category": "Productivity"
 	},
 	{
@@ -32,7 +32,7 @@
 	{
 		"title": "Доставка необходимых материалов",
 		"icon": "dump",
-		"description": "Receive exceptional customer support whenever you need it. Our dedicated team is here 24/7 to assist you with any questions or issues.",
+		"description": "Закажем, купим и привезем нужные растения, материали и препараты.",
 		"category": "Support"
 	},
 	{
@@ -44,7 +44,7 @@
 	{
 		"title": "Оговариваем время приезда",
 		"icon": "meeting-time",
-		"description": "Grow your business with confidence using Foxi's scalable platform. Whether you're a startup or a large enterprise, our solution adapts to your needs.",
+		"description": "С нами просто, мы ценим наше и Ваше время.",
 		"category": "Security"
 	},
 	{

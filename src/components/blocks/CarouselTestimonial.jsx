@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react'
-import Glide from '@glidejs/glide/dist/glide.modular.esm.js'
-imporiivdtIcd
-export default function CarouselControlsOutside() {
+import Glide from '@glidejs/glide'
+
+export default function CarouselLogo() {
 	useEffect(() => {
-		const slider = new Glide('.glide-04', {
+		const slider = new Glide('.glide-09', {
 			type: 'carousel',
-			focusAt: 'center',
+			autoplay: 1,
+			animationDuration: 4500,
+			animationTimingFunc: 'linear',
 			perView: 3,
-			autoplay: 3500,
-			animationDuration: 700,
-			gap: 24,
-			classNames: {
+			classes: {
 				nav: {
 					active: '[&>*]:bg-wuiSlate-700'
 				}
@@ -20,7 +19,8 @@ export default function CarouselControlsOutside() {
 					perView: 2
 				},
 				640: {
-					perView: 1
+					perView: 1,
+					gap: 36
 				}
 			}
 		}).mount()
@@ -32,90 +32,51 @@ export default function CarouselControlsOutside() {
 
 	return (
 		<>
-			{/*<!-- Component: Carousel with controls outside --> */}
-			<div className="glide-04 relative w-full">
-				{/*    <!-- Slides --> */}
-				<div className="overflow-hidden" data-glide-el="track">
+			{/*<!-- Component: Testimonial carousel --> */}
+			<div className="glide-09 relative w-full">
+				{/* <!-- Slides --> */}
+				<div data-glide-el="track">
 					<ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
 						<li>
 							<img
-								src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-01.jpg"
-								className="m-auto max-h-full w-full max-w-full"
+								src="https://Tailwindmix.b-cdn.net/carousel/logos/carousel-logo-image-1.svg"
+								className="m-auto h-20 max-h-full w-auto max-w-full"
 							/>
 						</li>
 						<li>
 							<img
-								src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-02.jpg"
-								className="m-auto max-h-full w-full max-w-full"
+								src="https://Tailwindmix.b-cdn.net/carousel/logos/carousel-logo-image-2.svg"
+								className="m-auto h-20 max-h-full w-auto max-w-full"
 							/>
 						</li>
 						<li>
 							<img
-								src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-03.jpg"
-								className="m-auto max-h-full w-full max-w-full"
+								src="https://Tailwindmix.b-cdn.net/carousel/logos/carousel-logo-image-3.svg"
+								className="m-auto h-20 max-h-full w-auto max-w-full"
 							/>
 						</li>
 						<li>
 							<img
-								src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-04.jpg"
-								className="m-auto max-h-full w-full max-w-full"
+								src="https://Tailwindmix.b-cdn.net/carousel/logos/carousel-logo-image-4.svg"
+								className="m-auto h-20 max-h-full w-auto max-w-full"
 							/>
 						</li>
 						<li>
 							<img
-								src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-05.jpg"
-								className="m-auto max-h-full w-full max-w-full"
+								src="https://Tailwindmix.b-cdn.net/carousel/logos/carousel-logo-image-5.svg"
+								className="m-auto h-20 max-h-full w-auto max-w-full"
+							/>
+						</li>
+						<li>
+							<img
+								src="https://Tailwindmix.b-cdn.net/carousel/logos/carousel-logo-image-6.svg"
+								className="m-auto h-20 max-h-full w-auto max-w-full"
 							/>
 						</li>
 					</ul>
 				</div>
-				{/*    <!-- Controls --> */}
-				<div className="flex w-full items-center justify-center gap-2 p-4" data-glide-el="controls">
-					<button
-						className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-700 bg-white/20 text-slate-700 transition duration-300 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
-						data-glide-dir="<"
-						aria-label="prev slide"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							strokeWidth="1.5"
-							stroke="currentColor"
-							className="h-5 w-5"
-						>
-							<title>prev slide</title>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-							/>
-						</svg>
-					</button>
-					<button
-						className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-700 bg-white/20 text-slate-700 transition duration-300 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
-						data-glide-dir=">"
-						aria-label="next slide"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							strokeWidth="1.5"
-							stroke="currentColor"
-							className="h-5 w-5"
-						>
-							<title>next slide</title>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-							/>
-						</svg>
-					</button>
-				</div>
 			</div>
-			{/*<!-- End Carousel with controls outside --> */}
+			{/*<!-- End Testimonial carousel --> */}
 		</>
 	)
 }
