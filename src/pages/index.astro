@@ -11,7 +11,7 @@ import CTA from '../components/blocks/CTA/BasicDark.astro'
 
 import testimonialBackground from '../assets/CEOspeech.webp'
 import Feature from '../components/blocks/features/FeatureList.astro'
-// import CarouselTestimonial from '../components/blocks/CarouselTestimonial'
+import Carousel from '../components/blocks/Carousel.jsx'
 // - SEO
 const SEO = {
 	title: 'Уход за зелеными насаждениями: Защита и обработка деревьев',
@@ -23,9 +23,10 @@ const SEO = {
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero />
 	<Features />
-	<Testimonial bg={testimonialBackground} bgPosition="right" />
 	<Feature />
 	<HighlightBlocks />
+	<Testimonial bg={testimonialBackground} bgPosition="right" />
 	<!-- <CarouselTestimonial /> -->
+	<!-- <Carousel client:load /> -->
 	<CTA />
 </Layout>

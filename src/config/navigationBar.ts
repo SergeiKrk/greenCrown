@@ -38,7 +38,7 @@ export const navigationBarData: NavData = {
 		text: 'GREENCROWN'
 	},
 	navItems: [
-		{ name: 'Home', link: '/' },
+		{ name: 'Главная', link: '/' },
 		{ name: 'Pricing', link: '/pricing' },
 		{ name: 'Features', link: '/features' },
 		{

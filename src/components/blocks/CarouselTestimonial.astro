@@ -1,0 +1,109 @@
+---
+
+---
+
+<!-- Component: Slider with controls inside -->
+<div class="glide-01 relative w-full">
+	<!-- Slides -->
+	<div class="overflow-hidden" data-glide-el="track">
+		<ul
+			class="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0"
+		>
+			<li>
+				<img
+					src="https://Tailwindmix.b-cdn.net/image-01.jpg"
+					class="m-auto max-h-full w-full max-w-full"
+				/>
+			</li>
+			<li>
+				<img
+					src="https://Tailwindmix.b-cdn.net/image-02.jpg"
+					class="m-auto max-h-full w-full max-w-full"
+				/>
+			</li>
+			<li>
+				<img
+					src="https://Tailwindmix.b-cdn.net/image-03.jpg"
+					class="m-auto max-h-full w-full max-w-full"
+				/>
+			</li>
+			<li>
+				<img
+					src="https://Tailwindmix.b-cdn.net/image-04.jpg"
+					class="m-auto max-h-full w-full max-w-full"
+				/>
+			</li>
+			<li>
+				<img
+					src="https://Tailwindmix.b-cdn.net/image-05.jpg"
+					class="m-auto max-h-full w-full max-w-full"
+				/>
+			</li>
+		</ul>
+	</div>
+	<!-- Controls -->
+	<div
+		class="absolute left-0 top-1/2 flex h-0 w-full items-center justify-between px-4"
+		data-glide-el="controls"
+	>
+		<button
+			class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-700 bg-white/20 text-slate-700 transition duration-300 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+			data-glide-dir="<"
+			aria-label="prev slide"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="h-5 w-5"
+			>
+				<title>prev slide</title>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"></path>
+			</svg>
+		</button>
+		<button
+			class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-700 bg-white/20 text-slate-700 transition duration-300 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+			data-glide-dir=">"
+			aria-label="next slide"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="h-5 w-5"
+			>
+				<title>next slide</title>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+			</svg>
+		</button>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+
+<script>
+	var glide01 = new Glide('.glide-01', {
+		type: 'slider',
+		focusAt: 'center',
+		perView: 1,
+		autoplay: 3000,
+		animationDuration: 700,
+		gap: 0,
+		classes: {
+			activeNav: '[&>*]:bg-slate-700'
+		}
+	})
+
+	glide01.mount()
+</script>
+<!-- End Slider with controls inside -->

@@ -6,6 +6,9 @@
 // Components
 // - UI
 import TextImage from '../basic/TextImage.astro'
+import Section from '../../ui/Section.astro'
+import Row from '../../ui/Row.astro'
+import Col from '../../ui/Col.astro'
 
 // Content
 import highlight01 from '../../../assets/highlights/highlight-01.svg'
@@ -16,6 +19,7 @@ import highlight03 from '../../../assets/highlights/highlight-03.svg'
 import highlight03mobile from '../../../assets/highlights/highlight-03-mobile.svg'
 import highlight04 from '../../../assets/highlights/highlight-04.svg'
 import highlight04mobile from '../../../assets/highlights/highlight-04-mobile.svg'
+import type { ZodString } from 'astro/zod'
 
 type HighlightBlock = {
 	title: string
@@ -37,8 +41,8 @@ const highlightBlocks: HighlightBlock[] = [
 		imagePosition: 'right'
 	},
 	{
-		title: 'Удаление сорняков между <strong>плитками</strong> на участке',
-		text: 'Automate repetitive tasks and streamline your workflow with our advanced automation tools. Save time and reduce errors by leveraging automated task assignments, workflow templates, and seamless integration with popular apps and services.',
+		title: '<strong>Прополка</strong> сорняков',
+		text: 'Удаление сорняков между плиткой, прополка газона, клумб и грядок. Избавим ваш сад от мертвых, больных и сорных растени.',
 		image: highlight02,
 		mobileImage: highlight02mobile,
 		imageWidth: highlight02.width,
@@ -66,18 +70,26 @@ const highlightBlocks: HighlightBlock[] = [
 ]
 ---
 
-{
-	highlightBlocks.map((highlight, key) => (
-		<TextImage
-			id={`highlight-${key}`}
-			title={highlight.title}
-			text={highlight.text}
-			image={highlight.image}
-			imageWidth={highlight.imageWidth}
-			imageHeight={highlight.imageHeight}
-			mobileImage={highlight.mobileImage}
-			imagePosition={highlight.imagePosition}
-			classes={key === 0 ? '!pb-0' : key === highlightBlocks.length - 1 ? '!pt-0' : '!py-0'}
-		/>
-	))
-}
+<Section>
+	<Row>
+		<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
+			<h2 class="text-pretty"><strong>Услуги</strong> по уходу за садом</h2>
+			<p class="pb-0 text-lg">Мы проводим комплексные работы по уходу за садом.</p>
+		</Col>
+	</Row>
+	{
+		highlightBlocks.map((highlight, key) => (
+			<TextImage
+				id={`highlight-${key}`}
+				title={highlight.title}
+				text={highlight.text}
+				image={highlight.image}
+				imageWidth={highlight.imageWidth}
+				imageHeight={highlight.imageHeight}
+				mobileImage={highlight.mobileImage}
+				imagePosition={highlight.imagePosition}
+				classes={key === 0 ? '!pb-0' : key === highlightBlocks.length - 1 ? '!pt-0' : '!py-0'}
+			/>
+		))
+	}
+</Section>
