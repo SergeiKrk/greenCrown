@@ -83,11 +83,21 @@ export default {
               "0 20px 25px -5px rgba(2, 6, 23, .25), 0 8px 10px -6px rgba(2, 6, 23, .25);",
           },
         },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
       },
       animation: {
         dropdown: "dropdown 300ms ease-in-out forwards",
         fadeInShadowLight: "fadeInShadowLight 500ms ease-in-out forwards",
         fadeInShadowDark: "fadeInShadowDark 500ms ease-in-out forwards",
+        marquee: "marquee 25s linear infinite",
+        marquee2: "marquee2 25s linear infinite",
       },
     },
   },

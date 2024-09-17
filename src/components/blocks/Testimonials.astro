@@ -1,0 +1,66 @@
+---
+import TestimonialCard from './TestimonialCard.astro'
+import Section from '../ui/Section.astro'
+import Row from '../ui/Row.astro'
+import Col from '../ui/Col.astro'
+const testimonial_list = [
+	{
+		author: 'David Cameron',
+		avatar: '/images/users/user-5.png',
+		organization: 'meta limited',
+		rating: 'four',
+		content:
+			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+	},
+	{
+		author: 'David Cameron',
+		avatar: '/images/users/user-6.png',
+		organization: 'meta limited',
+		rating: 'four',
+		content:
+			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+	},
+	{
+		author: 'David Cameron',
+		avatar: '/images/users/user-2.png',
+		organization: 'meta limited',
+		rating: 'three',
+		content:
+			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+	},
+	{
+		author: 'David Cameron',
+		avatar: '/images/users/user-3.png',
+		organization: 'meta limited',
+		rating: 'five',
+		content:
+			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+	}
+]
+---
+
+<section id="testimonials">
+	<Row>
+		<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
+			<h2 class="mt-32 text-pretty"><strong>Отзывы</strong> наших клиентов</h2>
+			<p class="pb-0 text-lg">
+				something something something something something something something something
+			</p>
+		</Col>
+	</Row>
+	<div class="relative flex overflow-x-hidden">
+		<div class="animate-marquee whitespace-nowrap py-12">
+			<TestimonialCard />
+			<TestimonialCard />
+			<TestimonialCard />
+			<TestimonialCard />
+		</div>
+
+		<div class="animate-marquee2 absolute whitespace-nowrap py-12">
+			<TestimonialCard />
+			<TestimonialCard />
+			<TestimonialCard />
+			<TestimonialCard />
+		</div>
+	</div>
+</section>

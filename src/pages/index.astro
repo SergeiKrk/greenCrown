@@ -5,13 +5,13 @@ import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/HomeCTA.astro'
 import Features from '../components/blocks/features/FeatureCards.astro'
-import Testimonial from '../components/blocks/testimonials/BasicDark.astro'
+import BasicDark from '../components/blocks/testimonials/BasicDark.astro'
 import HighlightBlocks from '../components/blocks/highlights/HightlightRows.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 
 import testimonialBackground from '../assets/CEOspeech.webp'
 import Feature from '../components/blocks/features/FeatureList.astro'
-import Carousel from '../components/blocks/Carousel.jsx'
+import Testimonials from '../components/blocks/Testimonials.astro'
 // - SEO
 const SEO = {
 	title: 'Уход за зелеными насаждениями: Защита и обработка деревьев',
@@ -25,8 +25,8 @@ const SEO = {
 	<Features />
 	<Feature />
 	<HighlightBlocks />
-	<Testimonial bg={testimonialBackground} bgPosition="right" />
-	<!-- <CarouselTestimonial /> -->
-	<!-- <Carousel client:load /> -->
+	<BasicDark bg={testimonialBackground} bgPosition="right" />
+	<!-- <Testimonial client:load /> -->
+	<Testimonials />
 	<CTA />
 </Layout>
