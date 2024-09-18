@@ -1,36 +1,39 @@
 ---
 import TestimonialCard from './TestimonialCard.astro'
-import Section from '../ui/Section.astro'
 import Row from '../ui/Row.astro'
 import Col from '../ui/Col.astro'
+
+import user1 from '../../../assets/avatars/avatar-01.webp'
+import user2 from '../../../assets/avatars/avatar-02.webp'
+import user3 from '../../../assets/avatars/avatar-03.webp'
 const testimonial_list = [
 	{
-		author: 'David Cameron',
-		avatar: '/images/users/user-5.png',
+		author: 'David Cameron0',
+		avatar: '../../../assets/avatars/avatar-01.webp',
 		organization: 'meta limited',
 		rating: 'four',
 		content:
 			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
 	},
 	{
-		author: 'David Cameron',
-		avatar: '/images/users/user-6.png',
+		author: 'David Cameron1',
+		avatar: '../../../assets/avatars/avatar-02.webp',
 		organization: 'meta limited',
 		rating: 'four',
 		content:
 			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
 	},
 	{
-		author: 'David Cameron',
-		avatar: '/images/users/user-2.png',
+		author: 'David Cameron2',
+		avatar: '../../../assets/avatars/avatar-03.webp',
 		organization: 'meta limited',
 		rating: 'three',
 		content:
 			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
 	},
 	{
-		author: 'David Cameron',
-		avatar: '/images/users/user-3.png',
+		author: 'David Cameron3',
+		avatar: '../../../assets/avatars/avatar-01	.webp',
 		organization: 'meta limited',
 		rating: 'five',
 		content:
@@ -48,19 +51,17 @@ const testimonial_list = [
 			</p>
 		</Col>
 	</Row>
+	<!-- {testimonial_list.map((testim: any, i: number) => <p class=`${i%2 ? "bg-red-500" : "bg-red-900"}`>{testim.author}</p>)} -->
 	<div class="relative flex overflow-x-hidden">
 		<div class="animate-marquee whitespace-nowrap py-12">
-			<TestimonialCard />
-			<TestimonialCard />
-			<TestimonialCard />
-			<TestimonialCard />
+			{testimonial_list.map((testim: any, i: number) => <TestimonialCard author={testim.author} />)}
 		</div>
-
-		<div class="animate-marquee2 absolute whitespace-nowrap py-12">
-			<TestimonialCard />
-			<TestimonialCard />
-			<TestimonialCard />
-			<TestimonialCard />
+		<div class="absolute animate-marquee2 whitespace-nowrap py-12">
+			{
+				testimonial_list.map((testim: any, i: number) => {
+					if (i % 2) <TestimonialCard author={testim.author} />
+				})
+			}
 		</div>
 	</div>
 </section>
