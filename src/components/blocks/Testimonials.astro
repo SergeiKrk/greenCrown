@@ -57,11 +57,7 @@ const testimonial_list = [
 			{testimonial_list.map((testim: any, i: number) => <TestimonialCard author={testim.author} />)}
 		</div>
 		<div class="absolute animate-marquee2 whitespace-nowrap py-12">
-			{
-				testimonial_list.map((testim: any, i: number) => {
-					if (i % 2) <TestimonialCard author={testim.author} />
-				})
-			}
+			{testimonial_list.map((testim: any, i: number) => <TestimonialCard author={testim.author} />)}
 		</div>
 	</div>
 </section>
