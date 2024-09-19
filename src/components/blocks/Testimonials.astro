@@ -10,34 +10,30 @@ const testimonial_list = [
 	{
 		author: 'David Cameron0',
 		avatar: '../../../assets/avatars/avatar-01.webp',
-		organization: 'meta limited',
 		rating: 'four',
 		content:
-			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+			'Профессионалы своего дела! <br/> Сделали омолаживающую подрезку<br/> двум старым яблоням на отлично.<br/> Дали полезные рекомендации по<br/> уходу за плодовыми деревьями.'
 	},
 	{
-		author: 'David Cameron1',
+		author: 'Антонина Петровна',
 		avatar: '../../../assets/avatars/avatar-02.webp',
-		organization: 'meta limited',
-		rating: 'four',
+		rating: '5',
 		content:
-			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+			'Замечательно поухаживали за моими яблонями - обрезали, счистили мох и старую кору, все срезы замазали варом, нанесли побелку, дали много рекомендаций. Опасалась, что такая кардинальная подрезка может повредить, но яблони летом замечательно зазеленели, дали много веточек, что раньше не делали. Я была очень рада. Этой весной опять попросила откорректировать новый прирост и опять все чётко сделали как договаривались, бонусом омолодили сливу.'
 	},
 	{
-		author: 'David Cameron2',
+		author: 'Михаил Петров',
 		avatar: '../../../assets/avatars/avatar-03.webp',
-		organization: 'meta limited',
 		rating: 'three',
 		content:
-			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+			'Однозначно рекомендую. Мастер сделал стрижку туй, быстро и дешевле чем у конкурентов. Человек полностью разбирается в своей сфере, дал очень много полезных советов. Очень ему благодарны!'
 	},
 	{
-		author: 'David Cameron3',
+		author: 'Андрей',
 		avatar: '../../../assets/avatars/avatar-01	.webp',
-		organization: 'meta limited',
 		rating: 'five',
 		content:
-			'Our platform helps build secure onboarding authentica experiences & engage your users. We build .'
+			'Долго искал и выбирал кто сможет реализовать необходимые мне работы по участку. Не один раз переписывался и созванивался, что бы уточнить детали по работам. В результате согласился с работами и ценой. В назначенное время встретились и приступили. Всё было выполнено как обговаривали. Качество работ вполне устроило. В процессе много всего комментировалось и давал рекомендации по дальнейшим работам с участком.'
 	}
 ]
 ---
@@ -54,10 +50,18 @@ const testimonial_list = [
 	<!-- {testimonial_list.map((testim: any, i: number) => <p class=`${i%2 ? "bg-red-500" : "bg-red-900"}`>{testim.author}</p>)} -->
 	<div class="relative flex overflow-x-hidden">
 		<div class="animate-marquee whitespace-nowrap py-12">
-			{testimonial_list.map((testim: any, i: number) => <TestimonialCard author={testim.author} />)}
+			{
+				testimonial_list.map((testim: any, i: number) => (
+					<TestimonialCard author={testim.author} content={testim.content} />
+				))
+			}
 		</div>
 		<div class="absolute animate-marquee2 whitespace-nowrap py-12">
-			{testimonial_list.map((testim: any, i: number) => <TestimonialCard author={testim.author} />)}
+			{
+				testimonial_list.map((testim: any, i: number) => (
+					<TestimonialCard author={testim.author} content={testim.content} />
+				))
+			}
 		</div>
 	</div>
 </section>
