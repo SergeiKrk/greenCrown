@@ -59,9 +59,6 @@ export default {
           950: "#020617",
         },
       },
-      cursor: {
-        fancy: "url(https://www.svgrepo.com/show/269/color-picker.svg)",
-      },
       fontFamily: {
         sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
         headings: ["Outfit Variable", ...defaultTheme.fontFamily.sans],
@@ -93,11 +90,11 @@ export default {
         },
       },
       animation: {
-        dropdown: "dropdown 300ms ease-in-out forwards",
-        fadeInShadowLight: "fadeInShadowLight 500ms ease-in-out forwards",
-        fadeInShadowDark: "fadeInShadowDark 500ms ease-in-out forwards",
-        marquee: "marquee 25s linear infinite",
-        marquee2: "marquee2 25s linear infinite",
+        dropdown: "dropdown 500ms ease-in-out forwards",
+        fadeInShadowLight: "fadeInShadowLight 800ms ease-in-out forwards",
+        fadeInShadowDark: "fadeInShadowDark 800ms ease-in-out forwards",
+        marquee: "marquee 35s linear infinite",
+        marquee2: "marquee2 35s linear infinite",
       },
     },
   },
