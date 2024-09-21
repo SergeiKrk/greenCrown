@@ -20,19 +20,13 @@ type Props = {
 	radius?: string
 	classes?: string
 }
-const { size = 'base', avatars, radius = 'rounded', classes } = Astro.props
+const { size = 'lg', avatars, radius = 'rounded', classes } = Astro.props
 ---
 
 <span class:list={['avatar-group', { [`${classes}`]: classes }]}>
 	{
 		avatars.map((item) => (
-			<Avatar
-				size={size}
-				image={item.image}
-				link={item.link}
-				radius={radius}
-				classes="-mx-2 first:ml-0"
-			/>
+			<Avatar size={size} image={item.image} radius={radius} classes="-mx-2 first:ml-0" />
 		))
 	}
 </span>

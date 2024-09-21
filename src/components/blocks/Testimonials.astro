@@ -3,32 +3,37 @@ import TestimonialCard from './TestimonialCard.astro'
 import Row from '../ui/Row.astro'
 import Col from '../ui/Col.astro'
 
+import user1 from '../../assets/avatars/antonina-petrovna.webp'
+import user2 from '../../assets/avatars/evgenij-aleksandrovskij.webp'
+import user3 from '../../assets/avatars/mihail-petrov.webp'
+import user4 from '../../assets/avatars/andrej.webp'
+
 const testimonial_list = [
 	{
 		author: 'Антонина Петровна',
-		avatar: '../../../assets/avatars/avatar-01.webp',
-		rating: 'four',
+		avatar: user1,
+		rating: '5',
 		content:
 			'Профессионалы своего дела! <br/> Сделали омолаживающую подрезку<br/> двум старым яблоням на отлично.<br/> Дали полезные рекомендации по<br/> уходу за плодовыми деревьями.'
 	},
 	{
 		author: 'Евгений Александровский',
-		avatar: '../../../assets/avatars/avatar-02.webp',
+		avatar: user2,
 		rating: '5',
 		content:
 			'Замечательно поухаживали <br/> за моими яблонями - обрезали, <br/> счистили мох и старую кору, <br/> все срезы замазали варом, <br/> нанесли побелку, <br/> дали много рекомендаций. <br/> Опасалась, что такая кардинальная <br/> подрезка может повредить, <br/> но яблони летом замечательно <br/> зазеленели, дали много веточек, <br/> что раньше не делали. <br/> Я была очень рада. <br/>'
 	},
 	{
 		author: 'Михаил Петров',
-		avatar: '../../../assets/avatars/avatar-03.webp',
-		rating: 'three',
+		avatar: user3,
+		rating: '5',
 		content:
 			'Однозначно рекомендую. <br/> Мастер сделал стрижку туй, <br/> быстро и дешевле чем у <br/> конкурентов. Человек полностью <br/> разбирается в своей сфере, <br/> дал очень много полезных <br/> советов. Очень ему благодарны!'
 	},
 	{
 		author: 'Андрей',
-		avatar: '../../../assets/avatars/avatar-01	.webp',
-		rating: 'five',
+		avatar: user4,
+		rating: '5',
 		content:
 			'Долго искал и выбирал кто сможет <br/> реализовать необходимые мне <br/> работы по участку. Не один раз <br/> переписывался и созванивался, что бы <br/> уточнить детали по работам. <br/> В результате согласился с <br/> работами и ценой. В назначенное <br/> время встретились и приступили. <br/> Всё было выполнено как <br/> обговаривали. Качество работ <br/> вполне устроило. В процессе <br/> много всего комментировалось и <br/> давал рекомендации по <br/> дальнейшим работам с участком.'
 	}
@@ -49,14 +54,14 @@ const testimonial_list = [
 		<div class="flex animate-marquee whitespace-nowrap py-12">
 			{
 				testimonial_list.map((testim: any, i: number) => (
-					<TestimonialCard author={testim.author} content={testim.content} />
+					<TestimonialCard author={testim.author} content={testim.content} avatar={testim.avatar} />
 				))
 			}
 		</div>
 		<div class="absolute flex animate-marquee2 whitespace-nowrap py-12">
 			{
 				testimonial_list.map((testim: any, i: number) => (
-					<TestimonialCard author={testim.author} content={testim.content} />
+					<TestimonialCard author={testim.author} content={testim.content} avatar={testim.avatar} />
 				))
 			}
 		</div>
