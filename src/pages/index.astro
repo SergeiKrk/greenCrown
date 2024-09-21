@@ -12,6 +12,7 @@ import CTA from '../components/blocks/CTA/BasicDark.astro'
 import testimonialBackground from '../assets/CEOspeech.webp'
 import Feature from '../components/blocks/features/FeatureList.astro'
 import Testimonials from '../components/blocks/Testimonials.astro'
+import FAQ from '../components/blocks/FAQ/Basic.astro'
 // - SEO
 const SEO = {
 	title: 'Уход за зелеными насаждениями: Защита и обработка деревьев',
@@ -28,5 +29,7 @@ const SEO = {
 	<BasicDark bg={testimonialBackground} bgPosition="right" />
 	<!-- <Testimonial client:load /> -->
 	<Testimonials />
-	<CTA />
+
+	<FAQ classes="bg-slate-50 dark:bg-neutral-900/40" />
+	<!-- <CTA /> -->
 </Layout>

@@ -11,23 +11,20 @@ import { Icon } from 'astro-icon/components'
 // Data
 import { socialLinks } from '../../config/socialLinks'
 import { footerNavigationData } from '../../config/footerNavigation'
-import { Image } from 'astro:assets'
-import Logosrc from '../../assets/logoGreenCrown.png'
+import FooterImg from '../../assets/logoGreenCrown.png'
 
 const { footerAbout, footerColumns, subFooter } = footerNavigationData
 ---
 
-<footer class="footer">
+<footer class="">
 	<!-- Main footer -->
 	<div class="footer__main">
 		<div class="footer__container">
 			<div class="footer__cols">
 				<div class="footer__col">
 					<a aria-label="webiste logo" aria-current="page" class="footer__main-brand" href="/">
-						<Image src={Logosrc} alt={footerAbout.logo.alt} width="60" />
-						<div class="ml-2 hidden lg:block">
-							<div class="text-2xl"><span class="text-primary-500">GREEN</span>CROWN</div>
-						</div>
+						<img src={FooterImg.src} alt={footerAbout.logo.alt} width="50" height="50" />
+						{footerAbout.logo.text}
 					</a>
 					<p>
 						{footerAbout.aboutText}
@@ -79,7 +76,7 @@ const { footerAbout, footerColumns, subFooter } = footerNavigationData
 		@apply text-neutral-500 dark:text-neutral-300;
 	}
 	.footer a {
-		@apply transition-colors duration-300 hover:text-teal-700 focus:text-primary-600;
+		@apply transition-colors duration-300 hover:text-primary-500 focus:text-primary-600;
 	}
 	.footer__main {
 		@apply border-t border-neutral-100 bg-neutral-50 pb-12 pt-16 text-sm dark:border-neutral-900 dark:bg-neutral-950 [&_li]:mb-2 [&_li]:leading-6;

@@ -37,11 +37,11 @@ export const footerNavigationData: FooterData = {
 	footerAbout: {
 		title: 'Foxi.',
 		aboutText:
-			'Expertly made, responsive, accessible components in React and HTML ready to be used on your website or app. Just copy and paste them on your Tailwind CSS project.',
+			'Сохраним красоту и силу ваших деревьев. Комплексный уход и защита зеленых насаждения на вашем участке.',
 		logo: {
-			src: '/logo.svg',
-			alt: 'The tailwind astro theme',
-			text: 'Foxi.'
+			src: '../../assets/logoGreenCrown.png',
+			alt: 'Green Crown - ЛЕЧЕНИЕ РАСТЕНИЙ и БЕРЕЖНЫЙ УХОД',
+			text: 'GreenCrown'
 		}
 	},
 	footerColumns: [
@@ -106,6 +106,6 @@ export const footerNavigationData: FooterData = {
 		}
 	],
 	subFooter: {
-		copywriteText: '© Foxi 2024.'
+		copywriteText: '© GREEN CROWN 2024.'
 	}
 }
