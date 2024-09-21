@@ -26,7 +26,7 @@ export const configData: Config = {
 		'Комплексный уход за зелеными насаждениями: лечение деревьев, защита от вредителей, профессиональное обслуживание участков',
 	ogImage: '/og.jpg',
 	logo: {
-		src: '../assets/logoGreenCrown.png',
+		src: '/logoGreenCrown.png',
 		alt: 'GreenCrown logo'
 	},
 	canonical: true,
