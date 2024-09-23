@@ -1,0 +1,100 @@
+---
+// Components
+// - Layout
+import Layout from '../layouts/Layout.astro'
+// - UI
+import Hero from '../components/blocks/hero/PageHeader.astro'
+import ContactCards from '../components/blocks/contact/ContactCards.astro'
+import Feature from '../components/blocks/features/FeatureList.astro'
+import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
+import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
+import TextImage from '../components/blocks/basic/TextImage.astro'
+import CTA from '../components/blocks/CTA/BasicDark.astro'
+
+// Data
+import faqData from '../data/json-files/faqData.json'
+// - FAQ Categories
+const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'integrations')
+
+// Content
+import faqImage1 from '../assets/faq/faq-01.png'
+// - SEO
+const SEO = {
+	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
+	description:
+		'Dive into the Foxi FAQ Funhouse to get answers to all your questions about pricing, integrations, features, and more. Discover how Foxi can make your work life more productive and enjoyable.'
+}
+// - Page Header
+const header = {
+	title: 'Get Answers to Your <strong>Foxi</strong> Questions.',
+	text: 'Find answers to common questions about Foxi '
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Hero title={header.title} text={header.text} />
+	<ContactCards classes="dark:bg-neutral-950/80" />
+	<Feature />
+	<SidebarContent>
+		<div slot="sidebar">
+			<h3>Introduction</h3>
+			<p>
+				Please take a moment to read through these terms to understand your rights and
+				responsibilities while using our services.
+			</p>
+		</div>
+		<div class="basic-text">
+			<h4>Welcome to Foxi</h4>
+			<p>
+				Welcome to Foxi! We’re thrilled to have you on board. Our services are designed to help you
+				stay organized, communicate effectively, and boost your productivity. By using Foxi, you are
+				agreeing to these terms and conditions, so please read them carefully.
+			</p>
+			<p>
+				Your satisfaction is important to us. If you have any questions or concerns about these
+				terms, please do not hesitate to contact us. Our team is here to assist you and ensure you
+				have a great experience with Foxi.
+			</p>
+
+			<h4>Acceptance of Terms</h4>
+			<p>
+				By accessing or using our services, you agree to comply with and be bound by these Terms of
+				Service and our Privacy Policy. If you do not agree with any part of these terms, you must
+				not use our services. Your continued use of Foxi signifies your acceptance of these terms.
+			</p>
+			<p>
+				We reserve the right to modify these terms at any time. We will notify you of any changes by
+				posting the new terms on our website. It is your responsibility to review these terms
+				periodically. Continued use of the service after any changes means you accept the new terms.
+			</p>
+
+			<h4>Our Commitment to You</h4>
+			<p>
+				At Foxi, we are committed to providing you with reliable, high-quality services. Our goal is
+				to help you achieve your productivity and organizational objectives with ease. We
+				continuously work to improve our services and provide you with the best possible experience.
+			</p>
+			<p>
+				We value your feedback and suggestions. Please feel free to reach out to us with any
+				comments or ideas on how we can serve you better. Your input helps us enhance Foxi and meet
+				your
+			</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Why Foxi’s Pricing Plans Offer Great Value"
+		text="At Foxi, we believe in providing exceptional value at every price point. Our pricing plans are designed to cater to a variety of needs, from individuals and small teams to large enterprises. Each plan includes access to our powerful features, seamless integrations, and top-notch customer support. "
+		image={faqImage1}
+		mobileImage={faqImage1}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-64"
+	/>
+	<FAQ
+		title="Integrations Made Easy"
+		text="Discover how Foxi seamlessly integrates with your favorite tools and platforms. From Google Calendar to Slack, find out how to connect and enhance your productivity with powerful integrations."
+		data={faqIntegrations}
+	/>
+	<CTA />
+</Layout>

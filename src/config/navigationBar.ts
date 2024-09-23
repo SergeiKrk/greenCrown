@@ -40,18 +40,22 @@ export const navigationBarData: NavData = {
 	navItems: [
 		{ name: 'Главная', link: '/' },
 		{ name: 'Садовый календарь', link: '/sadovyj-kalendar' },
-		{ name: 'Features', link: '/features' },
+		{
+			name: 'Услуги',
+			link: '#',
+			submenu: [{ name: 'Лечение деревьев', link: '/lechenie-derevev' }]
+		},
 		{
 			name: 'Resources',
 			link: '#',
 			submenu: [
 				{ name: 'Blog', link: '/blog' },
-				{ name: 'Changelog', link: '/changelog' },
 				{ name: 'FAQ', link: '/faq' },
-				{ name: 'Terms', link: '/terms' }
+				{ name: 'Terms', link: '/terms' },
+				{ name: 'Features', link: '/features' },
+				{ name: 'Contact', link: '/contact' }
 			]
-		},
-		{ name: 'Contact', link: '/contact' }
+		}
 	],
 	navActions: [{ name: 'Try it now', link: '/', style: 'primary', size: 'lg' }]
 }

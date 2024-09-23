@@ -30,7 +30,7 @@ node_modules/
 
 # Astro build directory
 /dist/
-/public/
+# /public/
 
 # Astro cache
 /.astro/
