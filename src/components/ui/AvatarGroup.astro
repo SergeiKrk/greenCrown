@@ -17,18 +17,13 @@ import Avatar from './Avatar.astro'
 type Props = {
 	size?: 'lg' | 'base' | 'sm' | 'xs'
 	avatars: Array<any>
-	radius?: string
 	classes?: string
 }
-const { size = 'lg', avatars, radius = 'rounded', classes } = Astro.props
+const { size = 'lg', avatars, classes } = Astro.props
 ---
 
 <span class:list={['avatar-group', { [`${classes}`]: classes }]}>
-	{
-		avatars.map((item) => (
-			<Avatar size={size} image={item.image} radius={radius} classes="-mx-2 first:ml-0" />
-		))
-	}
+	{avatars.map((item) => <Avatar size={size} image={item.image} classes="-ml-4 first:ml-0" />)}
 </span>
 
 <style>
