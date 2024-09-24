@@ -29,12 +29,12 @@ const avatars = [
 	<BgGradient />
 	<Row>
 		<Col span="6" align="center">
-			<!-- Component: Rounded full base sized basic grouped avatars -->
+			<!-- Component: Rounded full base sized grouped compact avatars -->
 			<div class="flex w-full items-center justify-center p-10">
-				<div class="flex -space-x-2">
+				<div class="flex -space-x-4 transition-all hover:-space-x-2">
 					<a
 						href="#"
-						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
+						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition-all"
 					>
 						<img
 							src="https://i.pravatar.cc/40?img=31"
@@ -47,13 +47,13 @@ const avatars = [
 					</a>
 					<a
 						href="#"
-						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-emerald-500 text-white"
+						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-emerald-500 text-white transition-all"
 					>
 						JL
 					</a>
 					<a
 						href="#"
-						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
+						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition-all"
 					>
 						<img
 							src="https://i.pravatar.cc/40?img=33"
@@ -66,7 +66,7 @@ const avatars = [
 					</a>
 					<a
 						href="#"
-						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-lg text-white"
+						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-lg text-white transition-all"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -75,11 +75,11 @@ const avatars = [
 							viewBox="0 0 24 24"
 							stroke="currentColor"
 							stroke-width="1.5"
-							aria-labelledby="title-01 desc-01"
+							aria-labelledby="title-02 desc-02"
 							role="graphics-symbol"
 						>
-							<title id="title-01">User Icon</title>
-							<desc id="desc-01">User icon associated with a particular user account</desc>
+							<title id="title-02">User Icon</title>
+							<desc id="desc-02">User icon associated with a particular user account</desc>
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -88,7 +88,7 @@ const avatars = [
 					</a>
 					<a
 						href="#"
-						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
+						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition-all"
 					>
 						<img
 							src="https://i.pravatar.cc/40?img=34"
@@ -101,16 +101,16 @@ const avatars = [
 					</a>
 					<a
 						href="#"
-						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-slate-200 text-sm text-slate-500"
+						class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-slate-200 text-sm text-slate-500 transition-all"
 					>
 						+4
 					</a>
 				</div>
 			</div>
-			<!-- End Rounded full base sized basic grouped avatars -->
-			<ChipNotification classes="mb-6">
+			<!-- End Rounded full base sized grouped compact avatars -->
+			<ChipNotification radius="rounded-full" classes="mb-6">
 				<strong>300+</strong> довольных клиентов
-				<AvatarGroup avatars={avatars} slot="button" />
+				<AvatarGroup avatars={avatars} radius="rounded-full" slot="button" />
 			</ChipNotification>
 			<h1><strong>Служба</strong> ухода за зелеными насаждениями</h1>
 			<p class="pb-0 text-lg">Лечение деревьев, защита от вредителей, озеленение и уход</p>
