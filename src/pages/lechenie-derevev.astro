@@ -3,7 +3,7 @@
 // - Layout
 import Layout from '../layouts/Layout.astro'
 // - UI
-import Hero from '../components/blocks/hero/PageHeader.astro'
+import Hero from '../components/blocks/hero/PageHero.astro'
 import ContactCards from '../components/blocks/contact/ContactCards.astro'
 import Feature from '../components/blocks/features/FeatureList.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
@@ -11,6 +11,7 @@ import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 
+import heroImg from '../assets/cards/lechenie-derevev.webp'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
@@ -27,13 +28,13 @@ const SEO = {
 }
 // - Page Header
 const header = {
-	title: 'Get Answers to Your <strong>Foxi</strong> Questions.',
+	title: 'Лечение <strong>деревьев</strong>',
 	text: 'Find answers to common questions about Foxi '
 }
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
-	<Hero title={header.title} text={header.text} />
+	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<ContactCards classes="dark:bg-neutral-950/80" />
 	<Feature />
 	<SidebarContent>
