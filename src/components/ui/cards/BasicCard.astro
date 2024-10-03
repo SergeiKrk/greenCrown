@@ -29,20 +29,9 @@ type Props = {
 	icon?: string
 	link?: string
 	type?: 'image-top' | 'image-bottom'
-	transition?: string
 	classes?: string
 }
-const {
-	title = '',
-	subtitle,
-	titleSize = 'xl',
-	image,
-	icon,
-	link,
-	type,
-	transition,
-	classes
-} = Astro.props
+const { title = '', subtitle, titleSize = 'xl', image, icon, link, type, classes } = Astro.props
 ---
 
 <Card classes={classes} link={link}>
@@ -54,7 +43,7 @@ const {
 				class={type === 'image-bottom' ? 'order-2' : ''}
 				width={600}
 				height={400}
-				transition:name={transition}
+				transition:name={title}
 			/>
 		)
 	}

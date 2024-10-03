@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from "tailwindcss/defaultTheme";
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: [
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "node_modules/preline/dist/*.js",
+  ],
   darkMode: ["selector"],
   safelist: [
     {
@@ -103,6 +106,8 @@ export default {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("preline/plugin"),
     require("daisyui"),
     require("tailwindcss/plugin")(function ({ addVariant }) {
       addVariant("dark-me", ".dark_&");
