@@ -30,6 +30,17 @@ type HighlightBlock = {
 	imageHeight: number
 	imagePosition: 'left' | 'right'
 }
+
+type HightHead = {
+	title: string
+	description: string
+}
+
+const HightHead = {
+	title: '<strong>Услуги</strong> по уходу за садом',
+	description: 'Мы проводим комплексные работы по уходу за садом.'
+}
+
 const highlightBlocks: HighlightBlock[] = [
 	{
 		title: 'Лечение <strong>деревьев</strong> и других растений',
@@ -73,8 +84,8 @@ const highlightBlocks: HighlightBlock[] = [
 <Section>
 	<Row>
 		<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-			<h2 class="text-pretty"><strong>Услуги</strong> по уходу за садом</h2>
-			<p class="pb-0 text-lg">Мы проводим комплексные работы по уходу за садом.</p>
+			<h2 class="text-pretty" set:html={HightHead.title} />
+			<p class="pb-0 text-lg" set:html={HightHead.description} />
 		</Col>
 	</Row>
 	{
