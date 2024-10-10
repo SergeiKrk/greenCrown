@@ -4,7 +4,7 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import ContactCards from '../components/blocks/contact/ContactCards.astro'
+import CategoryCards from '../components/blocks/basic/categoryCard/CategoryCards.astro'
 import Feature from '../components/blocks/features/FeatureList.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
@@ -12,6 +12,11 @@ import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
+
+import lechenierastenii from '../assets/highlights/lechenie_rastenii.webp'
+import lechenierasteniiMin from '../assets/highlights/lechenie_rastenii_mobile.webp'
+import propolkasornyakov from '../assets/highlights/propolka-sornyakov.webp'
+import propolkasornyakovMin from '../assets/highlights/propolka-sornyakov-mobile.webp'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
@@ -32,12 +37,41 @@ const header = {
 	text: 'Find answers to common questions about Foxi '
 }
 
-const category_services = 1
+type CategoryServices = {
+	title: string
+	text: string
+	image: any
+	mobileImage?: any
+	imageWidth: number
+	imageHeight: number
+	imagePosition: 'left' | 'right'
+}
+
+const CategoryServices: CategoryServices[] = [
+	{
+		title: 'Лечение <strong>деревьев</strong> и других растений',
+		text: 'Gain complete visibility into your projects and tasks with our comprehensive dashboard. Easily track progress, deadlines, and team performance at a glance. Our dashboard offers real-time project tracking',
+		image: lechenierastenii,
+		mobileImage: lechenierasteniiMin,
+		imageWidth: lechenierastenii.width,
+		imageHeight: lechenierastenii.height,
+		imagePosition: 'right'
+	},
+	{
+		title: '<strong>Прополка</strong> сорняков',
+		text: 'Удаление сорняков между плиткой, прополка газона, клумб и грядок. Избавим ваш сад от мертвых, больных и сорных растени.',
+		image: propolkasornyakov,
+		mobileImage: propolkasornyakovMin,
+		imageWidth: propolkasornyakov.width,
+		imageHeight: propolkasornyakov.height,
+		imagePosition: 'left'
+	}
+]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
-	<ContactCards classes="dark:bg-neutral-950/80" />
+	<CategoryCards classes="dark:bg-neutral-950/80" />
 	<Feature />
 	<SidebarContent>
 		<div slot="sidebar">
@@ -50,7 +84,7 @@ const category_services = 1
 		<div class="basic-text">
 			<h4>Welcome to Foxi</h4>
 			<p>
-				Welcome to Foxi! We’re thrilled to have you on board. Our services are designed to help you
+				Welcome to Foxi! Were thrilled to have you on board. Our services are designed to help you
 				stay organized, communicate effectively, and boost your productivity. By using Foxi, you are
 				agreeing to these terms and conditions, so please read them carefully.
 			</p>
