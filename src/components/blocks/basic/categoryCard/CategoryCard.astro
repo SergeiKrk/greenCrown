@@ -1,0 +1,39 @@
+---
+import Col from '../../../ui/Col.astro'
+import { Image } from 'astro:assets'
+
+// 	Props
+type Props = {
+	link: string
+	title: string
+	text: string
+	image: any
+	imageWidth: number
+	imageHeight: number
+}
+const { link, title, text, image, imageWidth, imageHeight } = Astro.props
+---
+
+<Col span="3" classes="flex flex-col gap-6 group">
+	<div
+		class="dark:highlight-white/5 relative mx-auto flex items-center gap-6 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/5 dark:bg-slate-800"
+	>
+		<Image
+			src={image}
+			alt=`${title} фото`
+			width={imageWidth}
+			height={imageHeight}
+			class="lg:rounded-4xl absolute -left-2 h-24 w-24 rounded-lg shadow-lg transition duration-300 ease-in-out group-hover:scale-110 lg:-left-6 lg:h-32 lg:w-32"
+		/>
+		<a class="z-10 flex flex-col py-5 pl-[110px] pr-6" href={link}>
+			<strong
+				class="bg-neutral-50/50 px-1 text-xl font-bold text-slate-900 dark:bg-[#fff]/20 dark:text-slate-200 dark:2xl:bg-slate-950/10"
+				>{title}</strong
+			>
+			<span
+				class="bg-neutral-50/50 px-1 text-sm font-medium text-slate-500 dark:bg-[#fff]/20 dark:text-slate-400 dark:2xl:bg-slate-950/10"
+				>{text}
+			</span>
+		</a>
+	</div>
+</Col>
