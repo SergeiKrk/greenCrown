@@ -26,6 +26,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'integrations')
 // Content
 import faqImage1 from '../assets/faq/faq-01.png'
 import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
 	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
@@ -43,6 +44,14 @@ const catCards = {
 	description: ''
 }
 
+type MajorSubCategories = {
+	link: string
+	title: string
+	image: any
+	imageWidth: number
+	imageHeight: number
+}
+
 type CategoryServices = {
 	link: string
 	title: string
@@ -51,6 +60,23 @@ type CategoryServices = {
 	imageWidth: number
 	imageHeight: number
 }
+
+const MajorSubCategories: MajorSubCategories[] = [
+	{
+		link: '/#',
+		title: 'Лечение плодовых деревьев',
+		image: lechenietreshchin,
+		imageWidth: lechenietreshchin.width,
+		imageHeight: lechenietreshchin.height
+	},
+	{
+		link: '/#',
+		title: 'Лечение хвойных деревьев',
+		image: lechenietreshchin,
+		imageWidth: lechenietreshchin.width,
+		imageHeight: lechenietreshchin.height
+	}
+]
 
 const CategoryServices: CategoryServices[] = [
 	{
@@ -90,6 +116,26 @@ const CategoryServices: CategoryServices[] = [
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
+	<Section id="msubcat">
+		<div class="flex flex-col lg:flex-row lg:justify-center">
+			{
+				MajorSubCategories.map((msubcat) => (
+				<a href={msubcat.link} class="group relative overflow-auto rounded-xl px-2 py-6 lg:p-8 lg:pl-14">
+				<div
+					class="dark:highlight-white/5 relative mx-auto flex max-w-sm items-center gap-6 overflow-visible rounded-xl bg-white shadow-lg ring-1 ring-black/5 dark:bg-slate-800"
+				>
+					<Image src={msubcat.image} height={msubcat.imageHeight} width={msubcat.imageWidth} alt=`${msubcat.title}-картинка` class="absolute -left-6 ml-1 h-[100px] w-[100px] rounded-full shadow-lg transition duration-300 ease-in-out group-hover:scale-110 lg:-left-12" loading='eager' />
+					<div class="flex flex-col py-5 pl-[90px] lg:pl-[70px] lg:pr-3">
+						<strong class="text-md font-bold text-slate-900 lg:text-lg dark:text-slate-200"
+							>{msubcat.title}</strong
+						>
+					</div>
+				</div>
+			</a>
+				))
+			}
+		</div>
+	</Section>
 	<Section id="category-cards">
 		<Row>
 			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
