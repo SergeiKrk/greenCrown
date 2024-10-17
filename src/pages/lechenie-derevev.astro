@@ -13,10 +13,11 @@ import Section from '../components/ui/Section.astro'
 import Row from '../components/ui/Row.astro'
 import Col from '../components/ui/Col.astro'
 
-import heroImg from '../assets/cards/lechenie-derevev.webp'
+// import heroImg from '../assets/cards/lechenie-derevev.webp'
+import heroImg from '../assets/highlights/plodovie.png'
 
-import lechenietreshchin from '../assets/highlights/lechenie-treshchin-i-dupel.webp'
-import propolkasornyakov from '../assets/highlights/propolka-sornyakov.webp'
+import plodovie from '../assets/highlights/plodovie.png'
+import hvoinie from '../assets/highlights/hvoinie.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
@@ -65,16 +66,16 @@ const MajorSubCategories: MajorSubCategories[] = [
 	{
 		link: '/#',
 		title: 'Лечение плодовых',
-		image: lechenietreshchin,
-		imageWidth: lechenietreshchin.width,
-		imageHeight: lechenietreshchin.height
+		image: plodovie,
+		imageWidth: plodovie.width,
+		imageHeight: plodovie.height
 	},
 	{
 		link: '/#',
 		title: 'Лечение хвойных',
-		image: lechenietreshchin,
-		imageWidth: lechenietreshchin.width,
-		imageHeight: lechenietreshchin.height
+		image: hvoinie,
+		imageWidth: hvoinie.width,
+		imageHeight: hvoinie.height
 	}
 ]
 
@@ -83,33 +84,33 @@ const CategoryServices: CategoryServices[] = [
 		link: '/#',
 		title: 'Трещины и раны деревьев',
 		text: 'Лечение трещин, ран, морозобоин и дупел деревьев',
-		image: lechenietreshchin,
-		imageWidth: lechenietreshchin.width,
-		imageHeight: lechenietreshchin.height
+		image: hvoinie,
+		imageWidth: hvoinie.width,
+		imageHeight: hvoinie.height
 	},
 	{
 		link: '/#',
 		title: 'Бактериальные ожоги',
 		text: 'Лечение бактериальных ожогов',
-		image: lechenietreshchin,
-		imageWidth: lechenietreshchin.width,
-		imageHeight: lechenietreshchin.height
+		image: hvoinie,
+		imageWidth: hvoinie.width,
+		imageHeight: hvoinie.height
 	},
 	{
 		link: '/#',
 		title: 'Инъекции для деревьев',
 		text: 'Стволовые инъекции для деревьев',
-		image: propolkasornyakov,
-		imageWidth: propolkasornyakov.width,
-		imageHeight: propolkasornyakov.height
+		image: plodovie,
+		imageWidth: plodovie.width,
+		imageHeight: plodovie.height
 	},
 	{
 		link: '/#',
 		title: 'Обработка от вредителей',
 		text: 'Обработка деревьев от вредителей и болезней',
-		image: propolkasornyakov,
-		imageWidth: propolkasornyakov.width,
-		imageHeight: propolkasornyakov.height
+		image: plodovie,
+		imageWidth: plodovie.width,
+		imageHeight: plodovie.height
 	}
 ]
 ---
@@ -124,7 +125,7 @@ const CategoryServices: CategoryServices[] = [
 				<div
 					class="dark:highlight-white/5 relative mx-auto flex max-w-sm items-center gap-6 overflow-visible rounded-xl bg-white shadow-lg ring-1 ring-black/5 dark:bg-slate-800"
 				>
-					<Image src={msubcat.image} height={msubcat.imageHeight} width={msubcat.imageWidth} alt=`${msubcat.title}-картинка` class="absolute -left-6 ml-1 h-[100px] w-[100px] rounded-full shadow-lg transition duration-300 ease-in-out group-hover:scale-110 lg:-left-12" loading='eager' />
+					<Image src={msubcat.image} height={msubcat.imageHeight} width={msubcat.imageWidth} alt=`${msubcat.title}-картинка` class="absolute -left-2 ml-1 h-[100px] w-[100px] rounded-full shadow-lg transition duration-300 ease-in-out group-hover:scale-110 lg:-left-12 bg-gradient-to-t from-sky-400 to-sky-100" loading='eager' />
 					<div class="flex flex-col py-5 pl-[90px] lg:pl-[70px] lg:pr-6">
 						<strong class="text-lg font-bold text-slate-900 lg:text-xl dark:text-slate-200"
 							>{msubcat.title}</strong

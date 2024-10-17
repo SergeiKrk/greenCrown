@@ -17,11 +17,17 @@ const { id = 'intro', heroImg, title, text } = Astro.props
 
 <section
 	id={id}
-	class=`bg-neutral-50 dark:bg-neutral-900 flex 2xl:flex-row items-center overflow-hidden`
+	class=`group bg-neutral-50 dark:bg-neutral-900 flex 2xl:flex-row items-center overflow-hidden`
 >
 	<!-- <HeroDynamicScrollPage heroImg={heroImg} heroAlt={title} /> -->
 	<div class="animate__animated animate__fadeInLeftBig basis-64 2xl:basis-1/4">
-		<Image src={heroImg} alt=`${title}` width={370} class="top-0" transition:name={title} />
+		<Image
+			src={heroImg}
+			alt=`${title}`
+			width={370}
+			class="top-0 -mb-14 duration-500 ease-in-out group-hover:-mb-24 group-hover:transition"
+			transition:name={title}
+		/>
 	</div>
 	<div class="absolute 2xl:relative 2xl:basis-2/4">
 		<header class="page-header 2xl:py-26 py-12 text-center">
