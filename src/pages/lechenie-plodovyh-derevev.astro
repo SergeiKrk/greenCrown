@@ -12,12 +12,11 @@ import CTA from '../components/blocks/CTA/BasicDark.astro'
 import Section from '../components/ui/Section.astro'
 import Row from '../components/ui/Row.astro'
 import Col from '../components/ui/Col.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 
-import heroImg from '../assets/cards/lechenie-derevev.webp'
+import heroImg from '../assets/highlights/plodovye-derevya.png'
 
 import plodovie from '../assets/highlights/plodovye-derevya.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
+import hvoinie from '../assets/highlights/hvoinie.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
@@ -36,7 +35,7 @@ const SEO = {
 }
 // - Page Header
 const header = {
-	title: 'Лечение <strong>деревьев</strong>',
+	title: 'Лечение <strong>плодовых</strong> деревьев',
 	text: 'Find answers to common questions about Foxi '
 }
 
@@ -64,14 +63,14 @@ type CategoryServices = {
 
 const MajorSubCategories: MajorSubCategories[] = [
 	{
-		link: '/lechenie-plodovyh-derevev',
+		link: '/#',
 		title: 'Лечение плодовых',
 		image: plodovie,
 		imageWidth: plodovie.width,
 		imageHeight: plodovie.height
 	},
 	{
-		link: '/lechenie-hvoinih-derevev',
+		link: '/#',
 		title: 'Лечение хвойных',
 		image: hvoinie,
 		imageWidth: hvoinie.width,
@@ -118,17 +117,21 @@ const CategoryServices: CategoryServices[] = [
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<Section id="msubcat">
-		<div class="flex flex-col justify-center lg:flex-row">
+		<div class="flex flex-col lg:flex-row lg:justify-center">
 			{
 				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-96">
-						<Card
-							title={msubcat.title}
-							subtitle="Услуги по уходу за деревьями включают опрыскивание, полив, каблинг и подкормку деревьев."
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
+				<a href={msubcat.link} class="group relative overflow-auto rounded-xl px-2 py-6 lg:p-8 lg:pl-14">
+				<div
+					class="dark:highlight-white/5 relative mx-auto flex max-w-sm items-center gap-6 overflow-visible rounded-xl bg-white shadow-lg ring-1 ring-black/5 dark:bg-slate-800"
+				>
+					<Image src={msubcat.image} height={msubcat.imageHeight} width={msubcat.imageWidth} alt=`${msubcat.title}-картинка` class="absolute -left-2 ml-1 h-[100px] w-[100px] rounded-full shadow-lg transition duration-300 ease-in-out group-hover:scale-110 lg:-left-12 bg-gradient-to-t from-sky-400 to-sky-100" loading='eager' />
+					<div class="flex flex-col py-5 pl-[90px] lg:pl-[70px] lg:pr-6">
+						<strong class="text-lg font-bold text-slate-900 lg:text-xl dark:text-slate-200"
+							>{msubcat.title}</strong
+						>
 					</div>
+				</div>
+			</a>
 				))
 			}
 		</div>
