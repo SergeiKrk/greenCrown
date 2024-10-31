@@ -13,6 +13,7 @@ import Section from '../components/ui/Section.astro'
 import Row from '../components/ui/Row.astro'
 import Col from '../components/ui/Col.astro'
 import Card from '../components/ui/cards/FeatureCard.astro'
+import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 
@@ -83,7 +84,7 @@ const CategoryServices: CategoryServices[] = [
 	{
 		link: '/#',
 		title: 'Трещины и раны деревьев',
-		text: 'Лечение трещин, ран, морозобоин и дупел деревьев',
+		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
 		image: hvoinie,
 		imageWidth: hvoinie.width,
 		imageHeight: hvoinie.height
@@ -117,6 +118,7 @@ const CategoryServices: CategoryServices[] = [
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
+	<FormOption client:load />
 	<Section id="msubcat">
 		<div class="flex flex-col justify-center lg:flex-row">
 			{

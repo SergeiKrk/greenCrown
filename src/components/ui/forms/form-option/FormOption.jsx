@@ -52,7 +52,10 @@ export default function TabsSmPillLeadingIcon() {
 	return (
 		<>
 			{/*<!-- Component: Pill sm sized tab with leading icon --> */}
-			<section className="mx-auto mt-12 max-w-[500px] p-2" aria-multiselectable="false">
+			<section
+				className="mt-42 mx-auto mb-6 max-w-[600px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:rounded-2xl 2xl:bg-white"
+				aria-multiselectable="false"
+			>
 				<p class="mb-3 flex items-start text-xs">Выберите удобный способ связи:</p>
 				<ul className="flex items-center gap-1" role="tablist" ref={wrapperRef}>
 					<li className="" role="presentation">
@@ -71,11 +74,11 @@ export default function TabsSmPillLeadingIcon() {
 							aria-selected={`${tabSelected.currentTab === 1 ? 'true' : 'false'}`}
 							onClick={() => setTabSelected({ ...tabSelected, currentTab: 1 })}
 						>
-							<span className="order-2">Телефон</span>
+							<span className="order-2 hidden sm:block">Телефон</span>
 							<span className="relative">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									className="-mb-1 hidden h-[28px] w-[28px] sm:block"
+									className="-mb-1 h-[28px] w-[28px]"
 									fill="none"
 									viewBox="0 0 30 30"
 									stroke="currentColor"
@@ -110,11 +113,11 @@ export default function TabsSmPillLeadingIcon() {
 							aria-selected={`${tabSelected.currentTab === 2 ? 'true' : 'false'}`}
 							onClick={() => setTabSelected({ ...tabSelected, currentTab: 2 })}
 						>
-							<span className="order-2">Whatsapp</span>
+							<span className="order-2 hidden sm:block">Whatsapp</span>
 							<span className="relative">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									className="-mb-1 hidden h-[28px] w-[28px] sm:block"
+									className="-mb-1 h-[28px] w-[28px]"
 									fill="none"
 									stroke="currentColor"
 									strokeWidth="2.5"
@@ -141,11 +144,11 @@ export default function TabsSmPillLeadingIcon() {
 							aria-selected={`${tabSelected.currentTab === 3 ? 'true' : 'false'}`}
 							onClick={() => setTabSelected({ ...tabSelected, currentTab: 3 })}
 						>
-							<span className="order-2">Telegram</span>
+							<span className="order-2 hidden sm:block">Telegram</span>
 							<span className="relative">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									className="mb-1 hidden h-[28px] w-[28px] sm:block"
+									className="mb-1 h-[28px] w-[28px]"
 									fill="none"
 									stroke="currentColor"
 									strokeWidth="3"
@@ -159,7 +162,7 @@ export default function TabsSmPillLeadingIcon() {
 				</ul>
 				<div className="">
 					<div
-						className={`py-4 text-sm ${tabSelected.currentTab === 1 ? '' : 'hidden'}`}
+						className={`pt-3 text-sm ${tabSelected.currentTab === 1 ? '' : 'hidden'}`}
 						id="tab-panel-1fi"
 						aria-hidden={`${tabSelected.currentTab === 1 ? 'true' : 'false'}`}
 						role="tabpanel"
@@ -181,14 +184,14 @@ export default function TabsSmPillLeadingIcon() {
 								>
 									Телефон
 								</label>
-								<button class="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none lg:ml-2 lg:py-2">
+								<button class="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none md:mt-0 lg:ml-2 lg:py-2">
 									<span>Заказать консультацию</span>
 								</button>
 							</div>
 						</p>
 					</div>
 					<div
-						className={`py-4 text-sm ${tabSelected.currentTab === 2 ? '' : 'hidden'}`}
+						className={`pt-3 text-sm ${tabSelected.currentTab === 2 ? '' : 'hidden'}`}
 						id="tab-panel-2fi"
 						aria-hidden={`${tabSelected.currentTab === 2 ? 'true' : 'false'}`}
 						role="tabpanel"
@@ -196,13 +199,28 @@ export default function TabsSmPillLeadingIcon() {
 						tabindex="-1"
 					>
 						<p>
-							One must be entirely sensitive to the structure of the material that one is handling.
-							One must yield to it in tiny details of execution, perhaps the handling of the surface
-							or grain, and one must master it as a whole.
+							<div class="relative my-2 flex flex-col lg:flex-row">
+								<input
+									id="id-02"
+									type="number"
+									name="id-01"
+									placeholder="+7 9999 99 99"
+									class="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-emerald-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-emerald-400"
+								/>
+								<label
+									for="id-03"
+									class="absolute -top-2 left-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:left-0 before:top-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-emerald-400 peer-disabled:before:bg-transparent"
+								>
+									Wp:
+								</label>
+								<button class="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none lg:ml-2 lg:py-2">
+									<span>Заказать консультацию</span>
+								</button>
+							</div>
 						</p>
 					</div>
 					<div
-						className={`py-4 text-sm ${tabSelected.currentTab === 3 ? '' : 'hidden'}`}
+						className={`pt-3 text-sm ${tabSelected.currentTab === 3 ? '' : 'hidden'}`}
 						id="tab-panel-3fi"
 						aria-hidden={`${tabSelected.currentTab === 3 ? 'true' : 'false'}`}
 						role="tabpanel"
@@ -210,9 +228,24 @@ export default function TabsSmPillLeadingIcon() {
 						tabindex="-1"
 					>
 						<p>
-							Even though there is no certainty that the expected results of our work will manifest,
-							we have to remain committed to our work and duties; because, even if the results are
-							slated to arrive, they cannot do so without the performance of work.
+							<div class="relative my-2 flex flex-col lg:flex-row">
+								<input
+									id="id-01"
+									type="number"
+									name="id-01"
+									placeholder="+7 9999 99 99"
+									class="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-emerald-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-emerald-400"
+								/>
+								<label
+									for="id-01"
+									class="absolute -top-2 left-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:left-0 before:top-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-emerald-400 peer-disabled:before:bg-transparent"
+								>
+									Tg:
+								</label>
+								<button class="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none lg:ml-2 lg:py-2">
+									<span>Заказать консультацию</span>
+								</button>
+							</div>
 						</p>
 					</div>
 				</div>

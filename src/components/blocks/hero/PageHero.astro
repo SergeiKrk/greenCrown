@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets'
-import FormOption from '../../ui/forms/form-option/FormOption.jsx'
 import 'animate.css'
 // import HeroDynamicScrollPage from '../../HeroDynamicScrollPage'
 
@@ -39,7 +38,6 @@ const { id = 'intro', heroImg, title, text } = Astro.props
 				class="page-header__text bg-neutral-100/70 text-slate-900 2xl:bg-neutral-100/10 2xl:bg-none dark:bg-slate-800/70 dark:text-slate-100 dark:2xl:bg-slate-950/10"
 				set:html={text}
 			/>
-			<FormOption client:load />
 		</header>
 	</div>
 </section>
