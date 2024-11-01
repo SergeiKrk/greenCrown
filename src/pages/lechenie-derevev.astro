@@ -16,6 +16,7 @@ import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
+import Grut from '../assets/Grut.webp'
 
 import plodovie from '../assets/highlights/plodovye-derevya.png'
 import hvoinie from '../assets/highlights/hvoinie-derevya.png'
@@ -33,12 +34,12 @@ import { Image } from 'astro:assets'
 const SEO = {
 	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
 	description:
-		'Dive into the Foxi FAQ Funhouse to get answers to all your questions about pricing, integrations, features, and more. Discover how Foxi can make your work life more productive and enjoyable.'
+		'Лечение деревьев в Москве и области: Укрепляем, лечим, восстанавливаем, защищаем от болезней с гарантией результата. Убедитесь в качестве: безопасные методы, опытные специалисты, долговечный результат!'
 }
 // - Page Header
 const header = {
 	title: 'Лечение <strong>деревьев</strong>',
-	text: 'Find answers to common questions about Foxi '
+	text: 'Лечение деревьев — комплекс мер по оздоровлению, защите и восстановлению деревьев, чтобы продлить их жизнь, предотвратить болезни и улучшить внешний вид.'
 }
 
 const catCards = {
@@ -118,7 +119,22 @@ const CategoryServices: CategoryServices[] = [
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
-	<FormOption client:load />
+	<section
+		class="mt-42 mx-auto mb-6 max-w-[800px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		aria-multiselectable="false"
+	>
+		<div class="group md:flex md:flex-row">
+			<Image
+				class="hidden translate-x-12 transition delay-150 duration-700 ease-in-out group-hover:translate-x-0 md:block"
+				src={Grut}
+				alt="grut"
+				height={150}
+			/>
+			<div class="z-10 block pl-6 md:border-l-8 md:border-[#2FAF83] md:bg-white">
+				<FormOption client:load />
+			</div>
+		</div>
+	</section>
 	<Section id="msubcat">
 		<div class="flex flex-col justify-center lg:flex-row">
 			{
