@@ -29,7 +29,9 @@ const { id = 'intro', heroImg, title, text } = Astro.props
 		/>
 	</div>
 	<div class="absolute 2xl:relative 2xl:basis-2/4">
-		<header class="page-header 2xl:py-26 py-12 text-center">
+		<header
+			class="animate__animated animate__bounceInRight page-header 2xl:py-26 py-12 text-center"
+		>
 			<h1
 				class="page-header__title bg-neutral-100/70 2xl:bg-neutral-100/10 dark:bg-slate-800/70 dark:2xl:bg-slate-950/10"
 				set:html={title}

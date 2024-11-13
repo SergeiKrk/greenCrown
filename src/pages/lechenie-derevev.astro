@@ -43,8 +43,15 @@ const header = {
 }
 
 const catCards = {
-	title: 'Лечение и обработка <strong>стволов деревьев</strong>',
-	description: ''
+	title: 'Наши <strong>услуги</strong>',
+	description:
+		'Осуществляем профессиональное лечение деревьев, включая восстановление после повреждений и заболеваний. Наши специалисты используют эффективные методы для защиты и оздоровления деревьев.'
+}
+
+const catCardsTwo = {
+	title: 'Когда дереву требуется <strong>лечение</strong>',
+	description:
+		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
 }
 
 type MajorSubCategories = {
@@ -57,6 +64,15 @@ type MajorSubCategories = {
 }
 
 type CategoryServices = {
+	link: string
+	title: string
+	text: string
+	image: any
+	imageWidth: number
+	imageHeight: number
+}
+
+type CategoryServicesTwo = {
 	link: string
 	title: string
 	text: string
@@ -95,6 +111,41 @@ const MajorSubCategories: MajorSubCategories[] = [
 const CategoryServices: CategoryServices[] = [
 	{
 		link: '/#',
+		title: 'Диагностика и лечение ствола',
+		text: 'Профессиональное обследование и лечение деревьев.',
+		image: hvoinie,
+		imageWidth: hvoinie.width,
+		imageHeight: hvoinie.height
+	},
+	{
+		link: '/#',
+		title: 'Обрезка и обработка деревьев',
+		text: 'Санитарная обрезка способствует укреплению и оздоровлению деревьев',
+		image: hvoinie,
+		imageWidth: hvoinie.width,
+		imageHeight: hvoinie.height
+	},
+	{
+		link: '/#',
+		title: 'Инъекции для деревьев',
+		text: 'Стволовые инъекции для борьбы с болезнями и паразитами',
+		image: plodovie,
+		imageWidth: plodovie.width,
+		imageHeight: plodovie.height
+	},
+	{
+		link: '/#',
+		title: 'Подкормка и защита деревьев',
+		text: 'Внесение подкормок повышает иммунитет ваших деревьев и кустарников',
+		image: plodovie,
+		imageWidth: plodovie.width,
+		imageHeight: plodovie.height
+	}
+]
+
+const CategoryServicesTwo: CategoryServicesTwo[] = [
+	{
+		link: '/#',
 		title: 'Трещины и раны деревьев',
 		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
 		image: hvoinie,
@@ -108,14 +159,6 @@ const CategoryServices: CategoryServices[] = [
 		image: hvoinie,
 		imageWidth: hvoinie.width,
 		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для деревьев',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
 	},
 	{
 		link: '/#',
@@ -164,9 +207,9 @@ const CategoryServices: CategoryServices[] = [
 			</div>
 			<div class="group flex">
 				<div
-					class="z-10 block rounded-md px-8 py-4 pr-6 md:border-r-8 md:border-[#2FAF83] md:bg-neutral-50 2xl:w-[600px]"
+					class="animate__animated animate__rubberBand z-10 block rounded-md px-8 py-4 pr-6 md:border-r-8 md:border-[#2FAF83] md:bg-neutral-50 2xl:w-[600px]"
 				>
-					<FormOption client:load />
+					<FormOption idForm="1" titleForm={SEO.title} client:load />
 				</div>
 				<Image
 					class="hidden -translate-x-16 transition delay-150 duration-700 ease-in-out group-hover:translate-x-0 md:block"
@@ -198,11 +241,7 @@ const CategoryServices: CategoryServices[] = [
 		<Row>
 			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
 				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg">
-					Осуществляем профессиональное лечение стволов деревьев, включая восстановление после
-					повреждений и заболеваний. Наши специалисты используют эффективные методы для защиты и
-					оздоровления деревьев.
-				</p>
+				<p class="pb-0 text-lg" set:html={catCards.description} />
 			</Col>
 		</Row>
 		<Row>
@@ -219,6 +258,74 @@ const CategoryServices: CategoryServices[] = [
 				))
 			}
 		</Row>
+	</Section>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h3>Лесопатологическое обследование</h3>
+			<p>
+				Осмотр и диагностика деревьев с выездом на объект в удобное для вас время. Оценим состояние
+				деревьев, выявим проблемы и дадим рекомендации для их сохранения и ухода.
+			</p>
+		</div>
+		<div class="basic-text">
+			<h4>Welcome to Foxi</h4>
+			<p>
+				Welcome to Foxi! Were thrilled to have you on board. Our services are designed to help you
+				stay organized, communicate effectively, and boost your productivity. By using Foxi, you are
+				agreeing to these terms and conditions, so please read them carefully.
+			</p>
+			<p>
+				Your satisfaction is important to us. If you have any questions or concerns about these
+				terms, please do not hesitate to contact us. Our team is here to assist you and ensure you
+				have a great experience with Foxi.
+			</p>
+
+			<h4>Acceptance of Terms</h4>
+			<p>
+				By accessing or using our services, you agree to comply with and be bound by these Terms of
+				Service and our Privacy Policy. If you do not agree with any part of these terms, you must
+				not use our services. Your continued use of Foxi signifies your acceptance of these terms.
+			</p>
+			<p>
+				We reserve the right to modify these terms at any time. We will notify you of any changes by
+				posting the new terms on our website. It is your responsibility to review these terms
+				periodically. Continued use of the service after any changes means you accept the new terms.
+			</p>
+
+			<h4>Our Commitment to You</h4>
+			<p>
+				At Foxi, we are committed to providing you with reliable, high-quality services. Our goal is
+				to help you achieve your productivity and organizational objectives with ease. We
+				continuously work to improve our services and provide you with the best possible experience.
+			</p>
+			<p>
+				We value your feedback and suggestions. Please feel free to reach out to us with any
+				comments or ideas on how we can serve you better. Your input helps us enhance Foxi and meet
+				your
+			</p>
+		</div>
+	</SidebarContent>
+	<Section id="category-cards-two">
+		<Row>
+			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
+				<h2 class="text-balance" set:html={catCardsTwo.title} />
+				<p class="pb-0 text-lg" set:html={catCardsTwo.description} />
+			</Col>
+		</Row>
+		<div class="flex flex-col justify-center lg:flex-row">
+			{
+				CategoryServicesTwo.map((card) => (
+					<CategoryCard
+						link={card.link}
+						title={card.title}
+						text={card.text}
+						image={card.image}
+						imageWidth={card.imageWidth}
+						imageHeight={card.imageHeight}
+					/>
+				))
+			}
+		</div>
 	</Section>
 	<SidebarContent>
 		<div slot="sidebar">

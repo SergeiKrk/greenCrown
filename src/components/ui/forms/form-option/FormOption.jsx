@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 
-export default function TabsSmPillLeadingIcon() {
+export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 	const [tabSelected, setTabSelected] = useState({
 		currentTab: 1,
 		noTabs: 3
@@ -158,13 +158,14 @@ export default function TabsSmPillLeadingIcon() {
 				</li>
 			</ul>
 			<div className="">
-				<div
+				<form
 					className={`pt-3 text-sm ${tabSelected.currentTab === 1 ? '' : 'hidden'}`}
 					id="tab-panel-1fi"
 					aria-hidden={`${tabSelected.currentTab === 1 ? 'true' : 'false'}`}
 					role="tabpanel"
 					aria-labelledby="tab-label-1fi"
 					tabindex="-1"
+					name={`${titleForm} [Форма №${idForm}]`}
 				>
 					<p>
 						<div class="relative my-2 flex flex-col lg:flex-row">
@@ -186,7 +187,7 @@ export default function TabsSmPillLeadingIcon() {
 							</button>
 						</div>
 					</p>
-				</div>
+				</form>
 				<div
 					className={`pt-3 text-sm ${tabSelected.currentTab === 2 ? '' : 'hidden'}`}
 					id="tab-panel-2fi"
