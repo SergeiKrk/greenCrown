@@ -261,115 +261,108 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</Section>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h3>Лесопатологическое обследование</h3>
-			<p>
+			<a href="/#obsledovanie-derevev"><h3 class="lg:text-2xl">Обследование деревьев</h3></a>
+			<p class="mt-6">
 				Осмотр и диагностика деревьев с выездом на объект в удобное для вас время. Оценим состояние
 				деревьев, выявим проблемы и дадим рекомендации для их сохранения и ухода.
 			</p>
+			<!-- Component: Small outline basic button -->
+			<a
+				href="/#obsledovanie-derevev"
+				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
+			>
+				<span>Подробнее..</span>
+			</a>
+			<!-- End Small outline basic button -->
 		</div>
 		<div class="basic-text">
-			<h4>Welcome to Foxi</h4>
+			<h4>Цели обследования деревьев</h4>
+			<ul>
+				<li>
+					Выявление болезней и повреждений: раннее обнаружение грибковых заболеваний, поражений
+					короедом или других проблем.
+				</li>
+				<li>
+					Оценка устойчивости и безопасности: выявление трещин, повреждений ствола и корней, которые
+					могут представлять угрозу.
+				</li>
+				<li>
+					Планирование ухода: определение необходимости обрезки, подкормки или других
+					оздоровительных процедур.
+				</li>
+			</ul>
+
+			<h4>Основные этапы обследования</h4>
 			<p>
-				Welcome to Foxi! Were thrilled to have you on board. Our services are designed to help you
-				stay organized, communicate effectively, and boost your productivity. By using Foxi, you are
-				agreeing to these terms and conditions, so please read them carefully.
+				Визуальная оценка:
+				<ul>
+					<li>Листва и крона: оценка плотности, окраски и состояния листьев.</li>
+					<li>
+						Ствол и кора: проверка на наличие трещин, грибковых наростов и механических повреждений.
+					</li>
+					<li>Корни: анализ видимых корней на предмет обнажения или повреждений.</li>
+				</ul>
 			</p>
+			<h4>Инструментальная диагнозтика</h4>
 			<p>
-				Your satisfaction is important to us. If you have any questions or concerns about these
-				terms, please do not hesitate to contact us. Our team is here to assist you and ensure you
-				have a great experience with Foxi.
+				Определение внутренней прочности ствола с помощью зондирования. Использование переносного
+				томографа для выявления внутренних полостей и гнили. Анализы на патогены: лабораторные
+				исследования, которые подтверждают наличие грибковых или бактериальных инфекций.
 			</p>
 
-			<h4>Acceptance of Terms</h4>
+			<h4>Преимущества регулярного обследования</h4>
 			<p>
-				By accessing or using our services, you agree to comply with and be bound by these Terms of
-				Service and our Privacy Policy. If you do not agree with any part of these terms, you must
-				not use our services. Your continued use of Foxi signifies your acceptance of these terms.
+				<ul>
+					<li>
+						Предотвращение серьезных заболеваний: своевременное обнаружение проблем помогает
+						избежать гибели дерева и распространения болезней.
+					</li>
+					<li>
+						Поддержка здоровья и роста: правильное лечение, основанное на данных обследования,
+						улучшает общее состояние деревьев.
+					</li>
+					<li>
+						Повышение безопасности: регулярная проверка позволяет избежать падения веток и деревьев,
+						что важно для общественных парков и частных участков.
+					</li>
+				</ul>
 			</p>
+			<h4>Рекомендации по частоте обследования</h4>
 			<p>
-				We reserve the right to modify these terms at any time. We will notify you of any changes by
-				posting the new terms on our website. It is your responsibility to review these terms
-				periodically. Continued use of the service after any changes means you accept the new terms.
-			</p>
-
-			<h4>Our Commitment to You</h4>
-			<p>
-				At Foxi, we are committed to providing you with reliable, high-quality services. Our goal is
-				to help you achieve your productivity and organizational objectives with ease. We
-				continuously work to improve our services and provide you with the best possible experience.
-			</p>
-			<p>
-				We value your feedback and suggestions. Please feel free to reach out to us with any
-				comments or ideas on how we can serve you better. Your input helps us enhance Foxi and meet
-				your
+				Молодые деревья рекомендуется обследовать раз в 2-3 года. Старые и крупные деревья - раз в
+				год или чаще, особенно после сильных ветров или морозов. Деревья в неблагоприятных условиях
+				(рядом с дорогами или стройками) требуют регулярной диагностики.
 			</p>
 		</div>
 	</SidebarContent>
-	<Section id="category-cards-two">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCardsTwo.title} />
-				<p class="pb-0 text-lg" set:html={catCardsTwo.description} />
-			</Col>
-		</Row>
-		<div class="flex flex-col justify-center lg:flex-row">
-			{
-				CategoryServicesTwo.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</div>
-	</Section>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h3>Лесопатологическое обследование</h3>
+			<h3 class="lg:text-2xl">Когда дерево нуждается в лечении?</h3>
 			<p>
-				Осмотр и диагностика деревьев с выездом на объект в удобное для вас время. Оценим состояние
-				деревьев, выявим проблемы и дадим рекомендации для их сохранения и ухода.
+				Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется
+				профессиональное вмешательство.
 			</p>
 		</div>
 		<div class="basic-text">
-			<h4>Welcome to Foxi</h4>
+			<h4>Трещины и раны деревьев</h4>
 			<p>
-				Welcome to Foxi! Were thrilled to have you on board. Our services are designed to help you
-				stay organized, communicate effectively, and boost your productivity. By using Foxi, you are
-				agreeing to these terms and conditions, so please read them carefully.
-			</p>
-			<p>
-				Your satisfaction is important to us. If you have any questions or concerns about these
-				terms, please do not hesitate to contact us. Our team is here to assist you and ensure you
-				have a great experience with Foxi.
+				Лечение трещин, дупел, морозобоин и механических ран помогает предотвратить проникновение
+				патогенов и сохранить структуру дерева. Применяются специальные составы для заделки ран и
+				укрепления тканей ствола.
 			</p>
 
-			<h4>Acceptance of Terms</h4>
+			<h4>Бактериальные ожоги</h4>
 			<p>
-				By accessing or using our services, you agree to comply with and be bound by these Terms of
-				Service and our Privacy Policy. If you do not agree with any part of these terms, you must
-				not use our services. Your continued use of Foxi signifies your acceptance of these terms.
-			</p>
-			<p>
-				We reserve the right to modify these terms at any time. We will notify you of any changes by
-				posting the new terms on our website. It is your responsibility to review these terms
-				periodically. Continued use of the service after any changes means you accept the new terms.
+				Бактериальные ожоги — опасное заболевание, которое быстро распространяется и может поражать
+				все дерево. Лечение включает санитарную обрезку пораженных участков и использование защитных
+				средств, препятствующих дальнейшему заражению.
 			</p>
 
-			<h4>Our Commitment to You</h4>
+			<h4>Вредители и насекомые</h4>
 			<p>
-				At Foxi, we are committed to providing you with reliable, high-quality services. Our goal is
-				to help you achieve your productivity and organizational objectives with ease. We
-				continuously work to improve our services and provide you with the best possible experience.
-			</p>
-			<p>
-				We value your feedback and suggestions. Please feel free to reach out to us with any
-				comments or ideas on how we can serve you better. Your input helps us enhance Foxi and meet
-				your
+				Обработка от вредителей важна для предотвращения серьезных повреждений и потери деревьев.
+				Профессиональные методы включают опрыскивание инсектицидами, инъекционные процедуры и
+				установку ловушек.
 			</p>
 		</div>
 	</SidebarContent>
