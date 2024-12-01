@@ -22,7 +22,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obsledovanie-d
 
 // Content
 import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+import obsledImg from '../assets/обследование-деревьев.jpg'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
@@ -41,7 +41,7 @@ const header = {
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-24 2xl:mt-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -88,7 +88,7 @@ const header = {
 			</div>
 		</div>
 	</section>
-	<SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
 			<h3 class="lg:text-2xl">Экспертиза дерева</h3>
 			<p class="mt-6">
@@ -125,7 +125,7 @@ const header = {
 			</p>
 		</div>
 	</SidebarContent>
-	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+	<SidebarContent>
 		<div slot="sidebar">
 			<h3 class="lg:text-2xl">Лесопатология:</h3>
 			<p>Что такое лесопатологическое обследование?</p>
@@ -150,50 +150,25 @@ const header = {
 			</p>
 		</div>
 	</SidebarContent>
-	<div class="relative">
-		<div
-			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2FAF83] to-green-200"
-		>
-			<div class="mx-6 lg:mx-auto lg:max-w-6xl">
-				<h2 class="text-4xl font-bold">Кому может понадобиться лесопатологическое обследование</h2>
-				<p class="mt-2">
-					Вы думаете, что обследование деревьев — это только для парков? Ошибаетесь! На самом деле
-					оно может быть полезным каждому, у кого есть зелёные насаждения.
-				</p>
-				<ol>
-					<li>
-						Владельцы частных домов и дач. У вас на участке растёт любимая яблоня или старый дуб?
-						Эти деревья не только украшают сад, но и требуют ухода. Представьте, если большая ветка
-						неожиданно упадёт на дом или машину. Лесопатолог поможет этого избежать.
-					</li>
-					<li>
-						Парки и городские аллеи. Для городской зелени важно поддерживать красоту, а также думать
-						о том, насколько они безопасны для посетителей. Возможно, вы замечали в парках деревья с
-						подозрительными трещинами? Специалисты сделают выводы об их состоянии и расскажут, как
-						можно устранить угрозы.
-					</li>
-					<li>
-						Коммерческие территории. Зоны отдыха сотрудников, зелёные уголки возле офисов или
-						предприятий — всё это требует ухода. Красивые деревья делают пространство комфортнее, но
-						важно, чтобы они не представляли опасности.
-					</li>
-					<li>
-						Строительные площадки. Стройка рядом с деревьями — всегда испытание для их корневой
-						системы. Лесопатологическое обследование помогает минимизировать ущерб и сохранить
-						зелёные насаждения.
-					</li>
-				</ol>
-			</div>
-		</div>
-		<div
-			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-[#FAFAFA] to-white text-white"
-		>
-			<h2 class="text-4xl font-bold">Почему стоит выбрать профессионалов?</h2>
-			<p class="mt-2">
+	<TextImage
+		title="Кому может понадобиться лесопатологическое обследование"
+		text='<p class="mt-2">	Вы думаете, что обследование деревьев — это только для парков? Ошибаетесь! На самом деле	оно может быть полезным каждому, у кого есть зелёные насаждения.</p><p>	Владельцы частных домов и дач. У вас на участке растёт любимая яблоня или старый дуб?	Эти деревья не только украшают сад, но и требуют ухода. Представьте, если большая ветка	неожиданно упадёт на дом или машину. Лесопатолог поможет этого избежать.</p><p>	Парки и городские аллеи. Для городской зелени важно поддерживать красоту, а также думать	о том, насколько они безопасны для посетителей. Возможно, вы замечали в парках деревья с	подозрительными трещинами? Специалисты сделают выводы об их состоянии и расскажут, как	можно устранить угрозы.</p><p>	Коммерческие территории. Зоны отдыха сотрудников, зелёные уголки возле офисов или	предприятий — всё это требует ухода. Красивые деревья делают пространство комфортнее, но	важно, чтобы они не представляли опасности.</p><p>	Строительные площадки. Стройка рядом с деревьями — всегда испытание для их корневой	системы. Лесопатологическое обследование помогает минимизировать ущерб и сохранить	зелёные насаждения.</p>'
+		image={obsledImg}
+		mobileImage={obsledImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-64"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h3 class="lg:text-2xl">Почему стоит выбрать профессионалов</h3>
+			<p class="mt-6">
 				Красивый и ухоженный ландшафт нравится всем. Но что, если вы не знаете, что делать с
 				деревом, которое внезапно перестало расти или "покрылось" странными пятнами? Здесь и нужен
 				профессиональный подход.
 			</p>
+		</div>
+		<div class="basic-text lg:ml-4">
 			<p>
 				Современные методы диагностики позволяют не только выявить проблему, но и предложить её
 				решение. Например, наша команда предоставляет услуги полного цикла: от диагностики до
@@ -202,31 +177,77 @@ const header = {
 			<p>Вы получите:</p>
 			<ul>
 				<li>Рекомендации по лечению и укреплению деревьев.</li>
-				<li>
-					План по уходу за насаждениями на будущее. Чёткую и понятную информацию о состоянии вашего
-					дерева.
-				</li>
+				<li>План по уходу за насаждениями на будущее.</li>
 				<li>Чёткую и понятную информацию о состоянии вашего дерева.</li>
 			</ul>
 		</div>
-		<div
-			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2FAF83] to-pink-800 text-white"
-		>
-			<h2 class="text-4xl font-bold">The Third slide</h2>
-			<p class="mt-2">Scroll Down</p>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h3 class="lg:text-2xl">Виды лесопатологических обследований</h3>
+			<p>
+				Не все деревья требуют одинакового подхода. Вот почему существует несколько видов
+				обследований.
+			</p>
 		</div>
-		<div
-			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-indigo-100 text-black"
-		>
-			<h2 class="text-4xl font-bold">The Fourth slide</h2>
+		<div class="basic-text">
+			<p class="font-bold">Основные виды:</p>
+			<p>
+				1. Визуальная диагностика. Это первый этап, с которого начинается любая работа. Специалисты
+				осматривают дерево, ищут трещины, гниль, признаки болезней или вредителей.
+			</p>
+			<p>
+				2. Инструментальное обследование. Включает использование:
+				<ul>
+					<li>Резистографов, чтобы определить плотность древесины и выявить скрытые дефекты.</li>
+					<li>Томографов, которые "сканируют" ствол и показывают внутренние повреждения.</li>
+				</ul>
+			</p>
+			<p>
+				3. Почвенно-экологический анализ. Изучение состава и состояния почвы вокруг дерева. Это
+				помогает понять, как окружающая среда влияет на здоровье насаждений.
+			</p>
+			<p>
+				4. Фитопатологическое исследование. Выявление инфекционных заболеваний: грибков, вирусов,
+				бактерий.
+			</p>
+			<p>
+				5. Экспертиза аварийных деревьев. Определяет, насколько дерево безопасно и есть ли риск его
+				падения.
+			</p>
 		</div>
-	</div>
+	</SidebarContent>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h3 class="lg:text-2xl">Преимущества профессионального обследования деревьев</h3>
+			<p class="mt-6">
+				Задумайтесь: сколько неприятностей можно избежать, если вовремя узнать о проблемах с
+				деревьями? Вот основные плюсы, которые даёт обследование:
+			</p>
+		</div>
+		<div class="basic-text lg:ml-4">
+			<ul>
+				<li>
+					Снижение рисков. Падающие ветки или нестабильные деревья — это угроза для людей и
+					имущества.
+				</li>
+				<li>
+					Продление жизни деревьев. Своевременное лечение и уход помогают сохранить красоту и
+					здоровье насаждений.
+				</li>
+				<li>Экономия денег. Лечить дерево дешевле, чем убирать его после падения.</li>
+				<li>
+					Эстетика. Здоровые деревья украшают территорию, будь то сад, парк или коммерческая зона.
+				</li>
+			</ul>
+		</div>
+	</SidebarContent>
 
 	<TextImage
-		title="Why Foxi’s Pricing Plans Offer Great Value"
-		text="At Foxi, we believe in providing exceptional value at every price point. Our pricing plans are designed to cater to a variety of needs, from individuals and small teams to large enterprises. Each plan includes access to our powerful features, seamless integrations, and top-notch customer support. "
-		image={faqImage1}
-		mobileImage={faqImage1}
+		title="Как проводится обследование деревьев?"
+		text='<p>Процесс обследования — это не просто "взгляд со стороны". Это комплексный подход, включающий несколько этапов:</p><p>1. Визуальный осмотр. Это первый шаг. Специалист проверяет дерево на видимые повреждения, такие как трещины, грибки или вредители.</p><p>2. Инструментальная диагностика. Используются резистографы, томографы и другие инструменты для изучения внутреннего состояния дерева.</p><p>3. Анализ почвы. Оценивается её состав, влажность, наличие загрязнений.</p><p>4. Рекомендации. После обследования специалист предлагает способы, как по уходу или лечению дерева.</p>'
+		image={obsledImg}
+		mobileImage={obsledImg}
 		imagePosition="left"
 		offsetImage
 		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-64"
@@ -234,17 +255,159 @@ const header = {
 	<!-- Features -->
 	<SidebarContent>
 		<div slot="sidebar">
-			<h3 class="lg:text-2xl">Цены на лесопатологическое обследование</h3>
+			<h2 class="lg:text-2xl">Цены на лесопатологическое обследование</h2>
 			<p>
 				Узнайте стоимость услуг лесопатолога: цена зависит от объема работ, состояния деревьев и
 				площади обследуемой территории.
 			</p>
 		</div>
 		<div class="basic-text">
-			<p>
-				Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены
-				Цены Цены Цены Цены Цены Цены Цены Цены Цены
-			</p>
+			<div class="w-full overflow-x-auto">
+				<table
+					class="w-full border-separate rounded border border-slate-200 text-left"
+					cellspacing="0"
+				>
+					<tbody>
+						<tr>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Name</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Title</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Company</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Role</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Username</th
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Ayub Salas</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Designer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Carroll Group</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>salas_a</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Agnes Sherman</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Developer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Apple</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Admin</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>shermanagnes</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Jemma Cummings</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Senior Designer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>20goto10</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>jemmaC</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Jimi Cardenas</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Copywriter</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Wind-UI</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Owner</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>cardenasji</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Mateusz Tucker</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Project Manager</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Tailwindui</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>mt</td
+							>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</SidebarContent>
 	<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
