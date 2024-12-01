@@ -4,27 +4,21 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import Feature from '../components/blocks/features/FeatureList.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/plodovye-derevya.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
+
+import features from '../data/json-files/featuresData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
-const faqIntegrations = faqData.filter((faq) => faq.category === 'integrations')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'obsledovanie-derevev')
 
 // Content
 import faqImage1 from '../assets/faq/faq-01.png'
@@ -131,7 +125,7 @@ const header = {
 			</p>
 		</div>
 	</SidebarContent>
-	<SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
 			<h3 class="lg:text-2xl">Лесопатология:</h3>
 			<p>Что такое лесопатологическое обследование?</p>
@@ -156,6 +150,78 @@ const header = {
 			</p>
 		</div>
 	</SidebarContent>
+	<div class="relative">
+		<div
+			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2FAF83] to-green-200"
+		>
+			<div class="mx-6 lg:mx-auto lg:max-w-6xl">
+				<h2 class="text-4xl font-bold">Кому может понадобиться лесопатологическое обследование</h2>
+				<p class="mt-2">
+					Вы думаете, что обследование деревьев — это только для парков? Ошибаетесь! На самом деле
+					оно может быть полезным каждому, у кого есть зелёные насаждения.
+				</p>
+				<ol>
+					<li>
+						Владельцы частных домов и дач. У вас на участке растёт любимая яблоня или старый дуб?
+						Эти деревья не только украшают сад, но и требуют ухода. Представьте, если большая ветка
+						неожиданно упадёт на дом или машину. Лесопатолог поможет этого избежать.
+					</li>
+					<li>
+						Парки и городские аллеи. Для городской зелени важно поддерживать красоту, а также думать
+						о том, насколько они безопасны для посетителей. Возможно, вы замечали в парках деревья с
+						подозрительными трещинами? Специалисты сделают выводы об их состоянии и расскажут, как
+						можно устранить угрозы.
+					</li>
+					<li>
+						Коммерческие территории. Зоны отдыха сотрудников, зелёные уголки возле офисов или
+						предприятий — всё это требует ухода. Красивые деревья делают пространство комфортнее, но
+						важно, чтобы они не представляли опасности.
+					</li>
+					<li>
+						Строительные площадки. Стройка рядом с деревьями — всегда испытание для их корневой
+						системы. Лесопатологическое обследование помогает минимизировать ущерб и сохранить
+						зелёные насаждения.
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div
+			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-[#FAFAFA] to-white text-white"
+		>
+			<h2 class="text-4xl font-bold">Почему стоит выбрать профессионалов?</h2>
+			<p class="mt-2">
+				Красивый и ухоженный ландшафт нравится всем. Но что, если вы не знаете, что делать с
+				деревом, которое внезапно перестало расти или "покрылось" странными пятнами? Здесь и нужен
+				профессиональный подход.
+			</p>
+			<p>
+				Современные методы диагностики позволяют не только выявить проблему, но и предложить её
+				решение. Например, наша команда предоставляет услуги полного цикла: от диагностики до
+				составления плана ухода за деревьями.
+			</p>
+			<p>Вы получите:</p>
+			<ul>
+				<li>Рекомендации по лечению и укреплению деревьев.</li>
+				<li>
+					План по уходу за насаждениями на будущее. Чёткую и понятную информацию о состоянии вашего
+					дерева.
+				</li>
+				<li>Чёткую и понятную информацию о состоянии вашего дерева.</li>
+			</ul>
+		</div>
+		<div
+			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2FAF83] to-pink-800 text-white"
+		>
+			<h2 class="text-4xl font-bold">The Third slide</h2>
+			<p class="mt-2">Scroll Down</p>
+		</div>
+		<div
+			class="sticky top-0 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-indigo-100 text-black"
+		>
+			<h2 class="text-4xl font-bold">The Fourth slide</h2>
+		</div>
+	</div>
+
 	<TextImage
 		title="Why Foxi’s Pricing Plans Offer Great Value"
 		text="At Foxi, we believe in providing exceptional value at every price point. Our pricing plans are designed to cater to a variety of needs, from individuals and small teams to large enterprises. Each plan includes access to our powerful features, seamless integrations, and top-notch customer support. "
@@ -165,11 +231,86 @@ const header = {
 		offsetImage
 		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-64"
 	/>
+	<!-- Features -->
+	<SidebarContent>
+		<div slot="sidebar">
+			<h3 class="lg:text-2xl">Цены на лесопатологическое обследование</h3>
+			<p>
+				Узнайте стоимость услуг лесопатолога: цена зависит от объема работ, состояния деревьев и
+				площади обследуемой территории.
+			</p>
+		</div>
+		<div class="basic-text">
+			<p>
+				Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены Цены
+				Цены Цены Цены Цены Цены Цены Цены Цены Цены
+			</p>
+		</div>
+	</SidebarContent>
+	<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+		<!-- Title -->
+		<div class="mx-auto mb-8 max-w-2xl text-center lg:mb-14">
+			<h2 class="text-pretty"><strong>Примеры</strong> выполненных работ</h2>
+			<p class="pb-0 text-lg">Мы знаем и любим свое дело</p>
+		</div>
+		<!-- End Title -->
+
+		<!-- Grid -->
+		<div class="mx-auto grid max-w-3xl grid-cols-12 gap-6 lg:gap-8">
+			{
+				features.slice(0, 3).map((feature) => (
+					<div class="col-span-6 text-center sm:col-span-4">
+						<Feature title={feature.title} icon={feature.icon} align="center" classes="mb-12" />
+					</div>
+				))
+			}
+		</div>
+		<!-- End Grid -->
+
+		<!-- Grid -->
+		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
+			<div class="col-span-4 hidden md:col-span-3 md:block">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+		</div>
+		<!-- End Grid -->
+	</div>
 	<FAQ
-		title="Integrations Made Easy"
-		text="Discover how Foxi seamlessly integrates with your favorite tools and platforms. From Google Calendar to Slack, find out how to connect and enhance your productivity with powerful integrations."
+		title="ЧаВо"
+		text="Здесь мы собрали все самые популярные вопросу по теме обследования деревьев. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
-	<Feature />
 	<CTA />
 </Layout>
