@@ -4,14 +4,10 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import Feature from '../components/blocks/features/FeatureList.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 
 import heroImg from '../assets/highlights/plodovye-derevya.png'
@@ -38,7 +34,7 @@ const SEO = {
 // - Page Header
 const header = {
 	title: 'Лечение <strong>плодовых</strong> деревьев',
-	text: 'Профессиональное лечение плодовых деревьев.....'
+	text: 'Профессиональное лечение плодовых деревьев: диагностика заболеваний, выбор препаратов и сезонный уход. '
 }
 
 const catCards = {
@@ -49,15 +45,6 @@ const catCards = {
 type MajorSubCategories = {
 	link: string
 	title: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServices = {
-	link: string
-	title: string
-	text: string
 	image: any
 	imageWidth: number
 	imageHeight: number
@@ -79,47 +66,12 @@ const MajorSubCategories: MajorSubCategories[] = [
 		imageHeight: hvoinie.height
 	}
 ]
-
-const CategoryServices: CategoryServices[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение трещин, ран, морозобоин и дупел деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для деревьев',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:my-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -129,11 +81,13 @@ const CategoryServices: CategoryServices[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Профессиональное лечение плодовых деревьев. .....</i
-								>
+									Заболевания плодовых деревьев снижают урожайность и могут привести к гибели
+									растений. Мы поможем вам сохранить сад здоровым.
+								</i>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем защитить ваш сад от болезней!.
+								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем защитить
+								ваши плодовые деревья от болезней.
 							</p>
 						</blockquote>
 					</figure><svg
@@ -164,102 +118,80 @@ const CategoryServices: CategoryServices[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="flex flex-col lg:flex-row lg:justify-center">
-			{
-				MajorSubCategories.map((msubcat) => (
-				<a href={msubcat.link} class="group relative overflow-auto rounded-xl px-2 py-6 lg:p-8 lg:pl-14">
-				<div
-					class="dark:highlight-white/5 relative mx-auto flex max-w-sm items-center gap-6 overflow-visible rounded-xl bg-white shadow-lg ring-1 ring-black/5 dark:bg-slate-800"
-				>
-					<Image src={msubcat.image} height={msubcat.imageHeight} width={msubcat.imageWidth} alt=`${msubcat.title}-картинка` class="absolute -left-2 ml-1 h-[100px] w-[100px] rounded-full shadow-lg transition duration-300 ease-in-out group-hover:scale-110 lg:-left-12 bg-gradient-to-t from-sky-400 to-sky-100" loading='eager' />
-					<div class="flex flex-col py-5 pl-[90px] lg:pl-[70px] lg:pr-6">
-						<strong class="text-lg font-bold text-slate-900 lg:text-xl dark:text-slate-200"
-							>{msubcat.title}</strong
-						>
-					</div>
-				</div>
-			</a>
-				))
-			}
-		</div>
-	</Section>
-	<Section id="category-cards">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg">
-					Choose from one of the options below to get the specific help you need. Whether it's
-					customer support, sales inquiries, feature requests, or general feedback, we're here to
-					provide you with the best assistance possible.
-				</p>
-			</Col>
-		</Row>
-		<Row>
-			{
-				CategoryServices.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</Row>
-	</Section>
-	<Feature />
-	<SidebarContent>
+
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
-			<h3>Лесопатологическое обследование</h3>
-			<p>
-				Please take a moment to read through these terms to understand your rights and
-				responsibilities while using our services.
+			<h2 class="lg:text-2xl">Распространенные болезней плодовых и их лечение</h2>
+			<p class="mt-6">
+				Заболевания делятся на физиологические (не ифекционные) и на инфекционные. Причиной
+				последних становятся бактерии, вирусы, грибки. Этому способствуют грызуны и насекомые -
+				переносчики инфекции.
 			</p>
 		</div>
 		<div class="basic-text">
-			<h4>Welcome to Foxi</h4>
+			<h3>Парша</h3>
 			<p>
-				Welcome to Foxi! Were thrilled to have you on board. Our services are designed to help you
-				stay organized, communicate effectively, and boost your productivity. By using Foxi, you are
-				agreeing to these terms and conditions, so please read them carefully.
+				Появляется болезнь на листьях, плодах, а также молодой поросли. Источник инфекции – грибок
+				фузикладиум. Обязательно требуется борьба с паршой на плодовых деревьях. Потребуется в
+				вегетационный период в профилактических целях проводить опрыскивание биофунгицидными
+				средствами. Также рекомендуется осуществлять химическую обработку в весеннее время года
+				фунгицидами.
 			</p>
+			<h3>Монилиоз</h3>
 			<p>
-				Your satisfaction is important to us. If you have any questions or concerns about these
-				terms, please do not hesitate to contact us. Our team is here to assist you and ensure you
-				have a great experience with Foxi.
+				Это плодовая гниль, она сначала появляется в виде небольших пятен бурого оттенка. Данные
+				пятна довольно быстро распространяются, охватывая весь плод. Некоторые дачники не знают, как
+				лечить монилиоз на плодовых деревьях. Потребуется опрыскивать деревья йодным раствором.
+				Кроме этого, можно применять Фитоспорин.
 			</p>
-
-			<h4>Acceptance of Terms</h4>
+			<h3>Цитоспороз</h3>
 			<p>
-				By accessing or using our services, you agree to comply with and be bound by these Terms of
-				Service and our Privacy Policy. If you do not agree with any part of these terms, you must
-				not use our services. Your continued use of Foxi signifies your acceptance of these terms.
+				Это некрозно-раковая грибковая болезнь. Она способна поразить лиственные породы деревьев.
+				Грибы рода Cytospora будут воздействовать не только на ветви и побеги, но и на ствол,
+				штамбы. Это приводит к отмиранию древесины, коры и камбия.
 			</p>
+			<h3>Мучнистая роса</h3>
 			<p>
-				We reserve the right to modify these terms at any time. We will notify you of any changes by
-				posting the new terms on our website. It is your responsibility to review these terms
-				periodically. Continued use of the service after any changes means you accept the new terms.
-			</p>
-
-			<h4>Our Commitment to You</h4>
-			<p>
-				At Foxi, we are committed to providing you with reliable, high-quality services. Our goal is
-				to help you achieve your productivity and organizational objectives with ease. We
-				continuously work to improve our services and provide you with the best possible experience.
-			</p>
-			<p>
-				We value your feedback and suggestions. Please feel free to reach out to us with any
-				comments or ideas on how we can serve you better. Your input helps us enhance Foxi and meet
-				your
+				Данное заболевание популярное. Болезнь вызвана грибковым патогеном. Есть одна особенность у
+				этой болезни. Это возникновение белой, порошкообразной пыли. Она появляется на поверхности
+				листьев, стеблей. Периодически появляется на плодах пораженных деревьев. Для лечения
+				заболевания рекомендуется проводить обработку фунгицидами. Выбор препарата зависит от
+				погоды, стадии развития дерева и т. д.
 			</p>
 		</div>
 	</SidebarContent>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Препараты для лечения и защиты плодовых деревьев</h2>
+			<p>Обработку плодовых деревьев осуществляют различными препаратами.</p>
+		</div>
+		<div class="basic-text">
+			<p>
+				Перед покупкой средства нужно учитывать особенности сада. Еще нужно учесть подверженность
+				растений конкретным заболеваниям. Есть разные препараты для лечения плодовых деревьев. Они
+				не вредны для окружающей среды.
+			</p>
+			<p>Существуют следующие эффективные средства:</p>
+			<p>
+				1. <b>Абига-Пик.</b> Это фунгицид контактного действия. Он используется для уничтожения грибковых
+				заболеваний. Также помогает избавиться от бактериальных.
+			</p>
+			<p>
+				2. <b>Скор.</b> Это системный фунгицид. Он используется для профилактики и лечения.
+			</p>
+			<p>
+				3. <b>Хорус.</b> Это надежный и эффективный препарат. У него уникальный механизм действия.
+			</p>
+			<p>
+				Кроме перечисленных препаратов, есть еще ряд популярных эффективных инсектицидов для
+				плодовых деревьев. Например, Спарвиэро, Актара, Лирум, Вертимек.
+			</p>
+		</div>
+	</SidebarContent>
+
 	<TextImage
-		title="Why Foxi’s Pricing Plans Offer Great Value"
-		text="At Foxi, we believe in providing exceptional value at every price point. Our pricing plans are designed to cater to a variety of needs, from individuals and small teams to large enterprises. Each plan includes access to our powerful features, seamless integrations, and top-notch customer support. "
+		title="Сезонные мероприятия по уходу за плодовыми деревьями"
+		text='<h3 class="lg:text-2xl">Весенняя обработка плодовых деревьев</h3><p>Потребуется проводить обрезку до начала сокодвижения, очистку ствола от мха и лишайников.</p><h3 class="lg:text-2xl">Осенняя обработка</h3><p>Придется подготавливать плодовые культуры к зиме. Следует удалять ловчие пояса и подпорки, проводить подкормку удобрениями, обрезку, формирование крон. Осеннее лечение плодовых деревьев включает в себя санитарную обрезку, уборку листьев, защиту от грызунов и химическую обработку. </p><h3 class="lg:text-2xl">Зимняя обработка</h3><p>Зимой потребуется пересадить крупномеры, если место было выбрано неправильно. Молодые посадки не выдержат тяжести снежного покрова, его необходимо убирать с веток. Обязательно нужны зимние мероприятия по защите плодовых деревьев. Придется укрыть молодые посадки пленкой или спанбондом, чтобы защитить их от морозов.</p>'
 		image={faqImage1}
 		mobileImage={faqImage1}
 		imagePosition="left"
