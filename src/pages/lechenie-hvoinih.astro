@@ -4,30 +4,22 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import Feature from '../components/blocks/features/FeatureList.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 
 import heroImg from '../assets/highlights/hvoinie-derevya.png'
 
-import plodovie from '../assets/highlights/plodovye-derevya.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
 import Grut from '../assets/Grut.webp'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
 const faqIntegrations = faqData.filter((faq) => faq.category === 'integrations')
 
 // Content
 import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
@@ -45,50 +37,6 @@ const catCards = {
 	title: 'Лечение и обработка <strong>стволов деревьев</strong>',
 	description: ''
 }
-
-type CategoryServices = {
-	link: string
-	title: string
-	text: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const CategoryServices: CategoryServices[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение трещин, ран, морозобоин и дупел деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для деревьев',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -104,7 +52,7 @@ const CategoryServices: CategoryServices[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Лечение хвойных деревьев требует комплексного подхода. Даже при бережном уходе
+									Лечение хвойных растений требует комплексного подхода. Даже при бережном уходе
 									большинство хвойников подвержено различным заболеваниям. Для сохранения здоровья
 									растений важно уметь распознавать первые признаки их болезней. Для точной
 									диагностики рекомендуется обратиться к специалистам.</i
@@ -143,33 +91,6 @@ const CategoryServices: CategoryServices[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="category-cards">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg">
-					Choose from one of the options below to get the specific help you need. Whether it's
-					customer support, sales inquiries, feature requests, or general feedback, we're here to
-					provide you with the best assistance possible.
-				</p>
-			</Col>
-		</Row>
-		<Row>
-			{
-				CategoryServices.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</Row>
-	</Section>
-	<Feature />
 	<SidebarContent>
 		<div slot="sidebar">
 			<h3>Лесопатологическое обследование</h3>
