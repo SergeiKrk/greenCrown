@@ -1,21 +1,19 @@
 ---
-// Components
-// - Layout
 import Layout from '../layouts/Layout.astro'
-// - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
+import Feature from '../components/ui/Feature.astro'
+import Steps from '../components/ui/Steps.astro'
 
 import heroImg from '../assets/highlights/hvoinie-derevya.png'
 
 import Grut from '../assets/Grut.webp'
-// Data
 import faqData from '../data/json-files/faqData.json'
-// - FAQ Categories
+import features from '../data/json-files/featuresData.json'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'integrations')
 
 // Content
@@ -25,7 +23,7 @@ import { Image } from 'astro:assets'
 const SEO = {
 	title: 'Лечение хвойных растений и деревьев: Обработка от Болезней - Цена от 1500 руб.',
 	description:
-		'Dive into the Foxi FAQ Funhouse to get answers to all your questions about pricing, integrations, features, and more. Discover how Foxi can make your work life more productive and enjoyable.'
+		'Комплексное лечение хвойных деревьев и кустарников: от диагностики до профилактики. Работаем с гарантией качества в Москве и области.'
 }
 // - Page Header
 const header = {
@@ -42,7 +40,7 @@ const catCards = {
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:my-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -91,61 +89,387 @@ const catCards = {
 			</div>
 		</div>
 	</section>
-	<SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
-			<h3>Лесопатологическое обследование</h3>
-			<p>
-				Please take a moment to read through these terms to understand your rights and
-				responsibilities while using our services.
+			<h2 class="lg:text-2xl">Профессиональное лечение хвойных</h2>
+			<ul class="mt-6">
+				<li class="mt-2">Устраняем болезни и вредителей уже после первой обработки.</li>
+				<li class="mt-2">
+					Используем только сертифицированные препараты, безопасные для растений и окружающей среды.
+				</li>
+				<li class="mt-2">Работаем по договору с гарантиями.</li>
+			</ul>
+
+			<p class="mt-4">
+				<i
+					>Не ждите, пока растения погибнут! Свяжитесь с нами для диагностики и лечения уже сегодня.</i
+				>
 			</p>
+			<a
+				href="#"
+				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
+			>
+				<span>Связаться</span>
+			</a>
 		</div>
 		<div class="basic-text">
-			<h4>Welcome to Foxi</h4>
+			<h3>Как определить, что растение заболело?</h3>
 			<p>
-				Welcome to Foxi! Were thrilled to have you on board. Our services are designed to help you
-				stay organized, communicate effectively, and boost your productivity. By using Foxi, you are
-				agreeing to these terms and conditions, so please read them carefully.
+				Хвойные деревья и кустарники, несмотря на свою стойкость, часто подвергаются атакам
+				вредителей и болезней. Если вы заметили пожелтение хвои, ржавчину или внешний вид растений
+				вцелом стал ухудшаться – это явный сигнал к действию.
 			</p>
+			<h3>Симптомы заболеваний хвойных:</h3>
+			<ul>
+				<li>Ржавчина хвои – на хвоинках появляются рыжие пятна.</li>
+				<li>Корневая гниль – дерево начинает увядать, хвоя осыпается.</li>
+				<li>Вредители (короед, паутинный клещ) – листья и хвоя теряют яркость, ветки засыхают.</li>
+			</ul>
+			<h3>Проблемы, которые мы решаем:</h3>
+			<ul>
+				<li>Лечение грибковых заболеваний.</li>
+				<li>Борьба с короедом и другими вредителями.</li>
+				<li>Реанимация ослабленных деревьев после зимы.</li>
+			</ul>
+		</div>
+	</SidebarContent>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Комплексное лечение хвойных растений</h2>
 			<p>
-				Your satisfaction is important to us. If you have any questions or concerns about these
-				terms, please do not hesitate to contact us. Our team is here to assist you and ensure you
-				have a great experience with Foxi.
+				Запишитесь на лечение хвойных растений уже сегодня! Ваша хвоя снова станет зеленой и
+				здоровой.
 			</p>
-
-			<h4>Acceptance of Terms</h4>
+			<a
+				href="#"
+				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
+			>
+				<span>Записаться</span>
+			</a>
+		</div>
+		<div class="basic-text">
+			<h3>Преимущества работы с нами</h3>
 			<p>
-				By accessing or using our services, you agree to comply with and be bound by these Terms of
-				Service and our Privacy Policy. If you do not agree with any part of these terms, you must
-				not use our services. Your continued use of Foxi signifies your acceptance of these terms.
+				Мы используем только сертифицированные препараты, которые обеспечивают эффективное лечение и
+				безопасны для растений, животных и людей. Наши специалисты-арбористы обладают многолетним
+				опытом, бережно подходят к процессу лечения хвойников.
 			</p>
+			<p>Мы предлагаем профессиональный уход за хвойными деревьями и кустарниками.</p>
+			<ul>
+				<li>Диагностика состояния растений – определяем причины заболеваний.</li>
+				<li>Лечение болезней – используем эффективные методы и безопасные препараты.</li>
+				<li>
+					Борьба с вредителями – устраняем насекомых-вредителей и предотвращаем повторные атаки.
+				</li>
+				<li>Реанимация – восстанавливаем даже очень слабые деревья.</li>
+				<li>Профилактическая обработка растений для их защиты.</li>
+			</ul>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Как мы возвращаем здоровье хвойным растениям: шаг за шагом</h2>
 			<p>
-				We reserve the right to modify these terms at any time. We will notify you of any changes by
-				posting the new terms on our website. It is your responsibility to review these terms
-				periodically. Continued use of the service after any changes means you accept the new terms.
+				Мы разработали четкий и проверенный алгоритм лечения хвойных деревьев и кустарников, чтобы
+				гарантировать их восстановление и защиту.
 			</p>
-
-			<h4>Our Commitment to You</h4>
-			<p>
-				At Foxi, we are committed to providing you with reliable, high-quality services. Our goal is
-				to help you achieve your productivity and organizational objectives with ease. We
-				continuously work to improve our services and provide you with the best possible experience.
+			<p class="mt-4">
+				<i
+					>Хотите, чтобы ваши хвойные растения снова радовали глаз? Оставьте заявку, и мы проведем
+					диагностику уже в ближайшее время!</i
+				>
 			</p>
-			<p>
-				We value your feedback and suggestions. Please feel free to reach out to us with any
-				comments or ideas on how we can serve you better. Your input helps us enhance Foxi and meet
-				your
-			</p>
+			<a
+				href="#"
+				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
+			>
+				<span>Оставить заявку</span>
+			</a>
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h3>Этапы работы:</h3>
+			<Steps />
 		</div>
 	</SidebarContent>
 	<TextImage
-		title="Why Foxi’s Pricing Plans Offer Great Value"
+		title=""
 		text="At Foxi, we believe in providing exceptional value at every price point. Our pricing plans are designed to cater to a variety of needs, from individuals and small teams to large enterprises. Each plan includes access to our powerful features, seamless integrations, and top-notch customer support. "
 		image={faqImage1}
 		mobileImage={faqImage1}
 		imagePosition="left"
 		offsetImage
-		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-64"
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
 	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Лечение грибковых заболеваний плодовых</h2>
+			<p>Существуют следующие методики борьбы с грибковыми инфекциями плодовых деревьев:</p>
+		</div>
+		<div class="basic-text">
+			<ol>
+				<li>Обеззараживание почвы.</li>
+				<li>Опрыскивание биопрепаратами.</li>
+				<li>Обработка химическими средствами.</li>
+			</ol>
+			<p>
+				Лечение грибковых заболеваний плодовых деревьев проводится химикатами. Они помогут
+				предотвратить развитие болезней.
+			</p>
+			<h3>Средство от плесени и грибка плодовых деревьев</h3>
+			<p>
+				<b>Раёк.</b> Это системное средство от мучнистой росы для плодовых деревьев. Также препарат действует
+				сразу же на несколько разновидностей грибковых заболеваний. Проводить обработку придется 4 раза.
+				Препарат продается в виде эмульсии, ее придется разводить в воде в соотношении 1.5-2 мл на десять
+				литров.
+			</p>
+			<p>
+				<b>Бордоская жидкость.</b> Обрабатывать деревья придется в фазе «зеленого конуса». Потребуется
+				развести 250 мл препарата на 10 литров воды. Кроме этого, рекомендуется 3 опрыскивания в вегетационный
+				период. В среднем на 1 дерево уйдет от двух до пяти литров раствора.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Профилактика болезней плодовых деревьев</h2>
+			<p class="mt-6">
+				Некоторые садовники не знают, как спасти плодовые деревья от болезней. Вот ряд действенных
+				профилактических мер:
+			</p>
+		</div>
+		<div class="basic-text">
+			<ol>
+				<li>2 раза в год выполнять санитарную обрезку.</li>
+				<li>Хорошо обрабатывать раны и срезы с помощью медного купороса.</li>
+				<li>Сжигать листья осенью.</li>
+				<li>Убирать и уничтожать зараженные плоды.</li>
+				<li>Проводить опрыскивание плодовых деревьев весной.</li>
+			</ol>
+			<p>
+				Также рекомендуется выполнять обработку химическими средствами. Лучше всего выбирать
+				биологические препараты. Кроме этого, рекомендована профилактика бактериального ожога
+				плодовых деревьев. В неё входит регулярная обработка сада инсектицидами, осмотр верхушек
+				деревьев, листьев, применение стволовых инъекций.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Цены на лечение плодовых деревьев</h2>
+			<p>
+				Узнайте стоимость услуг по лечению растений: цена зависит от объема работ и состояния
+				деревьев.
+			</p>
+		</div>
+		<div class="basic-text">
+			<div class="w-full overflow-x-auto">
+				<table
+					class="w-full border-separate rounded border border-slate-200 text-left"
+					cellspacing="0"
+				>
+					<tbody>
+						<tr>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Name</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Title</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Company</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Role</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Username</th
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Ayub Salas</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Designer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Carroll Group</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>salas_a</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Agnes Sherman</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Developer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Apple</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Admin</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>shermanagnes</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Jemma Cummings</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Senior Designer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>20goto10</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>jemmaC</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Jimi Cardenas</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Copywriter</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Wind-UI</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Owner</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>cardenasji</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Mateusz Tucker</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Project Manager</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Tailwindui</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>mt</td
+							>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</SidebarContent>
+	<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+		<!-- Title -->
+		<div class="mx-auto mb-8 max-w-2xl text-center lg:mb-14">
+			<h2 class="text-pretty"><strong>Примеры</strong> выполненных работ</h2>
+			<p class="pb-0 text-lg">Мы знаем и любим свое дело</p>
+		</div>
+		<!-- End Title -->
+
+		<!-- Grid -->
+		<div class="mx-auto grid max-w-3xl grid-cols-12 gap-6 lg:gap-8">
+			{
+				features.slice(0, 3).map((feature) => (
+					<div class="col-span-6 text-center sm:col-span-4">
+						<Feature title={feature.title} icon={feature.icon} align="center" classes="mb-12" />
+					</div>
+				))
+			}
+		</div>
+		<!-- End Grid -->
+
+		<!-- Grid -->
+		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
+			<div class="col-span-4 hidden md:col-span-3 md:block">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+		</div>
+		<!-- End Grid -->
+	</div>
 	<FAQ
 		title="Integrations Made Easy"
 		text="Discover how Foxi seamlessly integrates with your favorite tools and platforms. From Google Calendar to Slack, find out how to connect and enhance your productivity with powerful integrations."
