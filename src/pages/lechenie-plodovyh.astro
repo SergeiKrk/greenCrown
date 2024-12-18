@@ -17,12 +17,11 @@ import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
 import features from '../data/json-files/featuresData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
+
 const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-plodovyh')
 
 // Content
 import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
@@ -40,31 +39,6 @@ const catCards = {
 	title: 'Лечение и обработка <strong>стволов деревьев</strong>',
 	description: ''
 }
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/#',
-		title: 'Лечение плодовых',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/#',
-		title: 'Лечение хвойных',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
