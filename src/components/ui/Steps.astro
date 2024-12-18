@@ -1,18 +1,5 @@
 ---
-type steps = {
-	title: string
-	text: string
-}
-const steps: steps[] = [
-	{
-		title: 'Step 1',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.'
-	}
-]
-const endstep = {
-	title: 'End step',
-	text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.'
-}
+const { steps, endstep } = Astro.props
 ---
 
 {
