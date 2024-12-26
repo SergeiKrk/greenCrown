@@ -46,61 +46,97 @@ export const footerNavigationData: FooterData = {
 	},
 	footerColumns: [
 		{
-			category: 'Product',
+			category: 'Лечение',
 			subCategories: [
 				{
-					subCategory: 'Features',
-					subCategoryLink: '/features'
+					subCategory: 'Лечение деревьев',
+					subCategoryLink: '/#'
 				},
 				{
-					subCategory: 'FAQ',
-					subCategoryLink: '/faq'
+					subCategory: 'Oбследование деревьев',
+					subCategoryLink: '/#'
 				},
 				{
-					subCategory: 'Pricing',
-					subCategoryLink: '/pricing'
+					subCategory: 'Лечение хвойных',
+					subCategoryLink: '/lechenie-hvoinih'
 				},
 				{
-					subCategory: 'Changelog',
-					subCategoryLink: '/changelog'
+					subCategory: 'Лечение плодовых',
+					subCategoryLink: '/lechenie-plodovyh'
 				},
 				{
-					subCategory: 'Terms',
-					subCategoryLink: '/terms'
+					subCategory: 'Лечение листенных',
+					subCategoryLink: '/lechenie-listvennyh'
+				},
+				{
+					subCategory: 'Обработка деревьев от вредителей',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Стволовые инъекции ',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Подкормка деревьев',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Обрезка деревьев',
+					subCategoryLink: '/#'
 				}
 			]
 		},
 		{
-			category: 'About us',
+			category: 'Обработка участка',
 			subCategories: [
 				{
-					subCategory: 'About us',
-					subCategoryLink: '/'
+					subCategory: 'Обработка от вредителей',
+					subCategoryLink: '/#'
 				},
 				{
-					subCategory: 'News',
-					subCategoryLink: '/blog'
+					subCategory: 'Обработка от клещей',
+					subCategoryLink: '/#'
 				},
 				{
-					subCategory: 'Careers',
-					subCategoryLink: '/blog'
+					subCategory: 'Обработка от муравьев',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Обработка от короеда',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Обработка от мышей',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Обработка от крыс',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Обработка от кротов',
+					subCategoryLink: '/#'
 				}
 			]
 		},
 		{
-			category: 'Get in touch',
+			category: 'Уход',
 			subCategories: [
 				{
-					subCategory: 'Contact',
-					subCategoryLink: '/contact'
+					subCategory: 'Уход за деревьями',
+					subCategoryLink: '/#'
 				},
 				{
-					subCategory: 'Support',
-					subCategoryLink: '/contact'
+					subCategory: 'Опрыскивание деревьев',
+					subCategoryLink: '/#'
 				},
 				{
-					subCategory: 'Join us',
-					subCategoryLink: '/contact'
+					subCategory: 'Укрепление деревьев (Каблинг)',
+					subCategoryLink: '/#'
+				},
+				{
+					subCategory: 'Восстановление деревьев',
+					subCategoryLink: '/#'
 				}
 			]
 		}
