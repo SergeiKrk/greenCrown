@@ -44,18 +44,18 @@ export const navigationBarData: NavData = {
 			name: 'Услуги',
 			link: '#',
 			submenu: [{ name: 'Лечение деревьев', link: '/lechenie-derevev' }]
-		},
-		{
-			name: 'Resources',
-			link: '#',
-			submenu: [
-				{ name: 'Blog', link: '/blog' },
-				{ name: 'FAQ', link: '/faq' },
-				{ name: 'Terms', link: '/terms' },
-				{ name: 'Features', link: '/features' },
-				{ name: 'Contact', link: '/contact' }
-			]
 		}
+		// {
+		// 	name: 'Resources',
+		// 	link: '#',
+		// 	submenu: [
+		// 		{ name: 'Blog', link: '/blog' },
+		// 		{ name: 'FAQ', link: '/faq' },
+		// 		{ name: 'Terms', link: '/terms' },
+		// 		{ name: 'Features', link: '/features' },
+		// 		{ name: 'Contact', link: '/contact' }
+		// 	]
+		// }
 	],
 	navActions: [{ name: 'Try it now', link: '/', style: 'primary', size: 'lg' }]
 }
