@@ -1,0 +1,14 @@
+---
+type Props = {
+	link: string
+	btnName: string
+}
+const { link, btnName } = Astro.props
+---
+
+<a
+	href={link}
+	class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:shadow-xl hover:shadow-emerald-500/20 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
+>
+	<span>{btnName}</span>
+</a>
