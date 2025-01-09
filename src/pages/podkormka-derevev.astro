@@ -21,8 +21,9 @@ import faqImage1 from '../assets/faq/faq-01.png'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
-	title: 'Подкормка и защита деревьев в Москве и МО',
-	description: ''
+	title: 'Подкормка деревьев и кустарников | Профессиональный уход и защита в Москве и МО',
+	description:
+		'Наши эксперты помогут правильно подкормить и защитить ваши деревья и кустарники весной. Мы используем эффективные удобрения и методы защиты, чтобы обеспечить здоровье растений и высокий урожай. Обработаем яблони, груши, вишни и другие деревья с учетом всех сезонных особенностей. Закажите услугу уже сегодня!'
 }
 // - Page Header
 const header = {
@@ -62,30 +63,29 @@ const endstep = {
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:my-24 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:my-24 2xl:bg-white dark:bg-neutral-900"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
-			<div class="text-slate-500">
+			<div class="text-slate-500 dark:text-slate-300">
 				<div class="relative p-6 pb-0 pr-0">
 					<figure class="relative z-10">
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Лечение хвойных растений требует комплексного подхода. Даже при бережном уходе
-									большинство хвойников подвержено различным заболеваниям. Для сохранения здоровья
-									растений важно уметь распознавать первые признаки их болезней. Для точной
-									диагностики рекомендуется обратиться к специалистам.</i
+									Для поддержания здоровья и полноценного роста ваших деревьев важно своевременно
+									проводить подкормку и защитные мероприятия. Чтобы точно определить потребности
+									растений, рекомендуется проконсультироваться со специалистами.</i
 								>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем сохранить
-								здоровье и красоту ваших хвойных растений.
+								<span class="font-bold">Закажите бесплатную консультацию</span>, и мы поможем вам
+								обеспечить здоровый рост и защиту ваших деревьев.
 							</p>
 						</blockquote>
 					</figure><svg
 						aria-hidden="true"
-						class="absolute left-6 top-6 z-0 h-16"
+						class="absolute left-6 top-6 z-0 h-16 dark:hidden"
 						viewBox="0 0 17 12"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ const endstep = {
 			</div>
 			<div class="group flex">
 				<div
-					class="animate__animated animate__rubberBand z-10 block rounded-md px-8 py-4 pr-6 md:border-r-8 md:border-[#2FAF83] md:bg-neutral-50 2xl:w-[600px]"
+					class="animate__animated animate__rubberBand z-10 block rounded-md px-8 py-4 pr-6 md:border-r-8 md:border-[#2FAF83] md:bg-neutral-50 2xl:w-[600px] dark:bg-neutral-800"
 				>
 					<FormOption idForm="1" titleForm={SEO.title} client:load />
 				</div>
