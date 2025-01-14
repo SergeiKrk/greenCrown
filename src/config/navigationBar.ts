@@ -43,7 +43,10 @@ export const navigationBarData: NavData = {
 		{
 			name: 'Услуги',
 			link: '#',
-			submenu: [{ name: 'Лечение деревьев', link: '/lechenie-derevev' }]
+			submenu: [
+				{ name: 'Лечение деревьев', link: '/lechenie-derevev' },
+				{ name: 'Обработка участка от вредителей', link: '/obrabotka-uchastka-ot-vreditelej' }
+			]
 		}
 		// {
 		// 	name: 'Resources',
