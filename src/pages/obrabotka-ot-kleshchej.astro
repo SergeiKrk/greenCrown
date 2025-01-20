@@ -4,198 +4,43 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-// import Feature from '../components/blocks/features/FeatureList.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
+
+import features from '../data/json-files/featuresData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
-const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-derevev')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-kleshchej')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
 const SEO = {
-	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
+	title: 'Уничтожение клещей: Обработка дачного участка – Цена, методы, гаранти',
 	description:
-		'Лечение деревьев в Москве и области: Укрепляем, лечим, восстанавливаем, защищаем от болезней с гарантией результата. Убедитесь в качестве: безопасные методы, опытные специалисты, долговечный результат!'
+		'Комплексная обработка участка от клещей. Гарантия безопасности для детей, животных и растений. Консультация бесплатно!'
 }
 // - Page Header
 const header = {
-	title: 'Санитарная <strong>обработка участка</strong> от вредителей',
-	text: 'Лечение деревьев — комплекс мер по оздоровлению, защите и восстановлению деревьев, чтобы продлить их жизнь, предотвратить болезни и улучшить внешний вид.'
+	title: 'Обработка участка от <strong>клещей</strong>',
+	text: 'Профессиональная обработка территории от клещей. Эффективные препараты, защита участка на весь сезон и комфортный отдых на даче без укусов.'
 }
-
-const catCards = {
-	title: 'Наши <strong>услуги</strong>',
-	description:
-		'Осуществляем профессиональное лечение деревьев, включая восстановление после повреждений и заболеваний. Наши специалисты используют эффективные методы для защиты и оздоровления деревьев.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServices = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServicesTwo = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/obrabotka-ot-komarov',
-		title: 'Обработка от комаров',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/obrabotka-ot-kleshchej',
-		title: 'Обработка от клещей',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrabotka-ot-muravev',
-		title: 'Обработка участка от муравьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/lechenie-listvennyh',
-		title: 'Обработка участка от мышей',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/lechenie-listvennyh',
-		title: 'Обработка участка от крыс',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/lechenie-listvennyh',
-		title: 'Обработка участка от кротов',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	}
-]
-
-const CategoryServices: CategoryServices[] = [
-	{
-		link: '/obrabotka-dereva-ot-vreditelej',
-		title: 'Обработка деревьев от вредителей и инфекций',
-		text: 'Защита деревьев и кустарников от насекомых и болезней',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrezka-derevev',
-		title: 'Обрезка и обработка деревьев',
-		text: 'Санитарная обрезка способствует укреплению и оздоровлению деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/inekcii-derevyam',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для борьбы с болезнями и паразитами',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/podkormka-derevev',
-		title: 'Подкормка и защита деревьев',
-		text: 'Внесение подкормок повышает иммунитет ваших деревьев и кустарников',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
-
-const CategoryServicesTwo: CategoryServicesTwo[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-24 2xl:mt-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -204,14 +49,11 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 					<figure class="relative z-10">
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
-								<i>
-									Лечить дерево правильно – задача, требующая опыта и знаний. Мы предлагаем
-									профессиональные услуги по уходу, оздоровлению и защите деревьев.</i
-								>
+								<i> Защитите себя и свою семью от клещей с помощью профессиональной обработки. </i>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем сохранить
-								здоровье и красоту ваших растений.
+								<span class="font-bold">Закажите обработку от клещей на участке сегодня</span> и получите
+								подробный план ухода за вашим садом!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -242,49 +84,93 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="flex flex-col justify-center lg:flex-row">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-96">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Обработка от клещей</h2>
+			<p class="mt-6">
+				<i>Надежное решение проблемы уже после первой обработки.</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать услугу" />
 		</div>
-	</Section>
-	<Section id="category-cards">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg" set:html={catCards.description} />
-			</Col>
-		</Row>
-		<Row>
-			{
-				CategoryServices.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</Row>
-	</Section>
+		<div class="basic-text">
+			<p>
+				Клещи — это не только неприятные паразиты, но и опасные переносчики заболеваний. Защитите
+				свой участок и близких с помощью нашей профессиональной обработки от клещей. Мы используем
+				только сертифицированные средства, безопасные для экосистемы вашего участка, чтобы
+				эффективно уничтожить клещей и предотвратить их возвращение. Обработка участка от клещей
+				доступна по выгодным ценам, а наши специалисты гарантируют результат, который обеспечит
+				защиту на весь сезон. Закажите обработку и почувствуйте разницу!
+			</p>
+		</div>
+	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на лечение деревьев</h2>
+			<h2 class="lg:text-2xl">Уничтожение клещей</h2>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Почему стоит позаботиться о защите от клещей?</h3>
 			<p>
-				Узнайте стоимость услуг по 111111111: цена зависит от объема работ и состояния деревьев.
+				Если клещи завелись на вашем участке, это не только неприятно, но и опасно. Эти паразиты
+				могут стать причиной тяжелых заболеваний, таких как болезнь Лайма, энцефалит и другие. Наши
+				специалисты помогут вам избавиться от клещей и защитить свой участок на долгое время. Мы
+				предлагаем эффективное уничтожение клещей на даче, загородных участках и территориях любой
+				площади. Все процедуры проводятся с соблюдением экологических норм, без ущерба для растений,
+				животных и людей. Убедитесь в эффективности наших методов!
+			</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Как проходит обработка участка от клещей?"
+		text='<p class="mt-2">Обработка участка от клещей — это многоступенчатый процесс, включающий несколько важных этапов:</p><h3 class="lg:text-2xl">Осмотр участка</h3><p class="mt-2">Наши специалисты оценивают состояние вашей территории, выявляют зоны с повышенным риском заражения клещами, такие как травянистые и кустарниковые участки.</p><h3 class="lg:text-2xl">Подготовка средств защиты</h3><p class="mt-2">Мы используем только сертифицированные препараты, которые безопасны для людей и домашних животных.</p><h3 class="lg:text-2xl">Обработка участка</h3><p class="mt-2">Проводится обработка всей территории с помощью опрыскивания и инъекций, чтобы уничтожить клещей на разных стадиях их жизненного цикла.</p><h3 class="lg:text-2xl">Контроль и повторная обработка</h3><p class="mt-2">После первой обработки мы рекомендуем повторить процедуру через несколько недель для гарантированной защиты.</p><p class="mt-2">Каждый этап нашей работы направлен на то, чтобы ваш участок был защищен от клещей на весь сезон, а результат был максимально эффективным.</p>'
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Обработка территории от клещей</h2>
+			<BtnLight link="/#" btnName="Оставить заявку" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h3 class="lg:text-2xl">Как предотвратить появление клещей на участке?</h3>
+			<p>
+				Профилактика — это лучший способ защититься от клещей и минимизировать риск их появления на
+				участке. Вот несколько полезных советов:
+			</p>
+			<ol>
+				<li>
+					Регулярно обрабатывайте участок: Плановая обработка от клещей в начале сезона помогает
+					предотвратить их появление.
+				</li>
+				<li>
+					Убирайте лишние кустарники и траву: Клещи часто обитают в густых зарослях, поэтому их
+					удаление поможет снизить риск заражения.
+				</li>
+				<li>
+					Обработайте территорию вокруг дома: Не забывайте обрабатывать не только сад, но и зоны
+					вокруг жилья, чтобы создать барьер для клещей.
+				</li>
+				<li>
+					Используйте защитные средства: В период активности клещей наносите репелленты на одежду и
+					кожу, если планируете проводить время на участке.
+				</li>
+			</ol>
+			<p>
+				Профилактические меры вместе с профессиональной обработкой помогут сохранить ваш участок
+				безопасным для отдыха и работы на свежем воздухе.
+			</p>
+		</div>
+	</SidebarContent>
+	<!-- Features -->
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Стоимость обработки участка от клещей</h2>
+			<p>
+				Цены на уничтожение клещей на даче зависят от используемых препаратов и особенностей
+				местности.
 			</p>
 		</div>
 		<div class="basic-text">
@@ -498,7 +384,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме лечения деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме обработки территории от клещей. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />
