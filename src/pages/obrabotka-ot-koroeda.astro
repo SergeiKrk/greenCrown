@@ -4,205 +4,44 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-// import Feature from '../components/blocks/features/FeatureList.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
+
+import features from '../data/json-files/featuresData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
-const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-derevev')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-koroeda')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+import obsledImg from '../assets/обследование-деревьев.jpg'
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
 const SEO = {
-	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
+	title: 'Обработка от короеда – профессиональное уничтожение жука короеда на участке',
 	description:
-		'Лечение деревьев в Москве и области: Укрепляем, лечим, восстанавливаем, защищаем от болезней с гарантией результата. Убедитесь в качестве: безопасные методы, опытные специалисты, долговечный результат!'
+		'Борьба с короедом: инъекции, обработка коры, химические препараты. Эффективное уничтожение жука короеда. Цены на обработку. Сохраним ваши деревья!'
 }
 // - Page Header
 const header = {
-	title: 'Санитарная <strong>обработка участка</strong> от вредителей',
-	text: 'Лечение деревьев — комплекс мер по оздоровлению, защите и восстановлению деревьев, чтобы продлить их жизнь, предотвратить болезни и улучшить внешний вид.'
+	title: 'Обработка деревьев от <strong>короеда</strong>',
+	text: 'Мы знаем, как бороться с жуком короедом. Эффективные препараты, защита деревьев на весь сезон.'
 }
-
-const catCards = {
-	title: 'Наши <strong>услуги</strong>',
-	description:
-		'Осуществляем профессиональное лечение деревьев, включая восстановление после повреждений и заболеваний. Наши специалисты используют эффективные методы для защиты и оздоровления деревьев.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServices = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServicesTwo = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/obrabotka-ot-komarov',
-		title: 'Обработка от комаров',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/obrabotka-ot-kleshchej',
-		title: 'Обработка от клещей',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrabotka-ot-muravev',
-		title: 'Обработка от муравьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-koroeda',
-		title: 'Обработка от короеда',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/lechenie-listvennyh',
-		title: 'Обработка от мышей',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/lechenie-listvennyh',
-		title: 'Обработка от крыс',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/lechenie-listvennyh',
-		title: 'Обработка от кротов',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	}
-]
-
-const CategoryServices: CategoryServices[] = [
-	{
-		link: '/obrabotka-dereva-ot-vreditelej',
-		title: 'Обработка деревьев от вредителей и инфекций',
-		text: 'Защита деревьев и кустарников от насекомых и болезней',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrezka-derevev',
-		title: 'Обрезка и обработка деревьев',
-		text: 'Санитарная обрезка способствует укреплению и оздоровлению деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/inekcii-derevyam',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для борьбы с болезнями и паразитами',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/podkormka-derevev',
-		title: 'Подкормка и защита деревьев',
-		text: 'Внесение подкормок повышает иммунитет ваших деревьев и кустарников',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
-
-const CategoryServicesTwo: CategoryServicesTwo[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-24 2xl:mt-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -211,14 +50,14 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 					<figure class="relative z-10">
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
-								<i>
-									Лечить дерево правильно – задача, требующая опыта и знаний. Мы предлагаем
-									профессиональные услуги по уходу, оздоровлению и защите деревьев.</i
+								<i
+									>Обработка деревьев от короеда — это важный шаг для сохранения вашего сада,
+									защищающий растения от разрушительных вредителей и продлевающий их жизнь.</i
 								>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем сохранить
-								здоровье и красоту ваших растений.
+								<span class="font-bold">Закажите обработку деревьев от короеда сегодня </span> и получите
+								рекомендации по уходу за зелеными насаждениями на вашем участке!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -249,49 +88,112 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-64">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Обработка от короеда</h2>
+			<p class="mt-6">
+				<i
+					>Не откладывайте борьбу с короедом! Чем раньше начать обработку, тем выше шанс спасти
+					дерево.
+				</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
 		</div>
-	</Section>
-	<Section id="category-cards">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg" set:html={catCards.description} />
-			</Col>
-		</Row>
-		<Row>
-			{
-				CategoryServices.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</Row>
-	</Section>
+		<div class="basic-text">
+			<h2 class="lg:text-2xl">Услуги по борьбе с короедом</h2>
+			<p>
+				Короед – это опасный вредитель, который уничтожает деревья изнутри. Он проникает под кору,
+				оставляя дерево без питания. Если не принять меры вовремя, растение погибнет.
+			</p>
+			<p>
+				Мы предлагаем профессиональные услуги по борьбе с короедом. Работаем с хвойными и плодовыми
+				деревьями. Используем эффективные методы.
+			</p>
+		</div>
+	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на лечение деревьев</h2>
+			<h2 class="lg:text-2xl">Уничтожение жука короеда</h2>
+			<BtnLight link="/#" btnName="Заказать звонок" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Как мы работаем:</h3>
+			<ol>
+				<li>Осматриваем дерево и выявляем очаг заражения.</li>
+				<li>
+					Подбираем метод борьбы: инъекции, обработка химическими средствами или механическая
+					очистка.
+				</li>
+				<li>Проводим обработку, безопасную для дерева и окружающей среды.</li>
+			</ol>
 			<p>
-				Узнайте стоимость услуг по 111111111: цена зависит от объема работ и состояния деревьев.
+				Не откладывайте борьбу с короедом! Чем раньше начать обработку, тем выше шанс спасти дерево.
+			</p>
+			<p>
+				<i>Свяжитесь с нами прямо сейчас, чтобы получить консультацию и вызвать специалиста.</i>
+			</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Методы борьбы с короедом"
+		text='<p class="mt-2">Короед – серьезная угроза для деревьев. Чтобы избавиться от вредителя, важно выбрать правильный метод. Мы применяем современные технологии, которые гарантируют результат.</p><h3 class="lg:text-2xl"><a href="/inekcii-derevyam">Инъекции в ствол</a></h3><p class="mt-2">Этот метод позволяет доставить препарат прямо в древесину. Инъекции уничтожают короеда изнутри и предотвращают повторное заражение. Это безопасно для дерева и окружающей среды.</p><h3 class="lg:text-2xl">Химическая обработка</h3><p class="mt-2">Препараты наносятся на поверхность коры. Они создают защитный барьер, который убивает короеда и его личинок. Метод подходит для хвойных и лиственных деревьев.</p><h3 class="lg:text-2xl">Механическая очистка</h3><p class="mt-2">Мы удаляем пораженные участки коры вручную. Этот способ позволяет быстро остановить распространение вредителя.</p><p class="mt-2">Правильно выбранный метод – залог спасения ваших деревьев. Мы подбираем решение индивидуально для каждого случая.</p>'
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-6">
+				<i> Оставьте заявку, чтобы получить консультацию и защитить деревья от короеда! </i>
+			</p>
+			<BtnLight link="/#" btnName="Оставить заявку" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h2 class="lg:text-2xl">Причины появления короеда</h2>
+			<p>
+				Короед поражает деревья, которые ослаблены болезнями или неблагоприятными условиями.
+				Вредитель быстро размножается, уничтожая растение за несколько месяцев.
+			</p>
+			<p>Основные причины заражения:</p>
+			<ul>
+				<li>Ослабление дерева из-за недостатка влаги или питательных веществ.</li>
+				<li>Повреждения коры после обрезки или механических ударов.</li>
+				<li>Близость зараженных деревьев, особенно в хвойных лесах.</li>
+			</ul>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<p>
+				<i>Не ждите, пока вредитель уничтожит дерево – закажите консультацию и защитите свой сад!</i
+				>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Как предотвратить заражение короедом</h3>
+			<ol>
+				<li>
+					Регулярно осматривайте деревья. При первых признаках – мелких отверстиях на коре или
+					буровой пыли – обратитесь к специалисту.
+				</li>
+				<li>Ухаживайте за растениями: своевременно поливайте, удобряйте и проводите обрезку.</li>
+				<li>Обрабатывайте деревья защитными препаратами. Это снизит риск появления вредителей.</li>
+			</ol>
+			<p>
+				Короед – это серьезная угроза, но с ним можно справиться. Регулярная профилактика поможет
+				сохранить здоровье ваших деревьев.
+			</p>
+		</div>
+	</SidebarContent>
+	<!-- Features -->
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Цены на уничтожение жука короеда</h2>
+			<p>
+				Цены на обработку от короеда на участке зависят от количества деревьев и объема поражения.
 			</p>
 		</div>
 		<div class="basic-text">
@@ -505,7 +407,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме лечения деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме лечения деревьев от короеда. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />
