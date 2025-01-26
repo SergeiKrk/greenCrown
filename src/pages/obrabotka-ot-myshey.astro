@@ -4,205 +4,43 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-// import Feature from '../components/blocks/features/FeatureList.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
+
+import features from '../data/json-files/featuresData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
-const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-derevev')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-myshey')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
 const SEO = {
-	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
+	title: 'Обработка дачи и участка от мышей – профессиональная защита зимой и летом',
 	description:
-		'Лечение деревьев в Москве и области: Укрепляем, лечим, восстанавливаем, защищаем от болезней с гарантией результата. Убедитесь в качестве: безопасные методы, опытные специалисты, долговечный результат!'
+		'Эффективное уничтожение мышей на даче, участке и в доме. Безопасные методы борьбы с гарантией. Узнайте цену!'
 }
 // - Page Header
 const header = {
-	title: 'Санитарная <strong>обработка участка</strong> от вредителей',
-	text: 'Лечение деревьев — комплекс мер по оздоровлению, защите и восстановлению деревьев, чтобы продлить их жизнь, предотвратить болезни и улучшить внешний вид.'
+	title: 'Обработка от <strong>мышей</strong>',
+	text: 'Профессиональная обработка дома и участка от мышей. Эффективное уничтожение грызунов с гарантией результата и доступными ценами.'
 }
-
-const catCards = {
-	title: 'Наши <strong>услуги</strong>',
-	description:
-		'Осуществляем профессиональное лечение деревьев, включая восстановление после повреждений и заболеваний. Наши специалисты используют эффективные методы для защиты и оздоровления деревьев.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServices = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServicesTwo = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/obrabotka-ot-komarov',
-		title: 'Обработка от комаров',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/obrabotka-ot-kleshchej',
-		title: 'Обработка от клещей',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrabotka-ot-muravev',
-		title: 'Обработка от муравьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-koroeda',
-		title: 'Обработка от короеда',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-myshey',
-		title: 'Обработка от мышей',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-krys',
-		title: 'Обработка от крыс',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/borba-s-krotami',
-		title: 'Обработка от кротов',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	}
-]
-
-const CategoryServices: CategoryServices[] = [
-	{
-		link: '/obrabotka-dereva-ot-vreditelej',
-		title: 'Обработка деревьев от вредителей и инфекций',
-		text: 'Защита деревьев и кустарников от насекомых и болезней',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrezka-derevev',
-		title: 'Обрезка и обработка деревьев',
-		text: 'Санитарная обрезка способствует укреплению и оздоровлению деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/inekcii-derevyam',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для борьбы с болезнями и паразитами',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/podkormka-derevev',
-		title: 'Подкормка и защита деревьев',
-		text: 'Внесение подкормок повышает иммунитет ваших деревьев и кустарников',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
-
-const CategoryServicesTwo: CategoryServicesTwo[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-24 2xl:mt-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -212,13 +50,13 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Лечить дерево правильно – задача, требующая опыта и знаний. Мы предлагаем
-									профессиональные услуги по уходу, оздоровлению и защите деревьев.</i
-								>
+									Обработка дачи и участка от мышей — надежная защита вашего дома и сада от
+									грызунов, предотвращающая ущерб и создающая комфортные условия для жизни.
+								</i>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем сохранить
-								здоровье и красоту ваших растений.
+								<span class="font-bold">Закажите уничтожение мышей сегодня</span> и получите рекомендации
+								по защите вашего участка от грызунов на будущее!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -249,49 +87,101 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-64">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Травля мышей на даче</h2>
+			<p class="mt-6">
+				<i
+					>Закажите профессиональную обработку участка от мышей и забудьте о вредителях раз и
+					навсегда!</i
+				>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
 		</div>
-	</Section>
-	<Section id="category-cards">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg" set:html={catCards.description} />
-			</Col>
-		</Row>
-		<Row>
-			{
-				CategoryServices.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</Row>
-	</Section>
+		<div class="basic-text">
+			<p>
+				Мыши на даче – это не просто неудобство, а настоящая угроза для вашего здоровья и имущества.
+				Эти маленькие, но опасные вредители могут разрушать здания, переносить болезни и доставлять
+				массу других неприятностей. Мы предлагаем профессиональную обработку участка от мышей, чтобы
+				избавиться от этих нежелательных гостей быстро и эффективно. Забудьте о мышах на даче и
+				участке – с нами ваше пространство будет безопасным и чистым.
+			</p>
+		</div>
+	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на лечение деревьев</h2>
+			<p class="lg:mt-14">
+				<i>Оставьте заявку на уничтожение мышей и получите подробную консультацию бесплатно!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Услуги по уничтожению мышей</h3>
 			<p>
-				Узнайте стоимость услуг по 111111111: цена зависит от объема работ и состояния деревьев.
+				Наши специалисты проведут полный комплекс работ по уничтожению мышей на вашем участке. Мы
+				используем современные методы, включая травлю мышей, установку ловушек и обработку
+				специализированными средствами. С нами вы получите результат: мыши больше не будут
+				беспокоить вас. Услуга эффективна не только от обычных мышей, но и от полевых мышей, которые
+				часто встречаются на дачах и в садах. Мы гарантируем качество и безопасность всех
+				применяемых средств.
+			</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Проблемы, связанные с мышами на даче"
+		text='<p class="mt-2">Мыши на даче могут причинить немалый ущерб. Они не только портят пищу, но и разрушают мебель, стены и проводку.</p> <p class="mt-2">Мыши в доме на даче – это риск заболеваний, таких как лептоспироз, хантавирус и другие инфекционные болезни. Особенно опасны полевые мыши на участке, которые размножаются очень быстро и могут стать источником серьёзных проблем.</p> <p class="mt-2">Зима – время, когда мыши особенно активно ищут укрытия, и ваш дом или дача могут стать для них идеальным убежищем. Не дайте мышам шанс – примите меры уже сейчас!</p>'
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-6">
+				<i>
+					Если народные средства оказались не такими эффективными, как вам хотелось бы, просто
+					позвоните нам. - Мы избавим вас от мышей с гарантией!
+				</i>
+			</p>
+			<BtnLight link="/#" btnName="Оставить заявку" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h3 class="lg:text-2xl">Методы борьбы с мышами</h3>
+			<p>
+				Чтобы избавиться от мышей на участке, важно использовать правильные методы. Мы применяем
+				эффективные средства для травли мышей, которые уничтожают вредителей на всех стадиях их
+				жизни. Ловушки и репелленты — тоже важная часть комплексного подхода. Для каждого случая мы
+				подбираем индивидуальное решение, учитывая особенности участка и степень зараженности. Наши
+				методы гарантируют, что мыши на вашем участке больше не будут проблемой.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<p class="mt-14">
+				<i> Закажите обработку участка от мышей и защитите свой дом и сад от вредителей! </i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать обработку" />
+		</div>
+		<div class="basic-text">
+			<h3>Ожидаемые результаты</h3>
+			<p>
+				После обработки участка от мышей, вы сразу заметите результат: вредители исчезнут, а ваш
+				участок и дом останутся в безопасности. Мы гарантируем, что мыши больше не будут создавать
+				проблемы, а долгосрочные результаты сохранятся. Все методы безопасны для вас и ваших
+				домашних животных, а стоимость услуги вполне оправдана её качеством. С нами ваш дом станет
+				чистым и защищённым.
+			</p>
+		</div>
+	</SidebarContent>
+	<!-- Features -->
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Цены на обработку от мышей</h2>
+			<p>
+				Цена на обработку участка от мышей зависит от объема работы и выбранного метода. Мы
+				предлагаем доступные цены с возможностью выбора подходящих вариантов по стоимости.
 			</p>
 		</div>
 		<div class="basic-text">
@@ -505,7 +395,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме лечения деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме обработки территории и помещений от мышей. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />

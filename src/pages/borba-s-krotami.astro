@@ -4,205 +4,43 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-// import Feature from '../components/blocks/features/FeatureList.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
+
+import features from '../data/json-files/featuresData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
-const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-derevev')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'borba-s-krotami')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
 const SEO = {
-	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
+	title: 'Уничтожение кротов на участке – профессиональная служба по уничтожению кротов',
 	description:
-		'Лечение деревьев в Москве и области: Укрепляем, лечим, восстанавливаем, защищаем от болезней с гарантией результата. Убедитесь в качестве: безопасные методы, опытные специалисты, долговечный результат!'
+		'Служба по уничтожению кротов на участке и даче. Применяем эффективные средства и методы для борьбы с кротами. Профессиональная обработка участка с гарантией качества и доступной ценой.'
 }
 // - Page Header
 const header = {
-	title: 'Санитарная <strong>обработка участка</strong> от вредителей',
-	text: 'Лечение деревьев — комплекс мер по оздоровлению, защите и восстановлению деревьев, чтобы продлить их жизнь, предотвратить болезни и улучшить внешний вид.'
+	title: 'Борьба с <strong>кротами</strong> на участке',
+	text: 'Профессиональная борьба с кротами на даче и участке. Надежная обработка, доступные цены и долгосрочный эффект.'
 }
-
-const catCards = {
-	title: 'Наши <strong>услуги</strong>',
-	description:
-		'Осуществляем профессиональное лечение деревьев, включая восстановление после повреждений и заболеваний. Наши специалисты используют эффективные методы для защиты и оздоровления деревьев.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServices = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServicesTwo = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/obrabotka-ot-komarov',
-		title: 'Обработка от комаров',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/obrabotka-ot-kleshchej',
-		title: 'Обработка от клещей',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrabotka-ot-muravev',
-		title: 'Обработка от муравьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-koroeda',
-		title: 'Обработка от короеда',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-myshey',
-		title: 'Обработка от мышей',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-krys',
-		title: 'Обработка от крыс',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/borba-s-krotami',
-		title: 'Обработка от кротов',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	}
-]
-
-const CategoryServices: CategoryServices[] = [
-	{
-		link: '/obrabotka-dereva-ot-vreditelej',
-		title: 'Обработка деревьев от вредителей и инфекций',
-		text: 'Защита деревьев и кустарников от насекомых и болезней',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrezka-derevev',
-		title: 'Обрезка и обработка деревьев',
-		text: 'Санитарная обрезка способствует укреплению и оздоровлению деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/inekcii-derevyam',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для борьбы с болезнями и паразитами',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/podkormka-derevev',
-		title: 'Подкормка и защита деревьев',
-		text: 'Внесение подкормок повышает иммунитет ваших деревьев и кустарников',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
-
-const CategoryServicesTwo: CategoryServicesTwo[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-24 2xl:mt-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -212,13 +50,13 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Лечить дерево правильно – задача, требующая опыта и знаний. Мы предлагаем
-									профессиональные услуги по уходу, оздоровлению и защите деревьев.</i
-								>
+									Обработка участка от кротов — надежное решение для сохранения вашего сада и
+									огорода, предотвращающее повреждения почвы и растений.
+								</i>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем сохранить
-								здоровье и красоту ваших растений.
+								<span class="font-bold">Закажите обработку от кротов сегодня </span>и получите
+								рекомендации по защите вашего участка от вредителей на будущее!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -249,49 +87,105 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-64">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Уничтожение кротов</h2>
+			<p class="mt-6">
+				<i>Оставьте заявку прямо сейчас – мы быстро и надежно решим вашу проблему с кротами!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
 		</div>
-	</Section>
-	<Section id="category-cards">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg" set:html={catCards.description} />
-			</Col>
-		</Row>
-		<Row>
-			{
-				CategoryServices.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</Row>
-	</Section>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Эффективная борьба с кротом</h3>
+			<p>
+				Кроты доставляют неудобства на участке? Мы знаем, как эффективно справиться с этой
+				проблемой! Наша команда предлагает профессиональную обработку с использованием современных
+				методов, безопасных для людей, растений и домашних животных.
+			</p>
+			<p>
+				Мы применяем проверенные и эффективные способы борьбы с кротами, которые обеспечат
+				долгосрочную защиту вашего участка. С помощью наших услуг вы забудете о поврежденной почве и
+				растениях, а ваш сад снова станет местом отдыха и уюта. Мы гарантируем результат и
+				безопасность всех использованных средств.
+			</p>
+		</div>
+	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на лечение деревьев</h2>
+			<p class="lg:mt-14">
+				<i
+					>Уничтожение кротов на дачном участке безопасно и быстро – оставьте заявку прямо сейчас!</i
+				>
+			</p>
+			<BtnLight link="/#" btnName="Заказать" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Проблемы, которые решаем</h3>
+			<p>Кроты могут нанести серьезный вред вашему участку:</p>
+			<ul>
+				<li>Разрушение корней растений и ландшафта.</li>
+				<li>Повреждение грядок, садовых и декоративных насаждений.</li>
+				<li>Нарушение работы поливочных систем из-за подземных ходов.</li>
+			</ul>
 			<p>
-				Узнайте стоимость услуг по 111111111: цена зависит от объема работ и состояния деревьев.
+				Эти вредители быстро размножаются, и бороться с ними самостоятельно сложно. Мы предлагаем:
+			</p>
+			<ul>
+				<li>Эффективное удаление кротов с участков любого размера.</li>
+				<li>Полную защиту сада, огорода или дачи.</li>
+				<li>Профилактические меры, чтобы кроты не вернулись.</li>
+			</ul>
+			<p>Наш подход гарантирует сохранность вашего участка и спокойствие.</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Как мы проводим обработку от крыс"
+		text='<p class="mt-2">Мы обеспечиваем комплексный подход к борьбе с кротами:</p><ol class="mt-2"><li>Осмотр территории. Наши специалисты оценивают ситуацию, выявляют активные ходы и повреждения.</li><li>Подбор метода. Используем индивидуальные решения: механические ловушки, современные отпугиватели, безопасные препараты и эффективные дымовые шашки.</li><li>Обработка. Проводим работу аккуратно, не нарушая инфраструктуру участка.</li><li>Контроль результата. Проверяем эффект и даем рекомендации, чтобы кроты не вернулись.</li></ol><p class="mt-2">Мы работаем с участками любого типа: дачи, огороды, сады. Все применяемые средства сертифицированы и безопасны для детей	, животных и растений.</p>'
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-6">
+				<i> Избавьтесь от кротов на огороде раз и навсегда – обратитесь к нашей службе сегодня! </i>
+			</p>
+			<BtnLight link="/#" btnName="Оставить заявку" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h3 class="lg:text-2xl">Методы и технологии</h3>
+			<p>Для борьбы с кротами мы используем только проверенные и современные методы:</p>
+			<ul>
+				<li>
+					Механические ловушки. Устанавливаем ловушки, которые эффективно улавливают вредителей.
+				</li>
+				<li>
+					Отпугиватели. Устройства создают вибрацию или звуковые сигналы, которые заставляют кротов
+					покидать участок.
+				</li>
+				<li>
+					Препараты. Применяем сертифицированные и безопасные средства, которые быстро уничтожают
+					кротов.
+				</li>
+				<li>
+					Шашки от кротов. Это один из самых эффективных методов. Шашки выделяют дым, который
+					заполняет кротовые ходы, не оставляя шансов для вредителей.
+				</li>
+			</ul>
+			<p>
+				Мы подбираем метод обработки индивидуально, с учетом особенностей вашего участка. Все работы
+				выполняются безопасно для людей, домашних животных и растений, с гарантией результата.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Цены на обработку от кротов</h2>
+			<p>
+				Цена на обработку участка от кротов зависит от необходимого объема работы и препаратов. Мы
+				предлагаем доступные цены с возможностью выбора подходящих вариантов по стоимости.
 			</p>
 		</div>
 		<div class="basic-text">
@@ -505,7 +399,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме лечения деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме обработки территории от кротов. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />

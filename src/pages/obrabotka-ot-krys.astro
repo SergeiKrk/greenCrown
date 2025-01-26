@@ -4,205 +4,43 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-// import Feature from '../components/blocks/features/FeatureList.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
+
+import features from '../data/json-files/featuresData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
-const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-derevev')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-krys')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
 const SEO = {
-	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
+	title: 'Уничтожение крыс на участке и в доме | Обработка от крыс с гарантией',
 	description:
-		'Лечение деревьев в Москве и области: Укрепляем, лечим, восстанавливаем, защищаем от болезней с гарантией результата. Убедитесь в качестве: безопасные методы, опытные специалисты, долговечный результат!'
+		'Эффективная борьба с крысами в частном доме и на даче. Обработка территории от крыс, дератизация и уничтожение крыс в домах. Узнайте цену на сайте!'
 }
 // - Page Header
 const header = {
-	title: 'Санитарная <strong>обработка участка</strong> от вредителей',
-	text: 'Лечение деревьев — комплекс мер по оздоровлению, защите и восстановлению деревьев, чтобы продлить их жизнь, предотвратить болезни и улучшить внешний вид.'
+	title: 'Обработка от <strong>крыс</strong>',
+	text: 'Профессиональная обработка от крыс в доме, на даче и участке. Надежная защита от грызунов без вреда для вашего здоровья.'
 }
-
-const catCards = {
-	title: 'Наши <strong>услуги</strong>',
-	description:
-		'Осуществляем профессиональное лечение деревьев, включая восстановление после повреждений и заболеваний. Наши специалисты используют эффективные методы для защиты и оздоровления деревьев.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServices = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-type CategoryServicesTwo = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/obrabotka-ot-komarov',
-		title: 'Обработка от комаров',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/obrabotka-ot-kleshchej',
-		title: 'Обработка от клещей',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrabotka-ot-muravev',
-		title: 'Обработка от муравьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-koroeda',
-		title: 'Обработка от короеда',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-myshey',
-		title: 'Обработка от мышей',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-krys',
-		title: 'Обработка от крыс',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/borba-s-krotami',
-		title: 'Обработка от кротов',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	}
-]
-
-const CategoryServices: CategoryServices[] = [
-	{
-		link: '/obrabotka-dereva-ot-vreditelej',
-		title: 'Обработка деревьев от вредителей и инфекций',
-		text: 'Защита деревьев и кустарников от насекомых и болезней',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrezka-derevev',
-		title: 'Обрезка и обработка деревьев',
-		text: 'Санитарная обрезка способствует укреплению и оздоровлению деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/inekcii-derevyam',
-		title: 'Инъекции для деревьев',
-		text: 'Стволовые инъекции для борьбы с болезнями и паразитами',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/podkormka-derevev',
-		title: 'Подкормка и защита деревьев',
-		text: 'Внесение подкормок повышает иммунитет ваших деревьев и кустарников',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
-
-const CategoryServicesTwo: CategoryServicesTwo[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-24 2xl:mt-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -212,13 +50,13 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Лечить дерево правильно – задача, требующая опыта и знаний. Мы предлагаем
-									профессиональные услуги по уходу, оздоровлению и защите деревьев.</i
-								>
+									Обработка дачи и участка от крыс — гарантия безопасности вашего дома,
+									предотвращающая повреждения и защищающая от неприятных последствий.
+								</i>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span> и мы поможем сохранить
-								здоровье и красоту ваших растений.
+								<span class="font-bold">Закажите уничтожение крыс сегодня</span> и получите рекомендации
+								по защите вашего участка от вредителей в будущем!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -249,49 +87,82 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-64">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Борьба с крысами</h2>
+			<p class="mt-6">
+				<i>Уничтожение крыс на участке по доступной цене – оставьте заявку прямо сейчас!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
 		</div>
-	</Section>
-	<Section id="category-cards">
-		<Row>
-			<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
-				<h2 class="text-balance" set:html={catCards.title} />
-				<p class="pb-0 text-lg" set:html={catCards.description} />
-			</Col>
-		</Row>
-		<Row>
-			{
-				CategoryServices.map((card) => (
-					<CategoryCard
-						link={card.link}
-						title={card.title}
-						text={card.text}
-						image={card.image}
-						imageWidth={card.imageWidth}
-						imageHeight={card.imageHeight}
-					/>
-				))
-			}
-		</Row>
-	</Section>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Эффективное уничтожение крыс на участке и в доме</h3>
+			<p>
+				Эффективное уничтожение крыс на участке и в доме Если крысы атакуют вашу территорию, мы
+				готовы помочь. Предлагаем профессиональную обработку для уничтожения крыс в доме и на
+				участке. Наши методы безопасны и эффективны. Мы гарантируем быстрый результат и защиту
+				вашего жилья от грызунов.
+			</p>
+		</div>
+	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на лечение деревьев</h2>
+			<p class="lg:mt-14">
+				<i>Оставьте заявку на уничтожение крыс и получите подробную консультацию бесплатно!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Как крысы могут повлиять на вашу жизнь?</h3>
 			<p>
-				Узнайте стоимость услуг по 111111111: цена зависит от объема работ и состояния деревьев.
+				Крысы — это не только неприятные соседи. Они портят имущество, продовольственные запасы и
+				могут стать переносчиками опасных заболеваний. Крысы на участке или в доме — это угроза
+				вашему здоровью.
+			</p>
+			<p>
+				Мы поможем вам избавиться от крыс в любых условиях: от дачи до частного дома. Наши
+				специалисты проведут полную обработку и избавят вашу территорию от грызунов.
+			</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Как мы проводим обработку от крыс"
+		text='<p class="mt-2">Процесс начинается с тщательного осмотра участка или помещения. Специалисты анализируют степень зараженности, выявляют места, где крысы могут скрываться или проникать. После осмотра мы выбираем оптимальный метод обработки в зависимости от ситуации — от механических ловушек до химических препаратов.</p><p class="mt-2">Процесс обработки включает в себя несколько этапов:</p><ul class="mt-2"><li>Обработка территории или помещения с использованием безопасных и эффективных препаратов.</li><li>Обработка мест скопления и возможных точек входа крыс в дом или на участок.</li><li>Мы даем подробные рекомендации по профилактике повторного появления крыс, включая возможные меры по предотвращению их возвращения.</li><p class="mt-2">Все работы проводятся в срок и с гарантией. Мы уверены в результатах своей работы, поэтому при необходимости предоставляем повторную обработку бесплатно.</p></ul>'
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-6">
+				<i>
+					Избавьтесь от крыс на даче – закажите профессиональную дератизацию с гарантией результата!
+				</i>
+			</p>
+			<BtnLight link="/#" btnName="Оставить заявку" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h3 class="lg:text-2xl">Современные методы борьбы с крысами</h3>
+			<p>
+				Для борьбы с крысами мы используем комплексный подход, включающий разные методы, такие как
+				механические ловушки, приманки и химическую обработку. Все эти методы эффективны и безопасны
+				для окружающей среды.
+			</p>
+			<p>
+				Мы применяем только сертифицированные препараты, которые не наносят вреда людям, домашним
+				животным и растениям. Благодаря этому, вы можете быть уверены, что уничтожение крыс не
+				повлияет на вашу безопасность.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Цены на обработку от крыс</h2>
+			<p>
+				Цена на обработку участка от крыс зависит от необходимого объема работы и препаратов. Мы
+				предлагаем доступные цены с возможностью выбора подходящих вариантов по стоимости.
 			</p>
 		</div>
 		<div class="basic-text">
@@ -505,7 +376,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме лечения деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме обработки территории и помещений от крыс. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />
