@@ -4,15 +4,11 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-// import Feature from '../components/blocks/features/FeatureList.astro'
 import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
-import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
 import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import features from '../data/json-files/featuresData.json'
@@ -26,12 +22,9 @@ import listvennie from '../assets/highlights/listvennie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
-const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-uchastka-ot-vreditelej')
+const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-derevyami')
 
-// Content
-import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
+// Content=
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
@@ -40,13 +33,14 @@ const SEO = {
 }
 // - Page Header
 const header = {
-	title: 'Санитарная <strong>обработка участка</strong> от вредителей',
+	title: 'Уход за <strong>деревьями</strong>',
 	text: ''
 }
 
 const catCards = {
-	title: 'Услуги по обработке от <strong>вредителей</strong>',
-	description: 'Комплексные услуги по борьбе с насекомыми, грызунами и паразитами.'
+	title: 'Услуги по уходу за <strong>деревьями и кустарниками</strong>',
+	description:
+		'Мы предоставляем полный спектр услуг по уходу за зелеными насаждениями. Наша команда заботится о здоровье ваших растений, продлевая их жизнь и сохраняя их красоту.'
 }
 
 const catCardsTwo = {
@@ -64,91 +58,34 @@ type MajorSubCategories = {
 	imageHeight: number
 }
 
-type CategoryServicesTwo = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
 const MajorSubCategories: MajorSubCategories[] = [
 	{
-		link: '/obrabotka-ot-komarov',
-		title: 'Обработка от комаров',
+		link: '/',
+		title: 'Опрыскивание деревьев',
 		image: plodovie,
 		imageWidth: plodovie.width,
 		imageHeight: plodovie.height
 	},
 	{
-		link: '/obrabotka-ot-kleshchej',
-		title: 'Обработка от клещей',
+		link: '/',
+		title: 'Укрепление деревьев',
 		image: hvoinie,
 		imageWidth: hvoinie.width,
 		imageHeight: hvoinie.height
 	},
 	{
-		link: '/obrabotka-ot-muravev',
-		title: 'Обработка от муравьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-koroeda',
-		title: 'Обработка от короеда',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-myshey',
-		title: 'Обработка от мышей',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/obrabotka-ot-krys',
-		title: 'Обработка от крыс',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	},
-	{
-		link: '/borba-s-krotami',
-		title: 'Обработка от кротов',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	}
-]
-
-const CategoryServicesTwo: CategoryServicesTwo[] = [
-	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
+		link: '/obrezka-derevev',
+		title: 'Обрезка деревьев',
 		image: hvoinie,
 		imageWidth: hvoinie.width,
 		imageHeight: hvoinie.height
 	},
 	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		link: '/',
+		title: 'Восстановление деревьев',
+		image: listvennie,
+		imageWidth: listvennie.width,
+		imageHeight: listvennie.height
 	}
 ]
 ---
@@ -166,13 +103,17 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Санитарная обработка участка от вредителей — это надежное решение для защиты
-									вашего дома, сада и огорода. Мы избавим вашу территорию от насекомых и грызунов,
-									предотвращая их повторное появление</i
+									Закажите уход за деревьями сегодня — создайте гармоничный и ухоженный сад без
+									лишних хлопот! Мы поможем защитить деревья от болезней и вредителей, сохранить их
+									красоту, а также создать ухоженный и безопасный ландшафт для вашей семьи.</i
 								>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Закажите бесплатную консультацию</span>
+								<span class="font-bold">Оставьте заявку на бесплатную консультацию </span><span
+									class="hidden lg:inline-block"
+								>
+									👉</span
+								>
 							</p>
 						</blockquote>
 					</figure><svg
@@ -211,7 +152,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
 			{
 				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-64">
+					<div class="mb-4 w-full lg:mx-4 lg:w-72">
 						<Card
 							title={msubcat.title}
 							subtitle={msubcat.text}
@@ -225,9 +166,9 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</Section>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на лечение деревьев</h2>
+			<h2 class="lg:text-2xl">Цены на услуги по уходу за деревьями</h2>
 			<p>
-				Узнайте стоимость услуг по обработке от вредителей: цена зависит от объема работ и сложности
+				Узнайте стоимость услуг по уходу за растениями: цена зависит от объема работ и сложности
 				обрабатываемой территории.
 			</p>
 		</div>
@@ -442,7 +383,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме обработки участка от вредителей. Если останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все популярные вопросу по теме. Если останутся вопросы, оставьте заявку на консультацию 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />
