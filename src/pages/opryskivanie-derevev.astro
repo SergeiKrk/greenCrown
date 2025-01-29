@@ -4,96 +4,43 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
+import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
-// - FAQ Categories
-const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-derevyami')
 
-// Content=
+import features from '../data/json-files/featuresData.json'
+// - FAQ Categories
+const faqIntegrations = faqData.filter((faq) => faq.category === 'opryskivanie-derevev')
+
+// Content
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
 const SEO = {
-	title: '',
-	description: ''
+	title: 'Опрыскивание деревьев - Весенняя обработка плодовых деревьев в саду',
+	description:
+		'Профессиональное опрыскивание деревьев. Сезонная обработка сада для защиты от вредителей и болезней. Узнайте цены на сайте'
 }
 // - Page Header
 const header = {
-	title: 'Уход за <strong>деревьями</strong>',
-	text: ''
+	title: 'Опрыскивание <strong>деревьев</strong>',
+	text: 'Профессиональное опрыскивание деревьев и кустарников на вашем участке. Сезонная обработка сада для защиты от вредителей и болезней.'
 }
-
-const catCards = {
-	title: 'Услуги по уходу за <strong>деревьями и кустарниками</strong>',
-	description:
-		'Мы предоставляем полный спектр услуг по уходу за зелеными насаждениями. Наша команда заботится о здоровье ваших растений, продлевая их жизнь и сохраняя их красоту.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/opryskivanie-derevev',
-		title: 'Опрыскивание деревьев',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/',
-		title: 'Укрепление деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrezka-derevev',
-		title: 'Обрезка деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/',
-		title: 'Восстановление деревьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
-	}
-]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
 	<Hero title={header.title} text={header.text} heroImg={heroImg} />
 	<section
-		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-0 2xl:mt-12 2xl:bg-white"
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:mb-24 2xl:mt-24 2xl:bg-white"
 		aria-multiselectable="false"
 	>
 		<div class="md:flex md:flex-row">
@@ -103,10 +50,8 @@ const MajorSubCategories: MajorSubCategories[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Закажите уход за деревьями сегодня — создайте гармоничный и ухоженный сад без
-									лишних хлопот! Мы поможем защитить деревья от болезней и вредителей, сохранить их
-									красоту, а также создать ухоженный и безопасный ландшафт для вашей семьи.</i
-								>
+									Закажите опрыскивание деревьев сегодня - обеспечьте своему саду надежную защиту!
+								</i>
 							</p>
 							<p class="mt-1">
 								<span class="font-bold">Оставьте заявку на бесплатную консультацию </span><span
@@ -144,32 +89,70 @@ const MajorSubCategories: MajorSubCategories[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="mx-auto mb-12 max-w-4xl text-center lg:mb-24">
-			<h2 class="text-balance" set:html={catCards.title} />
-			<p class="pb-0 text-lg" set:html={catCards.description} />
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Опрыскивание садовых деревьев</h2>
+			<p class="mt-6">
+				<i
+					>Подарите деревьям защиту от болезней и насекомых – запишитесь на обработку сада уже
+					сегодня!</i
+				>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
 		</div>
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-72">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
+		<div class="basic-text">
+			<p>
+				Хотите красивый и урожайный сад? Профессиональное опрыскивание деревьев поможет защитить их
+				от вредителей и болезней. Мы используем современные и безопасные средства, чтобы ваши
+				растения росли крепкими и красивыми.
+			</p>
+			<p>
+				Опрыскивание проводим в строго определенные сроки. Наши специалисты подбирают состав и
+				дозировку с учетом вида деревьев и сезона. Это помогает бороться с вредителями без вреда для
+				растений.
+			</p>
+			<p>
+				Работаем с участками любой площади. Обрабатываем деревья в частных дворах, на дачах и в
+				питомниках. Гарантируем качественный результат и строго соблюдаем технологию.
+			</p>
 		</div>
-	</Section>
+	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на услуги по уходу за деревьями</h2>
+			<p class="lg:mt-14">
+				<i>Оставьте заявку на опрыскивание деревьев и получите подробную консультацию бесплатно!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Преимущества профессионального опрыскивания</h3>
+			<p>Здоровье деревьев – это здоровье вашего сада. Доверьтесь профессионалам!</p>
+			<ul>
+				<li>Эффективная защита от вредителей и болезней.</li>
+				<li>Безопасные препараты, которые не вредят растениям и людям.</li>
+				<li>Точная дозировка и обработка с учетом особенностей деревьев.</li>
+				<li>Экономия времени и гарантированный результат.</li>
+			</ul>
 			<p>
-				Узнайте стоимость услуг по уходу за растениями: цена зависит от объема работ и сложности
-				обрабатываемой территории.
+				<i>С нами ваш сад будет в надежных руках!</i>
+			</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Когда и как опрыскивать деревья"
+		text='<p class="font-bold mt-2">Оптимальные условия:</p><ul><li>- Температура воздуха от +5 до +10°C.</li><li>- Утренние или вечерние часы, когда нет прямых солнечных лучей.</li></ul><h3 class="mt-2">Этапы обработки</h3><p class="mt-2"><b>Ранняя весна (до распускания почек)</b>. Опрыскивание уничтожает зимующих вредителей и споры грибковых заболеваний. Это особенно важно для плодовых и лиственных деревьев.</p><p class="mt-2"><b>Период набухания почек</b>. В это время активизируются короеды, тли и другие насекомые. Обработка помогает предотвратить заражение и укрепить деревья после зимы.</p><p class="mt-2"><b>После распускания листьев</b>. Закрепляющая обработка снижает риск массового распространения вредителей и повышает устойчивость к болезням.</p><p class="mt-2"><b>Летняя обработка</b> (по необходимости). Если появляются новые вредители, проводится дополнительное опрыскивание, направленное на их уничтожение.</p><p class="mt-2"><b>Осенняя обработка</b>. В конце сезона уничтожаем последние поколения насекомых, чтобы весной они не успели нанести вред.</p><p class="mt-2">Мы учитываем породу дерева, его возраст и состояние, подбираем подходящие препараты и строго соблюдаем технологию обработки.</p>'
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<!-- Features -->
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Цены на опрыскивание деревьев на участке</h2>
+			<p>
+				Стоимость услуги зависит от размер участка и количество деревьев, а так же сложность работ.
 			</p>
 		</div>
 		<div class="basic-text">
@@ -383,7 +366,7 @@ const MajorSubCategories: MajorSubCategories[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме. Если останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме опрыскивания деревьев. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />
