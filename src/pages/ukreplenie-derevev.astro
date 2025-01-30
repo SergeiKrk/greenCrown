@@ -1,93 +1,63 @@
 ---
-// Components
-// - Layout
 import Layout from '../layouts/Layout.astro'
-// - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
+import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
+import Steps from '../components/ui/Steps.astro'
 
-import heroImg from '../assets/cards/lechenie-derevev.webp'
+import heroImg from '../assets/highlights/listvennie-derevya.png'
+
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
-// Data
 import faqData from '../data/json-files/faqData.json'
-// - FAQ Categories
-const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-derevyami')
+import features from '../data/json-files/featuresData.json'
+import BtnLight from '../components/ui/BtnLight.astro'
+const faqIntegrations = faqData.filter((faq) => faq.category === 'ukreplenie-derevev')
 
-// Content=
+// Content
+import faqImage1 from '../assets/faq/faq-01.png'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
-	title: '',
-	description: ''
+	title: 'Укрепление деревьев (Каблинг) — установка стяжек и тросов | Заказать',
+	description:
+		'Укрепление деревьев с помощью каблинга: защита от разломов, продление жизни старых деревьев. Динамический и статический каблинг. Узнайте цену на сайте!'
 }
 // - Page Header
 const header = {
-	title: 'Уход за <strong>деревьями</strong>',
-	text: ''
+	title: '<strong>Укрепление</strong> деревьев',
+	text: 'Дерево треснуло? Хотите его укрепить? Надежно укрепим ваши деревья. Каблинг для защиты от ветра и разломов'
 }
 
-const catCards = {
-	title: 'Услуги по уходу за <strong>деревьями и кустарниками</strong>',
-	description:
-		'Мы предоставляем полный спектр услуг по уходу за зелеными насаждениями. Наша команда заботится о здоровье ваших растений, продлевая их жизнь и сохраняя их красоту.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
+type steps = {
 	title: string
 	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
 }
-
-const MajorSubCategories: MajorSubCategories[] = [
+const steps: steps[] = [
 	{
-		link: '/opryskivanie-derevev',
-		title: 'Опрыскивание деревьев',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		title: 'Оцениваем состояние дерева.',
+		text: ''
 	},
 	{
-		link: '/ukreplenie-derevev',
-		title: 'Укрепление деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		title: 'Подбираем подходящую систему каблинга.',
+		text: ''
 	},
 	{
-		link: '/obrezka-derevev',
-		title: 'Обрезка деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		title: 'Устанавливаем тросы и крепежи.',
+		text: ''
 	},
 	{
-		link: '/',
-		title: 'Восстановление деревьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
+		title: 'Проверяем результат.',
+		text: ''
 	}
 ]
+const endstep = {
+	title: 'Даем рекомендации по уходу.',
+	text: ''
+}
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -103,17 +73,13 @@ const MajorSubCategories: MajorSubCategories[] = [
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
 								<i>
-									Закажите уход за деревьями сегодня — создайте гармоничный и ухоженный сад без
-									лишних хлопот! Мы поможем защитить деревья от болезней и вредителей, сохранить их
-									красоту, а также создать ухоженный и безопасный ландшафт для вашей семьи.</i
+									Укрепление деревьев (Каблинг) — надежный способ предотвратить разломы крупных
+									ветвей и сохранить здоровье дерева.</i
 								>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Оставьте заявку на бесплатную консультацию </span><span
-									class="hidden lg:inline-block"
-								>
-									👉</span
-								>
+								<span class="font-bold">Закажите установку каблинга сегодня</span> и получите бесплатную
+								консультацию по уходу за деревьями!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -144,33 +110,78 @@ const MajorSubCategories: MajorSubCategories[] = [
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="mx-auto mb-12 max-w-4xl text-center lg:mb-24">
-			<h2 class="text-balance" set:html={catCards.title} />
-			<p class="pb-0 text-lg" set:html={catCards.description} />
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Каблинг для защиты и продления жизни деревьев</h2>
+			<p>Закажите установку тросов прямо сейчас!</p>
+			<BtnLight link="/#" btnName="Заказать" />
 		</div>
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-72">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Укрепление деревьев</h3>
+			<p>
+				Деревья могут ломаться от ветра даже под собственной тяжестью. Каблинг предотвращает разломы
+				и продлевает жизнь дерева.
+			</p>
+			<p>
+				Специальные тросы и крепления удерживают ветви, снижая нагрузку на ствол. Это помогает
+				дереву расти естественно и безопасно, не теряя своей формы.
+			</p>
+			<p>
+				Каблинг особенно важен для старых и массивных деревьев. Он защищает их от трещин и
+				раскалывания, предотвращает падение крупных ветвей и снижает риск повреждения построек и
+				проводов.
+			</p>
 		</div>
-	</Section>
+	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на услуги по уходу за деревьями</h2>
 			<p>
-				Узнайте стоимость услуг по уходу за растениями: цена зависит от объема работ и сложности
-				обрабатываемой территории.
+				<i>Продлите жизнь вашим деревьям с помощью профессионального каблинга!</i>
 			</p>
+
+			<BtnLight link="/#" btnName="Заказать" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Зачем нужно укрепление деревьев?</h3>
+			<p>
+				Старые деревья, разветвленные кроны, трещины в стволе — все это риски. Ветер и снег делают
+				дерево еще слабее. Каблинг помогает:
+			</p>
+			<ul>
+				<li>Защитить дерево от разлома.</li>
+				<li>Сохранить крону без обрезки.</li>
+				<li>Предотвратить падение на дом или дорожку.</li>
+			</ul>
+			<p>Если дерево дало трещину — укрепление нужно срочно.</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Виды каблинга и их особенности"
+		text="<p class='mt-2'>Есть два типа каблинга:</p><p class='mt-2'>1. <b>Динамический</b> — для гибкости. Подходит молодым деревьям. Дает кроне свободу, но защищает от разломов.</p><p >2. <b>Статический</b> — для аварийных деревьев. Полностью фиксирует ствол и ветви, предотвращает падение.</p><p class='mt-2'>Мы подберем систему под ваше дерево. Проконсультируем бесплатно!</p>"
+		image={faqImage1}
+		mobileImage={faqImage1}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-12">
+				<i>Укрепите дерево до наступления бури — запишитесь на установку каблинга!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<div class="basic-text lg:ml-4">
+				<h3 class="lg:text-2xl">Как проходит укрепление деревьев:</h3>
+				<Steps steps={steps} endstep={endstep} />
+			</div>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Цены на укрепление деревьев</h2>
+			<p>Цена зависит от размера дерева, сложности работы и типа каблинга.</p>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
@@ -383,7 +394,7 @@ const MajorSubCategories: MajorSubCategories[] = [
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме. Если останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Ответы на популярные вопросы о каблинге. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />
