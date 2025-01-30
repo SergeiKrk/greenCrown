@@ -18,11 +18,6 @@ import Grut from '../assets/Grut.webp'
 
 import plodovie from '../assets/highlights/lechenie-plodovyh.png'
 import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
-// Data
-import faqData from '../data/json-files/faqData.json'
-// - FAQ Categories
-const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-derevyami')
 
 // Content=
 import { Image } from 'astro:assets'
@@ -79,13 +74,6 @@ const MajorSubCategories: MajorSubCategories[] = [
 		image: hvoinie,
 		imageWidth: hvoinie.width,
 		imageHeight: hvoinie.height
-	},
-	{
-		link: '/',
-		title: 'Восстановление деревьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
 	}
 ]
 ---
@@ -381,10 +369,5 @@ const MajorSubCategories: MajorSubCategories[] = [
 		</div>
 		<!-- End Grid -->
 	</div>
-	<FAQ
-		title="ЧаВо"
-		text="Здесь мы собрали все популярные вопросу по теме. Если останутся вопросы, оставьте заявку на консультацию 👇."
-		data={faqIntegrations}
-	/>
 	<CTA />
 </Layout>
