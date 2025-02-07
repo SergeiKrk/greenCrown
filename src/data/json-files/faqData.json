@@ -664,5 +664,23 @@
 		"reply": "Позвоните нам или оставьте заявку на сайте. Мы перезвоним и все уточним.",
 		"category": "uhod-za-sadom",
 		"open": false
+	},
+	{
+		"question": "",
+		"reply": "",
+		"category": "",
+		"open": false
+	},
+	{
+		"question": "",
+		"reply": "",
+		"category": "",
+		"open": false
+	},
+	{
+		"question": "",
+		"reply": "",
+		"category": "",
+		"open": false
 	}
 ]
