@@ -45,7 +45,9 @@ export const navigationBarData: NavData = {
 			link: '#',
 			submenu: [
 				{ name: 'Лечение деревьев', link: '/lechenie-derevev' },
-				{ name: 'Обработка участка от вредителей', link: '/obrabotka-uchastka-ot-vreditelej' }
+				{ name: 'Обработка участка от вредителей', link: '/obrabotka-uchastka-ot-vreditelej' },
+				{ name: 'Обрезка деревьев', link: '/obrezka-derevev' },
+				{ name: 'Уход за участком', link: '/uhod-za-sadom' }
 			]
 		}
 		// {
