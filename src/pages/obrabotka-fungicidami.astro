@@ -4,132 +4,63 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
+import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
+// Data
 import faqData from '../data/json-files/faqData.json'
-import Steps from '../components/ui/Steps.astro'
-import BtnLight from '../components/ui/BtnLight.astro'
-const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-sadom')
 
-// Content=
+import features from '../data/json-files/featuresData.json'
+// - FAQ Categories
+const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-fungicidami')
+
+// Content
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
+import Steps from '../components/ui/Steps.astro'
 // - SEO
 const SEO = {
-	title: 'Комплексный уход за садом, участком, парком | Цена 3500 руб. за сотку',
+	title: 'Обработка фунгицидами – Цены на услугу от 300 руб. за сотку',
 	description:
-		'Предоставляем услуги по уходу за садом, дачными и парковыми участками. Обрезка, обработка, подкормка. Работаем весной, летом и осенью.'
+		'Эффективная фунгицидная обработка сада, огорода и сельхозкультур. Профилактика и лечение грибковых болезней. Закажите профессиональную защиту растений!'
 }
 // - Page Header
 const header = {
-	title: 'Уход за <strong>участком</strong>',
-	text: 'Уход за участком, деревьями и кустарниками – профессиональные услуги ухода за садом, парком и приусадебным участком'
+	title: 'Обработка участка <strong>фунгицидами</strong>',
+	text: 'Проводим фунгицидную обработку деревьев, кустарников, овощей и злаков. Поможем защитить растения от болезней и грибков'
 }
-
-const catCards = {
-	title: 'Услуги по комплексному уходу за <strong>участком</strong>',
-	description:
-		'Работаем с плодовыми и декоративными растениями. Учитываем особенности каждого участка.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/propolka-sornyakov',
-		title: 'Прополка сорняков',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/unichtozhenie-borshchevika',
-		title: 'Уничтожение борщевика',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/aehraciya-pochvy',
-		title: 'Аэрация почвы',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrabotka-fungicidami',
-		title: 'Фунгицидная обработка',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/uhod-za-gazonom',
-		title: 'Уход за газоном',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/ozelenenie-uchastka',
-		title: 'Озеленение участка',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/posadka-derevev',
-		title: 'Посадка деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	}
-]
 type steps = {
 	title: string
 	text?: string
 }
 const steps: steps[] = [
 	{
-		title: 'Осмотр участка',
-		text: 'Оцениваем состояние сада, выявляем проблемы.'
+		title: 'Выбор времени',
+		text: 'Обработку лучше проводить ранней весной или осенью, когда растения еще не заболели. Также возможно проведение обработки летом, но важно делать это до появления симптомов болезни.'
 	},
 	{
-		title: 'Составляем план ухода.',
-		text: 'Подбираем оптимальные работы под ваш участок.'
+		title: 'Совмещение с инсектицидами',
+		text: 'Некоторые фунгициды можно сочетать с инсектицидами, но это не всегда возможно. Мы тщательно подбираем препараты, чтобы обеспечить максимальную эффективность и безопасность.'
 	},
 	{
-		title: 'Выполняем работы.',
-		text: ''
+		title: 'Подготовка инструментов',
+		text: 'Для обработки потребуется опрыскиватель, защитные перчатки и маска. Все инструменты должны быть чистыми и готовыми к использованию.'
+	},
+	{
+		title: 'Равномерное нанесение',
+		text: 'Важно наносить фунгицид равномерно на растения: на листья, стебли и почву. Это обеспечит полноценную защиту.'
 	}
 ]
 const endstep = {
-	title: 'Даем рекомендации.',
-	text: 'Рассказываем, как поддерживать здоровье растений.'
+	title: 'Повторная обработка',
+	text: 'Через 10–14 дней, в зависимости от типа фунгицида, может потребоваться повторное опрыскивание для продления действия препарата и защиты растений.'
 }
 ---
 
@@ -145,17 +76,11 @@ const endstep = {
 					<figure class="relative z-10">
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
-								<i>
-									Красивый и здоровый сад — это результат правильного ухода. Мы помогаем деревьям и
-									кустарникам расти сильными, защищаем их от болезней и вредителей.</i
-								>
+								<i>Профессиональная обработка деревьев и кустарников от грибковых заболеваний</i>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Оставьте заявку на бесплатную консультацию </span><span
-									class="hidden lg:inline-block"
-								>
-									👉</span
-								>
+								<span class="font-bold">Закажите фунгицидную обработку сегодня</span> и получите план
+								профилактических мер для вашего участка!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -186,50 +111,99 @@ const endstep = {
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="mx-auto mb-12 max-w-4xl text-center lg:mb-24">
-			<h2 class="text-balance" set:html={catCards.title} />
-			<p class="pb-0 text-lg" set:html={catCards.description} />
-		</div>
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-72">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
-		</div>
-	</Section>
-	<SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Весенний уход за садом – не откладывайте!</h2>
-			<p class="mt-12">
-				<i
-					>Подготовим ваш участок к сезону: обрезка, обработка, подкормка. Запишитесь прямо сейчас!</i
-				>
+			<h2 class="lg:text-2xl">Защитите свой сад от грибковых болезней</h2>
+			<p class="mt-6">
+				<i>Закажите обработку фунгицидами прямо сейчас!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<BtnLight link="/#" btnName="Заказать" />
 		</div>
-		<div class="basic-text lg:ml-4">
-			<div class="basic-text lg:ml-4">
-				<h3 class="lg:text-2xl">Уход за участком - шаг за шагом:</h3>
-				<Steps steps={steps} endstep={endstep} />
-			</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Защитим ваши растения от грибка</h3>
+			<p>
+				Фунгициды помогают бороться с грибковыми инфекциями. Они защищают деревья, кустарники и
+				сельскохозяйственные культуры. Без обработки растения болеют, снижается урожай.
+			</p>
+			<p>
+				Мы предлагаем эффективную защиту вашего сада и огорода. Проводим обработку проверенными
+				фунгицидами. Работаем с разными видами растений.
+			</p>
+			<h3 class="lg:text-2xl">Как работают фунгициды</h3>
+			<p>
+				Фунгицидная обработка – это защита растений от грибков. Препараты проникают внутрь тканей и
+				уничтожают инфекцию. Они также создают защитную пленку на листьях и стеблях.
+			</p>
+			<p>Фунгициды бывают:</p>
+			<ul>
+				<li>Профилактические – предотвращают заражение.</li>
+				<li>Лечебные – помогают справиться с уже появившейся болезнью.</li>
+			</ul>
 		</div>
 	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на услуги по уходу за садом, дачными и парковыми участками</h2>
-			<p>
-				Цена зависит от площади участка, вида работ и состояния сада. Мы предлагаем прозрачные
-				расчеты без скрытых платежей.
+			<p class="mt-14">
+				<i>Обращайтесь! Поможем защитить ваш сад от болезней.</i>
 			</p>
+			<BtnLight link="/#" btnName="Заказать звонок" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Какие растения требуют обработки?</h3>
+			<p>Грибки поражают многие культуры. Мы обрабатываем:</p>
+			<ul>
+				<li>Сад – плодовые деревья, кустарники.</li>
+				<li>Виноградники – защита от милдью и оидиума.</li>
+				<li>Овощи – картофель, томаты, огурцы.</li>
+				<li>Злаки – пшеницу, ячмень, рожь.</li>
+				<li>Корни – перед посадкой и пересадкой.</li>
+			</ul>
+			<p>Используем только проверенные препараты, безопасные для растений и окружающей среды.</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Какие фунгициды используются"
+		text=`
+		<p>Для защиты растений важно выбрать правильный фунгицид. Универсальных средств нет, каждый препарат действует против определенных грибков.</p>
+		<h3 class="lg:text-2xl mt-2">Для сада</h3>
+		<p class="mt-2">Для обработки сада подойдут средства от парши, ржавчины и мучнистой росы. Овощам нужна защита от фитофтороза и гнили. Злаки обрабатывают препаратами против головни и ржавчины.  (Тиофанат-метил, Карбендазим)</p>
+		<h3 class="lg:text-2xl mt-2">Для овощей</h3>
+		<p class="mt-2">Овощи часто страдают от таких заболеваний, как фитофтороз и гниль. Для защиты используют фунгициды, которые эффективно борются с этими инфекциями, предотвращая заражение и сохраняя урожай. (Флудиоксонил, Металаксил)</p>
+		<h3 class="lg:text-2xl mt-2">Для злаков</h3>
+		<p class="mt-2">Злаки, такие как пшеница и ячмень, подвержены головне и ржавчине. Для их защиты применяют специальные препараты, которые предотвращают распространение этих грибков и помогают сохранить урожай. (Азоксистробин, Триадименол)</p>
+		<h3 class="lg:text-2xl mt-2">Для винограда</h3>
+		<p class="mt-2">Виноград защищают от милдью и оидиума. (Дифеноконазол, Цимоксанил)</p>
+		<h3 class="lg:text-2xl mt-2">Для комнатных растений</h3>
+		<p class="mt-2">Комнатные растения тоже болеют грибковыми инфекциями. Для них используют мягкие препараты, безопасные для домашней среды. (Фитоспорин, Топаз)</p>
+		<p class="mt-2">Мы подбираем фунгициды с учетом типа растений и условий выращивания. Это позволяет избежать ненужной химии и достичь лучшего результата.</p>
+		`
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-14">
+				<i>Не дайте грибкам погубить урожай! Запишитесь на обработку сада фунгицидами.</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Как мы проводим обработку фунгицидами</h3>
+			<p>
+				Для того чтобы обработка фунгицидами была эффективной, важно соблюдать несколько простых, но
+				важных шагов.
+			</p>
+			<Steps steps={steps} endstep={endstep} />
+		</div>
+	</SidebarContent>
+	<!-- Features -->
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Фунгицидная обработка по доступной цене за м²</h2>
+			<p>Оставьте заявку и получите расчет!</p>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
@@ -442,7 +416,7 @@ const endstep = {
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Ответы на популярные вопросы по уходу за участком. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме фунгицидной обработки. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />

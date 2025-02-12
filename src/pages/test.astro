@@ -4,132 +4,54 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
+import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
-import Section from '../components/ui/Section.astro'
-import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
-import features from '../data/json-files/featuresData.json'
+import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/lechenie-derevev.webp'
 import Grut from '../assets/Grut.webp'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
+// Data
 import faqData from '../data/json-files/faqData.json'
-import Steps from '../components/ui/Steps.astro'
-import BtnLight from '../components/ui/BtnLight.astro'
-const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-sadom')
 
-// Content=
+import features from '../data/json-files/featuresData.json'
+// - FAQ Categories
+const faqIntegrations = faqData.filter((faq) => faq.category === 'aehraciya-pochvy')
+
+// Content
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
+import Steps from '../components/ui/Steps.astro'
 // - SEO
 const SEO = {
-	title: 'Комплексный уход за садом, участком, парком | Цена 3500 руб. за сотку',
-	description:
-		'Предоставляем услуги по уходу за садом, дачными и парковыми участками. Обрезка, обработка, подкормка. Работаем весной, летом и осенью.'
+	title: '11111 – Цены на услуги от 1500 руб. за сотку',
+	description: '22222222222'
 }
 // - Page Header
 const header = {
-	title: 'Уход за <strong>участком</strong>',
-	text: 'Уход за участком, деревьями и кустарниками – профессиональные услуги ухода за садом, парком и приусадебным участком'
+	title: '<strong>33333333333</strong> 33333333333333',
+	text: '44444444444444'
 }
-
-const catCards = {
-	title: 'Услуги по комплексному уходу за <strong>участком</strong>',
-	description:
-		'Работаем с плодовыми и декоративными растениями. Учитываем особенности каждого участка.'
-}
-
-const catCardsTwo = {
-	title: 'Когда дереву требуется <strong>лечение</strong>',
-	description:
-		'Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется профессиональное вмешательство.'
-}
-
-type MajorSubCategories = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
-const MajorSubCategories: MajorSubCategories[] = [
-	{
-		link: '/propolka-sornyakov',
-		title: 'Прополка сорняков',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
-	},
-	{
-		link: '/unichtozhenie-borshchevika',
-		title: 'Уничтожение борщевика',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/aehraciya-pochvy',
-		title: 'Аэрация почвы',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/obrabotka-fungicidami',
-		title: 'Фунгицидная обработка',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/uhod-za-gazonom',
-		title: 'Уход за газоном',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/ozelenenie-uchastka',
-		title: 'Озеленение участка',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	},
-	{
-		link: '/posadka-derevev',
-		title: 'Посадка деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
-	}
-]
 type steps = {
 	title: string
 	text?: string
 }
 const steps: steps[] = [
 	{
-		title: 'Осмотр участка',
-		text: 'Оцениваем состояние сада, выявляем проблемы.'
+		title: '11111111',
+		text: '2222222222'
 	},
 	{
-		title: 'Составляем план ухода.',
-		text: 'Подбираем оптимальные работы под ваш участок.'
-	},
-	{
-		title: 'Выполняем работы.',
-		text: ''
+		title: '1111111111',
+		text: '22222222222'
 	}
 ]
 const endstep = {
-	title: 'Даем рекомендации.',
-	text: 'Рассказываем, как поддерживать здоровье растений.'
+	title: 'Полив и внесение удобрений',
+	text: 'Поливаем участок и вносим удобрения, чтобы ускорить восстановление и повысить плодородие.'
 }
 ---
 
@@ -145,17 +67,11 @@ const endstep = {
 					<figure class="relative z-10">
 						<blockquote class="p-6 leading-relaxed">
 							<p class="mb-2 text-sm font-light">
-								<i>
-									Красивый и здоровый сад — это результат правильного ухода. Мы помогаем деревьям и
-									кустарникам расти сильными, защищаем их от болезней и вредителей.</i
-								>
+								<i>222222222222</i>
 							</p>
 							<p class="mt-1">
-								<span class="font-bold">Оставьте заявку на бесплатную консультацию </span><span
-									class="hidden lg:inline-block"
-								>
-									👉</span
-								>
+								<span class="font-bold">Закажите 22222222 сегодня</span> и получите план профилактических
+								мер для вашего участка!
 							</p>
 						</blockquote>
 					</figure><svg
@@ -186,50 +102,75 @@ const endstep = {
 			</div>
 		</div>
 	</section>
-	<Section id="msubcat">
-		<div class="mx-auto mb-12 max-w-4xl text-center lg:mb-24">
-			<h2 class="text-balance" set:html={catCards.title} />
-			<p class="pb-0 text-lg" set:html={catCards.description} />
-		</div>
-		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
-			{
-				MajorSubCategories.map((msubcat) => (
-					<div class="mb-4 w-full lg:mx-4 lg:w-72">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
-					</div>
-				))
-			}
-		</div>
-	</Section>
-	<SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Весенний уход за садом – не откладывайте!</h2>
-			<p class="mt-12">
-				<i
-					>Подготовим ваш участок к сезону: обрезка, обработка, подкормка. Запишитесь прямо сейчас!</i
-				>
+			<h2 class="lg:text-2xl">22222222222</h2>
+			<p class="mt-6">
+				<i>333333333333333333333</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<BtnLight link="/#" btnName="Заказать" />
 		</div>
-		<div class="basic-text lg:ml-4">
-			<div class="basic-text lg:ml-4">
-				<h3 class="lg:text-2xl">Уход за участком - шаг за шагом:</h3>
-				<Steps steps={steps} endstep={endstep} />
-			</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">2222222222222222</h3>
+			<p>33333333333333333</p>
 		</div>
 	</SidebarContent>
 	<SidebarContent>
 		<div slot="sidebar">
-			<h2 class="lg:text-2xl">Цены на услуги по уходу за садом, дачными и парковыми участками</h2>
-			<p>
-				Цена зависит от площади участка, вида работ и состояния сада. Мы предлагаем прозрачные
-				расчеты без скрытых платежей.
+			<p class="mt-14">
+				<i>1111111111111</i>
 			</p>
+			<BtnLight link="/#" btnName="Заказать звонок" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">22222222222222222</h3>
+			<p>33333333333333</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Методы аэрации почвы"
+		text=`
+		<p class="mt-2">Выбор метода зависит от типа почвы и целей.</p>
+		<p class="mt-2">1. Рыхление – традиционный метод с использованием лопаты, вил или специальных рыхлителей.</p>
+		<p class="mt-2">2. Механическая аэрация – применение аэраторов (садовых вил, шипованных катков, специальных машин) для создания отверстий в почве.</p>
+		<p class="mt-2">3. Пескование – внесение песка для улучшения дренажа и предотвращения уплотнения.</p>
+		<p class="mt-2">4. Природные процессы – деятельность дождевых червей и почвенных микроорганизмов, которые способствуют разрыхлению грунта.</p>
+		`
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-6">
+				<i>111111111111111111111111</i>
+			</p>
+			<BtnLight link="/#" btnName="Оставить заявку" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h2 class="lg:text-2xl">22222222222222222</h2>
+			<p>3333333333333333333</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<p class="mt-14">
+				<i>1111111111111111</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">222222222222222</h3>
+			<Steps steps={steps} endstep={endstep} />
+		</div>
+	</SidebarContent>
+	<!-- Features -->
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">111111111 по доступной цене за м²</h2>
+			<p>Оставьте заявку и получите расчет!</p>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
@@ -442,7 +383,7 @@ const endstep = {
 	</div>
 	<FAQ
 		title="ЧаВо"
-		text="Ответы на популярные вопросы по уходу за участком. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		text="Здесь мы собрали все самые популярные вопросу по теме 1111111111111111111. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
 	<CTA />
