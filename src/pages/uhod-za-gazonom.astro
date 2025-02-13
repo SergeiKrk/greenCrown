@@ -1,0 +1,473 @@
+---
+// Components
+// - Layout
+import Layout from '../layouts/Layout.astro'
+// - UI
+import Hero from '../components/blocks/hero/PageHero.astro'
+import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
+import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
+import TextImage from '../components/blocks/basic/TextImage.astro'
+import CTA from '../components/blocks/CTA/BasicDark.astro'
+import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
+import Feature from '../components/ui/Feature.astro'
+
+import heroImg from '../assets/cards/lechenie-derevev.webp'
+import Grut from '../assets/Grut.webp'
+// Data
+import faqData from '../data/json-files/faqData.json'
+
+import features from '../data/json-files/featuresData.json'
+// - FAQ Categories
+const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-gazonom')
+
+// Content
+import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
+import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
+import Steps from '../components/ui/Steps.astro'
+// - SEO
+const SEO = {
+	title: 'Стрижка, покос и уход за газоном в Москве – Цены на услуги от 500 руб. за сотку',
+	description:
+		'Комплексный уход за газоном: профессиональный покос, аэрация, подкормка, скарификация, вычесывание, восстановление после зимы'
+}
+// - Page Header
+const header = {
+	title: 'Профессиональный уход за <strong>газоном</strong>',
+	text: 'Комплексный уход за газоном. Косим, вычесываем, восстанавливаем, ухаживаем за газоном весной, летом и осенью'
+}
+type steps = {
+	title: string
+	text?: string
+}
+const steps: steps[] = [
+	{
+		title: 'Уход за газоном после зимы: аэрация, удобрения',
+		text: 'После зимы газон требует восстановления. Аэрация разрыхляет почву, улучшая доступ воздуха и воды к корням. Весенние удобрения восполняют питательные вещества и ускоряют рост травы.'
+	},
+	{
+		title: 'Весенний уход за газоном: скарификация, подкормка, полив',
+		text: 'Весной газон требует восстановления после зимы. Скарификация удаляет мох и отмершую траву, улучшая воздухообмен и впитывание влаги. Затем проводится подкормка удобрениями с азотом, фосфором и калием для стимуляции роста и укрепления корней. Полив должен быть регулярным, но без переувлажнения, чтобы обеспечить равномерный рост травы.'
+	},
+	{
+		title: 'Летний уход: стрижка, борьба с болезнями, мульчирование',
+		text: 'Летом газон подвергается жаре и дефициту влаги. Стрижка должна быть регулярной, но не слишком короткой, чтобы избежать перегрева. Для защиты от болезней применяются специальные препараты. Мульчирование помогает удерживать влагу и снижает рост сорняков.'
+	}
+]
+const endstep = {
+	title: 'Обслуживание газона круглый год',
+	text: 'Круглогодичный уход за газоном включает скарификацию, подкормку, полив, стрижку, борьбу с болезнями и подготовку к зиме. Регулярный мониторинг, удаление сорняков и защита от заболеваний поддерживают газон в хорошем состоянии.'
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Hero title={header.title} text={header.text} heroImg={heroImg} />
+	<section
+		class="mt-42 mx-auto mb-6 max-w-[1200px] bg-neutral-100/80 p-6 2xl:my-24 2xl:bg-white dark:bg-neutral-900"
+		aria-multiselectable="false"
+	>
+		<div class="md:flex md:flex-row">
+			<div class="text-slate-500 dark:text-slate-300">
+				<div class="relative p-6 pb-0 pr-0">
+					<figure class="relative z-10">
+						<blockquote class="p-6 leading-relaxed">
+							<p class="mb-2 text-sm font-light">
+								<i>Комплексный уход за газоном – стрижка, покос, подкормка и восстановление.</i>
+							</p>
+							<p class="mt-1">
+								<span class="font-bold">Закажите уход за газоном сегодня</span> и получите план профилактических
+								мер для вашего участка!
+							</p>
+						</blockquote>
+					</figure><svg
+						aria-hidden="true"
+						class="absolute left-6 top-6 z-0 h-16 dark:hidden"
+						viewBox="0 0 17 12"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						><path
+							d="M2.79187 3.83333C2.66179 3.83333 2.53696 3.85316 2.41271 3.87125C2.45296 3.73591 2.49437 3.59825 2.56087 3.47458C2.62737 3.29491 2.73121 3.13916 2.83446 2.98225C2.92079 2.8125 3.07304 2.69758 3.18504 2.55233C3.30229 2.41116 3.46212 2.31725 3.58871 2.2C3.71296 2.0775 3.87571 2.01625 4.00521 1.92991C4.14054 1.85233 4.25837 1.76658 4.38437 1.72575L4.69879 1.59625L4.97529 1.48133L4.69237 0.35083L4.34412 0.43483C4.23271 0.46283 4.09679 0.495496 3.94221 0.53458C3.78412 0.563746 3.61554 0.643663 3.42771 0.71658C3.24221 0.799413 3.02754 0.855413 2.82804 0.988413C2.62737 1.11558 2.39579 1.22175 2.19162 1.39208C1.99387 1.56766 1.75529 1.71991 1.57912 1.94333C1.38662 2.15216 1.19646 2.3715 1.04887 2.62116C0.877957 2.85916 0.761873 3.1205 0.639373 3.37891C0.52854 3.63733 0.43929 3.90158 0.366373 4.15825C0.228123 4.67275 0.16629 5.16158 0.142373 5.57983C0.12254 5.99866 0.134207 6.34691 0.158707 6.59891C0.167457 6.71791 0.18379 6.83341 0.195457 6.91333L0.21004 7.01133L0.225207 7.00783C0.328959 7.49248 0.567801 7.93786 0.914102 8.29243C1.2604 8.64701 1.70001 8.89631 2.18208 9.01148C2.66415 9.12665 3.16897 9.10299 3.63815 8.94323C4.10733 8.78348 4.52169 8.49416 4.83331 8.10874C5.14493 7.72333 5.34107 7.25757 5.39903 6.76534C5.457 6.27311 5.37443 5.77452 5.16087 5.32726C4.94731 4.88 4.61149 4.50233 4.19225 4.23796C3.77302 3.97358 3.28751 3.8333 2.79187 3.83333V3.83333ZM9.20854 3.83333C9.07846 3.83333 8.95362 3.85316 8.82937 3.87125C8.86962 3.73591 8.91104 3.59825 8.97754 3.47458C9.04404 3.29491 9.14787 3.13916 9.25112 2.98225C9.33746 2.8125 9.48971 2.69758 9.60171 2.55233C9.71896 2.41116 9.87879 2.31725 10.0054 2.2C10.1296 2.0775 10.2924 2.01625 10.4219 1.92991C10.5572 1.85233 10.675 1.76658 10.801 1.72575L11.1155 1.59625L11.392 1.48133L11.109 0.35083L10.7608 0.43483C10.6494 0.46283 10.5135 0.495496 10.3589 0.53458C10.2008 0.563746 10.0322 0.643663 9.84437 0.71658C9.65946 0.799997 9.44421 0.855413 9.24471 0.988997C9.04404 1.11616 8.81246 1.22233 8.60829 1.39266C8.41054 1.56825 8.17196 1.7205 7.99579 1.94333C7.80329 2.15216 7.61312 2.3715 7.46554 2.62116C7.29462 2.85916 7.17854 3.1205 7.05604 3.37891C6.94521 3.63733 6.85596 3.90158 6.78304 4.15825C6.64479 4.67275 6.58296 5.16158 6.55904 5.57983C6.53921 5.99866 6.55087 6.34691 6.57537 6.59891C6.58412 6.71791 6.60046 6.83341 6.61212 6.91333L6.62671 7.01133L6.64187 7.00783C6.74563 7.49248 6.98447 7.93786 7.33077 8.29243C7.67707 8.64701 8.11668 8.89631 8.59875 9.01148C9.08081 9.12665 9.58563 9.10299 10.0548 8.94323C10.524 8.78348 10.9384 8.49416 11.25 8.10874C11.5616 7.72333 11.7577 7.25757 11.8157 6.76534C11.8737 6.27311 11.7911 5.77452 11.5775 5.32726C11.364 4.88 11.0282 4.50233 10.6089 4.23796C10.1897 3.97358 9.70417 3.8333 9.20854 3.83333V3.83333Z"
+							class="fill-emerald-100"></path></svg
+					>
+				</div>
+			</div>
+			<div class="group flex">
+				<div
+					class="animate__animated animate__rubberBand z-10 block rounded-md px-8 py-4 pr-6 md:border-r-8 md:border-[#2FAF83] md:bg-neutral-50 2xl:w-[600px] dark:bg-neutral-800"
+				>
+					<FormOption idForm="1" titleForm={SEO.title} client:load />
+				</div>
+				<Image
+					class="hidden -translate-x-16 transition delay-150 duration-700 ease-in-out group-hover:translate-x-0 md:block"
+					src={Grut}
+					alt="grut"
+					height={Grut.width / 2}
+					width={Grut.height / 2}
+				/>
+			</div>
+		</div>
+	</section>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Стрижка и покос газона</h2>
+			<p class="mt-6">
+				<i>Создадим здоровое зеленое покрытие вашего участка даже в тени хвойных деревьев!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Стрижка газона колесной косилкой</h3>
+			<p>
+				Это стандартный способ ухода за лужайкой. Такой метод идеально подходит для ровных участков
+				без препятствий. Колесная косилка срезает траву равномерно, обеспечивая аккуратный вид. Для
+				качественного результата важно использовать хорошо заточенные ножи, которые не рвут траву, а
+				аккуратно ее срезают.
+			</p>
+			<p>
+				При регулярной стрижке газона с колесной косилкой вы обеспечиваете здоровый рост травы.
+				Газон становится густым и зеленым, а сорняки не имеют возможности разрастаться. Также такая
+				стрижка помогает поддерживать газон в хорошем состоянии в любое время года.
+			</p>
+			<h3 class="lg:text-2xl">
+				Покос травы триммером вдоль препятствий (около стен, клумб, деревьев)
+			</h3>
+			<p>
+				Для участков с множеством препятствий, таких как бордюры, клумбы или деревья, используется
+				триммер. Он позволяет точно и аккуратно срезать траву в труднодоступных местах. Триммер
+				помогает обработать зоны, куда не может добраться колесная косилка, и создает аккуратный
+				край газона.
+			</p>
+			<p>
+				Этот метод также подходит для ухода за газоном вдоль забора или в углублениях, где
+				традиционная косилка не справляется. С помощью триммера можно быстро привести участок в
+				порядок, не повреждая растения и элементы ландшафта.
+			</p>
+			<h3 class="lg:text-2xl">Выкашивание заросших участков</h3>
+			<p>
+				Заросшие участки требуют особого подхода, так как трава на таких участках часто переплетена
+				и утрамбована. Выкашивание таких территорий помогает вернуть газону ухоженный вид и сделать
+				его более привлекательным. Для этого используется более мощная техника, которая способна
+				справляться с высокой и густой травой.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Скарификация и вычесывание газона</h2>
+			<p class="mt-6">
+				<i>Удаление мха, старой травы и улучшение воздухообмена почвы!</i>
+			</p>
+			<BtnLight link="/#" btnName="Заказать звонок" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Скарификация газона — что это такое?</h3>
+			<p>
+				<b>Скарификация газона</b> — это процесс механического удаления мха, отмершей травы и растительных
+				остатков с поверхности газона для улучшения воздухообмена, проникновения влаги и питательных
+				веществ в почву, что способствует здоровому росту травы.
+			</p>
+			<p>
+				Скарификация помогает восстановить естественный баланс в почве и стимулировать рост новых
+				корней, что делает газон более здоровым и густым.
+			</p>
+			<p>
+				Эта процедура особенно важна для старых газонов или тех, которые долго не обслуживались.
+				Проводить скарификацию рекомендуется хотя бы раз в год, чтобы избежать накопления лишних
+				растительных остатков и улучшить структуру почвы. В результате газон становится более
+				устойчивым к болезням и внешним воздействиям.
+			</p>
+			<h3 class="lg:text-2xl">Вычесывание газона</h3>
+			<p>
+				Вычесывание газона — это дополнительная мера ухода, которая помогает избавиться от лишней
+				растительности, мха и других загрязнений, которые могут мешать нормальному росту травы. С
+				помощью специальных инструментов — грабель или вычесывателей — удаляется тонкий слой
+				отмерших травинок и мусора, что улучшает внешний вид газона и способствует его оздоровлению.
+			</p>
+			<p>
+				Процедура вычесывания также помогает предотвращать накопление мха, который может затруднить
+				доступ воздуха и влаги к корням. Она особенно полезна в период активного роста травы, когда
+				газон нуждается в дополнительном уходе.
+			</p>
+		</div>
+	</SidebarContent>
+	<TextImage
+		title="Выравнивание участка и восстановление газона"
+		text=`
+			<h3 class="lg:text-2xl">Выравнивание участка под газон</h3>
+		<p class="mt-2">Для того чтобы газон рос равномерно и аккуратно, участок необходимо правильно выровнять. Неровности на участке могут привести к неравномерному росту травы, так как в низких местах будет скапливаться лишняя влага, а высокие участки будут испытывать дефицит воды и питательных веществ.</p>
+		<p class="mt-2">Для выравнивания участка сначала удаляют крупные камни и мусор, после чего разравнивают землю, добавляя нужное количество почвы в низкие места и утрамбовывая ее. После выравнивания поверхности участка рекомендуется тщательно его полить и оставить на некоторое время, чтобы земля осела. Затем, после подготовки, можно приступать к посеву травы. Выравнивание участка под газон улучшает его внешний вид и способствует более здоровому и равномерному росту травы.</p>
+			<h3 class="lg:text-2xl">Восстановление газона после земляных работ</h3>
+		<p class="mt-2">После проведения земляных работ газон может быть поврежден или даже уничтожен. В таких случаях требуется восстановление травяного покрытия. Первым шагом является проверка состояния почвы и исправление повреждений. Земля должна быть разрыхлена, чтобы обеспечить хороший доступ воды и воздуха к корням. Следует также обратить внимание на удобрение почвы, чтобы обеспечить рост травы после восстановительных работ.</p>
+		<p class="mt-2">Затем на участок можно заново посеять газонную траву, при этом важно выбрать подходящий сорт травы, который будет хорошо расти в условиях вашего региона. После посева необходимо тщательно увлажнять участок, поддерживая оптимальный уровень влаги для прорастания семян. Восстановление газона может занять несколько месяцев, но при правильном уходе результат не заставит себя ждать.</p>
+		`
+		image={obrabotkaNasekImg}
+		mobileImage={obrabotkaNasekImg}
+		imagePosition="left"
+		offsetImage
+		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
+	/>
+	<SidebarContent>
+		<div slot="sidebar">
+			<p class="mt-14">
+				<i
+					>Идеальный газон под хвойными деревьями! Закажите уход и восстановление, чтобы трава
+					оставалась густой и яркой.</i
+				>
+			</p>
+			<BtnLight link="/#" btnName="Оставить заявку" />
+		</div>
+		<div class="basic-text lg:ml-4">
+			<h2 class="lg:text-2xl">Газон под соснами и хвойными деревьями</h2>
+			<p>
+				Газон под соснами и хвойными деревьями требует особого подхода, поскольку тень, которую
+				создают деревья, и особенности их корней могут усложнять жизнь траве. В таких местах газон
+				растет хуже, поскольку хвойные деревья потребляют много питательных веществ из почвы, а их
+				тень мешает прямому попаданию солнечного света.
+			</p>
+			<p>
+				Для газона под хвойными деревьями нужно выбирать сорта трав, которые хорошо переносят тень и
+				могут расти в условиях дефицита питательных веществ. Также важно регулярно подкармливать
+				газон, так как почва под хвойными деревьями часто бывает бедной на минералы. Дополнительно
+				можно проводить аэрацию и избегать перегрузки почвы, чтобы не повредить корни травы.
+				Периодический полив и контроль за уровнем влаги также помогут сохранить газон под соснами в
+				хорошем состоянии.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
+		<div slot="sidebar">
+			<p class="mt-14">
+				<i
+					>Уход за газоном круглый год – весной, летом и осенью. Поддерживайте участок в идеальном
+					состоянии!</i
+				>
+			</p>
+			<BtnLight link="/#" btnName="Заказать консультацию" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Комплексный уход за газоном - шаг за шагом</h3>
+			<Steps steps={steps} endstep={endstep} />
+		</div>
+	</SidebarContent>
+	<!-- Features -->
+	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Уход за газоном по доступной цене за м²</h2>
+			<p>Оставьте заявку и получите расчет!</p>
+		</div>
+		<div class="basic-text">
+			<div class="w-full overflow-x-auto">
+				<table
+					class="w-full border-separate rounded border border-slate-200 text-left"
+					cellspacing="0"
+				>
+					<tbody>
+						<tr>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Name</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Title</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Company</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Role</th
+							>
+							<th
+								scope="col"
+								class="h-12 border-l bg-slate-100 stroke-slate-700 px-6 text-sm font-medium text-slate-700 first:border-l-0"
+								>Username</th
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Ayub Salas</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Designer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Carroll Group</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>salas_a</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Agnes Sherman</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Developer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Apple</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Admin</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>shermanagnes</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Jemma Cummings</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Senior Designer</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>20goto10</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>jemmaC</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Jimi Cardenas</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Copywriter</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Wind-UI</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Owner</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>cardenasji</td
+							>
+						</tr>
+						<tr class="transition-colors duration-300 hover:bg-slate-50">
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Mateusz Tucker</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Project Manager</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Tailwindui</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>Member</td
+							>
+							<td
+								class="h-12 border-l border-t border-slate-200 stroke-slate-500 px-6 text-sm text-slate-500 transition duration-300 first:border-l-0"
+								>mt</td
+							>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</SidebarContent>
+	<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+		<!-- Title -->
+		<div class="mx-auto mb-8 max-w-2xl text-center lg:mb-14">
+			<h2 class="text-pretty"><strong>Примеры</strong> выполненных работ</h2>
+			<p class="pb-0 text-lg">Мы знаем и любим свое дело</p>
+		</div>
+		<!-- End Title -->
+
+		<!-- Grid -->
+		<div class="mx-auto grid max-w-3xl grid-cols-12 gap-6 lg:gap-8">
+			{
+				features.slice(0, 3).map((feature) => (
+					<div class="col-span-6 text-center sm:col-span-4">
+						<Feature title={feature.title} icon={feature.icon} align="center" classes="mb-12" />
+					</div>
+				))
+			}
+		</div>
+		<!-- End Grid -->
+
+		<!-- Grid -->
+		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
+			<div class="col-span-4 hidden md:col-span-3 md:block">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+
+			<div class="col-span-4 md:col-span-3">
+				<img
+					class="rounded-xl"
+					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
+					alt="Features Image"
+				/>
+			</div>
+			<!-- End Col -->
+		</div>
+		<!-- End Grid -->
+	</div>
+	<FAQ
+		title="ЧаВо"
+		text="Здесь мы собрали все самые популярные вопросу по теме ухода за газоном. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
+		data={faqIntegrations}
+	/>
+	<CTA />
+</Layout>
