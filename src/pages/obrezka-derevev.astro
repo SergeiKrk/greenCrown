@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/blocks/hero/PageHero.astro'
+import Section from '../components/ui/Section.astro'
+import Card from '../components/ui/cards/FeatureCard.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
@@ -9,6 +11,8 @@ import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/cards/obrezka-derevev.webp'
+import plodovie from '../assets/highlights/lechenie-plodovyh.png'
+import hvoinie from '../assets/highlights/hvoinie-derevya.png'
 
 import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
@@ -30,6 +34,44 @@ const header = {
 	title: '<strong>Обрезка</strong> деревьев и кустарников',
 	text: 'Услуги по обрезке деревьев помогают улучшить здоровье растений, сформировать правильную крону и повысить урожайность.'
 }
+
+const catCards = {
+	title: 'Услуги по <strong>обрезке</strong> деревьев и кустарников',
+	description:
+		'Работаем с плодовыми и декоративными растениями. Учитываем особенности каждого участка.'
+}
+
+type MajorSubCategories = {
+	link: string
+	title: string
+	image: any
+	imageWidth: number
+	imageHeight: number
+}
+
+const MajorSubCategories: MajorSubCategories[] = [
+	{
+		link: '/sanitarnaya-obrezka',
+		title: 'Санитарная обрезка',
+		image: plodovie,
+		imageWidth: plodovie.width,
+		imageHeight: plodovie.height
+	},
+	{
+		link: '/kronirovanie',
+		title: 'Кронирование',
+		image: hvoinie,
+		imageWidth: hvoinie.width,
+		imageHeight: hvoinie.height
+	},
+	{
+		link: '/formovochnaya-obrezka',
+		title: 'Формовочная обрезка',
+		image: hvoinie,
+		imageWidth: hvoinie.width,
+		imageHeight: hvoinie.height
+	}
+]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -83,6 +125,26 @@ const header = {
 			</div>
 		</div>
 	</section>
+	<Section id="msubcat">
+		<div class="mx-auto mb-12 max-w-4xl text-center lg:mb-24">
+			<h2 class="text-balance" set:html={catCards.title} />
+			<p class="pb-0 text-lg" set:html={catCards.description} />
+		</div>
+		<div class="flex flex-col justify-center lg:flex-row lg:flex-wrap">
+			{
+				MajorSubCategories.map((msubcat) => (
+					<div class="mb-4 w-full lg:mx-4 lg:w-72">
+						<Card
+							title={msubcat.title}
+							subtitle={msubcat.text}
+							image={msubcat.image}
+							link={msubcat.link}
+						/>
+					</div>
+				))
+			}
+		</div>
+	</Section>
 	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Обрезка деревьев в Москве и МО</h2>
