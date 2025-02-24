@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets'
+
+type Addition = {
+	title: string
+	text: string
+	heroImg: ImageMetadata
+}
+
+type FeaturesAddition = {
+	title: string
+	text?: string
+	additions: Addition[]
+}
+const { title, text, additions } = Astro.props
+---
+
+<div class="mx-auto mb-12 max-w-4xl text-center lg:mb-24">
+	<h2 class="text-balance" set:html={title} />
+	<p class="pb-0 text-lg" set:html={text} />
+</div>
+<div class="md:pt-18 mt-8 flex flex-col px-2 md:flex-row md:px-6 dark:text-white">
+	{
+		additions.map((addition: Addition, index: number) => (
+			<div
+				class={`border-b-1 flex w-full flex-col items-center border-b border-gray-100 px-8 py-5 text-center text-gray-500 md:w-1/4 md:border-b-0 ${index !== additions.length - 1 ? 'md:border-r md:border-gray-200' : ''} dark:border-gray-700`}
+			>
+				<Image src={addition.heroImg} alt={addition.title} class="h-24 w-24 rounded-full" />
+				<h3 class="mt-4 text-2xl font-semibold text-gray-600 dark:text-white">{addition.title}</h3>
+				<p class="font-base mb-12 text-gray-600 md:!mb-0 md:font-extralight dark:text-gray-300">
+					{addition.text}
+				</p>
+			</div>
+		))
+	}
+</div>

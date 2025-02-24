@@ -23,6 +23,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrezka-dereve
 import faqImage1 from '../assets/faq/faq-01.png'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
+import FeaturesAddition from '../components/ui/FeaturesAddition.astro'
 // - SEO
 const SEO = {
 	title: 'Обрезка деревьев и кустарников - Цена услуги в Москве и МО',
@@ -79,6 +80,33 @@ const MajorSubCategories: MajorSubCategories[] = [
 		imageHeight: hvoinie.height
 	}
 ]
+
+const featuresAddition = {
+	title: 'Типы деревьев',
+	text: 'Работы по которым мы проводим',
+	additions: [
+		{
+			title: 'Плодовые деревья',
+			text: 'Регулярная обрезка повышает урожайность, улучшает освещённость кроны и предотвращает развитие заболеваний. Важно удалять сухие, повреждённые и загущающие ветви, чтобы дерево тратило ресурсы на здоровый рост и плодоношение.',
+			heroImg: hvoinie
+		},
+		{
+			title: 'Хвойные деревья',
+			text: 'Их обрезают для формирования кроны, удаления сухих веток и предотвращения загущения. Процедуру проводят аккуратно, чтобы не повредить живые побеги, так как у многих хвойных слабая способность к восстановлению.',
+			heroImg: hvoinie
+		},
+		{
+			title: 'Молодые деревья',
+			text: 'Формирующая обрезка молодых деревьев закладывает основу для правильного роста и здоровой кроны. В первые годы удаляют слабые и неправильно растущие ветви, чтобы дерево развивалось гармонично и было устойчивым к нагрузкам.',
+			heroImg: hvoinie
+		},
+		{
+			title: 'Высокие деревья',
+			text: 'Такая обрезка требует специального оборудования и опыта. Удаление сухих и аварийных веток снижает риск их падения, а формирование кроны помогает дереву сохранять устойчивость и здоровый рост.',
+			heroImg: hvoinie
+		}
+	]
+}
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -141,15 +169,19 @@ const MajorSubCategories: MajorSubCategories[] = [
 			{
 				MajorSubCategories.map((msubcat) => (
 					<div class="mb-4 w-full lg:mx-4 lg:w-72">
-						<Card
-							title={msubcat.title}
-							subtitle={msubcat.text}
-							image={msubcat.image}
-							link={msubcat.link}
-						/>
+						<Card title={msubcat.title} image={msubcat.image} link={msubcat.link} />
 					</div>
 				))
 			}
+		</div>
+		<div class="mt-24">
+			<FeaturesAddition
+				title={featuresAddition.title}
+				,
+				text={featuresAddition.text}
+				,
+				additions={featuresAddition.additions}
+			/>
 		</div>
 	</Section>
 	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
