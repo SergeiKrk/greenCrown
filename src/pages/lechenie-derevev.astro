@@ -33,6 +33,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-derev
 import faqImage1 from '../assets/faq/faq-01.png'
 import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
 import { Image } from 'astro:assets'
+import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
@@ -262,7 +263,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 			}
 		</Row>
 	</Section>
-	<SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
 			<a href="/#obsledovanie-derevev"><h2 class="lg:text-2xl">Обследование деревьев</h2></a>
 			<p class="mt-6">
@@ -377,6 +378,30 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 		classes="bg-neutral-50 dark:bg-neutral-900 lg:!py-32"
 	/>
 	<SidebarContent>
+		<div slot="sidebar">
+			<h2 class="lg:text-2xl">Морозобоины</h2>
+			<p class="mt-6">
+				<i>Подготовьте деревья к новому сезону – начните с лечения морозобоин!</i>
+			</p>
+			<BtnLight link="/#" btnName="Записаться на обработку" />
+		</div>
+		<div class="basic-text">
+			<h3 class="lg:text-2xl">Повреждения стволов деревьев морозом</h3>
+			<p>
+				<i>Морозобоины</i> — это глубокие трещины в коре деревьев, возникающие из-за резких перепадов
+				температуры. Они ослабляют растение, создавая ворота для инфекций и вредителей. Особенно уязвимы
+				плодовые и лиственные деревья, стволы которых сильно нагреваются днем и охлаждаются ночью.
+			</p>
+			<p>
+				Для лечения морозобоин применяют комплексный подход: очищают рану от отслоившейся коры,
+				дезинфицируют, накладывают садовый вар или специальный бальзам. В запущенных случаях может
+				потребоваться обработка фунгицидами и защита ствола специальными материалами. Чтобы
+				предотвратить появление новых повреждений, рекомендуется осенняя побелка и утепление дерева
+				на зиму.
+			</p>
+		</div>
+	</SidebarContent>
+	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Цены на лечение деревьев</h2>
 			<p>
