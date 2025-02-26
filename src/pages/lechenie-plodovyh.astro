@@ -7,12 +7,14 @@ import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
+import ImageGallery from '../components/ui/ImageGallery.astro'
 
 import heroImg from '../assets/highlights/lechenie-plodovyh.png'
-
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie.png'
 import Grut from '../assets/Grut.webp'
+import lp1 from '../assets/lechenie-plodovyh-1.jpg'
+import lp2 from '../assets/lechenie-plodovyh-2.jpg'
+import lp3 from '../assets/lechenie-plodovyh-3.jpg'
+import lp4 from '../assets/lechenie-plodovyh-4.jpg'
 // Data
 import faqData from '../data/json-files/faqData.json'
 import features from '../data/json-files/featuresData.json'
@@ -21,7 +23,7 @@ import features from '../data/json-files/featuresData.json'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-plodovyh')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
+import faqImage1 from '../assets/sezonnye-meropriyatiya-po-uhodu-za-plodovymi.jpg'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
@@ -39,6 +41,24 @@ const catCards = {
 	title: 'Лечение и обработка <strong>стволов деревьев</strong>',
 	description: ''
 }
+const images = [
+	{
+		src: lp1,
+		alt: 'Лечение плодовых деревьев'
+	},
+	{
+		src: lp2,
+		alt: 'Лечение плодовых деревьев на участке'
+	},
+	{
+		src: lp3,
+		alt: 'Лечение плодовых'
+	},
+	{
+		src: lp4,
+		alt: 'Профессиональное Лечение плодовых деревьев'
+	}
+]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -401,45 +421,7 @@ const catCards = {
 		</div>
 		<!-- End Grid -->
 
-		<!-- Grid -->
-		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-			<div class="col-span-4 hidden md:col-span-3 md:block">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-		</div>
-		<!-- End Grid -->
+		<ImageGallery images={images} />
 	</div>
 	<FAQ
 		title="ЧаВо"

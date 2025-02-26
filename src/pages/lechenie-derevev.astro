@@ -23,6 +23,14 @@ import Grut from '../assets/Grut.webp'
 import plodovie from '../assets/highlights/lechenie-plodovyh.png'
 import hvoinie from '../assets/highlights/hvoinie-derevya.png'
 import listvennie from '../assets/highlights/listvennie-derevya.png'
+import obrabotkaderevevotvreditelej from '../assets/obrabotka-derevev-ot-vreditelej.png'
+import obrezkaiobrabotkaderevev from '../assets/obrezka-i-obrabotka-derevev.png'
+import inekciiderevyam from '../assets/inekcii-derevyam.png'
+import podkormkaderevev from '../assets/podkormka-derevev.png'
+import ld1 from '../assets/lechenie-derevev-1.jpg'
+import ld2 from '../assets/lechenie-derevev-2.jpg'
+import ld3 from '../assets/lechenie-derevev-3.jpg'
+import ld4 from '../assets/lechenie-derevev-4.jpg'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
@@ -30,10 +38,11 @@ const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
 const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-derevev')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
+import faqImage1 from '../assets/tekhnologii-dlya-lecheniya-derevev.jpg'
 import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
+import ImageGallery from '../components/ui/ImageGallery.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
@@ -117,33 +126,33 @@ const CategoryServices: CategoryServices[] = [
 		link: '/obrabotka-dereva-ot-vreditelej',
 		title: 'Обработка деревьев от вредителей и инфекций',
 		text: 'Защита деревьев и кустарников от насекомых и болезней',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: obrabotkaderevevotvreditelej,
+		imageWidth: obrabotkaderevevotvreditelej.width,
+		imageHeight: obrabotkaderevevotvreditelej.height
 	},
 	{
 		link: '/obrezka-derevev',
 		title: 'Обрезка и обработка деревьев',
 		text: 'Санитарная обрезка способствует укреплению и оздоровлению деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: obrezkaiobrabotkaderevev,
+		imageWidth: obrezkaiobrabotkaderevev.width,
+		imageHeight: obrezkaiobrabotkaderevev.height
 	},
 	{
 		link: '/inekcii-derevyam',
 		title: 'Инъекции для деревьев',
 		text: 'Стволовые инъекции для борьбы с болезнями и паразитами',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		image: inekciiderevyam,
+		imageWidth: inekciiderevyam.width,
+		imageHeight: inekciiderevyam.height
 	},
 	{
 		link: '/podkormka-derevev',
 		title: 'Подкормка и защита деревьев',
 		text: 'Внесение подкормок повышает иммунитет ваших деревьев и кустарников',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		image: podkormkaderevev,
+		imageWidth: podkormkaderevev.width,
+		imageHeight: podkormkaderevev.height
 	}
 ]
 
@@ -171,6 +180,25 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 		image: plodovie,
 		imageWidth: plodovie.width,
 		imageHeight: plodovie.height
+	}
+]
+
+const images = [
+	{
+		src: ld1,
+		alt: 'Лечение деревьев'
+	},
+	{
+		src: ld2,
+		alt: 'Лечение деревьев на участке'
+	},
+	{
+		src: ld3,
+		alt: 'Лечение деревьев в парке'
+	},
+	{
+		src: ld4,
+		alt: 'Профессиональное Лечение деревьев'
 	}
 ]
 ---
@@ -578,45 +606,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 		</div>
 		<!-- End Grid -->
 
-		<!-- Grid -->
-		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-			<div class="col-span-4 hidden md:col-span-3 md:block">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-		</div>
-		<!-- End Grid -->
+		<ImageGallery images={images} />
 	</div>
 	<FAQ
 		title="ЧаВо"

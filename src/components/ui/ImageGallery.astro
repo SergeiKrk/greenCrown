@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets'
+
+type ImageData = {
+	src: ImageMetadata
+	alt: string
+}
+
+interface Props {
+	images: ImageData[]
+}
+---
+
+<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
+	{
+		Astro.props.images.map((image, index) => (
+			<div class="col-span-6 block transition duration-300 ease-in-out hover:scale-125 lg:col-span-3 lg:hover:scale-150">
+				<Image class="rounded-xl" src={image.src} alt={image.alt} width={920} height={920} />
+			</div>
+		))
+	}
+</div>
