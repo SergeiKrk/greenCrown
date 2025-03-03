@@ -11,8 +11,13 @@ import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
 
 import heroImg from '../assets/obrezka-i-obrabotka-derevev.png'
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
 import hvoinie from '../assets/highlights/hvoinie-derevya.png'
+import plodovie from '../assets/highlights/lechenie-plodovyh.png'
+import vysokiederevya from '../assets/vysokie-derevya.png'
+import formovochnayaobrezka from '../assets/formovochnaya-obrezka.png'
+import sanitarnayaobrezka from '../assets/sanitarnaya-obrezka.png'
+import omolazhivayushchayaobrezka from '../assets/omolazhivayushchaya-obrezka.png'
+import kronirovanie from '../assets/kronirovanie.png'
 
 import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
@@ -54,30 +59,30 @@ const MajorSubCategories: MajorSubCategories[] = [
 	{
 		link: '/formovochnaya-obrezka',
 		title: 'Формовочная обрезка',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: formovochnayaobrezka,
+		imageWidth: formovochnayaobrezka.width,
+		imageHeight: formovochnayaobrezka.height
 	},
 	{
 		link: '/sanitarnaya-obrezka',
 		title: 'Санитарная обрезка',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		image: sanitarnayaobrezka,
+		imageWidth: sanitarnayaobrezka.width,
+		imageHeight: sanitarnayaobrezka.height
 	},
 	{
 		link: '/omolazhivayushchaya-obrezka',
 		title: 'Омолаживающая обрезка',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		image: omolazhivayushchayaobrezka,
+		imageWidth: omolazhivayushchayaobrezka.width,
+		imageHeight: omolazhivayushchayaobrezka.height
 	},
 	{
 		link: '/kronirovanie',
 		title: 'Кронирование',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: kronirovanie,
+		imageWidth: kronirovanie.width,
+		imageHeight: kronirovanie.height
 	}
 ]
 
@@ -88,7 +93,7 @@ const featuresAddition = {
 		{
 			title: 'Плодовые деревья',
 			text: 'Регулярная обрезка повышает урожайность, улучшает освещённость кроны и предотвращает развитие заболеваний. Важно удалять сухие, повреждённые и загущающие ветви, чтобы дерево тратило ресурсы на здоровый рост и плодоношение.',
-			heroImg: hvoinie
+			heroImg: plodovie
 		},
 		{
 			title: 'Хвойные деревья',
@@ -98,12 +103,12 @@ const featuresAddition = {
 		{
 			title: 'Молодые деревья',
 			text: 'Формирующая обрезка молодых деревьев закладывает основу для правильного роста и здоровой кроны. В первые годы удаляют слабые и неправильно растущие ветви, чтобы дерево развивалось гармонично и было устойчивым к нагрузкам.',
-			heroImg: hvoinie
+			heroImg: kronirovanie
 		},
 		{
 			title: 'Высокие деревья',
 			text: 'Такая обрезка требует специального оборудования и опыта. Удаление сухих и аварийных веток снижает риск их падения, а формирование кроны помогает дереву сохранять устойчивость и здоровый рост.',
-			heroImg: hvoinie
+			heroImg: vysokiederevya
 		}
 	]
 }
