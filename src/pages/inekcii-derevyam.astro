@@ -7,9 +7,13 @@ import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
-import Steps from '../components/ui/Steps.astro'
+import ImageGallery from '../components/ui/ImageGallery.astro'
 
 import heroImg from '../assets/inekcii-derevyam.png'
+import ll1 from '../assets/id1.jpg'
+import ll2 from '../assets/id2.jpg'
+import ll3 from '../assets/id3.jpg'
+import ll4 from '../assets/id4.jpg'
 
 import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
@@ -18,7 +22,7 @@ import BtnLight from '../components/ui/BtnLight.astro'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'inekcii-derevyam')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
+import faqImage1 from '../assets/preparaty-dlya-inekcij.jpg'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
@@ -54,6 +58,24 @@ const endstep = {
 	title: 'Профилактика',
 	text: 'Устанавливаем защиту от вредителей и болезней, чтобы ваши растения оставались здоровыми круглый год.'
 }
+const images = [
+	{
+		src: ll1,
+		alt: 'Инъекции деревьям'
+	},
+	{
+		src: ll2,
+		alt: 'Инъекции в ствол дерева'
+	},
+	{
+		src: ll3,
+		alt: 'Лечение деревьев инъекциями'
+	},
+	{
+		src: ll4,
+		alt: 'Лечение деревьев - Инъекции'
+	}
+]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -395,45 +417,7 @@ const endstep = {
 		</div>
 		<!-- End Grid -->
 
-		<!-- Grid -->
-		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-			<div class="col-span-4 hidden md:col-span-3 md:block">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-		</div>
-		<!-- End Grid -->
+		<ImageGallery images={images} />
 	</div>
 	<FAQ
 		title="ЧаВо"
