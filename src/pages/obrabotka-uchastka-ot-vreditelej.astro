@@ -4,39 +4,42 @@
 import Layout from '../layouts/Layout.astro'
 // - UI
 import Hero from '../components/blocks/hero/PageHero.astro'
-// import Feature from '../components/blocks/features/FeatureList.astro'
 import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
-import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 import Section from '../components/ui/Section.astro'
-import Row from '../components/ui/Row.astro'
-import Col from '../components/ui/Col.astro'
 import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import features from '../data/json-files/featuresData.json'
+import ImageGallery from '../components/ui/ImageGallery.astro'
 
-import heroImg from '../assets/cards/lechenie-derevev.webp'
+import heroImg from '../assets/obrabotka-uchastka-ot-vreditelej.png'
+import ll1 from '../assets/pd1.jpg'
+import ll2 from '../assets/pd2.jpg'
+import ll3 from '../assets/pd3.jpg'
+import ll4 from '../assets/pd4.jpg'
 import Grut from '../assets/Grut.webp'
 
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
-import listvennie from '../assets/highlights/listvennie-derevya.png'
+import komarov from '../assets/obrabotka-ot-komarov.png'
+import kleshchej from '../assets/obrabotka-ot-kleshchej.png'
+import muravev from '../assets/obrabotka-ot-muravev.png'
+import koroeda from '../assets/obrabotka-ot-koroeda.png'
+import myshej from '../assets/obrabotka-ot-myshej.png'
+import krys from '../assets/obrabotka-ot-krys.png'
+import krotov from '../assets/obrabotka-ot-krotov.png'
 // Data
 import faqData from '../data/json-files/faqData.json'
 // - FAQ Categories
-const faqPricing = faqData.filter((faq) => faq.category === 'pricing')
 const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-uchastka-ot-vreditelej')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
-import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.astro'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
-	title: '',
-	description: ''
+	title: 'Уничтожение вредителей на участке – профессиональная обработка',
+	description:
+		'Комплексная дезинсекция и дератизация для частных домов, дач и участков. Безопасно для людей и животных!'
 }
 // - Page Header
 const header = {
@@ -64,91 +67,74 @@ type MajorSubCategories = {
 	imageHeight: number
 }
 
-type CategoryServicesTwo = {
-	link: string
-	title: string
-	text?: string
-	image: any
-	imageWidth: number
-	imageHeight: number
-}
-
 const MajorSubCategories: MajorSubCategories[] = [
 	{
 		link: '/obrabotka-ot-komarov',
 		title: 'Обработка от комаров',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		image: komarov,
+		imageWidth: komarov.width,
+		imageHeight: komarov.height
 	},
 	{
 		link: '/obrabotka-ot-kleshchej',
 		title: 'Обработка от клещей',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: kleshchej,
+		imageWidth: kleshchej.width,
+		imageHeight: kleshchej.height
 	},
 	{
 		link: '/obrabotka-ot-muravev',
 		title: 'Обработка от муравьев',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
+		image: muravev,
+		imageWidth: muravev.width,
+		imageHeight: muravev.height
 	},
 	{
 		link: '/obrabotka-ot-koroeda',
 		title: 'Обработка от короеда',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
+		image: koroeda,
+		imageWidth: koroeda.width,
+		imageHeight: koroeda.height
 	},
 	{
 		link: '/obrabotka-ot-myshey',
 		title: 'Обработка от мышей',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
+		image: myshej,
+		imageWidth: myshej.width,
+		imageHeight: myshej.height
 	},
 	{
 		link: '/obrabotka-ot-krys',
 		title: 'Обработка от крыс',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
+		image: krys,
+		imageWidth: krys.width,
+		imageHeight: krys.height
 	},
 	{
 		link: '/borba-s-krotami',
 		title: 'Обработка от кротов',
-		image: listvennie,
-		imageWidth: listvennie.width,
-		imageHeight: listvennie.height
+		image: krotov,
+		imageWidth: krotov.width,
+		imageHeight: krotov.height
 	}
 ]
 
-const CategoryServicesTwo: CategoryServicesTwo[] = [
+const images = [
 	{
-		link: '/#',
-		title: 'Трещины и раны деревьев',
-		text: 'Лечение дупел, трещин, морозобоин и ран деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		src: ll1,
+		alt: 'Подкормка деревьев'
 	},
 	{
-		link: '/#',
-		title: 'Бактериальные ожоги',
-		text: 'Лечение бактериальных ожогов',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		src: ll2,
+		alt: 'Подкормка деревьев удобрениями'
 	},
 	{
-		link: '/#',
-		title: 'Обработка от вредителей',
-		text: 'Обработка деревьев от вредителей и болезней',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		src: ll3,
+		alt: 'Подкормка удобрениями'
+	},
+	{
+		src: ll4,
+		alt: 'Подкормка почвы'
 	}
 ]
 ---
@@ -400,45 +386,7 @@ const CategoryServicesTwo: CategoryServicesTwo[] = [
 		</div>
 		<!-- End Grid -->
 
-		<!-- Grid -->
-		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-			<div class="col-span-4 hidden md:col-span-3 md:block">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-		</div>
-		<!-- End Grid -->
+		<ImageGallery images={images} />
 	</div>
 	<FAQ
 		title="ЧаВо"
