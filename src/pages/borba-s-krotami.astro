@@ -13,10 +13,10 @@ import Feature from '../components/ui/Feature.astro'
 import ImageGallery from '../components/ui/ImageGallery.astro'
 
 import heroImg from '../assets/obrabotka-ot-krotov.png'
-import ll1 from '../assets/obrabotka-ot-vreditelej-6.jpg'
-import ll2 from '../assets/obrabotka-ot-vreditelej-4.jpg'
-import ll3 from '../assets/obrabotka-ot-komarov.jpg'
-import ll4 from '../assets/obrabotka-ot-vreditelej-3.jpg'
+import ll1 from '../assets/borba-s-krotami-na-uchastke-1.jpg'
+import ll2 from '../assets/borba-s-krotami-na-uchastke-2.jpg'
+import ll3 from '../assets/borba-s-krotami-na-uchastke-3.jpg'
+import ll4 from '../assets/borba-s-krotami-na-uchastke-4.jpg'
 import Grut from '../assets/Grut.webp'
 // Data
 import faqData from '../data/json-files/faqData.json'
@@ -26,7 +26,7 @@ import features from '../data/json-files/featuresData.json'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'borba-s-krotami')
 
 // Content
-import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
+import obrabotkaNasekImg from '../assets/borba-s-krotami-na-uchastke.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
@@ -43,19 +43,19 @@ const header = {
 const images = [
 	{
 		src: ll1,
-		alt: 'Подкормка деревьев'
+		alt: 'Обработка участка от кротов'
 	},
 	{
 		src: ll2,
-		alt: 'Подкормка деревьев удобрениями'
+		alt: 'Обработка от кротов'
 	},
 	{
 		src: ll3,
-		alt: 'Подкормка удобрениями'
+		alt: 'Борьба с кротами'
 	},
 	{
 		src: ll4,
-		alt: 'Подкормка почвы'
+		alt: 'Борьба с кротами на участке'
 	}
 ]
 ---
