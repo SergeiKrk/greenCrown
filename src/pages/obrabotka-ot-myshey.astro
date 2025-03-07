@@ -10,8 +10,13 @@ import TextImage from '../components/blocks/basic/TextImage.astro'
 import CTA from '../components/blocks/CTA/BasicDark.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
+import ImageGallery from '../components/ui/ImageGallery.astro'
 
 import heroImg from '../assets/obrabotka-ot-myshej.png'
+import ll1 from '../assets/obrabotka-uchastka-ot-myshej-1.jpg'
+import ll2 from '../assets/obrabotka-uchastka-ot-myshej-2.jpg'
+import ll3 from '../assets/obrabotka-ot-vreditelej-2.jpg'
+import ll4 from '../assets/obrabotka-uchastka-ot-myshej-4.jpg'
 import Grut from '../assets/Grut.webp'
 // Data
 import faqData from '../data/json-files/faqData.json'
@@ -21,7 +26,7 @@ import features from '../data/json-files/featuresData.json'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-myshey')
 
 // Content
-import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
+import obrabotkaNasekImg from '../assets/obrabotka-uchastka-ot-myshej.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
 // - SEO
@@ -35,6 +40,24 @@ const header = {
 	title: 'Обработка от <strong>мышей</strong>',
 	text: 'Профессиональная обработка дома и участка от мышей. Эффективное уничтожение грызунов с гарантией результата и доступными ценами.'
 }
+const images = [
+	{
+		src: ll1,
+		alt: 'Обработка участка от клещей'
+	},
+	{
+		src: ll2,
+		alt: 'Обработка от клещей'
+	},
+	{
+		src: ll3,
+		alt: 'Борьба с клещами'
+	},
+	{
+		src: ll4,
+		alt: 'Борьба с клещами на участке'
+	}
+]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -353,45 +376,7 @@ const header = {
 		</div>
 		<!-- End Grid -->
 
-		<!-- Grid -->
-		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-			<div class="col-span-4 hidden md:col-span-3 md:block">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-		</div>
-		<!-- End Grid -->
+		<ImageGallery images={images} />
 	</div>
 	<FAQ
 		title="ЧаВо"
