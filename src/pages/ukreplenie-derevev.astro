@@ -8,8 +8,13 @@ import CTA from '../components/blocks/CTA/BasicDark.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
 import Steps from '../components/ui/Steps.astro'
+import ImageGallery from '../components/ui/ImageGallery.astro'
 
-import heroImg from '../assets/highlights/listvennie-derevya.png'
+import heroImg from '../assets/ukreplenie-derevev.png'
+import ll1 from '../assets/obrabotka-ot-vreditelej-1.jpg'
+import ll2 from '../assets/borba-s-krotami-na-uchastke-1.jpg'
+import ll3 from '../assets/Treatment of the site from ticks.jpg'
+import ll4 from '../assets/obrabotka-uchastka-ot-myshej-4.jpg'
 
 import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
@@ -58,6 +63,25 @@ const endstep = {
 	title: 'Даем рекомендации по уходу.',
 	text: ''
 }
+
+const images = [
+	{
+		src: ll1,
+		alt: 'Подкормка деревьев'
+	},
+	{
+		src: ll2,
+		alt: 'Подкормка деревьев удобрениями'
+	},
+	{
+		src: ll3,
+		alt: 'Подкормка удобрениями'
+	},
+	{
+		src: ll4,
+		alt: 'Подкормка почвы'
+	}
+]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -352,45 +376,7 @@ const endstep = {
 		</div>
 		<!-- End Grid -->
 
-		<!-- Grid -->
-		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-			<div class="col-span-4 hidden md:col-span-3 md:block">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-		</div>
-		<!-- End Grid -->
+		<ImageGallery images={images} />
 	</div>
 	<FAQ
 		title="ЧаВо"
