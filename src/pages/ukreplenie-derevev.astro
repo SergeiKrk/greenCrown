@@ -11,10 +11,10 @@ import Steps from '../components/ui/Steps.astro'
 import ImageGallery from '../components/ui/ImageGallery.astro'
 
 import heroImg from '../assets/ukreplenie-derevev.png'
-import ll1 from '../assets/obrabotka-ot-vreditelej-1.jpg'
-import ll2 from '../assets/borba-s-krotami-na-uchastke-1.jpg'
-import ll3 from '../assets/Treatment of the site from ticks.jpg'
-import ll4 from '../assets/obrabotka-uchastka-ot-myshej-4.jpg'
+import ll1 from '../assets/ukreplenie-derevev-1.jpg'
+import ll2 from '../assets/ukreplenie-derevev-2.jpg'
+import ll3 from '../assets/ukreplenie-derevev-3.jpg'
+import ll4 from '../assets/ukreplenie-derevev-4.jpg'
 
 import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
@@ -23,7 +23,7 @@ import BtnLight from '../components/ui/BtnLight.astro'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'ukreplenie-derevev')
 
 // Content
-import faqImage1 from '../assets/faq/faq-01.png'
+import faqImage1 from '../assets/ukreplenie-derevev-5.jpg'
 import { Image } from 'astro:assets'
 // - SEO
 const SEO = {
@@ -67,19 +67,19 @@ const endstep = {
 const images = [
 	{
 		src: ll1,
-		alt: 'Подкормка деревьев'
+		alt: 'Укрепление и Каблинг деревьев'
 	},
 	{
 		src: ll2,
-		alt: 'Подкормка деревьев удобрениями'
+		alt: 'Укрепление деревьев'
 	},
 	{
 		src: ll3,
-		alt: 'Подкормка удобрениями'
+		alt: 'Каблинг деревьев'
 	},
 	{
 		src: ll4,
-		alt: 'Подкормка почвы'
+		alt: 'Каблинг'
 	}
 ]
 ---
