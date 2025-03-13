@@ -12,12 +12,23 @@ import Section from '../components/ui/Section.astro'
 import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import features from '../data/json-files/featuresData.json'
+import ImageGallery from '../components/ui/ImageGallery.astro'
 
-import heroImg from '../assets/cards/lechenie-derevev.webp'
+import ll1 from '../assets/lechenie-plodovyh-1.jpg'
+import ll2 from '../assets/od2.jpg'
+import ll3 from '../assets/ukreplenie-derevev-3.jpg'
+import ll4 from '../assets/ukreplenie-derevev-4.jpg'
+
+import heroImg from '../assets/uhod-za-sadom.png'
+import propolkasornyakov from '../assets/propolka-sornyakov.png'
+import borshchevik from '../assets/unichtozhenie-borshchevika.png'
+import aehraciya from '../assets/aehraciya-pochvy.png'
+import fungicidnaya from '../assets/fungicidnaya-obrabotka.png'
+import gazon from '../assets/uhod-za-gazonom-.png'
+import ozelenenie from '../assets/ozelenenie-uchastka.png'
+import posadkaderevev from '../assets/posadka-derevev.png'
 import Grut from '../assets/Grut.webp'
 
-import plodovie from '../assets/highlights/lechenie-plodovyh.png'
-import hvoinie from '../assets/highlights/hvoinie-derevya.png'
 import faqData from '../data/json-files/faqData.json'
 import Steps from '../components/ui/Steps.astro'
 import BtnLight from '../components/ui/BtnLight.astro'
@@ -62,51 +73,51 @@ const MajorSubCategories: MajorSubCategories[] = [
 	{
 		link: '/propolka-sornyakov',
 		title: 'Прополка сорняков',
-		image: plodovie,
-		imageWidth: plodovie.width,
-		imageHeight: plodovie.height
+		image: propolkasornyakov,
+		imageWidth: propolkasornyakov.width,
+		imageHeight: propolkasornyakov.height
 	},
 	{
 		link: '/unichtozhenie-borshchevika',
 		title: 'Уничтожение борщевика',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: borshchevik,
+		imageWidth: borshchevik.width,
+		imageHeight: borshchevik.height
 	},
 	{
 		link: '/aehraciya-pochvy',
 		title: 'Аэрация почвы',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: aehraciya,
+		imageWidth: aehraciya.width,
+		imageHeight: aehraciya.height
 	},
 	{
 		link: '/obrabotka-fungicidami',
 		title: 'Фунгицидная обработка',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: fungicidnaya,
+		imageWidth: fungicidnaya.width,
+		imageHeight: fungicidnaya.height
 	},
 	{
 		link: '/uhod-za-gazonom',
 		title: 'Уход за газоном',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: gazon,
+		imageWidth: gazon.width,
+		imageHeight: gazon.height
 	},
 	{
 		link: '/ozelenenie-uchastka',
 		title: 'Озеленение участка',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: ozelenenie,
+		imageWidth: ozelenenie.width,
+		imageHeight: ozelenenie.height
 	},
 	{
 		link: '/posadka-derevev',
 		title: 'Посадка деревьев',
-		image: hvoinie,
-		imageWidth: hvoinie.width,
-		imageHeight: hvoinie.height
+		image: posadkaderevev,
+		imageWidth: posadkaderevev.width,
+		imageHeight: posadkaderevev.height
 	}
 ]
 type steps = {
@@ -131,6 +142,25 @@ const endstep = {
 	title: 'Даем рекомендации.',
 	text: 'Рассказываем, как поддерживать здоровье растений.'
 }
+
+const images = [
+	{
+		src: ll1,
+		alt: 'Опрыскивание деревьев'
+	},
+	{
+		src: ll2,
+		alt: 'Обрезка деревьев'
+	},
+	{
+		src: ll3,
+		alt: 'Каблинг деревьев'
+	},
+	{
+		src: ll4,
+		alt: 'Укрепление деревьев'
+	}
+]
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
@@ -400,45 +430,7 @@ const endstep = {
 		</div>
 		<!-- End Grid -->
 
-		<!-- Grid -->
-		<div class="mt-20 grid grid-cols-12 items-center gap-x-2 sm:gap-x-6 lg:gap-x-8">
-			<div class="col-span-4 hidden md:col-span-3 md:block">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1587613991119-fbbe8e90531d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1554295405-abb8fd54f153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-
-			<div class="col-span-4 md:col-span-3">
-				<img
-					class="rounded-xl"
-					src="https://images.unsplash.com/photo-1640622300473-977435c38c04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=920&q=80"
-					alt="Features Image"
-				/>
-			</div>
-			<!-- End Col -->
-		</div>
-		<!-- End Grid -->
+		<ImageGallery images={images} />
 	</div>
 	<FAQ
 		title="ЧаВо"
