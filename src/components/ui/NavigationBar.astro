@@ -1,17 +1,4 @@
 ---
-// Header - Navigation bar
-// ------------
-// Description: navigation bars offer a persistent and convenient way to switch between primary destinations in an app.
-// Structure:
-// - Logo: the logo of the website
-// - Menu toggle: the mobile menu toggle of the navigation bar
-// - Navigation Links: the navigation links of the menu
-// - Actions: action buttons for the navigation bar
-// - Theme Switcher: the mode (light/dark) switcher of the website
-
-// Reference: https://wind-ui.com/components/navbars/
-
-// Components
 // - UI
 import { Icon } from 'astro-icon/components'
 import Button from './Button.astro'
@@ -20,7 +7,7 @@ import Switcher from './ModeSwitcher.astro'
 // Data
 import { navigationBarData } from '../../config/navigationBar'
 import { Image } from 'astro:assets'
-const { logo, navItems, navActions } = navigationBarData
+const { logo, navItems } = navigationBarData
 import Logosrc from '../../assets/logoGreenCrown.png'
 
 // Determine current path
@@ -28,13 +15,6 @@ const path = new URL(Astro.request.url).pathname
 function isActivePath(currentPath: string): boolean {
 	return path === currentPath || path === `${currentPath}/`
 }
-
-// Type assertion for navActions to ensure type safety
-const savedNavActions = navActions.map((action) => ({
-	...action,
-	size: action.size as 'base' | 'lg' | 'sm',
-	style: action.style as 'primary' | 'secondary' | 'neutral'
-}))
 ---
 
 <header class="header">
@@ -49,19 +29,17 @@ const savedNavActions = navActions.map((action) => ({
 				</div>
 			</a>
 
-			<!-- Menu toggle -->
-			<button
-				id="header-toggle"
-				class="header__toggle"
-				aria-expanded="false"
-				aria-label="Toggle navigation"
-			>
+			<!-- Чекбокс для управления меню на мобильных устройствах -->
+			<input type="checkbox" id="header-toggle" class="header__toggle-checkbox" />
+
+			<!-- Кнопка для открытия/закрытия меню на мобильных устройствах -->
+			<label for="header-toggle" class="header__toggle" aria-label="Toggle navigation">
 				<div class="header__toggle-inner">
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
 				</div>
-			</button>
+			</label>
 
 			<!-- Navigation links -->
 			<ul role="menubar" aria-label="Select page" class="header__menu">
@@ -77,28 +55,47 @@ const savedNavActions = navActions.map((action) => ({
 									{item.name}
 								</a>
 							) : (
-								<span
-									role="menuitem"
-									class={`header__menu-link ${isActivePath(item.link) ? 'active' : ''}`}
-								>
-									{item.name}
-									<Icon name="chevron-down" class="header__menu-chevron" />
-								</span>
-							)}
-							{item.submenu && (
-								<ul class="header__submenu">
-									{item.submenu.map((subItem) => (
-										<li role="none" class="header__submenu-item">
-											<a
-												href={subItem.link}
-												role="menuitem"
-												class={`header__menu-link ${isActivePath(item.link) ? 'active' : ''}`}
-											>
-												{subItem.name}
-											</a>
-										</li>
-									))}
-								</ul>
+								<>
+									<span
+										role="menuitem"
+										class={`header__menu-link ${isActivePath(item.link) ? 'active' : ''}`}
+									>
+										{item.name}
+										<Icon name="chevron-down" class="header__menu-chevron" />
+									</span>
+									<div class="header__submenu">
+										<div role="none" class="header__submenu-item">
+											<div class="flex flex-col lg:flex-row">
+												{item.submenu.map((subItem) => (
+													<div class="lg:min-w-52">
+														<a
+															href={subItem.link}
+															role="menuitem"
+															class={`header__menu-link ${isActivePath(subItem.link) ? 'active' : ''}`}
+														>
+															{subItem.name}
+														</a>
+														{subItem.subsubmenu && (
+															<ul class="header__subsubmenu">
+																{subItem.subsubmenu.map((subSubItem) => (
+																	<li role="none" class="header__subsubmenu-item">
+																		<a
+																			href={subSubItem.link}
+																			role="menuitem"
+																			class={`header__submenu-link ${isActivePath(subSubItem.link) ? 'active' : ''}`}
+																		>
+																			{subSubItem.name}
+																		</a>
+																	</li>
+																))}
+															</ul>
+														)}
+													</div>
+												))}
+											</div>
+										</div>
+									</div>
+								</>
 							)}
 						</li>
 					))
@@ -107,17 +104,6 @@ const savedNavActions = navActions.map((action) => ({
 
 			<!-- Theme Switcher -->
 			<Switcher />
-
-			<!-- Navigation action buttons -->
-			<div class="header__actions">
-				{
-					savedNavActions.map((action) => (
-						<Button classes="flex-auto" size={action.size} style={action.style} modal="signup">
-							{action.name}
-						</Button>
-					))
-				}
-			</div>
 		</nav>
 	</div>
 </header>
@@ -150,17 +136,23 @@ const savedNavActions = navActions.map((action) => ({
 	.header__menu-link {
 		@apply relative flex items-center gap-1 py-4 transition-colors duration-300 hover:text-teal-700 focus:text-primary-600 focus:outline-none focus-visible:outline-none lg:px-6 [&.active]:text-teal-700;
 	}
+	.header__submenu-link {
+		@apply relative flex justify-items-end gap-1 transition-colors duration-300 hover:text-teal-700 focus:text-primary-600 focus:outline-none focus-visible:outline-none lg:py-0 [&.active]:text-teal-700;
+	}
 	.header__menu-chevron {
 		@apply h-4 w-4 transition-transform [.header\_\_menu-item.open_&]:rotate-180;
 	}
 	.header__submenu {
-		@apply left-0 top-full hidden animate-dropdown rounded bg-neutral-300/10 px-4 lg:absolute lg:min-w-56 lg:rounded-t-none lg:bg-white/90 lg:p-0 lg:shadow-lg lg:shadow-neutral-700/5 lg:backdrop-blur-sm dark:bg-neutral-500/10 lg:dark:bg-neutral-900/90 lg:dark:shadow-neutral-950/50 [.header\_\_menu-item.open_&]:block;
+		@apply left-0 top-full hidden animate-dropdown rounded bg-neutral-300/10 px-4 lg:absolute lg:-left-[820px] lg:min-w-[1050px] lg:rounded-t-none lg:bg-white/90 lg:p-0 lg:pb-8 lg:shadow-lg lg:shadow-neutral-700/5 lg:backdrop-blur-sm dark:bg-neutral-500/10 lg:dark:bg-neutral-900/90 lg:dark:shadow-neutral-950/50 [.header\_\_menu-item.open_&]:block;
 	}
 	.header__submenu-item {
 		@apply hidden [.header\_\_menu-item.open_&]:block;
 	}
 	.header__submenu-link {
-		@apply px-8 py-4 hover:text-teal-700 [.header\_\_menu-item.open_&]:flex;
+		@apply py-2 pl-8 pr-2 hover:text-teal-700 lg:text-sm [.header\_\_menu-item.open_&]:flex;
+	}
+	.header__toggle-checkbox {
+		@apply hidden;
 	}
 	.header__toggle {
 		@apply relative order-10 block h-10 w-10 self-center lg:hidden [&--open]:visible [&--open]:opacity-100;
@@ -172,15 +164,22 @@ const savedNavActions = navActions.map((action) => ({
 		@apply absolute block h-0.5 transform rounded-full bg-neutral-900 transition-all duration-300 dark:bg-white;
 	}
 	.header__toggle-inner span:nth-child(1) {
-		@apply w-9/12 -translate-y-2 [.header\_\_toggle--open_&]:w-6 [.header\_\_toggle--open_&]:translate-y-0 [.header\_\_toggle--open_&]:rotate-45;
+		@apply w-9/12 -translate-y-2 [.header\_\_toggle-checkbox:checked~.header\_\_nav_&]:w-6 [.header\_\_toggle-checkbox:checked~.header\_\_nav_&]:translate-y-0 [.header\_\_toggle-checkbox:checked~.header\_\_nav_&]:rotate-45;
 	}
 	.header__toggle-inner span:nth-child(2) {
-		@apply w-6 [.header\_\_toggle--open_&]:-rotate-45;
+		@apply w-6 [.header\_\_toggle-checkbox:checked~.header\_\_nav_&]:-rotate-45;
 	}
 	.header__toggle-inner span:nth-child(3) {
-		@apply w-1/2 origin-top-left translate-y-2 [.header\_\_toggle--open_&]:w-0;
+		@apply w-1/2 origin-top-left translate-y-2 [.header\_\_toggle-checkbox:checked~.header\_\_nav_&]:w-0;
 	}
-	.header__actions {
-		@apply fixed bottom-0 left-0 hidden w-full items-center justify-between gap-4 border-t border-neutral-100 bg-white px-6 py-4 lg:relative lg:ml-auto lg:flex lg:w-auto lg:border-none lg:bg-transparent lg:px-0 lg:py-0 dark:border-neutral-800 dark:bg-neutral-950 lg:dark:bg-transparent [.header\_\_menu--open~&]:flex;
+
+	/* Открытие меню на мобильных устройствах */
+	.header__toggle-checkbox:checked ~ .header__menu {
+		@apply visible opacity-100 backdrop-blur-sm;
+	}
+
+	/* Открытие подменю на десктопах */
+	.header__menu-item:hover .header__submenu {
+		@apply block;
 	}
 </style>

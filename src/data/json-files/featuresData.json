@@ -26,7 +26,7 @@
 	{
 		"title": "Рекомендации по доп.работам",
 		"icon": "clipboard-document-list",
-		"description": "Stay productive on the go with Foxi's mobile app. Access key features, collaborate with your team, and manage tasks anytime, anywhere.",
+		"description": "После проведения основного объема работ, подскажем, что нужно делать дальше.",
 		"category": "Support"
 	},
 	{
@@ -38,7 +38,7 @@
 	{
 		"title": "Дендролог в штате",
 		"icon": "tree",
-		"description": "Rest assured knowing your data is safe with Foxi's robust security measures. We employ industry-standard protocols to protect your information.",
+		"description": "Оценит состояние деревьев, выявит проблемы и даст рекомендации по сохранению и уходу за насаждениями.",
 		"category": "Security"
 	},
 	{
