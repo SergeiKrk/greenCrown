@@ -46,102 +46,67 @@ export const footerNavigationData: FooterData = {
 	},
 	footerColumns: [
 		{
-			category: 'Лечение',
+			category: 'Лечение деревьев',
 			subCategories: [
 				{
 					subCategory: 'Лечение деревьев',
 					subCategoryLink: '/#'
 				},
+				{ subCategory: 'Обследование деревьев', subCategoryLink: '/obsledovanie-derevev' },
+				{ subCategory: 'Лечение плодовых', subCategoryLink: '/lechenie-plodovyh' },
+				{ subCategory: 'Лечение хвойных', subCategoryLink: '/lechenie-hvoinih' },
+				{ subCategory: 'Лечение лиственных', subCategoryLink: '/lechenie-listvennyh' },
 				{
-					subCategory: 'Oбследование деревьев',
-					subCategoryLink: '/#'
+					subCategory: 'Обработка от вредителей и инфекций',
+					subCategoryLink: '/obrabotka-dereva-ot-vreditelej'
 				},
-				{
-					subCategory: 'Лечение хвойных',
-					subCategoryLink: '/lechenie-hvoinih'
-				},
-				{
-					subCategory: 'Лечение плодовых',
-					subCategoryLink: '/lechenie-plodovyh'
-				},
-				{
-					subCategory: 'Лечение листенных',
-					subCategoryLink: '/lechenie-listvennyh'
-				},
-				{
-					subCategory: 'Обработка деревьев от вредителей',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Стволовые инъекции ',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Подкормка деревьев',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Обрезка деревьев',
-					subCategoryLink: '/#'
-				}
+				{ subCategory: 'Инъекции', subCategoryLink: '/inekcii-derevyam' },
+				{ subCategory: 'Подкормка и защита', subCategoryLink: '/podkormka-derevev' },
+				{ subCategory: 'Укрепление (Каблинг)', subCategoryLink: '/ukreplenie-derevev' }
 			]
 		},
 		{
-			category: 'Обработка участка',
+			category: 'Уход за деревьями',
+			subCategories: [
+				{ subCategory: 'Уход за деревьями', subCategoryLink: '/uhod-za-derevyami' },
+				{ subCategory: 'Опрыскивание', subCategoryLink: '/opryskivanie-derevev' },
+				{ subCategory: 'Санитарная обрезка', subCategoryLink: '/sanitarnaya-obrezka' },
+				{ subCategory: 'Омолаживающая обрезка', subCategoryLink: '/omolazhivayushchaya-obrezka' },
+				{ subCategory: 'Кронирование', subCategoryLink: '/kronirovanie' },
+				{ subCategory: 'Каблинг', subCategoryLink: '/ukreplenie-derevev' }
+			]
+		},
+		{
+			category: 'Уход за участком',
+			subCategories: [
+				{ subCategory: 'Уход за участком', subCategoryLink: '/uhod-za-sadom' },
+				{ subCategory: 'Обработка фунгицидами', subCategoryLink: '/obrabotka-fungicidami' },
+				{ subCategory: 'Борьба с борщевиком', subCategoryLink: '/unichtozhenie-borshchevika' },
+				{ subCategory: 'Посадка деревьев', subCategoryLink: '/posadka-derevev' },
+				{ subCategory: 'Аэрация почвы', subCategoryLink: '/aehraciya-pochvy' },
+				{ subCategory: 'Озеленение территории', subCategoryLink: '/ozelenenie-uchastka' },
+				{ subCategory: 'Уход за газоном', subCategoryLink: '/uhod-za-gazonom' },
+				{ subCategory: 'Прополка сорняков', subCategoryLink: '/propolka-sornyakov' }
+			]
+		},
+		{
+			category: 'Борьба с вредителями',
 			subCategories: [
 				{
 					subCategory: 'Обработка от вредителей',
-					subCategoryLink: '/#'
+					subCategoryLink: '/obrabotka-uchastka-ot-vreditelej'
 				},
-				{
-					subCategory: 'Обработка от клещей',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Обработка от муравьев',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Обработка от короеда',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Обработка от мышей',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Обработка от крыс',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Обработка от кротов',
-					subCategoryLink: '/#'
-				}
-			]
-		},
-		{
-			category: 'Уход',
-			subCategories: [
-				{
-					subCategory: 'Уход за деревьями',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Опрыскивание деревьев',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Укрепление деревьев (Каблинг)',
-					subCategoryLink: '/#'
-				},
-				{
-					subCategory: 'Восстановление деревьев',
-					subCategoryLink: '/#'
-				}
+				{ subCategory: 'Обработка от комаров', subCategoryLink: '/obrabotka-ot-komarov' },
+				{ subCategory: 'Обработка от клещей', subCategoryLink: '/obrabotka-ot-kleshchej' },
+				{ subCategory: 'Обработка от муравьев', subCategoryLink: '/obrabotka-ot-muravev' },
+				{ subCategory: 'Обработка от короеда', subCategoryLink: '/obrabotka-ot-koroeda' },
+				{ subCategory: 'Обработка от мышей', subCategoryLink: '/obrabotka-ot-myshey' },
+				{ subCategory: 'Обработка от крыс', subCategoryLink: '/obrabotka-ot-krys' },
+				{ subCategory: 'Борьба с кротами', subCategoryLink: '/borba-s-krotami' }
 			]
 		}
 	],
 	subFooter: {
-		copywriteText: '© GREEN CROWN 2024.'
+		copywriteText: `© GREEN CROWN ${new Date().getFullYear()}.`
 	}
 }

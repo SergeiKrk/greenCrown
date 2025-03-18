@@ -12,7 +12,6 @@ import { Icon } from 'astro-icon/components'
 import { socialLinks } from '../../config/socialLinks'
 import { footerNavigationData } from '../../config/footerNavigation'
 import FooterImg from '../../assets/logoGreenCrown.png'
-import Notification from './Notification.astro'
 
 const { footerAbout, footerColumns, subFooter } = footerNavigationData
 ---
@@ -53,9 +52,11 @@ const { footerAbout, footerColumns, subFooter } = footerNavigationData
 	<div class="footer__sub">
 		<div class="footer__container">
 			<div class="footer__sub-cols">
-				<div class="footer__sub-col">{subFooter.copywriteText}</div>
-				<nav aria-labelledby="footer-social-links-dark" class="footer__sub-col text-right">
-					<h2 class="sr-only" id="footer-social-links-dark">Social Media Links</h2>
+				<div class="footer__sub-col">
+					{subFooter.copywriteText} | Разработка <a href="https://kryukovs.ru">kryukovs.ru</a>
+				</div>
+				<!-- <nav aria-labelledby="footer-social-links-dark" class="footer__sub-col text-right">
+					<h2 class="sr-only" id="footer-social-links-dark">Социальные сети</h2>
 					<ul>
 						{
 							socialLinks.map((social) => (
@@ -67,7 +68,7 @@ const { footerAbout, footerColumns, subFooter } = footerNavigationData
 							))
 						}
 					</ul>
-				</nav>
+				</nav> -->
 			</div>
 		</div>
 	</div>
@@ -98,7 +99,7 @@ const { footerAbout, footerColumns, subFooter } = footerNavigationData
 	}
 
 	.footer__col {
-		@apply col-span-2 first:col-span-4 md:col-span-4 md:first:col-span-8 lg:col-span-2 lg:first:col-span-6 lg:first:max-w-96;
+		@apply col-span-2 first:col-span-4 md:col-span-4 md:first:col-span-8 lg:col-span-2 lg:first:col-span-4 lg:first:max-w-96;
 	}
 	.footer__sub {
 		@apply border-t border-neutral-200 bg-neutral-100 py-4 text-sm text-neutral-600 dark:border-neutral-900 dark:bg-neutral-800/50 dark:text-neutral-400;
