@@ -15,7 +15,6 @@ import Row from '../../../components/ui/Row.astro'
 import Col from '../../../components/ui/Col.astro'
 // - UI
 import Badge from '../../../components/ui/Badge.astro'
-import Breadcrumbs from '../../../components/ui/Breadcrumbs.astro'
 
 // Props
 type Props = {
@@ -31,19 +30,9 @@ const { tags, title, author, publishDate } = Astro.props
 	<Row>
 		<Col span="12" align="center">
 			<header class="post-header">
-				<Breadcrumbs classes="mb-6" />
 				<h1 class="post-header__title">
 					{title}
 				</h1>
-				{
-					author ? (
-						<p class="page-header__text">
-							Written by, {author} {publishDate && 'on ' + publishDate}
-						</p>
-					) : (
-						publishDate && <p class="page-header__text">Published on, {publishDate}</p>
-					)
-				}
 			</header>
 			{
 				tags && (

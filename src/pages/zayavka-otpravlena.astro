@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Hero from '../components/blocks/hero/ThanksHero.astro'
+const SEO = {
+	title: 'Спасибо за заказ',
+	description: 'Заявка отправлена'
+}
+// - Page Header
+const header = {
+	title: '<strong>Спасибо!</strong><br> Заявка отправлена',
+	text: 'В ближайшее время наш специалист с Вами свяжется'
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<Hero
+		title={header.title}
+		text={header.text}
+		id="contact"
+		classes="bg-neutral-50 dark:bg-neutral-950/80"
+	/>
+</Layout>

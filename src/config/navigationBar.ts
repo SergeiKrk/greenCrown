@@ -41,6 +41,8 @@ export const navigationBarData: NavData = {
 	navItems: [
 		{ name: 'Главная', link: '/' },
 		{ name: 'Садовый календарь', link: '/sadovyj-kalendar' },
+		{ name: 'Блог', link: '/blog' },
+		{ name: 'О нас', link: '/about' },
 		{
 			name: 'Услуги',
 			link: '#',
