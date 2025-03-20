@@ -4,6 +4,10 @@ import FormHero from '../components/blocks/hero/ContactHero.astro'
 import ContactCards from '../components/blocks/contact/ContactCards.astro'
 import Feature from '../components/blocks/features/FeatureList.astro'
 import CTA from '../components/blocks/CTA/BasicLight.astro'
+import BasicDark from '../components/blocks/testimonials/BasicDark.astro'
+import testimonialBackground from '../assets/CEOspeech.webp'
+import Contacts from '../components/blocks/hero/Contacts.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 
 // Content
 // - SEO
@@ -26,7 +30,9 @@ const header = {
 		classes="bg-neutral-50 dark:bg-neutral-950/80"
 	/>
 	<Feature />
-	<ContactCards classes="dark:bg-neutral-950/80" />
-
 	<CTA titleR="уходу за зелеными насаждениями" titleForm={SEO.title} />
+	<Certificates />
+	<Contacts />
+	<BasicDark bg={testimonialBackground} bgPosition="right" />
+	<ContactCards classes="dark:bg-neutral-950/80" />
 </Layout>

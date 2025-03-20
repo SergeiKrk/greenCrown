@@ -1,0 +1,105 @@
+---
+import Row from '../ui/Row.astro'
+import Col from '../ui/Col.astro'
+
+import ce1 from '../../assets/certificates/certificate-1.jpg'
+import ce2 from '../../assets/certificates/certificate-2.jpg'
+import ce3 from '../../assets/certificates/certificate-3.jpg'
+import ce4 from '../../assets/certificates/certificate-4.jpg'
+import ce5 from '../../assets/certificates/certificate-5.jpg'
+import ce6 from '../../assets/certificates/certificate-6.jpg'
+import ce7 from '../../assets/certificates/certificate-7.jpg'
+import ce8 from '../../assets/certificates/certificate-8.jpg'
+import ce9 from '../../assets/certificates/certificate-9.jpg'
+import ce10 from '../../assets/certificates/certificate-10.jpg'
+import ce11 from '../../assets/certificates/certificate-11.jpg'
+import ce12 from '../../assets/certificates/certificate-12.jpg'
+import { Image } from 'astro:assets'
+
+type Certificate = {
+	img: ImageData
+	alt: string
+}
+
+const certificate_list = [
+	{
+		img: ce1,
+		alt: 'Сертификат 1'
+	},
+	{
+		img: ce2,
+		alt: 'Сертификат 2'
+	},
+	{
+		img: ce3,
+		alt: 'Сертификат 3'
+	},
+	{
+		img: ce4,
+		alt: 'Сертификат 4'
+	},
+	{
+		img: ce5,
+		alt: 'Сертификат 5'
+	},
+	{
+		img: ce6,
+		alt: 'Сертификат 6'
+	},
+	{
+		img: ce7,
+		alt: 'Сертификат 7'
+	},
+	{
+		img: ce8,
+		alt: 'Сертификат 8'
+	},
+	{
+		img: ce9,
+		alt: 'Сертификат 9'
+	},
+	{
+		img: ce10,
+		alt: 'Сертификат 10'
+	},
+	{
+		img: ce11,
+		alt: 'Сертификат 11'
+	},
+	{
+		img: ce12,
+		alt: 'Сертификат 12'
+	}
+]
+---
+
+<section id="testimonials">
+	<Row>
+		<Col span="12" align="center" classes="mb-12 max-w-4xl mx-auto">
+			<h2 class="mt-32 text-pretty"><strong>Лицензия</strong> и сертификаты</h2>
+			<p class="pb-0 text-lg">
+				Есть все необходимые свидетельства и сертификаты на препараты, а так же лицензия на работу
+			</p>
+		</Col>
+	</Row>
+	<div class="relative flex overflow-x-hidden">
+		<div class="flex animate-marquee whitespace-nowrap py-12">
+			{
+				certificate_list.map((cer: any) => (
+					<div class="mx-2 inline-block w-72">
+						<Image src={cer.img} alt={cer.alt} class="h-full overflow-hidden rounded" />
+					</div>
+				))
+			}
+		</div>
+		<div class="absolute flex animate-marquee2 whitespace-nowrap py-12">
+			{
+				certificate_list.map((cer: any) => (
+					<div class="mx-2 inline-block w-72">
+						<Image src={cer.img} alt={cer.alt} class="h-full overflow-hidden rounded" />
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
