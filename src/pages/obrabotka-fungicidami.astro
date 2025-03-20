@@ -31,6 +31,7 @@ import obrabotkaNasekImg from '../assets/obrabotka-fungicidami-.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Обработка фунгицидами – Цены на услугу от 300 руб. за сотку',
@@ -379,6 +380,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все самые популярные вопросу по теме фунгицидной обработки. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."

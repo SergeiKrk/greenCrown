@@ -43,6 +43,7 @@ import CategoryCard from '../components/blocks/basic/categoryCard/CategoryCard.a
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
 import ImageGallery from '../components/ui/ImageGallery.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
@@ -533,6 +534,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все популярные вопросу по теме лечения деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."

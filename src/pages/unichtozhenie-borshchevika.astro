@@ -30,6 +30,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'unichtozhenie-
 import obrabotkaNasekImg from '../assets/borba-s-borshchevikom-.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Обработка от борщевика – Цена от 80 рублей за м2',
@@ -382,6 +383,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все самые популярные вопросу по теме обработки территории от борщевика. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."

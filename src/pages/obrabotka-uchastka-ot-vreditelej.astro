@@ -35,6 +35,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ucha
 
 // Content
 import { Image } from 'astro:assets'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Уничтожение вредителей на участке – профессиональная обработка',
@@ -366,6 +367,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все популярные вопросу по теме обработки участка от вредителей. Если останутся вопросы, оставьте заявку на консультацию 👇."

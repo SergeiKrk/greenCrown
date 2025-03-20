@@ -24,6 +24,7 @@ import ll2 from '../assets/lechenie-listvennyh-porod-derevev-2.jpg'
 import ll3 from '../assets/lechenie-listvennyh-porod-derevev-3.jpg'
 import ll4 from '../assets/lechenie-listvennyh-porod-derevev-4.jpg'
 import { Image } from 'astro:assets'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение лиственных деревьев: методы, профилактика и уход',
@@ -359,6 +360,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Ответы на популярные вопросы о лечении лиственных деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."

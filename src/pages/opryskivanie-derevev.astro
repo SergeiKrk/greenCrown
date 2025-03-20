@@ -29,6 +29,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'opryskivanie-d
 import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Опрыскивание деревьев - Весенняя обработка плодовых деревьев в саду',
@@ -273,6 +274,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все самые популярные вопросу по теме опрыскивания деревьев. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."

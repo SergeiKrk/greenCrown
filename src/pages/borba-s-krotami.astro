@@ -29,6 +29,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'borba-s-krotam
 import obrabotkaNasekImg from '../assets/borba-s-krotami-na-uchastke.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Уничтожение кротов на участке – профессиональная служба по уничтожению кротов',
@@ -360,6 +361,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все самые популярные вопросу по теме обработки территории от кротов. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."

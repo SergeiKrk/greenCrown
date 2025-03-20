@@ -24,6 +24,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'inekcii-derevy
 // Content
 import faqImage1 from '../assets/preparaty-dlya-inekcij.jpg'
 import { Image } from 'astro:assets'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Инъекции деревьям — Лечение и защита деревьев с помощью стволовых инъекций',
@@ -355,6 +356,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Ответы на популярные вопросы о стволовых инъекциях. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."

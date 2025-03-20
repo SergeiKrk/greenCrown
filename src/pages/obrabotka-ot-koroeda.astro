@@ -29,6 +29,7 @@ import ll3 from '../assets/obrabotka-derevev-ot-koroeda-3.jpg'
 import ll4 from '../assets/obrabotka-derevev-ot-koroeda-4.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Обработка от короеда – профессиональное уничтожение жука короеда на участке',
@@ -314,6 +315,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все самые популярные вопросу по теме лечения деревьев от короеда. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."

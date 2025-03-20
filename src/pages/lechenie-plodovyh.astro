@@ -25,6 +25,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-plodo
 // Content
 import faqImage1 from '../assets/sezonnye-meropriyatiya-po-uhodu-za-plodovymi.jpg'
 import { Image } from 'astro:assets'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение плодовых деревьев: диагностика, болезни, методы — узнайте цены в Москве и МО',
@@ -348,6 +349,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все популярные вопросу по теме лечения плодовых деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."

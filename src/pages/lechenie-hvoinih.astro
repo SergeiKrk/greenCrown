@@ -24,6 +24,7 @@ import lh2 from '../assets/lechenie-hvojnyh-2.jpg'
 import lh3 from '../assets/lechenie-hvojnyh-3.jpg'
 import lh4 from '../assets/lechenie-hvojnyh-4.jpg'
 import { Image } from 'astro:assets'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение хвойных растений и деревьев: Обработка от Болезней - Цена от 1500 руб.',
@@ -384,6 +385,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Ответы на популярные вопросы о лечении хвойных деревьев. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."

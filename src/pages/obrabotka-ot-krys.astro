@@ -29,6 +29,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-k
 import obrabotkaNasekImg from '../assets/obrabotka-uchastka-ot-krys.jpg'
 import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
+import Certificates from '../components/blocks/Certificates.astro'
 // - SEO
 const SEO = {
 	title: 'Уничтожение крыс на участке и в доме | Обработка от крыс с гарантией',
@@ -284,6 +285,7 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
+	<Certificates />
 	<FAQ
 		title="ЧаВо"
 		text="Здесь мы собрали все самые популярные вопросу по теме обработки территории и помещений от крыс. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
