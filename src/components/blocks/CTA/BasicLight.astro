@@ -12,6 +12,7 @@ import Col from '../../ui/Col.astro'
 import CTA from '../../ui/CTA.astro'
 import Ratings from '../../ui/Rating.astro'
 import FormOption from '../../../components/ui/forms/form-option/FormOption.jsx'
+const { titleForm } = Astro.props
 ---
 
 <Section>
@@ -25,7 +26,7 @@ import FormOption from '../../../components/ui/forms/form-option/FormOption.jsx'
 			>
 				<Ratings rating={5} text="300+ довольных клиентов" classes="mb-4" />
 				<div class="mt-2 max-w-[500px]">
-					<FormOption idForm="1" titleForm="11111" client:load />
+					<FormOption idForm="2" titleForm={titleForm} client:load />
 					<!-- <FormOption idForm="1" titleForm={SEO.title} client:load /> -->
 				</div>
 			</CTA>
