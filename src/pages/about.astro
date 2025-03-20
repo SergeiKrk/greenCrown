@@ -1,12 +1,9 @@
 ---
-// Components
-// - Layout
 import Layout from '../layouts/Layout.astro'
-// - UI
 import FormHero from '../components/blocks/hero/ContactHero.astro'
 import ContactCards from '../components/blocks/contact/ContactCards.astro'
-import SocialProof from '../components/blocks/socialproof/Basic.astro'
 import Feature from '../components/blocks/features/FeatureList.astro'
+import CTA from '../components/blocks/CTA/BasicLight.astro'
 
 // Content
 // - SEO
@@ -30,4 +27,6 @@ const header = {
 	/>
 	<Feature />
 	<ContactCards classes="dark:bg-neutral-950/80" />
+
+	<CTA titleR="уходу за зелеными насаждениями" titleForm={SEO.title} />
 </Layout>
