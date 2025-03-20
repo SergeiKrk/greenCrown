@@ -4,7 +4,7 @@ import Hero from '../components/blocks/hero/PageHero.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
-import CTA from '../components/blocks/CTA/BasicLight.astro'
+// import CTA from '../components/blocks/CTA/BasicLight.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
 import ImageGallery from '../components/ui/ImageGallery.astro'
@@ -332,33 +332,33 @@ const images = [
 			</div>
 		</div>
 	</SidebarContent>
+
+	<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+		<!-- Title -->
+		<div class="mx-auto mb-8 max-w-2xl text-center lg:mb-14">
+			<h2 class="text-pretty"><strong>Примеры</strong> выполненных работ</h2>
+			<p class="pb-0 text-lg">Мы знаем и любим свое дело</p>
+		</div>
+		<!-- End Title -->
+
+		<!-- Grid -->
+		<div class="mx-auto grid max-w-3xl grid-cols-12 gap-6 lg:gap-8">
+			{
+				features.slice(0, 3).map((feature) => (
+					<div class="col-span-6 text-center sm:col-span-4">
+						<Feature title={feature.title} icon={feature.icon} align="center" classes="mb-12" />
+					</div>
+				))
+			}
+		</div>
+		<!-- End Grid -->
+
+		<ImageGallery images={images} />
+	</div>
+	<FAQ
+		title="ЧаВо"
+		text="Ответы на популярные вопросы о стволовых инъекциях. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
+		data={faqIntegrations}
+	/>
+	<!-- <CTA /> -->
 </Layout>
-
-<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-	<!-- Title -->
-	<div class="mx-auto mb-8 max-w-2xl text-center lg:mb-14">
-		<h2 class="text-pretty"><strong>Примеры</strong> выполненных работ</h2>
-		<p class="pb-0 text-lg">Мы знаем и любим свое дело</p>
-	</div>
-	<!-- End Title -->
-
-	<!-- Grid -->
-	<div class="mx-auto grid max-w-3xl grid-cols-12 gap-6 lg:gap-8">
-		{
-			features.slice(0, 3).map((feature) => (
-				<div class="col-span-6 text-center sm:col-span-4">
-					<Feature title={feature.title} icon={feature.icon} align="center" classes="mb-12" />
-				</div>
-			))
-		}
-	</div>
-	<!-- End Grid -->
-
-	<ImageGallery images={images} />
-</div>
-<FAQ
-	title="ЧаВо"
-	text="Ответы на популярные вопросы о стволовых инъекциях. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
-	data={faqIntegrations}
-/>
-<CTA />
