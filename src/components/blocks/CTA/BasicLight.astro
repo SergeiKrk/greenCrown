@@ -12,7 +12,11 @@ import Col from '../../ui/Col.astro'
 import CTA from '../../ui/CTA.astro'
 import Ratings from '../../ui/Rating.astro'
 import FormOption from '../../../components/ui/forms/form-option/FormOption.jsx'
-const { titleForm } = Astro.props
+type steps = {
+	titleR: string
+	titleForm: string
+}
+const { titleR, titleForm } = Astro.props
 ---
 
 <Section>
@@ -20,14 +24,13 @@ const { titleForm } = Astro.props
 		<Col span="1" />
 		<Col span="10">
 			<CTA
-				title="Получите консультацию по уходу за садом"
-				text="Закажите бесплатную консультацию у специалистов по садоводству и лечению растений"
+				title=`Получите консультацию по ${titleR}`
+				text="Закажите бесплатную консультацию у специалистов по лечению растений и защите участка"
 				classes="!shadow-none"
 			>
 				<Ratings rating={5} text="300+ довольных клиентов" classes="mb-4" />
 				<div class="mt-2 max-w-[500px]">
 					<FormOption idForm="2" titleForm={titleForm} client:load />
-					<!-- <FormOption idForm="1" titleForm={SEO.title} client:load /> -->
 				</div>
 			</CTA>
 			<Col span="1" />
