@@ -9,7 +9,7 @@ import Section from '../../ui/Section.astro'
 import Row from '../../ui/Row.astro'
 import Col from '../../ui/Col.astro'
 // - UI
-// import FormOption from '../../../components/ui/forms/form-option/FormOption.jsx'
+import FormOption from '../../../components/ui/forms/form-option/FormOption.jsx'
 
 // Props
 type Props = {
@@ -31,7 +31,7 @@ const { id, title, text, classes } = Astro.props
 		</Col>
 		<Col span="6" classes="relative">
 			<div class="max-w-[500px]">
-				<!-- <FormOption idForm="1" titleForm={title} client:load /> -->
+				<FormOption idForm="1" titleForm={title} />
 			</div>
 		</Col>
 	</Row>
