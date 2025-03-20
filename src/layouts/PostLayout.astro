@@ -17,16 +17,7 @@ const SEO = {
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
-	<BlogPostHero
-		tags={frontmatter.tags}
-		title={frontmatter.title}
-		author={frontmatter.author}
-		publishDate={frontmatter.pubDate.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		})}
-	/>
+	<BlogPostHero tags={frontmatter.tags} title={frontmatter.title} />
 
 	<div class="post-body basic-text basic-text--lg">
 		<slot />
