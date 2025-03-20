@@ -7,7 +7,7 @@ import Hero from '../components/blocks/hero/PageHero.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
-// import CTA from '../components/blocks/CTA/BasicLight.astro'
+import CTA from '../components/blocks/CTA/BasicLight.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
 import ImageGallery from '../components/ui/ImageGallery.astro'
@@ -384,5 +384,5 @@ const images = [
 		text="Здесь мы собрали все самые популярные вопросу по теме фунгицидной обработки. Если у вас всё же останутся вопросы, оставьте заявку на консультацию ниже 👇."
 		data={faqIntegrations}
 	/>
-	<!-- <CTA /> -->
+	<CTA titleR="фунгицидной обработке" titleForm={SEO.title} />
 </Layout>

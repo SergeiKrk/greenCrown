@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro'
 import Hero from '../components/blocks/hero/PageHero.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import TextImage from '../components/blocks/basic/TextImage.astro'
-// import CTA from '../components/blocks/CTA/BasicLight.astro'
+import CTA from '../components/blocks/CTA/BasicLight.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
 import Feature from '../components/ui/Feature.astro'
 import ImageGallery from '../components/ui/ImageGallery.astro'
@@ -259,5 +259,5 @@ const images = [
 
 		<ImageGallery images={images} />
 	</div>
-	<!-- <CTA /> -->
+	<CTA titleR="прополке сорняков" titleForm={SEO.title} />
 </Layout>

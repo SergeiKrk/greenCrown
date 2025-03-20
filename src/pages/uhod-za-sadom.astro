@@ -7,7 +7,7 @@ import Hero from '../components/blocks/hero/PageHero.astro'
 import Feature from '../components/ui/Feature.astro'
 import SidebarContent from '../components/blocks/basic/StickySidebar.astro'
 import FAQ from '../components/blocks/FAQ/FaqSticky.astro'
-// import CTA from '../components/blocks/CTA/BasicLight.astro'
+import CTA from '../components/blocks/CTA/BasicLight.astro'
 import Section from '../components/ui/Section.astro'
 import Card from '../components/ui/cards/FeatureCard.astro'
 import FormOption from '../components/ui/forms/form-option/FormOption.jsx'
@@ -569,5 +569,5 @@ const images = [
 		text="Ответы на популярные вопросы по уходу за участком. Если у вас останутся вопросы, оставьте заявку на консультацию 👇."
 		data={faqIntegrations}
 	/>
-	<!-- <CTA /> -->
+	<CTA titleR="уходу за садом" titleForm={SEO.title} />
 </Layout>
