@@ -28,10 +28,10 @@ const { id, title, text, classes } = Astro.props
 				<p class="text-lg leading-relaxed">{text}</p>
 			</header>
 		</Col>
-		<Col span="6" classes="relative">
-			<div class="max-w-[500px]">
-				<FormOption idForm="1" titleForm={title} client:load />
-			</div>
-		</Col>
+		<Col span="6" classes="relative" />
 	</Row>
+
+	<div class="max-w-[500px]">
+		<FormOption idForm="1" titleForm={title} client:load />
+	</div>
 </Section>
