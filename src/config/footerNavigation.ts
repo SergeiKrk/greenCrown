@@ -11,6 +11,9 @@ export interface FooterAbout {
 	title: string
 	aboutText: string
 	logo: Logo
+	ip?: string
+	inn?: string
+	ogrn?: string
 }
 
 export interface SubCategory {
@@ -42,7 +45,10 @@ export const footerNavigationData: FooterData = {
 			src: '../../assets/logoGreenCrown.png',
 			alt: 'Green Crown - ЛЕЧЕНИЕ РАСТЕНИЙ и БЕРЕЖНЫЙ УХОД',
 			text: 'GreenCrown'
-		}
+		},
+		ip: 'ИП Буравлев Денис Витальевич',
+		inn: 'ИНН 564818897380',
+		ogrn: 'ОГРНИП 323774600375797'
 	},
 	footerColumns: [
 		{
