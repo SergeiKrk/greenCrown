@@ -46,24 +46,10 @@ const titleForm = 'uiiufhe'
 				>Заказать консультацию</button
 			>
 			<dialog id="my_modal_2" class="modal">
-				<div class="modal-box">
-					<h3 class="text-lg font-bold">Mello!</h3>
+				<div class="modal-box bg-white dark:bg-slate-700">
+					<h3 class="text-lg font-bold">Оставить заявку</h3>
 
-					<FormOption idForm="2" titleForm={titleForm} client:load />
-					<div class="join">
-						<input
-							class="input join-item input-bordered input-accent w-44 border-primary-500"
-							placeholder="Имя"
-						/>
-						<input
-							class="input join-item input-bordered input-accent w-44 border-primary-500"
-							placeholder="Телефон"
-						/>
-						<button
-							class="btn join-item rounded-r-full border-primary-500 bg-primary-500 text-white"
-							>Subscribe</button
-						>
-					</div>
+					<FormOption idForm="1" titleForm="Главная Hero" client:load />
 				</div>
 				<form method="dialog" class="modal-backdrop">
 					<button>закрыть</button>

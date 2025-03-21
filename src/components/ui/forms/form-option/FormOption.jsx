@@ -182,10 +182,14 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 							>
 								Телефон
 							</label>
-							<button class="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none md:mt-0 lg:ml-2 lg:py-2">
+							<button class="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none md:mt-0 lg:ml-2 lg:mt-0 lg:py-2">
 								<span>Заказать консультацию</span>
 							</button>
 						</div>
+						<p className="text-xs">
+							Нажимая на кнопку Вы соглашаетесь c{' '}
+							<a href="/politic">политикой конфиденциальности</a>
+						</p>
 					</p>
 				</form>
 				<div
@@ -211,10 +215,14 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 							>
 								Wp:
 							</label>
-							<button class="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none lg:ml-2 lg:py-2">
+							<button class="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none lg:ml-2 lg:mt-0 lg:py-2">
 								<span>Заказать консультацию</span>
 							</button>
 						</div>
+						<p className="text-xs">
+							Нажимая на кнопку Вы соглашаетесь c{' '}
+							<a href="/politic">политикой конфиденциальности</a>
+						</p>
 					</p>
 				</div>
 				<div
@@ -240,10 +248,14 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 							>
 								Tg:
 							</label>
-							<button class="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none lg:ml-2 lg:py-2">
+							<button class="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none lg:ml-2 lg:mt-0 lg:py-2">
 								<span>Заказать консультацию</span>
 							</button>
 						</div>
+						<p className="text-xs">
+							Нажимая на кнопку Вы соглашаетесь c{' '}
+							<a href="/politic">политикой конфиденциальности</a>
+						</p>
 					</p>
 				</div>
 			</div>
