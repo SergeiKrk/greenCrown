@@ -103,31 +103,31 @@ const HeroDynamicScroll = ({ lugdoroga, moskvasiti, derevolev, derevopr, obrabot
 				ref={lugdorogaRef}
 				src={lugdoroga.src}
 				alt="GreenCrown - Уход за зелеными насаждениями"
-				className="absolute bottom-0 left-0 z-20 w-full translate-y-10 object-cover transition-all duration-[0.7s]"
+				className="absolute -bottom-[320px] left-0 z-20 w-full translate-y-10 object-cover transition-all duration-[0.7s] sm:-bottom-[420px] lg:bottom-0"
 			/>
 			<img
 				ref={moskvasitiRef}
 				src={moskvasiti.src}
 				alt="GreenCrown - Уход за зелеными насаждениями"
-				className="absolute left-0 z-10 ml-[15%] w-[70%] translate-y-10 object-cover transition-all duration-[0.5s] 2xl:bottom-[40%]"
+				className="absolute -bottom-[230px] left-0 z-10 ml-[15%] w-[70%] translate-y-10 object-cover transition-all duration-[0.5s] sm:-bottom-[330px] lg:bottom-[40%]"
 			/>
 			<img
 				ref={derevolevRef}
 				src={derevolev.src}
 				alt="GreenCrown - Уход за зелеными насаждениями"
-				className="translate-y-50 absolute left-0 z-20 -ml-[8%] w-[25%] object-cover transition-all duration-[0.7s] 2xl:bottom-[40%]"
+				className="translate-y-50 absolute -bottom-[250px] left-0 z-20 -ml-[8%] w-[25%] object-cover transition-all duration-[0.7s] sm:-bottom-[350px] lg:bottom-[40%]"
 			/>
 			<img
 				ref={derevoprRef}
 				src={derevopr.src}
 				alt="GreenCrown - Уход за зелеными насаждениями"
-				className="translate-y-50 absolute right-0 z-20 -mr-[5%] w-[40%] object-cover transition-all duration-[0.7s] 2xl:bottom-[35%]"
+				className="translate-y-50 absolute -bottom-[250px] right-0 z-20 -mr-[5%] w-[40%] object-cover transition-all duration-[0.7s] sm:-bottom-[350px] lg:bottom-[35%]"
 			/>
 			<img
 				ref={obrabotchikiRef}
 				src={obrabotchiki.src}
 				alt="GreenCrown - Уход за зелеными насаждениями"
-				className="translate-y-50 absolute right-0 z-30 mr-[22%] w-[25%] object-cover transition-all duration-[0.7s] 2xl:bottom-[20%]"
+				className="translate-y-50 absolute -bottom-[290px] right-0 z-30 mr-[22%] w-[25%] object-cover transition-all duration-[0.7s] sm:-bottom-[390px] lg:bottom-[20%]"
 			/>
 		</div>
 	)
