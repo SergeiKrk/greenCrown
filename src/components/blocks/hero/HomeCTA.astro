@@ -4,6 +4,7 @@ import Row from '../../ui/Row.astro'
 import Col from '../../ui/Col.astro'
 import ChipNotification from '../../ui/ChipNotification.astro'
 import AvatarGroup from '../../ui/AvatarGroup.astro'
+import FormOption from '../../../components/ui/forms/form-option/FormOption.jsx'
 
 import lugdoroga from '../../../assets/lugdoroga.webp'
 import moskvasiti from '../../../assets/moskvasiti.webp'
@@ -23,6 +24,7 @@ const avatars = [
 	{ image: { src: user3.src, alt: 'user name' } },
 	{ image: { src: user4.src, alt: 'user name' } }
 ]
+const titleForm = 'uiiufhe'
 ---
 
 <Section id="intro" classes="bg-neutral-50 dark:bg-neutral-900 h-screen grid content-center">
@@ -43,6 +45,8 @@ const avatars = [
 			<dialog id="my_modal_2" class="modal">
 				<div class="modal-box">
 					<h3 class="text-lg font-bold">Mello!</h3>
+
+					<FormOption idForm="2" titleForm={titleForm} client:load />
 					<div class="join">
 						<input
 							class="input join-item input-bordered input-accent w-44 border-primary-500"
