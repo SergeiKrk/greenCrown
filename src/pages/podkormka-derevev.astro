@@ -23,7 +23,7 @@ import ll2 from '../assets/pd2.jpg'
 import ll3 from '../assets/pd3.jpg'
 import ll4 from '../assets/pd4.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Подкормка деревьев и кустарников | Профессиональный уход и защита в Москве и МО',
@@ -146,7 +146,11 @@ const images = [
 					руках!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Подкормка деревьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Чем удобрять деревья весной?</h3>
@@ -170,7 +174,11 @@ const images = [
 	<SidebarContent>
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Подкормка плодовых деревьев и кустарников</h2>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Подкормка плодовых деревьев и кустарников`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Чем подкормить плодово-ягодные деревья и кустарники весной?</h3>
@@ -210,7 +218,11 @@ const images = [
 	<SidebarContent>
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Сезонные особенности подкормки</h2>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Сезонные особенности подкормки`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h3 class="lg:text-2xl">Подкормка деревьев весной</h3>
@@ -241,7 +253,11 @@ const images = [
 				<a href="/obrabotka-dereva-ot-vreditelej">Защита деревьев от вредителей и болезней</a> осуществляется
 				несколькими способами, в том числе посредством правильно подобранных удобрений
 			</p>
-			<BtnLight link="/#" btnName="Заказать услугу" />
+			<FeedbackFormButton
+				titleBtnz="Заказать услугу"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Защита деревьев от неблагоприятных условий`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Подкормка для укрепления иммунитета деревьев</h3>
@@ -261,7 +277,11 @@ const images = [
 	<SidebarContent>
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Уход за декоративными деревьями и кустарниками</h2>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Уход за декоративными деревьями и кустарниками`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
@@ -290,6 +310,11 @@ const images = [
 			<p>
 				Узнайте стоимость услуг по подкормке деревьев и кустарников: цена зависит от объема работ.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="8"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

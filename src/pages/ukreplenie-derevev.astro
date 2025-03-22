@@ -19,12 +19,12 @@ import ll4 from '../assets/ukreplenie-derevev-4.jpg'
 import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
 import features from '../data/json-files/featuresData.json'
-import BtnLight from '../components/ui/BtnLight.astro'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'ukreplenie-derevev')
 
 // Content
 import faqImage1 from '../assets/ukreplenie-derevev-5.jpg'
 import { Image } from 'astro:assets'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Укрепление деревьев (Каблинг) — установка стяжек и тросов | Заказать',
@@ -138,7 +138,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Каблинг для защиты и продления жизни деревьев</h2>
 			<p>Закажите установку тросов прямо сейчас!</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Каблинг для защиты и продления жизни деревьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Укрепление деревьев</h3>
@@ -163,7 +167,11 @@ const images = [
 				<i>Продлите жизнь вашим деревьям с помощью профессионального каблинга!</i>
 			</p>
 
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Продлите жизнь вашим деревьям`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Зачем нужно укрепление деревьев?</h3>
@@ -193,7 +201,11 @@ const images = [
 			<p class="mt-12">
 				<i>Укрепите дерево до наступления бури — запишитесь на установку каблинга!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Укрепите дерево до наступления бури`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<div class="basic-text lg:ml-4">
@@ -206,6 +218,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Цены на укрепление деревьев</h2>
 			<p>Цена зависит от размера дерева, сложности работы и типа каблинга.</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

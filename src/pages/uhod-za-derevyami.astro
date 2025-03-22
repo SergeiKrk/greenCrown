@@ -26,6 +26,7 @@ import ukrepleniederevev from '../assets/ukreplenie-derevev.png'
 
 // Content=
 import { Image } from 'astro:assets'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Профессиональный уход за деревьями',
@@ -184,6 +185,11 @@ const images = [
 				Узнайте стоимость услуг по уходу за растениями: цена зависит от объема работ и сложности
 				обрабатываемой территории.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

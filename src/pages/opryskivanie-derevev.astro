@@ -28,8 +28,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'opryskivanie-d
 // Content
 import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Опрыскивание деревьев - Весенняя обработка плодовых деревьев в саду',
@@ -123,7 +123,11 @@ const images = [
 					сегодня!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Опрыскивание садовых деревьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<p>
@@ -147,7 +151,11 @@ const images = [
 			<p class="lg:mt-14">
 				<i>Оставьте заявку на опрыскивание деревьев и получите подробную консультацию бесплатно!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Оставьте заявку на опрыскивание`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Преимущества профессионального опрыскивания</h3>
@@ -179,6 +187,11 @@ const images = [
 			<p>
 				Стоимость услуги зависит от размер участка и количество деревьев, а так же сложность работ.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

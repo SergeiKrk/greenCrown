@@ -18,13 +18,13 @@ import ll4 from '../assets/id4.jpg'
 import Grut from '../assets/Grut.webp'
 import faqData from '../data/json-files/faqData.json'
 import features from '../data/json-files/featuresData.json'
-import BtnLight from '../components/ui/BtnLight.astro'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'inekcii-derevyam')
 
 // Content
 import faqImage1 from '../assets/preparaty-dlya-inekcij.jpg'
 import { Image } from 'astro:assets'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Инъекции деревьям — Лечение и защита деревьев с помощью стволовых инъекций',
@@ -138,7 +138,11 @@ const images = [
 				обрабатывают специальными веществами методом опрыскивания и подкармливают прикорневыми
 				питательными составами. Но обычно такого способа защиты мало.
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Почему именно инъекции`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Лечение деревьев инъекциями</h3>
@@ -172,7 +176,11 @@ const images = [
 				защиту от вредителей и болезней на ближайшие два года.
 			</p>
 
-			<BtnLight link="/#" btnName="Записаться" />
+			<FeedbackFormButton
+				titleBtnz="Записаться"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Инъекции для деревьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Инъекции против вредителей и болезней</h3>
@@ -226,7 +234,11 @@ const images = [
 	<SidebarContent classes="bg-neutral-50 dark:bg-neutral-900">
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Эффективность и результаты лечения деревьев инъекциями</h2>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Эффективность и результаты лечения деревьев инъекциями`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl"></h3>
@@ -248,6 +260,11 @@ const images = [
 				Узнайте стоимость услуг по лечению лиственных деревьев: цена зависит от объема работ и
 				состояния растений.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
