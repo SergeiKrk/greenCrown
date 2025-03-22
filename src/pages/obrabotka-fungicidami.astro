@@ -29,9 +29,9 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-fung
 // Content
 import obrabotkaNasekImg from '../assets/obrabotka-fungicidami-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Обработка фунгицидами – Цены на услугу от 300 руб. за сотку',
@@ -143,7 +143,11 @@ const images = [
 			<p class="mt-6">
 				<i>Закажите обработку фунгицидами прямо сейчас!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Защитите свой сад от грибковых болезней`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Защитим ваши растения от грибка</h3>
@@ -172,7 +176,11 @@ const images = [
 			<p class="mt-14">
 				<i>Обращайтесь! Поможем защитить ваш сад от болезней.</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Поможем защитить ваш сад от болезней`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Какие растения требуют обработки?</h3>
@@ -214,7 +222,11 @@ const images = [
 			<p class="mt-14">
 				<i>Не дайте грибкам погубить урожай! Запишитесь на обработку сада фунгицидами.</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Не дайте грибкам погубить урожай`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Как мы проводим обработку фунгицидами</h3>
@@ -230,6 +242,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Фунгицидная обработка по доступной цене за м²</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

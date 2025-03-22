@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'ozelenenie-uch
 // Content
 import obrabotkaNasekImg from '../assets/od1.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Озеленение и благоустройство территории – Цены на услуги от 1500 руб. за сотку',
@@ -161,7 +161,11 @@ const images = [
 			<p class="mt-6">
 				<i>Озеленение и благоустройство территории под ключ – преобразите свой участок!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Озеленение территории`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Почему это важно?</h3>
@@ -192,7 +196,11 @@ const images = [
 			<p class="mt-14">
 				<i>Закажите озеленение участка, сделайте шаг к идеальному ландшафту!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Закажите озеленение участка`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Принципы озеленения участка</h3>
@@ -222,7 +230,11 @@ const images = [
 			<p class="mt-14">
 				<i>Услуги по озеленению территории - Ваш участок станет образцовым!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Услуги по озеленению территории`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Этапы озеленения - шаг за шагом</h3>
@@ -234,6 +246,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Озеленение территории по доступной цене за м²</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

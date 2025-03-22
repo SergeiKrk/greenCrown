@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-gazono
 // Content
 import obrabotkaNasekImg from '../assets/uhod-za-gazonom-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Стрижка, покос и уход за газоном в Москве – Цены на услуги от 500 руб. за сотку',
@@ -138,7 +138,11 @@ const images = [
 			<p class="mt-6">
 				<i>Создадим здоровое зеленое покрытие вашего участка даже в тени хвойных деревьев!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Стрижка и покос газона`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Стрижка газона колесной косилкой</h3>
@@ -182,7 +186,11 @@ const images = [
 			<p class="mt-6">
 				<i>Удаление мха, старой травы и улучшение воздухообмена почвы!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Скарификация и вычесывание газона`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Скарификация газона — что это такое?</h3>
@@ -239,7 +247,11 @@ const images = [
 					оставалась густой и яркой.</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Идеальный газон под хвойными деревьями`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h2 class="lg:text-2xl">Газон под соснами и хвойными деревьями</h2>
@@ -267,7 +279,11 @@ const images = [
 					состоянии!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Уход за газоном круглый год`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Комплексный уход за газоном - шаг за шагом</h3>
@@ -279,6 +295,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Уход за газоном по доступной цене за м²</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="8"
+				titleForm=`${SEO.title}. Блок: Цена`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

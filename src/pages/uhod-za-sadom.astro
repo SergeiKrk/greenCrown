@@ -31,11 +31,11 @@ import Grut from '../assets/Grut.webp'
 
 import faqData from '../data/json-files/faqData.json'
 import Steps from '../components/ui/Steps.astro'
-import BtnLight from '../components/ui/BtnLight.astro'
 const faqIntegrations = faqData.filter((faq) => faq.category === 'uhod-za-sadom')
 
 // Content=
 import { Image } from 'astro:assets'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Комплексный уход за садом, участком, парком | Цена 3500 руб. за сотку',
@@ -244,7 +244,11 @@ const images = [
 					>Подготовим ваш участок к сезону: обрезка, обработка, подкормка. Запишитесь прямо сейчас!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Весенний уход за садом`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<div class="basic-text lg:ml-4">
@@ -260,6 +264,11 @@ const images = [
 				Цена зависит от площади участка, вида работ и состояния сада. Мы предлагаем прозрачные
 				расчеты без скрытых платежей.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

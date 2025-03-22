@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'unichtozhenie-
 // Content
 import obrabotkaNasekImg from '../assets/borba-s-borshchevikom-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Обработка от борщевика – Цена от 80 рублей за м2',
@@ -119,7 +119,11 @@ const images = [
 			<p class="mt-6">
 				<i>Не ждите — борщевик растет быстро! Оформите заявку на обработку.</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Услуги по уничтожению борщевика`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Уничтожение борщевика: почему важно действовать быстро</h3>
@@ -146,7 +150,11 @@ const images = [
 			<p class="mt-14">
 				<i>Борьба с борщевиком требует комплексного подхода — оформите заказ на обработку!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Борьба с борщевиком требует комплексного подхода`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Чем опасен борщевик для человека и растений</h3>
@@ -183,7 +191,11 @@ const images = [
 			<p class="mt-6">
 				<i> Нужна помощь в борьбе с борщевиком? Свяжитесь с нами прямо сейчас! </i>
 			</p>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Нужна помощь в борьбе с борщевиком`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h2 class="lg:text-2xl">Методы уничтожения борщевика</h2>
@@ -216,7 +228,11 @@ const images = [
 			<p class="mt-14">
 				<i>Сделайте первый шаг к чистому участку — позвоните и получите подробную консультацию</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Сделайте первый шаг к чистому участку`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Почему важно не затягивать с обработкой</h3>
@@ -239,6 +255,11 @@ const images = [
 				Цены на уничтожение борщевика на участке зависят от обрабатываемой площади и особенностей
 				рельефа.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

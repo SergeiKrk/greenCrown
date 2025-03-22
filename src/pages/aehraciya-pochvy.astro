@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'aehraciya-poch
 // Content
 import obrabotkaNasekImg from '../assets/aehraciya-pochvy-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Аэрация почвы и газона – Цена от 1500 руб. за сотку',
@@ -142,7 +142,11 @@ const images = [
 			<p class="mt-6">
 				<i>Сделаем ваш газон густым и зеленым.</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Профессиональная аэрация газона`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Аэрация почвы: что это такое?</h3>
@@ -175,7 +179,11 @@ const images = [
 			<p class="mt-14">
 				<i>Аэрация и рыхление почвы – обеспечим доступ воздуха и влаги к корням!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Аэрация и рыхление почвы`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Зачем нужна аэрация?</h3>
@@ -224,7 +232,11 @@ const images = [
 			<p class="mt-6">
 				<i>Комплексная аэрация и скарификация – избавим от лишнего слоя дерна и мха.</i>
 			</p>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Комплексная аэрация и скарификация`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h2 class="lg:text-2xl">Когда проводить аэрацию почвы?</h2>
@@ -248,7 +260,11 @@ const images = [
 			<p class="mt-14">
 				<i>Весенняя аэрация газона – подготовьте траву к сезону и добейтесь идеального газона!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Весенняя аэрация газона`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Как мы проводим аэрацию почвы - шаг за шагом:</h3>
@@ -260,6 +276,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Аэрация газона по доступной цене за м²</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цена`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

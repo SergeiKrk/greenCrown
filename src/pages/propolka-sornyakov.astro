@@ -25,7 +25,7 @@ import features from '../data/json-files/featuresData.json'
 // Content
 import obrabotkaNasekImg from '../assets/propolka-sornyakov-vruchnuyu-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Прополка сорняков вручную - Цена от 80 рублей за м2',
@@ -117,7 +117,11 @@ const images = [
 			<p class="mt-6">
 				<i>Работаем аккуратно и без химии. Оставьте заявку – рассчитаем точную цену!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Профессиональная прополка сорняков вручную`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Почему ручная прополка – лучший выбор?</h3>
@@ -151,7 +155,7 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Цена услуги</h2>
 			<p>Стоимость услуги по ручной проколке сорняков зависит от объема и сложности работы.</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton titleBtnz="Заказать" idForm="3" titleForm=`${SEO.title}. Блок: Цена` />
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

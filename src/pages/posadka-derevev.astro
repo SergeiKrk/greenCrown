@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'posadka-dereve
 // Content
 import obrabotkaNasekImg from '../assets/posadka-derevev-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Посадка деревьев и кустарников на участке – Цены на услуги от 1500 руб. за дерево',
@@ -147,7 +147,11 @@ const images = [
 			<p class="mt-6">
 				<i>Сделайте ваш сад зелёным и красивым!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Посадка деревьев на участке`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Что важно учитывать</h3>
@@ -180,7 +184,11 @@ const images = [
 			<p class="mt-14">
 				<i>Позаботьтесь о будущем вашего сада — закажите услуги по посадке деревьев уже сегодня!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Позаботьтесь о будущем вашего сада`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Услуги по посадке деревьев</h3>
@@ -216,7 +224,11 @@ const images = [
 					несколько шагов!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Профессиональная посадка деревьев на вашем участке`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Посадка деревьев - шаг за шагом</h3>
@@ -228,6 +240,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Цены на посадку деревьев</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
