@@ -171,7 +171,7 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 				>
 					<p>
 						<div className="relative my-2 flex flex-col lg:flex-row">
-							<input type="hidden" name="FormName" value={titleForm} />
+							<input type="hidden" name="FormName" value={`${titleForm} [Форма №${idForm}]`} />
 							<input
 								id="id-01"
 								type="number"
@@ -207,7 +207,7 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 				>
 					<p>
 						<div className="relative my-2 flex flex-col lg:flex-row">
-							<input type="hidden" name="FormName" value={titleForm} />
+							<input type="hidden" name="FormName" value={`${titleForm} [Форма №${idForm}]`} />
 							<input
 								id="id-02"
 								type="number"
@@ -243,7 +243,7 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 				>
 					<p>
 						<div className="relative my-2 flex flex-col lg:flex-row">
-							<input type="hidden" name="FormName" value={titleForm} />
+							<input type="hidden" name="FormName" value={`${titleForm} [Форма №${idForm}]`} />
 							<input
 								id="id-01"
 								type="number"
