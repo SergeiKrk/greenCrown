@@ -159,6 +159,8 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 			</ul>
 			<div className="">
 				<form
+					action="../send.php"
+					method="POST"
 					className={`pt-3 text-sm ${tabSelected.currentTab === 1 ? '' : 'hidden'}`}
 					id="tab-panel-1fi"
 					aria-hidden={`${tabSelected.currentTab === 1 ? 'true' : 'false'}`}
@@ -169,10 +171,11 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 				>
 					<p>
 						<div className="relative my-2 flex flex-col lg:flex-row">
+							<input type="hidden" name="FormName" value={titleForm} />
 							<input
 								id="id-01"
 								type="number"
-								name="id-01"
+								name="FormPhone"
 								placeholder="+7 9999 99 99"
 								className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-emerald-500 placeholder-transparent caret-pink-500 outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-emerald-400"
 							/>
@@ -192,7 +195,9 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 						</p>
 					</p>
 				</form>
-				<div
+				<form
+					action="../send.php"
+					method="POST"
 					className={`pt-3 text-sm ${tabSelected.currentTab === 2 ? '' : 'hidden'}`}
 					id="tab-panel-2fi"
 					aria-hidden={`${tabSelected.currentTab === 2 ? 'true' : 'false'}`}
@@ -202,10 +207,11 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 				>
 					<p>
 						<div className="relative my-2 flex flex-col lg:flex-row">
+							<input type="hidden" name="FormName" value={titleForm} />
 							<input
 								id="id-02"
 								type="number"
-								name="id-01"
+								name="FormWp"
 								placeholder="+7 9999 99 99"
 								className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-emerald-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-emerald-400"
 							/>
@@ -224,8 +230,10 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 							<a href="/politic">политикой конфиденциальности</a>
 						</p>
 					</p>
-				</div>
-				<div
+				</form>
+				<form
+					action="../send.php"
+					method="POST"
 					className={`pt-3 text-sm ${tabSelected.currentTab === 3 ? '' : 'hidden'}`}
 					id="tab-panel-3fi"
 					aria-hidden={`${tabSelected.currentTab === 3 ? 'true' : 'false'}`}
@@ -235,10 +243,11 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 				>
 					<p>
 						<div className="relative my-2 flex flex-col lg:flex-row">
+							<input type="hidden" name="FormName" value={titleForm} />
 							<input
 								id="id-01"
 								type="number"
-								name="id-01"
+								name="FormTg"
 								placeholder="+7 9999 99 99"
 								className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-emerald-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-emerald-400"
 							/>
@@ -257,7 +266,7 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 							<a href="/politic">политикой конфиденциальности</a>
 						</p>
 					</p>
-				</div>
+				</form>
 			</div>
 			{/*<!-- End Pill sm sized tab with leading icon --> */}
 		</>
