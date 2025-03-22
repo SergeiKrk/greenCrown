@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'omolazhivayush
 // Content
 import obrabotkaNasekImg from '../assets/omolazhivayushchaya-obrezka-derevev-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Омолаживающая обрезка деревьев – Цены на услуги от 1500 руб.',
@@ -143,7 +143,11 @@ const images = [
 					обратитесь к специалистам!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Омолаживающая обрезка старых деревьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<h2 class="lg:text-2xl">Омолаживающая обрезка – здоровье, молодость, урожай</h2>
@@ -176,7 +180,11 @@ const images = [
 			<p class="mt-14">
 				<i>Дайте вашим деревьям новую жизнь – закажите услугу прямо сейчас!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Дайте вашим деревьям новую жизнь`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Когда и как проводится обрезка?</h3>
@@ -222,7 +230,11 @@ const images = [
 					урожайность и здоровье растений!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Закажите омолаживающую обрезку яблонь и других плодовых деревьев`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h2 class="lg:text-2xl">Особенности обрезки плодовых деревьев</h2>
@@ -247,7 +259,11 @@ const images = [
 			<p class="mt-14">
 				<i>Сохраните здоровье вашего сада – закажите услугу прямо на сайте!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Сохраните здоровье вашего сада – закажите услугу`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Этапы омолаживающей обрезки - шаг за шагом</h3>
@@ -259,6 +275,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Омолаживающая обрезка по доступной цене</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цена`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

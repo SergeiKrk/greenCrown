@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'sanitarnaya-ob
 // Content
 import obrabotkaNasekImg from '../assets/sanitarnaya-obrezka-derevev-.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Санитарная обрезка деревьев и кустарников – Цены на услуги от 1500 руб.',
@@ -134,7 +134,11 @@ const images = [
 			<p class="mt-6">
 				<i>Оставьте заявку – поможем вашим деревьям!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Санитарная обрезка по правилам`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Что такое санитарная обрезка?</h3>
@@ -161,7 +165,11 @@ const images = [
 			<p class="mt-14">
 				<i>Оставьте заявку – наши специалисты оценят состояние деревьев и проведут обрезку!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: наши специалисты оценят состояние деревьев и проведут обрезку`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Когда и почему она нужна?</h3>
@@ -207,7 +215,11 @@ const images = [
 			<p class="mt-14">
 				<i>Работы по санитарной обрезке – профессиональный уход за зелеными насаждениями</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Работы по санитарной обрезке`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Как мы работаем - шаг за шагом</h3>
@@ -219,6 +231,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Санитарная обрезка по доступной цене</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

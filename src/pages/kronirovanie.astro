@@ -29,8 +29,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'kronirovanie')
 // Content
 import obrabotkaNasekImg from '../assets/kronirovanie-derevev-.png'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Steps from '../components/ui/Steps.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Кронирование деревьев – Цены на услуги от 1500 руб.',
@@ -141,7 +141,11 @@ const images = [
 			<p class="mt-6">
 				<i>Удаляем сухие и поврежденные ветви с заботой о дереве</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Профессиональное кронирование деревьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Зачем нужно кронирование?</h3>
@@ -160,7 +164,11 @@ const images = [
 			<p class="mt-14">
 				<i>Обрезка и кронирование деревьев — продлим жизнь вашим насаждениям!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Обрезка и кронирование деревьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<h2 class="lg:text-2xl">Виды кронирования</h2>
@@ -230,7 +238,11 @@ const images = [
 			<p class="mt-14">
 				<i>Как оформить заявление на кронирование деревьев и когда оно требуется?</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Как оформить заявление на кронирование деревьев и когда оно требуется`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Этапы работ - шаг за шагом</h3>
@@ -246,6 +258,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Кронирование деревьев по доступной цене</h2>
 			<p>Оставьте заявку и получите расчет!</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цена`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
