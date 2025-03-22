@@ -28,8 +28,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-k
 // Content
 import obrabotkaNasekImg from '../assets/obrabotka-uchastka-ot-krys.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Уничтожение крыс на участке и в доме | Обработка от крыс с гарантией',
@@ -117,7 +117,11 @@ const images = [
 			<p class="mt-6">
 				<i>Уничтожение крыс на участке по доступной цене – оставьте заявку прямо сейчас!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Борьба с крысами`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Эффективное уничтожение крыс на участке и в доме</h3>
@@ -134,7 +138,11 @@ const images = [
 			<p class="lg:mt-14">
 				<i>Оставьте заявку на уничтожение крыс и получите подробную консультацию бесплатно!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Оставьте заявку на уничтожение крыс`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Как крысы могут повлиять на вашу жизнь?</h3>
@@ -165,7 +173,11 @@ const images = [
 					Избавьтесь от крыс на даче – закажите профессиональную дератизацию с гарантией результата!
 				</i>
 			</p>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Избавьтесь от крыс на даче`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h3 class="lg:text-2xl">Современные методы борьбы с крысами</h3>
@@ -188,6 +200,11 @@ const images = [
 				Цена на обработку участка от крыс зависит от необходимого объема работы и препаратов. Мы
 				предлагаем доступные цены с возможностью выбора подходящих вариантов по стоимости.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

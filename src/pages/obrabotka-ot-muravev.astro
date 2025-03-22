@@ -28,8 +28,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-m
 // Content
 import obrabotkaNasekImg from '../assets/unichtozhenie-muravev-4.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Муравьи на даче? Профессиональная обработка от муравьев – Цены, методы, гаранти',
@@ -118,7 +118,11 @@ const images = [
 			<p class="mt-6">
 				<i>Надежное решение проблемы уже после первой обработки.</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Обработка от муравьев с гарантией результата`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Почему стоит выбрать нашу услугу?</h3>
@@ -145,7 +149,11 @@ const images = [
 	<SidebarContent>
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Почему важно избавиться от муравьев?</h2>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Почему важно избавиться от муравьев`
+			/>
 		</div>
 		<div class="basic-text">
 			<p>
@@ -185,7 +193,11 @@ const images = [
 	<SidebarContent>
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Обработка деревьев от муравьев</h2>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Обработка деревьев от муравьев`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h3 class="lg:text-2xl">Результаты, которые вы получите</h3>
@@ -214,6 +226,11 @@ const images = [
 				Цены на уничтожение муравьев на даче зависят от типа используемых средств и особенностей
 				местности.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

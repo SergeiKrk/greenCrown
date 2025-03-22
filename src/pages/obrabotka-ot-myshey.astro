@@ -28,8 +28,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-m
 // Content
 import obrabotkaNasekImg from '../assets/obrabotka-uchastka-ot-myshej.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Обработка дачи и участка от мышей – профессиональная защита зимой и летом',
@@ -120,7 +120,11 @@ const images = [
 					навсегда!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Травля мышей на даче`
+			/>
 		</div>
 		<div class="basic-text">
 			<p>
@@ -137,7 +141,11 @@ const images = [
 			<p class="lg:mt-14">
 				<i>Оставьте заявку на уничтожение мышей и получите подробную консультацию бесплатно!</i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать" />
+			<FeedbackFormButton
+				titleBtnz="Заказать"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Оставьте заявку на уничтожение мышей`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Услуги по уничтожению мышей</h3>
@@ -168,7 +176,11 @@ const images = [
 					позвоните нам. - Мы избавим вас от мышей с гарантией!
 				</i>
 			</p>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Если народные средства оказались не такими эффективными`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h3 class="lg:text-2xl">Методы борьбы с мышами</h3>
@@ -186,7 +198,11 @@ const images = [
 			<p class="mt-14">
 				<i> Закажите обработку участка от мышей и защитите свой дом и сад от вредителей! </i>
 			</p>
-			<BtnLight link="/#" btnName="Заказать обработку" />
+			<FeedbackFormButton
+				titleBtnz="Заказать обработку"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Закажите обработку участка от мышей`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3>Ожидаемые результаты</h3>
@@ -207,6 +223,11 @@ const images = [
 				Цена на обработку участка от мышей зависит от объема работы и выбранного метода. Мы
 				предлагаем доступные цены с возможностью выбора подходящих вариантов по стоимости.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать обработку"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

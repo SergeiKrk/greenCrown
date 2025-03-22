@@ -28,8 +28,8 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ot-k
 // Content
 import obrabotkaNasekImg from '../assets/lechenie-derevev-ot-nasekomyh.jpg'
 import { Image } from 'astro:assets'
-import BtnLight from '../components/ui/BtnLight.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Обработка от комаров – профессиональное уничтожение насекомых на участке',
@@ -121,7 +121,11 @@ const images = [
 					доступной цене!</i
 				>
 			</p>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Обработка участка от комаров`
+			/>
 		</div>
 		<div class="basic-text">
 			<p>
@@ -141,7 +145,11 @@ const images = [
 	<SidebarContent>
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Методы обработки участка от комаров</h2>
-			<BtnLight link="/#" btnName="Заказать звонок" />
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Методы обработки участка от комаров`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Химическая обработка участка от комаров</h3>
@@ -181,7 +189,11 @@ const images = [
 					позвоните нам. - Мы избавим вас от комаров с гарантией!
 				</i>
 			</p>
-			<BtnLight link="/#" btnName="Оставить заявку" />
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Мы избавим вас от комаров с гарантией`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h2 class="lg:text-2xl">Народные средства для борьбы с комарами</h2>
@@ -211,7 +223,11 @@ const images = [
 	<SidebarContent>
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Уничтожение комаров и клещей: комплексный подход</h2>
-			<BtnLight link="/#" btnName="Заказать консультацию" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Уничтожение комаров и клещей`
+			/>
 		</div>
 		<div class="basic-text">
 			<p>
@@ -231,6 +247,11 @@ const images = [
 				Цены на уничтожение комаров на даче зависят от типа используемых средств и особенностей
 				локации.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

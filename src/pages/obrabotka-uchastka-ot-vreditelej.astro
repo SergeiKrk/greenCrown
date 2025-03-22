@@ -36,6 +36,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'obrabotka-ucha
 // Content
 import { Image } from 'astro:assets'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Уничтожение вредителей на участке – профессиональная обработка',
@@ -217,6 +218,11 @@ const images = [
 				Узнайте стоимость услуг по обработке от вредителей: цена зависит от объема работ и сложности
 				обрабатываемой территории.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать звонок"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">
