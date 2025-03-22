@@ -246,7 +246,7 @@ export default function TabsSmPillLeadingIcon({ titleForm, idForm }) {
 							<input type="hidden" name="FormName" value={`${titleForm} [Форма №${idForm}]`} />
 							<input
 								id="id-01"
-								type="number"
+								type="text"
 								name="FormTg"
 								placeholder="+7 9999 99 99"
 								className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-emerald-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-emerald-400"

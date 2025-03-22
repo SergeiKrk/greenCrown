@@ -16,9 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $formPhone = isset($_POST['FormPhone']) ? htmlspecialchars(trim($_POST['FormPhone'])) : '';
     $formWp = isset($_POST['FormWp']) ? htmlspecialchars(trim($_POST['FormWp'])) : '';
     $formTg = isset($_POST['FormTg']) ? htmlspecialchars(trim($_POST['FormTg'])) : '';
-    
-    // Получаем выбранный мессенджер
-    $contact_method = isset($_POST['contact_method']) ? htmlspecialchars(trim($_POST['contact_method'])) : 'Не выбран';
 
     // Создаем тело письма
     $body = "<h3>Заявка с формы: {$formName}</h3>";
@@ -38,29 +35,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $body .= "<p><strong>Telegram:</strong> {$formTg}</p>";
     }
 
-    // Добавляем выбранный мессенджер
-    $body .= "<p><strong>Выбранный мессенджер:</strong> {$contact_method}</p>";
-
     $mail = new PHPMailer(true);
 
     try {
         // Настройки PHPMailer
         $mail->CharSet = 'UTF-8';
         $mail->isSMTP();
-        $mail->Host = 'smtp.timeweb.ru'; // Ваш SMTP-сервер Beget
+        $mail->Host = 'smtp.timeweb.ru'; // SMTP-сервер Timeweb
         $mail->SMTPAuth = true;
         $mail->Username = 'zakaz@green-crown.ru'; // Логин для SMTP
         $mail->Password = 'Oik24I62J'; // Пароль для SMTP
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 465; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Используем SSL (для порта 465)
+        $mail->Port = 465; // Порт для SSL
 
         // Отправка письма
         $mail->setFrom('zakaz@green-crown.ru', 'GREENCROWN заявка');
-        $mail->addAddress('ksv.ulru@gmail.com', 'Получатель'); // Ваш адрес для получения
+        $mail->addAddress('ksv.ulru@gmail.com', 'Получатель'); // Адрес получателя
 
         // Настройки письма
         $mail->isHTML(true);
-        $mail->Subject = 'Выпускной - заявка';
+        $mail->Subject = 'GREENCROWN - заявка';
         $mail->Body = $body;
         $mail->AltBody = strip_tags($body); // Текстовое тело для клиентов, не поддерживающих HTML
 
@@ -68,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->send();
 
         // Перенаправление на страницу благодарности
-        header('Location: thank-you/');
+        header('Location: zayavka-otpravlena/');
         exit;
     } catch (Exception $e) {
         echo "Ошибка отправки: {$mail->ErrorInfo}";
