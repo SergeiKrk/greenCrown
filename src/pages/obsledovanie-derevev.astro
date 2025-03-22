@@ -29,6 +29,7 @@ import ll2 from '../assets/id2.jpg'
 import ll3 from '../assets/lechenie-hvojnyh-3.jpg'
 import ll4 from '../assets/sezonnaya-obrabotka-derevev.jpg'
 import { Image } from 'astro:assets'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title:
@@ -119,6 +120,11 @@ const images = [
 				окружающей среды и людей. Этот процесс включает диагностику внутренних и внешних
 				повреждений, а также оценку риска падения дерева.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Экспертиза дерева`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Обследование деревьев: излишество или жизненная необходимость?</h3>
@@ -152,6 +158,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Лесопатология:</h2>
 			<p>Что такое лесопатологическое обследование?</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Лесопатология`
+			/>
 		</div>
 		<div class="basic-text">
 			<p>
@@ -190,6 +201,11 @@ const images = [
 				деревом, которое внезапно перестало расти или "покрылось" странными пятнами? Здесь и нужен
 				профессиональный подход.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Почему стоит выбрать профессионалов`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<p>
@@ -283,6 +299,11 @@ const images = [
 				Узнайте стоимость услуг лесопатолога: цена зависит от объема работ, состояния деревьев и
 				площади обследуемой территории.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цены на лесопатологическое обследование`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

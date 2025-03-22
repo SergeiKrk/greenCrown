@@ -26,6 +26,7 @@ const faqIntegrations = faqData.filter((faq) => faq.category === 'lechenie-plodo
 import faqImage1 from '../assets/sezonnye-meropriyatiya-po-uhodu-za-plodovymi.jpg'
 import { Image } from 'astro:assets'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение плодовых деревьев: диагностика, болезни, методы — узнайте цены в Москве и МО',
@@ -121,6 +122,11 @@ const images = [
 				последних становятся бактерии, вирусы, грибки. Этому способствуют грызуны и насекомые -
 				переносчики инфекции.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Распространенные болезней плодовых`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Парша</h3>
@@ -196,6 +202,11 @@ const images = [
 		<div slot="sidebar">
 			<h2 class="lg:text-2xl">Лечение грибковых заболеваний плодовых</h2>
 			<p>Существуют следующие методики борьбы с грибковыми инфекциями плодовых деревьев:</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Лечение грибковых`
+			/>
 		</div>
 		<div class="basic-text">
 			<ol>
@@ -228,6 +239,11 @@ const images = [
 				Некоторые садовники не знают, как спасти плодовые деревья от болезней. Вот ряд действенных
 				профилактических мер:
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Профилактика болезней`
+			/>
 		</div>
 		<div class="basic-text">
 			<ol>
@@ -252,6 +268,11 @@ const images = [
 				Узнайте стоимость услуг по лечению растений: цена зависит от объема работ и состояния
 				деревьев.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Цены на лечение`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

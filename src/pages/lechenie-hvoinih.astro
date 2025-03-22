@@ -25,6 +25,7 @@ import lh3 from '../assets/lechenie-hvojnyh-3.jpg'
 import lh4 from '../assets/lechenie-hvojnyh-4.jpg'
 import { Image } from 'astro:assets'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение хвойных растений и деревьев: Обработка от Болезней - Цена от 1500 руб.',
@@ -152,12 +153,11 @@ const images = [
 					>Не ждите, пока растения погибнут! Свяжитесь с нами для диагностики и лечения уже сегодня.</i
 				>
 			</p>
-			<a
-				href="#"
-				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
-			>
-				<span>Связаться</span>
-			</a>
+			<FeedbackFormButton
+				titleBtnz="Связаться"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Профессиональное лечение хвойных`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Как определить, что растение заболело?</h3>
@@ -187,12 +187,11 @@ const images = [
 				Запишитесь на лечение хвойных растений уже сегодня! Ваша хвоя снова станет зеленой и
 				здоровой.
 			</p>
-			<a
-				href="#"
-				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
-			>
-				<span>Записаться</span>
-			</a>
+			<FeedbackFormButton
+				titleBtnz="Записаться"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Комплексное лечение`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Преимущества работы с нами</h3>
@@ -236,12 +235,11 @@ const images = [
 					диагностику уже в ближайшее время!</i
 				>
 			</p>
-			<a
-				href="#"
-				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
-			>
-				<span>Оставить заявку</span>
-			</a>
+			<FeedbackFormButton
+				titleBtnz="Оставить заявку"
+				idForm="4"
+				titleForm=`${SEO.title}. Блок: Как мы возвращаем здоровье хвойным растениям`
+			/>
 		</div>
 		<div class="basic-text lg:ml-4">
 			<h3 class="lg:text-2xl">Этапы работы:</h3>
@@ -255,12 +253,11 @@ const images = [
 				Нужна помощь в уходе за хвойными растениями? Мы разработаем для вас индивидуальную программу
 				профилактики.
 			</p>
-			<a
-				href="#"
-				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
-			>
-				<span>Заказать консультацию</span>
-			</a>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="5"
+				titleForm=`${SEO.title}. Блок: Советы по уходу за хвойными`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">
@@ -288,6 +285,11 @@ const images = [
 				Узнайте стоимость услуг по лечению хвойных: цена зависит от объема работ и состояния
 				растений.
 			</p>
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="6"
+				titleForm=`${SEO.title}. Блок: Цены`
+			/>
 		</div>
 		<div class="basic-text">
 			<div class="w-full overflow-x-auto">

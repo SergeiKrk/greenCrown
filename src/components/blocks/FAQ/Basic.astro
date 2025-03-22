@@ -11,6 +11,7 @@ import Col from '../../ui/Col.astro'
 // - UI
 import Accordion from '../../ui/Accordion.astro'
 import Card from '../../ui/cards/partials/Card.astro'
+import FeedbackFormButton from '../../ui/FeedbackFormButton.astro'
 
 // Props
 type Props = {
@@ -29,12 +30,11 @@ const { classes } = Astro.props
 				Здесь мы собрали популярные вопросу по теме лечения и ухода за деревьями. Если у вас
 				останутся вопросы, оставьте заявку на консультацию.
 			</p>
-			<a
-				href="#"
-				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
-			>
-				<span>оставить Заявку</span>
-			</a>
+			<FeedbackFormButton
+				titleBtnz="оставить Заявку"
+				idForm="3"
+				titleForm="Часто задаваемые вопросы Главная"
+			/>
 		</Col>
 		<Col span="2" />
 		<Col span="8">

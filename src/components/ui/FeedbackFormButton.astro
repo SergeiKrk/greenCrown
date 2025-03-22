@@ -1,0 +1,20 @@
+---
+import FormOption from './forms/form-option/FormOption.jsx'
+const { titleBtnz, idForm, titleForm } = Astro.props
+---
+
+<button
+	class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:shadow-xl hover:shadow-emerald-500/10 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
+	onclick={`my_modal_${idForm}.showModal()`}>{titleBtnz}</button
+>
+
+<dialog id={`my_modal_${idForm}`} class="modal">
+	<div class="modal-box bg-white dark:bg-slate-700">
+		<h3 class="text-lg font-bold">Оставить заявку</h3>
+
+		<FormOption idForm={idForm} titleForm={titleForm} client:load />
+	</div>
+	<form method="dialog" class="modal-backdrop">
+		<button>закрыть</button>
+	</form>
+</dialog>

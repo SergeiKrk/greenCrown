@@ -44,6 +44,7 @@ import { Image } from 'astro:assets'
 import BtnLight from '../components/ui/BtnLight.astro'
 import ImageGallery from '../components/ui/ImageGallery.astro'
 import Certificates from '../components/blocks/Certificates.astro'
+import FeedbackFormButton from '../components/ui/FeedbackFormButton.astro'
 // - SEO
 const SEO = {
 	title: 'Лечение деревьев: Обработка от Болезней в Москве и МО',
@@ -300,12 +301,7 @@ const images = [
 				деревьев, выявим проблемы и дадим рекомендации для их сохранения и ухода.
 			</p>
 			<!-- Component: Small outline basic button -->
-			<a
-				href="/obsledovanie-derevev"
-				class="inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-4 text-xs font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 focus:border-emerald-700 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:text-emerald-300 disabled:shadow-none"
-			>
-				<span>Подробнее..</span>
-			</a>
+			<BtnLight link="/obsledovanie-derevev" btnName="Подробнее.." />
 			<!-- End Small outline basic button -->
 		</div>
 		<div class="basic-text">
@@ -373,6 +369,12 @@ const images = [
 				Ключевые признаки болезней, повреждений и наличия вредителей, когда требуется
 				профессиональное вмешательство.
 			</p>
+
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="2"
+				titleForm=`${SEO.title}. Блок: Когда дерево нуждается в лечении`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Трещины и раны деревьев</h3>
@@ -412,7 +414,11 @@ const images = [
 			<p class="mt-6">
 				<i>Подготовьте деревья к новому сезону – начните с лечения морозобоин!</i>
 			</p>
-			<BtnLight link="/#" btnName="Записаться на обработку" />
+			<FeedbackFormButton
+				titleBtnz="Заказать консультацию"
+				idForm="3"
+				titleForm=`${SEO.title}. Блок: Морозобоины`
+			/>
 		</div>
 		<div class="basic-text">
 			<h3 class="lg:text-2xl">Повреждения стволов деревьев морозом</h3>
