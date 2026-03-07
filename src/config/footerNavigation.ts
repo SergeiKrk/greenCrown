@@ -5,6 +5,7 @@ export interface Logo {
 	src: string
 	alt: string
 	text: string
+	textRu: string
 }
 
 export interface FooterAbout {
@@ -43,8 +44,9 @@ export const footerNavigationData: FooterData = {
 			'Сохраним красоту и силу ваших деревьев и растений. Комплексный уход и защита зеленых насаждения на вашем участке.',
 		logo: {
 			src: '../../assets/logoGreenCrown.png',
-			alt: 'Green Crown - ЛЕЧЕНИЕ РАСТЕНИЙ и БЕРЕЖНЫЙ УХОД',
-			text: 'GreenCrown'
+			alt: 'Green Crown (Зеленая крона) - ЛЕЧЕНИЕ РАСТЕНИЙ и БЕРЕЖНЫЙ УХОД',
+			text: 'GreenCrown',
+			textRu: '(Зеленая крона)'
 		},
 		ip: 'ИП Буравлев Денис Витальевич',
 		inn: 'ИНН 564818897380',
@@ -113,6 +115,6 @@ export const footerNavigationData: FooterData = {
 		}
 	],
 	subFooter: {
-		copywriteText: `© GREEN CROWN ${new Date().getFullYear()}.`
+		copywriteText: `© GREEN CROWN (Зеленая крона) ${new Date().getFullYear()}.`
 	}
 }

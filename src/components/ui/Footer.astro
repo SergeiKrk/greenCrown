@@ -24,8 +24,13 @@ const { footerAbout, footerColumns, subFooter } = footerNavigationData
 			<div class="footer__cols">
 				<div class="footer__col">
 					<a aria-label="webiste logo" aria-current="page" class="footer__main-brand" href="/">
-						<img src={FooterImg.src} alt={footerAbout.logo.alt} width="50" height="50" />
-						{footerAbout.logo.text}
+						<div class="flex flex-row space-x-4 items-center justify-center">
+							<div><img src={FooterImg.src} alt={footerAbout.logo.alt} width="50" height="50" /></div>
+							<div class="flex flex-col">
+								<div>{footerAbout.logo.text}</div>
+								<div>{footerAbout.logo.textRu}</div>
+							</div>
+						</div>
 					</a>
 					<p>
 						{footerAbout.aboutText}
