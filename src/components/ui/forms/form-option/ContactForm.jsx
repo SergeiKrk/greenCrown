@@ -1,4 +1,10 @@
-import React, { useMemo } from 'react';
+import React, {
+  useMemo,
+  useEffect
+} from 'react';
+
+const CAPTCHA_SITEKEY =
+  'ysc1_9IMphgkXA77gJofEhIWLxxEt28MfPYlVpvQ6rI0k7e7913cd';
 
 export default function ContactForm({
   isActive,
@@ -7,7 +13,28 @@ export default function ContactForm({
   idForm
 }) {
 
-  const formTime = useMemo(() => Date.now(), []);
+  const formTime = useMemo(
+    () => Date.now(),
+    []
+  );
+
+  useEffect(() => {
+
+    if (window.smartCaptcha) {
+      return;
+    }
+
+    const script =
+      document.createElement('script');
+
+    script.src =
+      'https://smartcaptcha.yandexcloud.net/captcha.js';
+
+    script.async = true;
+
+    document.body.appendChild(script);
+
+  }, []);
 
   const placeholders = {
     phone: '+7 9999 99 99',
@@ -44,29 +71,30 @@ export default function ContactForm({
     <form
       action="/send.php"
       method="POST"
-      className={`pt-3 text-sm ${isActive ? '' : 'hidden'}`}
+      className={`pt-3 text-sm ${
+        isActive ? '' : 'hidden'
+      }`}
       id={`tab-panel-${formType}fi`}
-      aria-hidden={isActive ? 'false' : 'true'}
+      aria-hidden={
+        isActive ? 'false' : 'true'
+      }
       role="tabpanel"
       aria-labelledby={`tab-label-${formType}fi`}
       tabIndex="-1"
     >
 
-      {/* Название формы */}
       <input
         type="hidden"
         name="FormName"
         value={`${titleForm} [Форма №${idForm}]`}
       />
 
-      {/* Время открытия формы */}
       <input
         type="hidden"
         name="form_time"
         value={formTime}
       />
 
-      {/* Honeypot */}
       <input
         type="text"
         name="website"
@@ -81,7 +109,9 @@ export default function ContactForm({
           id={idInput}
           type={inputTypes[formType]}
           name={inputNames[formType]}
-          placeholder={placeholders[formType]}
+          placeholder={
+            placeholders[formType]
+          }
           required
           className="peer relative h-10 w-full rounded border border-slate-200 px-4 text-sm text-emerald-500 placeholder-transparent caret-pink-500 outline-none transition-all"
         />
@@ -92,19 +122,29 @@ export default function ContactForm({
         >
           {labels[formType]}
         </label>
-
-        <button
-          type="submit"
-          className="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 md:mt-0 lg:ml-2 lg:mt-0 lg:py-2"
-        >
-          <span>Заказать консультацию</span>
-        </button>
       </div>
 
-      <p className="text-xs">
-        Нажимая на кнопку Вы соглашаетесь c{' '}
+      <div
+        className="smart-captcha mb-3"
+        data-sitekey={CAPTCHA_SITEKEY}
+      ></div>
+
+      <button
+        type="submit"
+        className="mt-2 inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-emerald-500 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:border-emerald-600 hover:text-emerald-600 md:mt-0 lg:mt-0 lg:py-2"
+      >
+        <span>
+          Заказать консультацию
+        </span>
+      </button>
+
+      <p className="mt-3 text-xs">
+        Нажимая на кнопку Вы
+        соглашаетесь c{' '}
+
         <a href="/politic">
-          политикой конфиденциальности
+          политикой
+          конфиденциальности
         </a>
       </p>
     </form>

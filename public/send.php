@@ -1,16 +1,70 @@
 <?php
 
-ini_set('display_errors', 0);
+declare(strict_types=1);
+
+ini_set('display_errors', '0');
 error_reporting(0);
+
+session_start();
 
 $config = require __DIR__ . '/private/config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'libs/PHPMailer/src/Exception.php';
-require 'libs/PHPMailer/src/PHPMailer.php';
-require 'libs/PHPMailer/src/SMTP.php';
+require __DIR__ . '/libs/PHPMailer/src/Exception.php';
+require __DIR__ . '/libs/PHPMailer/src/PHPMailer.php';
+require __DIR__ . '/libs/PHPMailer/src/SMTP.php';
+
+/*
+|--------------------------------------------------------------------------
+| Проверка SmartCaptcha
+|--------------------------------------------------------------------------
+*/
+function checkCaptcha(
+    string $token,
+    string $serverKey
+): bool {
+
+    if (empty($token)) {
+        return false;
+    }
+
+    $url = 'https://smartcaptcha.yandexcloud.net/validate';
+
+    $data = [
+        'secret' => $serverKey,
+        'token'  => $token,
+        'ip'     => $_SERVER['REMOTE_ADDR'] ?? ''
+    ];
+
+    $options = [
+        'http' => [
+            'header' =>
+                "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data),
+            'timeout' => 5
+        ]
+    ];
+
+    $context = stream_context_create($options);
+
+    $result = file_get_contents(
+        $url,
+        false,
+        $context
+    );
+
+    if ($result === false) {
+        return false;
+    }
+
+    $response = json_decode($result, true);
+
+    return isset($response['status'])
+        && $response['status'] === 'ok';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +78,27 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 /*
 |--------------------------------------------------------------------------
+| Проверка User-Agent
+|--------------------------------------------------------------------------
+*/
+$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+
+if (
+    empty($userAgent) ||
+    strlen($userAgent) < 20
+) {
+    http_response_code(403);
+    exit;
+}
+
+/*
+|--------------------------------------------------------------------------
 | Ограничение размера POST
 |--------------------------------------------------------------------------
 */
 if (
     isset($_SERVER['CONTENT_LENGTH']) &&
-    $_SERVER['CONTENT_LENGTH'] > 5000
+    (int) $_SERVER['CONTENT_LENGTH'] > 10000
 ) {
     http_response_code(413);
     exit;
@@ -37,7 +106,7 @@ if (
 
 /*
 |--------------------------------------------------------------------------
-| Honeypot (боты часто заполняют скрытые поля)
+| Honeypot
 |--------------------------------------------------------------------------
 */
 if (!empty($_POST['website'])) {
@@ -48,7 +117,6 @@ if (!empty($_POST['website'])) {
 /*
 |--------------------------------------------------------------------------
 | Проверка времени заполнения формы
-| (антибот: слишком быстро = бот)
 |--------------------------------------------------------------------------
 */
 if (!isset($_POST['form_time'])) {
@@ -57,6 +125,7 @@ if (!isset($_POST['form_time'])) {
 }
 
 $formTime = (int) $_POST['form_time'];
+
 $currentTime = (int) round(microtime(true) * 1000);
 
 if (($currentTime - $formTime) < 3000) {
@@ -66,7 +135,24 @@ if (($currentTime - $formTime) < 3000) {
 
 /*
 |--------------------------------------------------------------------------
-| Проверка origin / referer (мягкая, без блокировки реальных пользователей)
+| Проверка SmartCaptcha
+|--------------------------------------------------------------------------
+*/
+$captchaToken = $_POST['smart-token'] ?? '';
+
+if (
+    !checkCaptcha(
+        $captchaToken,
+        $config['smartcaptcha_server_key']
+    )
+) {
+    http_response_code(403);
+    exit;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Проверка origin / referer
 |--------------------------------------------------------------------------
 */
 $allowedDomains = [
@@ -74,15 +160,19 @@ $allowedDomains = [
     'https://www.green-crown.ru'
 ];
 
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$origin  = $_SERVER['HTTP_ORIGIN'] ?? '';
 $referer = $_SERVER['HTTP_REFERER'] ?? '';
 
 $validOrigin = false;
 
 foreach ($allowedDomains as $domain) {
+
     if (
-        (!empty($origin) && str_starts_with($origin, $domain)) ||
-        (!empty($referer) && str_starts_with($referer, $domain))
+        (!empty($origin) &&
+            str_starts_with($origin, $domain))
+        ||
+        (!empty($referer) &&
+            str_starts_with($referer, $domain))
     ) {
         $validOrigin = true;
         break;
@@ -96,22 +186,28 @@ if (!$validOrigin) {
 
 /*
 |--------------------------------------------------------------------------
-| Rate limit по IP (1 запрос / 30 сек)
+| Rate limit по IP
 |--------------------------------------------------------------------------
 */
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 
-$rateLimitDir = sys_get_temp_dir() . '/green-crown-rate-limit';
+$rateLimitDir =
+    sys_get_temp_dir() .
+    '/green-crown-rate-limit';
 
 if (!is_dir($rateLimitDir)) {
     mkdir($rateLimitDir, 0777, true);
 }
 
-$rateLimitFile = $rateLimitDir . '/' . md5($ip);
+$rateLimitFile =
+    $rateLimitDir .
+    '/' .
+    md5($ip);
 
 if (file_exists($rateLimitFile)) {
 
-    $lastRequest = (int) file_get_contents($rateLimitFile);
+    $lastRequest =
+        (int) file_get_contents($rateLimitFile);
 
     if ((time() - $lastRequest) < 30) {
         http_response_code(429);
@@ -119,14 +215,18 @@ if (file_exists($rateLimitFile)) {
     }
 }
 
-file_put_contents($rateLimitFile, time());
+file_put_contents(
+    $rateLimitFile,
+    (string) time()
+);
 
 /*
 |--------------------------------------------------------------------------
-| Очистка старых rate limit файлов
+| Очистка старых файлов
 |--------------------------------------------------------------------------
 */
 foreach (glob($rateLimitDir . '/*') as $file) {
+
     if (filemtime($file) < time() - 3600) {
         unlink($file);
     }
@@ -147,15 +247,23 @@ $formTg    = trim($_POST['FormTg'] ?? '');
 
 /*
 |--------------------------------------------------------------------------
-| Очистка телефонов / WhatsApp
+| Очистка телефонов
 |--------------------------------------------------------------------------
 */
 if (!empty($formPhone)) {
-    $formPhone = preg_replace('/[^0-9+\-\(\)\s]/', '', $formPhone);
+    $formPhone = preg_replace(
+        '/[^0-9+\-\(\)\s]/',
+        '',
+        $formPhone
+    );
 }
 
 if (!empty($formWp)) {
-    $formWp = preg_replace('/[^0-9+\-\(\)\s]/', '', $formWp);
+    $formWp = preg_replace(
+        '/[^0-9+\-\(\)\s]/',
+        '',
+        $formWp
+    );
 }
 
 /*
@@ -164,7 +272,13 @@ if (!empty($formWp)) {
 |--------------------------------------------------------------------------
 */
 if (!empty($formTg)) {
-    if (!preg_match('/^@?[a-zA-Z0-9_]{4,32}$/', $formTg)) {
+
+    if (
+        !preg_match(
+            '/^@?[a-zA-Z0-9_]{4,32}$/',
+            $formTg
+        )
+    ) {
         http_response_code(403);
         exit;
     }
@@ -172,7 +286,7 @@ if (!empty($formTg)) {
 
 /*
 |--------------------------------------------------------------------------
-| Проверка: только один способ связи
+| Только один способ связи
 |--------------------------------------------------------------------------
 */
 $filled = 0;
@@ -191,18 +305,22 @@ if ($filled !== 1) {
 | Формирование письма
 |--------------------------------------------------------------------------
 */
-$body = "<h3>Заявка с сайта: {$formName}</h3>";
+$body =
+    "<h3>Заявка с сайта: {$formName}</h3>";
 
 if (!empty($formPhone)) {
-    $body .= "<p><strong>Телефон:</strong> {$formPhone}</p>";
+    $body .=
+        "<p><strong>Телефон:</strong> {$formPhone}</p>";
 }
 
 if (!empty($formWp)) {
-    $body .= "<p><strong>WhatsApp:</strong> {$formWp}</p>";
+    $body .=
+        "<p><strong>WhatsApp:</strong> {$formWp}</p>";
 }
 
 if (!empty($formTg)) {
-    $body .= "<p><strong>Telegram:</strong> {$formTg}</p>";
+    $body .=
+        "<p><strong>Telegram:</strong> {$formTg}</p>";
 }
 
 /*
@@ -215,15 +333,22 @@ $mail = new PHPMailer(true);
 try {
 
     $mail->CharSet = 'UTF-8';
+
     $mail->isSMTP();
 
     $mail->Host = 'smtp.timeweb.ru';
+
     $mail->SMTPAuth = true;
 
-    $mail->Username = 'zakaz@green-crown.ru';
-    $mail->Password = $config['smtp_password'];
+    $mail->Username =
+        'zakaz@green-crown.ru';
 
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Password =
+        $config['smtp_password'];
+
+    $mail->SMTPSecure =
+        PHPMailer::ENCRYPTION_SMTPS;
+
     $mail->Port = 465;
 
     $mail->setFrom(
@@ -232,24 +357,31 @@ try {
     );
 
     $mail->addAddress(
-        // 'info@green-crown.ru',
         'ksv.ulru@gmail.com',
         'Получатель'
     );
 
     $mail->isHTML(true);
 
-    $mail->Subject = 'GREENCROWN — новая заявка';
+    $mail->Subject =
+        'GREENCROWN — новая заявка';
 
     $mail->Body = $body;
-    $mail->AltBody = strip_tags($body);
+
+    $mail->AltBody =
+        strip_tags($body);
 
     $mail->send();
 
+    unset($_SESSION['csrf_token']);
+
     header('Location: /zayavka-otpravlena/');
+
     exit;
 
 } catch (Exception $e) {
+
     http_response_code(500);
+
     exit;
 }
