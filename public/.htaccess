@@ -1,0 +1,45 @@
+# Включаем mod_rewrite
+RewriteEngine On
+
+# Блокировка веб-шеллов и сканеров
+RewriteCond %{REQUEST_URI} ^/(adminfuns|ioxi-o|sadcut1|ws[0-9]+|xmr|wp-act|bolt|rip|cdx1|bgymj|grsiuk|akcc|akc|cong|hplfuns|htaccess|sx|0x|6xBAm3vODE05BSzkJZRAws)\.php [NC,OR]
+RewriteCond %{REQUEST_URI} ^/\.(dj|trash|well-known/logs) [NC,OR]
+RewriteCond %{REQUEST_URI} (wp-admin|wp-content|wp-includes|wp-login|xmlrpc) [NC,OR]
+RewriteCond %{REQUEST_URI} (backup|bitrix|archive|dump|database)\.(tar\.gz|zip|sql|rar) [NC]
+RewriteRule ^ - [F,L]
+
+# Блокировка ботов по User-Agent
+RewriteCond %{HTTP_USER_AGENT} (Bytespider|Scrapy|BackupLand|visionheight|Go-http-client|python-requests) [NC]
+RewriteRule ^ - [F,L]
+
+# Защита формы отправки
+<Files "send.php">
+    <Limit GET HEAD>
+        Require all denied
+    </Limit>
+    
+    SetEnvIf Referer "^https?://(www\.)?green-crown\.ru" local_referer=1
+    <Limit POST>
+        Require env local_referer
+    </Limit>
+</Files>
+
+# Блокировка по IP
+<RequireAll>
+    # Разрешаем всем по умолчанию
+    Require all granted
+    
+    # Запрещаем конкретным IP
+    Require not ip 20.198.83.136
+    Require not ip 20.151.118.240
+    Require not ip 23.101.4.52
+    Require not ip 94.154.35.236
+    Require not ip 195.210.4.1
+</RequireAll>
+
+# Если запрашиваемый файл или директория существуют, используем их напрямую
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Устанавливаем страницу 404
+ErrorDocument 404 /404.html
