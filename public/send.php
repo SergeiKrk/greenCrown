@@ -32,11 +32,25 @@ function checkCaptcha(
 
     $url = 'https://smartcaptcha.yandexcloud.net/validate';
 
+    // Не пробрасываем REMOTE_ADDR напрямую: при наличии CDN/прокси это
+    // будет IP фронта, а не клиента, и яндекс отклонит токен.
+    $clientIp = '';
+
+    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $forwarded = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+        $clientIp  = trim($forwarded[0]);
+    } elseif (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+        $clientIp = trim($_SERVER['HTTP_X_REAL_IP']);
+    }
+
     $data = [
         'secret' => $serverKey,
-        'token'  => $token,
-        'ip'     => $_SERVER['REMOTE_ADDR'] ?? ''
+        'token'  => $token
     ];
+
+    if (!empty($clientIp) && filter_var($clientIp, FILTER_VALIDATE_IP)) {
+        $data['ip'] = $clientIp;
+    }
 
     $options = [
         'http' => [
@@ -44,13 +58,14 @@ function checkCaptcha(
                 "Content-type: application/x-www-form-urlencoded\r\n",
             'method'  => 'POST',
             'content' => http_build_query($data),
-            'timeout' => 5
+            'timeout' => 3,
+            'ignore_errors' => true
         ]
     ];
 
     $context = stream_context_create($options);
 
-    $result = file_get_contents(
+    $result = @file_get_contents(
         $url,
         false,
         $context
@@ -128,7 +143,9 @@ $formTime = (int) $_POST['form_time'];
 
 $currentTime = (int) round(microtime(true) * 1000);
 
-if (($currentTime - $formTime) < 3000) {
+$elapsed = $currentTime - $formTime;
+
+if ($elapsed < 1500 || $elapsed > 86400000) {
     http_response_code(403);
     exit;
 }
@@ -209,16 +226,15 @@ if (file_exists($rateLimitFile)) {
     $lastRequest =
         (int) file_get_contents($rateLimitFile);
 
-    if ((time() - $lastRequest) < 30) {
+    if ((time() - $lastRequest) < 10) {
         http_response_code(429);
         exit;
     }
 }
 
-file_put_contents(
-    $rateLimitFile,
-    (string) time()
-);
+// Отметка в rate-limit файл будет сделана ТОЛЬКО при успешной
+// отправке письма (см. ниже в try/catch). Иначе любой неудачный
+// проход блокирует легитимный ретрай на 30 секунд.
 
 /*
 |--------------------------------------------------------------------------
@@ -238,12 +254,12 @@ foreach (glob($rateLimitDir . '/*') as $file) {
 |--------------------------------------------------------------------------
 */
 $formName = isset($_POST['FormName'])
-    ? trim($_POST['FormName'])
+    ? mb_substr(trim($_POST['FormName']), 0, 200)
     : 'Без имени';
 
-$formPhone = trim($_POST['FormPhone'] ?? '');
-$formWp    = trim($_POST['FormWp'] ?? '');
-$formTg    = trim($_POST['FormTg'] ?? '');
+$formPhone = mb_substr(trim($_POST['FormPhone'] ?? ''), 0, 30);
+$formWp    = mb_substr(trim($_POST['FormWp']    ?? ''), 0, 30);
+$formTg    = mb_substr(trim($_POST['FormTg']    ?? ''), 0, 40);
 
 /*
 |--------------------------------------------------------------------------
@@ -305,22 +321,27 @@ if ($filled !== 1) {
 | Формирование письма
 |--------------------------------------------------------------------------
 */
+$safeName  = htmlspecialchars($formName,  ENT_QUOTES | ENT_HTML5, 'UTF-8');
+$safePhone = htmlspecialchars($formPhone, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+$safeWp    = htmlspecialchars($formWp,    ENT_QUOTES | ENT_HTML5, 'UTF-8');
+$safeTg    = htmlspecialchars($formTg,    ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
 $body =
-    "<h3>Заявка с сайта: {$formName}</h3>";
+    "<h3>Заявка с сайта: {$safeName}</h3>";
 
 if (!empty($formPhone)) {
     $body .=
-        "<p><strong>Телефон:</strong> {$formPhone}</p>";
+        "<p><strong>Телефон:</strong> {$safePhone}</p>";
 }
 
 if (!empty($formWp)) {
     $body .=
-        "<p><strong>WhatsApp:</strong> {$formWp}</p>";
+        "<p><strong>WhatsApp:</strong> {$safeWp}</p>";
 }
 
 if (!empty($formTg)) {
     $body .=
-        "<p><strong>Telegram:</strong> {$formTg}</p>";
+        "<p><strong>Telegram:</strong> {$safeTg}</p>";
 }
 
 /*
@@ -358,6 +379,7 @@ try {
 
     $mail->addAddress(
         'ksv.ulru@gmail.com',
+        // 'info@green-crown.ru',
         'Получатель'
     );
 
@@ -372,6 +394,13 @@ try {
         strip_tags($body);
 
     $mail->send();
+
+    // Фиксируем время только после реально успешной отправки,
+    // чтобы ретраи после ошибок не получали 429.
+    @file_put_contents(
+        $rateLimitFile,
+        (string) time()
+    );
 
     unset($_SESSION['csrf_token']);
 

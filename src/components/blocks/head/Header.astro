@@ -50,4 +50,12 @@ const {
 	<meta name="generator" content={Astro.generator} />
 	<meta name="theme-color" content="#134e4a" />
 	<ViewTransitions fallback="swap" />
+	<link rel="preconnect" href="https://smartcaptcha.yandexcloud.net" crossorigin />
+	<link
+		rel="preload"
+		as="script"
+		href="https://smartcaptcha.yandexcloud.net/captcha.js?render=onload"
+	/>
+	<script src="https://smartcaptcha.yandexcloud.net/captcha.js?render=onload" async is:inline
+	></script>
 </head>
