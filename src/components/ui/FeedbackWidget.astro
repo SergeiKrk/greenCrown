@@ -8,7 +8,8 @@ type ElCall = {
 	id: number
 	title: string
 	src: string
-	img: ImageMetadata
+	img?: ImageMetadata
+	svgPath?: string
 }
 
 const elcalls: ElCall[] = [
@@ -20,22 +21,22 @@ const elcalls: ElCall[] = [
 	},
 	{
 		id: 2,
+		title: 'Max',
+		src: 'https://max.ru/u/f9LHodD0cOJFzFqJWHcY_hQFXyZ6Sb7i8OHHjkRZwPmjgiF_I7VFui-AZo4',
+		svgPath: '/imgs/MAX.svg'
+	},
+	{
+		id: 3,
 		title: 'Telegram',
 		src: 'https://t.me/GREENCROVN',
 		img: tg
 	},
 	{
-		id: 3,
+		id: 4,
 		title: 'Позвонить',
 		src: 'tel:79176261224',
 		img: call
 	}
-	// {
-	//   id: 3,
-	//   title: "Обратный звонок",
-	//   src: '#',
-	//   img: callback,
-	// },
 ]
 ---
 
@@ -75,7 +76,11 @@ const elcalls: ElCall[] = [
 					>
 						<span class="relative only:-mx-6">
 							<span class="sr-only">{el.title} button</span>
-							<Image class="gb-white rounded-full p-2" src={el.img} alt={el.title} />
+							{el.img ? (
+								<Image class="gb-white rounded-full p-2" src={el.img} alt={el.title} />
+							) : (
+								<img class="gb-white h-12 w-12 rounded-full p-2" src={el.svgPath} alt={el.title} />
+							)}
 						</span>
 					</a>
 				</div>
