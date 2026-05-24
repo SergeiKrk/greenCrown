@@ -11,23 +11,20 @@ const TABS = [
 		id: 'phone',
 		label: 'Телефон',
 		icon: PhoneIcon,
-		name: 'FormPhone',
 		type: 'tel',
 		placeholder: '+7 9999 99 99'
 	},
 	{
-		id: 'wp',
+		id: 'whatsapp',
 		label: 'Whatsapp',
 		icon: WhatsappIcon,
-		name: 'FormWp',
 		type: 'tel',
 		placeholder: '+7 9999 99 99'
 	},
 	{
-		id: 'tg',
+		id: 'telegram',
 		label: 'Telegram',
 		icon: TelegramIcon,
-		name: 'FormTg',
 		type: 'text',
 		placeholder: '@username'
 	}
@@ -47,7 +44,7 @@ export default function FormOption({ titleForm, idForm }) {
 	const formTime = useMemo(() => Date.now(), [])
 	const activeTab = TABS.find((t) => t.id === activeTabId) || TABS[0]
 
-	// Lazy fallback: ensure script presence even if it wasn't preloaded in layout.
+	// Load captcha script if not present
 	useEffect(() => {
 		if (window.smartCaptcha) return
 		if (document.querySelector('script[src*="smartcaptcha.yandexcloud.net/captcha.js"]')) return
@@ -58,7 +55,7 @@ export default function FormOption({ titleForm, idForm }) {
 		document.body.appendChild(script)
 	}, [])
 
-	// Render the captcha widget explicitly so we own its lifecycle (and can reset).
+	// Render captcha widget
 	useEffect(() => {
 		let cancelled = false
 		let intervalId = null
@@ -91,32 +88,10 @@ export default function FormOption({ titleForm, idForm }) {
 		}
 	}, [])
 
-	// On tab switch: clear input value and error.
-	// IMPORTANT: do NOT reset the captcha here — the SmartCaptcha widget is
-	// shared across tabs, and programmatic reset() can produce a token that
-	// the backend will subsequently reject. The widget is reset only after a
-	// real server-side failure (see handleSubmit).
+	// On tab switch: clear input and error (do NOT reset captcha)
 	useEffect(() => {
 		setInputValue('')
 		setError('')
-	}, [activeTabId])
-
-	// Keyboard navigation between tabs.
-	useEffect(() => {
-		const handleKeyDown = (e) => {
-			if (!wrapperRef.current || !wrapperRef.current.contains(e.target)) return
-
-			const idx = TABS.findIndex((t) => t.id === activeTabId)
-
-			if (e.keyCode === 39) {
-				setActiveTabId(TABS[(idx + 1) % TABS.length].id)
-			} else if (e.keyCode === 37) {
-				setActiveTabId(TABS[(idx - 1 + TABS.length) % TABS.length].id)
-			}
-		}
-
-		window.addEventListener('keydown', handleKeyDown)
-		return () => window.removeEventListener('keydown', handleKeyDown)
 	}, [activeTabId])
 
 	const handleSubmit = async (e) => {
@@ -130,21 +105,26 @@ export default function FormOption({ titleForm, idForm }) {
 			return
 		}
 
-		if (
-			(activeTabId === 'phone' || activeTabId === 'wp') &&
-			!/^(\+7|8)[\d\s\-()]{10,}$/.test(value)
-		) {
-			setError('Введите корректный номер телефона')
-			return
+		// Unified validation based on active tab
+		if (activeTabId === 'phone' || activeTabId === 'whatsapp') {
+			if (!/^(\+7|8)[\d\s\-()]{10,}$/.test(value)) {
+				setError('Введите корректный номер телефона')
+				return
+			}
+		} else if (activeTabId === 'telegram') {
+			if (!/^@?[a-zA-Z0-9_]{4,32}$/.test(value)) {
+				setError('Введите корректный Telegram username')
+				return
+			}
 		}
 
-		if (activeTabId === 'tg' && !/^@?[a-zA-Z0-9_]{4,32}$/.test(value)) {
-			setError('Введите корректный Telegram username')
-			return
+		// Get captcha token via getResponse() — always returns the current valid token
+		let token = ''
+		if (window.smartCaptcha && captchaWidgetIdRef.current !== null) {
+			try {
+				token = window.smartCaptcha.getResponse(captchaWidgetIdRef.current) || ''
+			} catch {}
 		}
-
-		const form = formRef.current
-		const token = form?.querySelector('[name="smart-token"]')?.value
 
 		if (!token) {
 			setError('Пожалуйста, пройдите проверку капчи')
@@ -154,11 +134,15 @@ export default function FormOption({ titleForm, idForm }) {
 		setIsSubmitting(true)
 
 		try {
+			const form = formRef.current
 			const formData = new FormData(form)
+			// Explicitly set token to guarantee it's in FormData
+			formData.set('smart-token', token)
 
 			const response = await fetch('/send.php', {
 				method: 'POST',
-				body: formData
+				body: formData,
+				credentials: 'same-origin'
 			})
 
 			if (response.ok || response.redirected) {
@@ -167,9 +151,11 @@ export default function FormOption({ titleForm, idForm }) {
 			}
 
 			switch (response.status) {
-				case 403:
-					setError('Ошибка отправки. Проверьте правильность заполнения формы')
+				case 403: {
+					const body = await response.text().catch(() => '')
+					setError(`Ошибка отправки [${body || '403'}]`)
 					break
+				}
 				case 429:
 					setError('Слишком много запросов. Подождите 30 секунд')
 					break
@@ -180,6 +166,7 @@ export default function FormOption({ titleForm, idForm }) {
 					setError('Произошла ошибка. Попробуйте позже')
 			}
 
+			// Reset captcha after failed submission
 			if (
 				window.smartCaptcha &&
 				typeof window.smartCaptcha.reset === 'function' &&
@@ -199,7 +186,6 @@ export default function FormOption({ titleForm, idForm }) {
 	}
 
 	const idInput = `id-${idForm}-${activeTabId}`
-	const panelId = `tab-panel-${activeTabId}fi`
 
 	return (
 		<>
@@ -226,19 +212,17 @@ export default function FormOption({ titleForm, idForm }) {
 				method="POST"
 				onSubmit={handleSubmit}
 				className="pt-3 text-sm"
-				id={panelId}
-				role="tabpanel"
-				aria-labelledby={`tab-label-${activeTabId}fi`}
 			>
 				<input type="hidden" name="FormName" value={`${titleForm} [Форма №${idForm}]`} />
 				<input type="hidden" name="form_time" value={formTime} />
+				<input type="hidden" name="FormMethod" value={activeTabId} />
 				<input type="text" name="website" autoComplete="off" tabIndex="-1" className="hidden" />
 
 				<div className="relative my-2 flex flex-col lg:flex-row">
 					<input
 						id={idInput}
 						type={activeTab.type}
-						name={activeTab.name}
+						name="FormContact"
 						value={inputValue}
 						onChange={(e) => setInputValue(e.target.value)}
 						placeholder={activeTab.placeholder}

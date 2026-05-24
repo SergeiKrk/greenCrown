@@ -5,8 +5,6 @@ declare(strict_types=1);
 ini_set('display_errors', '0');
 error_reporting(0);
 
-session_start();
-
 $config = require __DIR__ . '/private/config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -27,58 +25,70 @@ function checkCaptcha(
 ): bool {
 
     if (empty($token)) {
+        $GLOBALS['_captcha_debug'] = 'empty_token';
         return false;
     }
 
     $url = 'https://smartcaptcha.yandexcloud.net/validate';
-
-    // Не пробрасываем REMOTE_ADDR напрямую: при наличии CDN/прокси это
-    // будет IP фронта, а не клиента, и яндекс отклонит токен.
-    $clientIp = '';
-
-    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $forwarded = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-        $clientIp  = trim($forwarded[0]);
-    } elseif (!empty($_SERVER['HTTP_X_REAL_IP'])) {
-        $clientIp = trim($_SERVER['HTTP_X_REAL_IP']);
-    }
 
     $data = [
         'secret' => $serverKey,
         'token'  => $token
     ];
 
-    if (!empty($clientIp) && filter_var($clientIp, FILTER_VALIDATE_IP)) {
-        $data['ip'] = $clientIp;
-    }
+    // Используем cURL (работает даже когда allow_url_fopen отключен)
+    if (function_exists('curl_init')) {
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => http_build_query($data),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 5,
+            CURLOPT_CONNECTTIMEOUT => 3,
+            CURLOPT_HTTPHEADER     => ['Content-Type: application/x-www-form-urlencoded'],
+        ]);
+        $result = curl_exec($ch);
+        $curlError = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
-    $options = [
-        'http' => [
-            'header' =>
-                "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data),
-            'timeout' => 3,
-            'ignore_errors' => true
-        ]
-    ];
+        if ($result === false) {
+            $GLOBALS['_captcha_debug'] = 'curl_err:' . $curlError;
+            return false;
+        }
+        if ($httpCode !== 200) {
+            $GLOBALS['_captcha_debug'] = 'http' . $httpCode . ':' . mb_substr($result, 0, 100);
+            return false;
+        }
+    } else {
+        // Fallback: file_get_contents
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data),
+                'timeout' => 5,
+                'ignore_errors' => true
+            ]
+        ];
 
-    $context = stream_context_create($options);
+        $context = stream_context_create($options);
+        $result = @file_get_contents($url, false, $context);
 
-    $result = @file_get_contents(
-        $url,
-        false,
-        $context
-    );
-
-    if ($result === false) {
-        return false;
+        if ($result === false) {
+            $GLOBALS['_captcha_debug'] = 'fgc_failed';
+            return false;
+        }
     }
 
     $response = json_decode($result, true);
 
-    return isset($response['status'])
-        && $response['status'] === 'ok';
+    if (!isset($response['status']) || $response['status'] !== 'ok') {
+        $GLOBALS['_captcha_debug'] = 'resp:' . mb_substr($result, 0, 150);
+        return false;
+    }
+
+    return true;
 }
 
 /*
@@ -88,6 +98,7 @@ function checkCaptcha(
 */
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(403);
+    echo 'E01:METHOD';
     exit;
 }
 
@@ -103,6 +114,7 @@ if (
     strlen($userAgent) < 20
 ) {
     http_response_code(403);
+    echo 'E02:UA';
     exit;
 }
 
@@ -126,6 +138,7 @@ if (
 */
 if (!empty($_POST['website'])) {
     http_response_code(403);
+    echo 'E03:HONEYPOT';
     exit;
 }
 
@@ -133,9 +146,12 @@ if (!empty($_POST['website'])) {
 |--------------------------------------------------------------------------
 | Проверка времени заполнения формы
 |--------------------------------------------------------------------------
+| form_time = client Date.now() (ms). Сравниваем с серверным временем.
+| Допускаем расхождение часов клиента и сервера до 60 секунд.
 */
 if (!isset($_POST['form_time'])) {
     http_response_code(403);
+    echo 'E04:NO_TIME';
     exit;
 }
 
@@ -145,8 +161,11 @@ $currentTime = (int) round(microtime(true) * 1000);
 
 $elapsed = $currentTime - $formTime;
 
-if ($elapsed < 1500 || $elapsed > 86400000) {
+// Минимум 1.5 сек (защита от бота), но допускаем отрицательное
+// смещение до -60 сек (clock skew). Максимум 24 часа.
+if ($elapsed < -60000 || $elapsed > 86400000) {
     http_response_code(403);
+    echo 'E05:TIME:' . $elapsed;
     exit;
 }
 
@@ -164,6 +183,7 @@ if (
     )
 ) {
     http_response_code(403);
+    echo 'E06:CAPTCHA:' . ($GLOBALS['_captcha_debug'] ?? 'no_debug');
     exit;
 }
 
@@ -198,6 +218,7 @@ foreach ($allowedDomains as $domain) {
 
 if (!$validOrigin) {
     http_response_code(403);
+    echo 'E07:ORIGIN:' . $origin . '|' . $referer;
     exit;
 }
 
@@ -257,28 +278,19 @@ $formName = isset($_POST['FormName'])
     ? mb_substr(trim($_POST['FormName']), 0, 200)
     : 'Без имени';
 
-$formPhone = mb_substr(trim($_POST['FormPhone'] ?? ''), 0, 30);
-$formWp    = mb_substr(trim($_POST['FormWp']    ?? ''), 0, 30);
-$formTg    = mb_substr(trim($_POST['FormTg']    ?? ''), 0, 40);
+$formContact = mb_substr(trim($_POST['FormContact'] ?? ''), 0, 100);
+$formMethod  = mb_substr(trim($_POST['FormMethod']  ?? ''), 0, 20);
 
 /*
 |--------------------------------------------------------------------------
 | Очистка телефонов
 |--------------------------------------------------------------------------
 */
-if (!empty($formPhone)) {
-    $formPhone = preg_replace(
-        '/[^0-9+\-\(\)\s]/',
+if ($formMethod === 'phone' || $formMethod === 'whatsapp') {
+    $formContact = preg_replace(
+        '/[^0-9+\-()\s]/',
         '',
-        $formPhone
-    );
-}
-
-if (!empty($formWp)) {
-    $formWp = preg_replace(
-        '/[^0-9+\-\(\)\s]/',
-        '',
-        $formWp
+        $formContact
     );
 }
 
@@ -287,32 +299,35 @@ if (!empty($formWp)) {
 | Проверка Telegram
 |--------------------------------------------------------------------------
 */
-if (!empty($formTg)) {
-
+if ($formMethod === 'telegram') {
     if (
         !preg_match(
             '/^@?[a-zA-Z0-9_]{4,32}$/',
-            $formTg
+            $formContact
         )
     ) {
         http_response_code(403);
+        echo 'E08:TG_FORMAT';
         exit;
     }
 }
 
 /*
 |--------------------------------------------------------------------------
-| Только один способ связи
+| Проверка контакта и метода
 |--------------------------------------------------------------------------
 */
-$filled = 0;
-
-if (!empty($formPhone)) $filled++;
-if (!empty($formWp))    $filled++;
-if (!empty($formTg))    $filled++;
-
-if ($filled !== 1) {
+if (empty($formContact)) {
     http_response_code(403);
+    echo 'E09:EMPTY_CONTACT';
+    exit;
+}
+
+// Validate method value
+$allowedMethods = ['phone', 'whatsapp', 'telegram'];
+if (!in_array($formMethod, $allowedMethods, true)) {
+    http_response_code(403);
+    echo 'E10:BAD_METHOD:' . $formMethod;
     exit;
 }
 
@@ -321,28 +336,20 @@ if ($filled !== 1) {
 | Формирование письма
 |--------------------------------------------------------------------------
 */
-$safeName  = htmlspecialchars($formName,  ENT_QUOTES | ENT_HTML5, 'UTF-8');
-$safePhone = htmlspecialchars($formPhone, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-$safeWp    = htmlspecialchars($formWp,    ENT_QUOTES | ENT_HTML5, 'UTF-8');
-$safeTg    = htmlspecialchars($formTg,    ENT_QUOTES | ENT_HTML5, 'UTF-8');
+$safeContact = htmlspecialchars($formContact, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+$safeMethod  = htmlspecialchars($formMethod,  ENT_QUOTES | ENT_HTML5, 'UTF-8');
+$safeName    = htmlspecialchars($formName,    ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
-$body =
-    "<h3>Заявка с сайта: {$safeName}</h3>";
+$methodLabels = [
+    'phone'    => 'Телефон',
+    'whatsapp' => 'WhatsApp',
+    'telegram' => 'Telegram'
+];
 
-if (!empty($formPhone)) {
-    $body .=
-        "<p><strong>Телефон:</strong> {$safePhone}</p>";
-}
+$methodLabel = $methodLabels[$formMethod] ?? $safeMethod;
 
-if (!empty($formWp)) {
-    $body .=
-        "<p><strong>WhatsApp:</strong> {$safeWp}</p>";
-}
-
-if (!empty($formTg)) {
-    $body .=
-        "<p><strong>Telegram:</strong> {$safeTg}</p>";
-}
+$body = "<h3>Заявка с сайта: {$safeName}</h3>";
+$body .= "<p><strong>{$methodLabel}:</strong> {$safeContact}</p>";
 
 /*
 |--------------------------------------------------------------------------
@@ -401,8 +408,6 @@ try {
         $rateLimitFile,
         (string) time()
     );
-
-    unset($_SESSION['csrf_token']);
 
     header('Location: /zayavka-otpravlena/');
 

@@ -48,6 +48,7 @@ node_modules/
 .env
 .env.local
 .env.*.local
+/public/private/config.php
 
 # Log files
 npm-debug.log*
@@ -64,3 +65,6 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Private config with secrets
+public/private/config.php
