@@ -385,8 +385,8 @@ try {
     );
 
     $mail->addAddress(
-        'ksv.ulru@gmail.com',
-        // 'info@green-crown.ru',
+        // 'ksv.ulru@gmail.com',
+        'info@green-crown.ru',
         'Получатель'
     );
 
